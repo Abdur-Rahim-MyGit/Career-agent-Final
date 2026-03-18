@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend/dev.db:/usr/src/app/dev.db
+    environment:
+      - PORT=5000
+      - DATABASE_URL=file:./dev.db
+      - JWT_SECRET=smaart_platform_secret_2026
+      - ML_SERVICE_URL=http://ml-service:5001
+
+  ml-service:
+    build: ./ml-service
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./ml-service/data_drafts.json:/app/data_drafts.json

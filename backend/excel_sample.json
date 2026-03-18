@@ -1,0 +1,83 @@
+{
+  "Technical Skills": [
+    {
+      "#": 1,
+      "Role": ".NET Developer",
+      "Skill Type": "CURRENT",
+      "Skill Name": "C# Programming",
+      "Priority": "CRITICAL",
+      "Where to Certify / Learn": "Microsoft Learn (free)",
+      "Issuing Body": "Microsoft"
+    },
+    {
+      "#": 2,
+      "Role": ".NET Developer",
+      "Skill Type": "CURRENT",
+      "Skill Name": "ASP.NET Core",
+      "Priority": "CRITICAL",
+      "Where to Certify / Learn": "Microsoft Learn (free) / freeCodeCamp",
+      "Issuing Body": "Microsoft"
+    },
+    {
+      "#": 3,
+      "Role": ".NET Developer",
+      "Skill Type": "CURRENT",
+      "Skill Name": "Entity Framework Core",
+      "Priority": "HIGH",
+      "Where to Certify / Learn": "Microsoft Learn (free) / official EF Core docs",
+      "Issuing Body": "Microsoft"
+    }
+  ],
+  "AI Tools": [
+    {
+      "#": 1,
+      "Role": ".NET Developer",
+      "Tool Type": "CURRENT",
+      "AI Tool Name": "GitHub Copilot (free for students via GitHub Education)",
+      "What It's Used For": "AI pair programmer for C# and .NET code",
+      "Priority": "HIGH",
+      "Why It's Emerging": "",
+      "Where to Learn / Certify": "GitHub Education free pack (github.com/education)",
+      "Course / Cert Name": "No formal cert — self-study via GitHub Copilot free documentation",
+      "Issuing Body": "GitHub"
+    },
+    {
+      "#": 2,
+      "Role": ".NET Developer",
+      "Tool Type": "EMERGING",
+      "AI Tool Name": "Azure AI Services (free tier)",
+      "What It's Used For": "Adding AI features to .NET apps",
+      "Priority": "LOW",
+      "Why It's Emerging": "Growing job posts require .NET devs to integrate Azure AI APIs",
+      "Where to Learn / Certify": "Microsoft Learn (free)",
+      "Course / Cert Name": "No formal cert — self-study via Microsoft Learn (free)",
+      "Issuing Body": "Microsoft"
+    },
+    {
+      "#": 3,
+      "Role": "5G Network Engineer",
+      "Tool Type": "CURRENT",
+      "AI Tool Name": "Network performance analysis tools (Wireshark — free, tcpdump — free)",
+      "What It's Used For": "5G packet analysis and network troubleshooting",
+      "Priority": "HIGH",
+      "Why It's Emerging": "",
+      "Where to Learn / Certify": "Wireshark official free documentation",
+      "Course / Cert Name": "No formal cert — self-study via Wireshark official free documentation",
+      "Issuing Body": "Wireshark"
+    }
+  ],
+  "Free Resource Policy": [
+    {
+      "IT Workforce Intelligence — 225 Roles | Free & Student-Accessible Resources": "PURPOSE",
+      "__EMPTY": "This workbook covers 225 IT and tech job roles — 100 original roles (A–I) plus 125 new roles (I–Z) — mapping the technical skills and AI tools required for each role in 2025 and beyond."
+    },
+    {
+      "IT Workforce Intelligence — 225 Roles | Free & Student-Accessible Resources": "FREE POLICY",
+      "__EMPTY": "Every learning resource, certification study path, and AI tool listed is FREE or student-accessible. Where industry-standard paid certifications exist (e.g. AWS SAA, CKA, OSCP, CompTIA), the study resources and preparation materials listed are free. The exam itself may carry a fee."
+    },
+    {
+      "IT Workforce Intelligence — 225 Roles | Free & Student-Accessible Resources": "KEY FREE PLATFORMS",
+      "__EMPTY": "• freeCodeCamp (freeCodeCamp.org) — full stack, Python, data science\n• Kaggle Learn (kaggle.com/learn) — ML, data science, SQL\n• HuggingFace Course (huggingface.co/learn) — NLP, LLMs, transformers\n• The Odin Project (theodinproject.com) — full stack web development\n• MIT OpenCourseWare (ocw.mit.edu) — CS, maths, engineering\n• AWS Skill Builder free tier (skillbuilder.aws) — AWS services\n• Microsoft Learn (learn.microsoft.com) — Azure, M365, Power Platform\n• Google Cloud Skills Boost free tier — GCP\n• Salesforce Trailhead (trailhead.salesforce.com) — Salesforce ecosystem\n• ServiceNow Now Learning (nowlearning.servicenow.com) — ServiceNow\n• openSAP.com — SAP products (fully free)\n• Databricks Community Edition — Apache Spark\n• TryHackMe free tier / Hack The Box free tier — cybersecurity\n• PortSwigger Web Security Academy (portswigger.net/web-security) — web appsec\n• MITRE ATT&CK (attack.mitre.org) — threat intelligence\n• Kubernetes official docs + CKA prep — cloud-native\n• HDLBits (hdlbits.01xz.net) — digital design / FPGA\n• OpenROAD (openroad.readthedocs.io) — VLSI / physical design\n• Qiskit / IBM Quantum Learning — quantum computing\n• GitHub Education Pack (github.com/education) — GitHub Copilot + tools (free for students)"
+    }
+  ]
+}

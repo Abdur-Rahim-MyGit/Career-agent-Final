@@ -1,0 +1,54 @@
+[
+  [
+    "India Job Roles Master List — All Sectors"
+  ],
+  [],
+  [
+    "Sector",
+    "Job Family",
+    "Job Role",
+    "S.No."
+  ],
+  [
+    "Information Technology",
+    "Software Development",
+    "Software Engineer",
+    1
+  ],
+  [
+    "Information Technology",
+    "Software Development",
+    "Frontend Developer",
+    2
+  ],
+  [
+    "Information Technology",
+    "Software Development",
+    "Backend Developer",
+    3
+  ],
+  [
+    "Information Technology",
+    "Software Development",
+    "Full Stack Developer",
+    4
+  ],
+  [
+    "Information Technology",
+    "Software Development",
+    "Mobile App Developer - Android",
+    5
+  ],
+  [
+    "Information Technology",
+    "Software Development",
+    "Mobile App Developer - iOS",
+    6
+  ],
+  [
+    "Information Technology",
+    "Software Development",
+    "React Native Developer",
+    7
+  ]
+]

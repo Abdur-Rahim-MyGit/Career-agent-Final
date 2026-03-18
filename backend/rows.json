@@ -1,0 +1,90 @@
+{
+  "../india_degrees_by_level.xlsx": [
+    [
+      "India Master Degree List — Overview"
+    ],
+    [],
+    [
+      "Level",
+      "No. of Degrees Listed",
+      "Sheet"
+    ],
+    [
+      "Undergraduate (UG)",
+      36,
+      "See \"Undergraduate (UG)\" tab"
+    ],
+    [
+      "Postgraduate (PG)",
+      34,
+      "See \"Postgraduate (PG)\" tab"
+    ],
+    [
+      "Doctoral (PhD-Research)",
+      22,
+      "See \"Doctoral (Ph.D / Re\" tab"
+    ],
+    [
+      "Professional-Integrated",
+      12,
+      "See \"Professional / Integ\" tab"
+    ],
+    [
+      "Total Degrees"
+    ]
+  ],
+  "../india_jobs_detailed.xlsx": [
+    [
+      "India Job Roles — Sector-wise Summary"
+    ],
+    [],
+    [
+      "Sector",
+      "Job Families",
+      "Job Roles",
+      "Sheet"
+    ],
+    [
+      "Information Technology",
+      9,
+      71,
+      "All Sectors - Master List"
+    ],
+    [
+      "BFSI",
+      6,
+      50,
+      "All Sectors - Master List"
+    ],
+    [
+      "Healthcare & Pharma",
+      6,
+      60,
+      "All Sectors - Master List"
+    ],
+    [
+      "Engineering & Manufacturing",
+      8,
+      48,
+      "All Sectors - Master List"
+    ],
+    [
+      "Education & Research",
+      5,
+      31,
+      "All Sectors - Master List"
+    ],
+    [
+      "Government & Public Sector",
+      7,
+      47,
+      "All Sectors - Master List"
+    ],
+    [
+      "Legal",
+      9,
+      29,
+      "All Sectors - Master List"
+    ]
+  ]
+}

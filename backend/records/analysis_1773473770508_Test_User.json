@@ -1,0 +1,320 @@
+{
+  "timestamp": "2026-03-14T07:36:10.508Z",
+  "status": "completed",
+  "input_user_data": {
+    "personalDetails": {
+      "name": "Test User",
+      "email": "test@example.com"
+    },
+    "preferences": {
+      "primary": {
+        "role": "Software Engineer",
+        "sectors": [
+          "IT"
+        ],
+        "salary": "12 LPA"
+      },
+      "secondary": {
+        "role": "Data Analyst"
+      },
+      "tertiary": {
+        "role": "Business Analyst"
+      }
+    },
+    "education": [
+      {
+        "degreeLevel": "Bachelor",
+        "degreeGroup": "Engineering",
+        "specialization": "Computer Science",
+        "currentlyPursuing": true
+      }
+    ],
+    "skills": [
+      "JavaScript",
+      "Python"
+    ],
+    "experience": []
+  },
+  "output_generated_report": {
+    "status": "success_synthetic",
+    "generated_at": "2026-03-14T07:36:33.282Z",
+    "primary": {
+      "zone": "Amber",
+      "zone_message": "Due to API limitations, this is a synthetic analysis mapped to standard industry vectors.",
+      "preparation_time": "4-6 months",
+      "match_explanation": "This role partially matches your stated preferences and academic background.",
+      "tab1": {
+        "role_name": "Software Engineer",
+        "role_description": "Responsible for core operations within the Software Engineer domain.",
+        "typical_employers_india": "MNCs, Startups, IT Consultancies",
+        "common_entry_paths": "Campus Placements, Internships, Off-campus Drives",
+        "job_demand": "22.4% YoY Growth",
+        "salary_range": "12 LPA",
+        "ai_impact": "AI systems are transforming Software Engineer by automating repetitive tasks, but human oversight remains critical.",
+        "emerging_roles": [
+          {
+            "name": "AI-Enhanced Software Engineer",
+            "description": "Uses AI to accelerate delivery."
+          },
+          {
+            "name": "Intelligence Integration Eng",
+            "description": "Integrates LLMs into systems."
+          }
+        ]
+      },
+      "tab2": {
+        "must_have": [
+          {
+            "skill": "Core Competency",
+            "priority": "Critical",
+            "description": "Essential for daily tasks."
+          },
+          {
+            "skill": "Workflow Automation",
+            "priority": "High",
+            "description": "Improves efficiency."
+          }
+        ],
+        "nice_to_have": [
+          "Cross-functional communication",
+          "Rapid Prototyping"
+        ]
+      },
+      "tab3": {
+        "ai_tools": [
+          {
+            "name": "Cursor.ai",
+            "category": "AI-Powered",
+            "usage": "Code completion",
+            "adoption_level": "Widely Used"
+          },
+          {
+            "name": "GitHub Copilot",
+            "category": "AI-Powered",
+            "usage": "Pair programming",
+            "adoption_level": "Widely Used"
+          }
+        ],
+        "ai_exposure": {
+          "percentage": "40%",
+          "level": "Moderate",
+          "tasks_assisted": "Boilerplate generation, testing",
+          "human_value": "Architecture, logic, debugging"
+        },
+        "human_skills": [
+          "Analytical Thinking",
+          "Resilience and Adaptability",
+          "Communication"
+        ]
+      },
+      "tab5": {
+        "future_scope": "The future scope of Software Engineer lies in strategic oversight and automation governance. It will heavily aid digital-first organizations and scalable tech ecosystems.",
+        "target_audience": "Enterprise B2B, SaaS platforms, and digital consumers.",
+        "growth_trajectory": "Expected to evolve into higher-level consulting and architecture roles over the next 5 years."
+      }
+    },
+    "secondary": {
+      "zone": "Amber",
+      "zone_message": "Due to API limitations, this is a synthetic analysis mapped to standard industry vectors.",
+      "preparation_time": "4-6 months",
+      "match_explanation": "This role partially matches your stated preferences and academic background.",
+      "tab1": {
+        "role_name": "Data Analyst",
+        "role_description": "Responsible for core operations within the Data Analyst domain.",
+        "typical_employers_india": "MNCs, Startups, IT Consultancies",
+        "common_entry_paths": "Campus Placements, Internships, Off-campus Drives",
+        "job_demand": "22.4% YoY Growth",
+        "salary_range": "12 LPA",
+        "ai_impact": "AI systems are transforming Data Analyst by automating repetitive tasks, but human oversight remains critical.",
+        "emerging_roles": [
+          {
+            "name": "AI-Enhanced Data Analyst",
+            "description": "Uses AI to accelerate delivery."
+          },
+          {
+            "name": "Intelligence Integration Eng",
+            "description": "Integrates LLMs into systems."
+          }
+        ]
+      },
+      "tab2": {
+        "must_have": [
+          {
+            "skill": "Core Competency",
+            "priority": "Critical",
+            "description": "Essential for daily tasks."
+          },
+          {
+            "skill": "Workflow Automation",
+            "priority": "High",
+            "description": "Improves efficiency."
+          }
+        ],
+        "nice_to_have": [
+          "Cross-functional communication",
+          "Rapid Prototyping"
+        ]
+      },
+      "tab3": {
+        "ai_tools": [
+          {
+            "name": "Cursor.ai",
+            "category": "AI-Powered",
+            "usage": "Code completion",
+            "adoption_level": "Widely Used"
+          },
+          {
+            "name": "GitHub Copilot",
+            "category": "AI-Powered",
+            "usage": "Pair programming",
+            "adoption_level": "Widely Used"
+          }
+        ],
+        "ai_exposure": {
+          "percentage": "40%",
+          "level": "Moderate",
+          "tasks_assisted": "Boilerplate generation, testing",
+          "human_value": "Architecture, logic, debugging"
+        },
+        "human_skills": [
+          "Analytical Thinking",
+          "Resilience and Adaptability",
+          "Communication"
+        ]
+      },
+      "tab5": {
+        "future_scope": "The future scope of Data Analyst lies in strategic oversight and automation governance. It will heavily aid digital-first organizations and scalable tech ecosystems.",
+        "target_audience": "Enterprise B2B, SaaS platforms, and digital consumers.",
+        "growth_trajectory": "Expected to evolve into higher-level consulting and architecture roles over the next 5 years."
+      }
+    },
+    "tertiary": {
+      "zone": "Red",
+      "zone_message": "Due to API limitations, this is a synthetic analysis mapped to standard industry vectors.",
+      "preparation_time": "4-6 months",
+      "match_explanation": "This role partially matches your stated preferences and academic background.",
+      "tab1": {
+        "role_name": "Business Analyst",
+        "role_description": "Responsible for core operations within the Business Analyst domain.",
+        "typical_employers_india": "MNCs, Startups, IT Consultancies",
+        "common_entry_paths": "Campus Placements, Internships, Off-campus Drives",
+        "job_demand": "22.4% YoY Growth",
+        "salary_range": "12 LPA",
+        "ai_impact": "AI systems are transforming Business Analyst by automating repetitive tasks, but human oversight remains critical.",
+        "emerging_roles": [
+          {
+            "name": "AI-Enhanced Business Analyst",
+            "description": "Uses AI to accelerate delivery."
+          },
+          {
+            "name": "Intelligence Integration Eng",
+            "description": "Integrates LLMs into systems."
+          }
+        ]
+      },
+      "tab2": {
+        "must_have": [
+          {
+            "skill": "Core Competency",
+            "priority": "Critical",
+            "description": "Essential for daily tasks."
+          },
+          {
+            "skill": "Workflow Automation",
+            "priority": "High",
+            "description": "Improves efficiency."
+          }
+        ],
+        "nice_to_have": [
+          "Cross-functional communication",
+          "Rapid Prototyping"
+        ]
+      },
+      "tab3": {
+        "ai_tools": [
+          {
+            "name": "Cursor.ai",
+            "category": "AI-Powered",
+            "usage": "Code completion",
+            "adoption_level": "Widely Used"
+          },
+          {
+            "name": "GitHub Copilot",
+            "category": "AI-Powered",
+            "usage": "Pair programming",
+            "adoption_level": "Widely Used"
+          }
+        ],
+        "ai_exposure": {
+          "percentage": "40%",
+          "level": "Moderate",
+          "tasks_assisted": "Boilerplate generation, testing",
+          "human_value": "Architecture, logic, debugging"
+        },
+        "human_skills": [
+          "Analytical Thinking",
+          "Resilience and Adaptability",
+          "Communication"
+        ]
+      },
+      "tab5": {
+        "future_scope": "The future scope of Business Analyst lies in strategic oversight and automation governance. It will heavily aid digital-first organizations and scalable tech ecosystems.",
+        "target_audience": "Enterprise B2B, SaaS platforms, and digital consumers.",
+        "growth_trajectory": "Expected to evolve into higher-level consulting and architecture roles over the next 5 years."
+      }
+    },
+    "combined_tab4": {
+      "combined_pathway_summary": "Your immediate focus should be solidifying JavaScript to break into the Software Engineer market, before pivoting toward secondary skills to ensure longevity.",
+      "skill_gap": {
+        "current_skills": [
+          "JavaScript",
+          "Python"
+        ],
+        "missing_skills": [
+          "Advanced Frameworks",
+          "Production Deployment"
+        ]
+      },
+      "learning_roadmap": [
+        {
+          "step": "Step 1 - Foundation Skills",
+          "description": "Mastering the prerequisites."
+        },
+        {
+          "step": "Step 2 - Core Technical Skills",
+          "description": "Building a solid toolchain."
+        },
+        {
+          "step": "Step 3 - Advanced Skills",
+          "description": "Synthesizing complex concepts."
+        },
+        {
+          "step": "Step 4 - Projects",
+          "description": "Deploying market-ready portfolios."
+        }
+      ],
+      "certifications": [
+        {
+          "name": "Advanced Software Engineer Cert",
+          "issuer": "Coursera",
+          "difficulty": "Intermediate",
+          "duration": "3 months"
+        }
+      ],
+      "free_courses": [
+        {
+          "course_name": "Software Engineer Basics",
+          "platform": "YouTube",
+          "link_status": "Free"
+        }
+      ],
+      "projects": [
+        {
+          "project_name": "Gen-AI Dashboard",
+          "description": "Data analytics view",
+          "skills_demonstrated": "React, APIs"
+        }
+      ]
+    }
+  }
+}

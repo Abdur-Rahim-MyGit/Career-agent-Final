@@ -1,0 +1,119 @@
+{
+  "Summary": [
+    [
+      "India Master Degree List — Overview"
+    ],
+    [],
+    [
+      "Level",
+      "No. of Degrees Listed",
+      "Sheet"
+    ],
+    [
+      "Undergraduate (UG)",
+      36,
+      "See \"Undergraduate (UG)\" tab"
+    ],
+    [
+      "Postgraduate (PG)",
+      34,
+      "See \"Postgraduate (PG)\" tab"
+    ]
+  ],
+  "Undergraduate (UG)": [
+    [
+      "India Degrees Master List — Undergraduate (UG)"
+    ],
+    [],
+    [
+      "Domain / Field",
+      "Degree Group / Full Name",
+      "Abbreviation",
+      "Common Specialisations"
+    ],
+    [
+      "Arts & Humanities",
+      "Bachelor of Arts",
+      "B.A.",
+      "English, Hindi, History, Philosophy, Political Science, Sociology, Psychology, Economics, Geography, Sanskrit, Urdu, Music, Drama"
+    ],
+    [
+      "Arts & Humanities",
+      "Bachelor of Fine Arts",
+      "B.F.A.",
+      "Painting, Sculpture, Applied Arts, Printmaking, Photography, Animation"
+    ]
+  ],
+  "Postgraduate (PG)": [
+    [
+      "India Degrees Master List — Postgraduate (PG)"
+    ],
+    [],
+    [
+      "Domain / Field",
+      "Degree Group / Full Name",
+      "Abbreviation",
+      "Common Specialisations"
+    ],
+    [
+      "Arts & Humanities",
+      "Master of Arts",
+      "M.A.",
+      "English, Hindi, History, Philosophy, Political Science, Sociology, Psychology, Economics, Geography, Sanskrit, Linguistics, Archaeology, Public Administration"
+    ],
+    [
+      "Arts & Humanities",
+      "Master of Fine Arts",
+      "M.F.A.",
+      "Painting, Sculpture, Applied Arts, Digital Arts, Photography, Printmaking"
+    ]
+  ],
+  "Doctoral (PhD-Research)": [
+    [
+      "India Degrees Master List — Doctoral (PhD-Research)"
+    ],
+    [],
+    [
+      "Domain / Field",
+      "Degree Group / Full Name",
+      "Abbreviation",
+      "Common Specialisations"
+    ],
+    [
+      "Arts & Humanities",
+      "Doctor of Philosophy",
+      "Ph.D.",
+      "English, Hindi, History, Philosophy, Political Science, Sociology, Psychology, Economics, Geography, Sanskrit, Linguistics, Music, Fine Arts, Theatre"
+    ],
+    [
+      "Arts & Humanities",
+      "Doctor of Literature",
+      "D.Litt.",
+      "Languages, Literature, Humanities — awarded for published works of exceptional merit"
+    ]
+  ],
+  "Professional-Integrated": [
+    [
+      "India Degrees Master List — Professional-Integrated"
+    ],
+    [],
+    [
+      "Domain / Field",
+      "Degree Group / Full Name",
+      "Abbreviation",
+      "Common Specialisations"
+    ],
+    [
+      "Commerce & Finance",
+      "Chartered Accountancy",
+      "C.A. (ICAI)",
+      "Accounting, Auditing, Taxation, Financial Management, Corporate Finance"
+    ],
+    [
+      "Commerce & Finance",
+      "Company Secretary",
+      "C.S. (ICSI)",
+      "Corporate Law, Governance, Compliance, Secretarial Practice"
+    ]
+  ]
+}

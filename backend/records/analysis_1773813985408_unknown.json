@@ -1,0 +1,292 @@
+{
+  "timestamp": "2026-03-18T06:06:25.412Z",
+  "status": "completed",
+  "input_user_data": {
+    "education": [
+      {
+        "degreeLevel": "Undergraduate (UG)",
+        "domain": "Law",
+        "degreeGroup": "Bachelor of Laws",
+        "specialization": "Corporate Law",
+        "specialization2": "",
+        "currentlyPursuing": true,
+        "isOtherSpec": false,
+        "isOtherSpec2": false,
+        "isDualSpecialization": false
+      }
+    ],
+    "preferences": {
+      "primary": {
+        "role": "",
+        "roleSuggestions": [],
+        "sectors": [
+          "Information Technology & Software"
+        ],
+        "jobType": "",
+        "salary": "",
+        "locations": [
+          "",
+          "",
+          ""
+        ],
+        "orgTypes": []
+      },
+      "secondary": {
+        "role": "",
+        "roleSuggestions": [],
+        "sectors": [],
+        "jobType": "",
+        "salary": "",
+        "locations": [
+          "",
+          "",
+          ""
+        ],
+        "orgTypes": []
+      },
+      "tertiary": {
+        "role": "",
+        "roleSuggestions": [],
+        "sectors": [],
+        "jobType": "",
+        "salary": "",
+        "locations": [
+          "",
+          "",
+          ""
+        ],
+        "orgTypes": []
+      }
+    },
+    "experience": [],
+    "hasExperience": false,
+    "skills": [],
+    "certifications": [],
+    "hasCertifications": false
+  },
+  "output_generated_report": {
+    "status": "success_deterministic",
+    "generated_at": "2026-03-18T06:06:25.456Z",
+    "primary": {
+      "zone": "Red",
+      "zone_message": "This role usually requires a different background. Extra preparation required.",
+      "preparation_time": "6+ months",
+      "match_explanation": "Your alignment score is 20%. You have 0 matching skills.",
+      "tab1": {
+        "role_name": "Target Role",
+        "role_description": "Responsible for core operations within the Target Role domain.",
+        "typical_employers_india": "MNCs, Startups, IT Consultancies",
+        "common_entry_paths": "Campus Placements, Internships",
+        "job_demand": "High Growth",
+        "salary_range": "3-8 LPA",
+        "ai_impact": "AI systems are augmenting Target Role roles significantly.",
+        "emerging_roles": [
+          {
+            "name": "AI-Enhanced Target Role",
+            "description": "Uses AI tools daily."
+          }
+        ]
+      },
+      "tab2": {
+        "must_have": [
+          {
+            "skill": "Domain Knowledge",
+            "priority": "High",
+            "description": "Essential core skill."
+          }
+        ],
+        "nice_to_have": []
+      },
+      "tab3": {
+        "ai_tools": [
+          {
+            "name": "ChatGPT",
+            "category": "AI-Powered",
+            "usage": "General Assistance",
+            "adoption_level": "Growing"
+          }
+        ],
+        "ai_exposure": {
+          "percentage": "40%",
+          "level": "Moderate",
+          "tasks_assisted": "Repetitive drafting/coding",
+          "human_value": "Strategy & Review"
+        },
+        "human_skills": [
+          "Analytical Thinking",
+          "Communication",
+          "Problem Solving"
+        ]
+      },
+      "tab5": {
+        "future_scope": "Target Role is evolving rapidly with AI integration.",
+        "target_audience": "Enterprise and Tech-forward companies.",
+        "growth_trajectory": "Expected to branch into more specialized architectural roles."
+      }
+    },
+    "secondary": {
+      "zone": "Red",
+      "zone_message": "This role usually requires a different background. Extra preparation required.",
+      "preparation_time": "6+ months",
+      "match_explanation": "Your alignment score is 20%. You have 0 matching skills.",
+      "tab1": {
+        "role_name": "Secondary Role",
+        "role_description": "Responsible for core operations within the Secondary Role domain.",
+        "typical_employers_india": "MNCs, Startups, IT Consultancies",
+        "common_entry_paths": "Campus Placements, Internships",
+        "job_demand": "High Growth",
+        "salary_range": "3-8 LPA",
+        "ai_impact": "AI systems are augmenting Secondary Role roles significantly.",
+        "emerging_roles": [
+          {
+            "name": "AI-Enhanced Secondary Role",
+            "description": "Uses AI tools daily."
+          }
+        ]
+      },
+      "tab2": {
+        "must_have": [
+          {
+            "skill": "Domain Knowledge",
+            "priority": "High",
+            "description": "Essential core skill."
+          }
+        ],
+        "nice_to_have": []
+      },
+      "tab3": {
+        "ai_tools": [
+          {
+            "name": "ChatGPT",
+            "category": "AI-Powered",
+            "usage": "General Assistance",
+            "adoption_level": "Growing"
+          }
+        ],
+        "ai_exposure": {
+          "percentage": "40%",
+          "level": "Moderate",
+          "tasks_assisted": "Repetitive drafting/coding",
+          "human_value": "Strategy & Review"
+        },
+        "human_skills": [
+          "Analytical Thinking",
+          "Communication",
+          "Problem Solving"
+        ]
+      },
+      "tab5": {
+        "future_scope": "Secondary Role is evolving rapidly with AI integration.",
+        "target_audience": "Enterprise and Tech-forward companies.",
+        "growth_trajectory": "Expected to branch into more specialized architectural roles."
+      }
+    },
+    "tertiary": {
+      "zone": "Red",
+      "zone_message": "This role usually requires a different background. Extra preparation required.",
+      "preparation_time": "6+ months",
+      "match_explanation": "Your alignment score is 20%. You have 0 matching skills.",
+      "tab1": {
+        "role_name": "Tertiary Role",
+        "role_description": "Responsible for core operations within the Tertiary Role domain.",
+        "typical_employers_india": "MNCs, Startups, IT Consultancies",
+        "common_entry_paths": "Campus Placements, Internships",
+        "job_demand": "High Growth",
+        "salary_range": "3-8 LPA",
+        "ai_impact": "AI systems are augmenting Tertiary Role roles significantly.",
+        "emerging_roles": [
+          {
+            "name": "AI-Enhanced Tertiary Role",
+            "description": "Uses AI tools daily."
+          }
+        ]
+      },
+      "tab2": {
+        "must_have": [
+          {
+            "skill": "Domain Knowledge",
+            "priority": "High",
+            "description": "Essential core skill."
+          }
+        ],
+        "nice_to_have": []
+      },
+      "tab3": {
+        "ai_tools": [
+          {
+            "name": "ChatGPT",
+            "category": "AI-Powered",
+            "usage": "General Assistance",
+            "adoption_level": "Growing"
+          }
+        ],
+        "ai_exposure": {
+          "percentage": "40%",
+          "level": "Moderate",
+          "tasks_assisted": "Repetitive drafting/coding",
+          "human_value": "Strategy & Review"
+        },
+        "human_skills": [
+          "Analytical Thinking",
+          "Communication",
+          "Problem Solving"
+        ]
+      },
+      "tab5": {
+        "future_scope": "Tertiary Role is evolving rapidly with AI integration.",
+        "target_audience": "Enterprise and Tech-forward companies.",
+        "growth_trajectory": "Expected to branch into more specialized architectural roles."
+      }
+    },
+    "combined_tab4": {
+      "combined_pathway_summary": "Your immediate focus must be learning the missing fundamentals for Target Role.",
+      "skill_gap": {
+        "current_skills": [
+          "Basic Academics",
+          "Communication"
+        ],
+        "missing_skills": []
+      },
+      "learning_roadmap": [
+        {
+          "step": "Step 1 - Foundation Skills",
+          "description": "Master prerequisites and theoretical fundamentals."
+        },
+        {
+          "step": "Step 2 - Core Technical Skills",
+          "description": "Learn core technologies."
+        },
+        {
+          "step": "Step 3 - Advanced Applications",
+          "description": "Apply skills in complex scenarios."
+        },
+        {
+          "step": "Step 4 - Projects & Portfolio",
+          "description": "Deploy market-ready portfolios demonstrating these skills."
+        }
+      ],
+      "certifications": [
+        {
+          "name": "Certified Target Role Professional",
+          "issuer": "Industry Standard Provider",
+          "difficulty": "Intermediate",
+          "duration": "3 months"
+        }
+      ],
+      "free_courses": [
+        {
+          "course_name": "Target Role Crash Course",
+          "platform": "YouTube / Coursera",
+          "link_status": "Free"
+        }
+      ],
+      "projects": [
+        {
+          "project_name": "Target Role Capstone",
+          "description": "A complete end-to-end implementation.",
+          "skills_demonstrated": ""
+        }
+      ]
+    }
+  }
+}

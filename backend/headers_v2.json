@@ -1,0 +1,14 @@
+{
+  "../india_degrees_by_level.xlsx": {
+    "index": 0,
+    "headers": [
+      "India Master Degree List — Overview"
+    ]
+  },
+  "../india_jobs_detailed.xlsx": {
+    "index": 0,
+    "headers": [
+      "India Job Roles — Sector-wise Summary"
+    ]
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "timestamp": "2026-03-16T13:38:01.018Z",
+  "status": "completed",
+  "input_user_data": {
+    "education": [
+      {
+        "degreeLevel": "Undergraduate (UG)",
+        "domain": "Arts & Humanities",
+        "degreeGroup": "Bachelor of Arts",
+        "specialization": "English",
+        "specialization2": "",
+        "currentlyPursuing": false,
+        "isOtherSpec": false,
+        "isOtherSpec2": false,
+        "isDualSpecialization": false
+      }
+    ],
+    "preferences": {
+      "primary": {
+        "role": "Full Stack Developer",
+        "roleSuggestions": [],
+        "sectors": [],
+        "jobType": "Full-Time",
+        "salary": "0–3 LPA",
+        "locations": [
+          "",
+          "",
+          ""
+        ],
+        "orgTypes": []
+      },
+      "secondary": {
+        "role": "",
+        "roleSuggestions": [],
+        "sectors": [],
+        "jobType": "",
+        "salary": "",
+        "locations": [
+          "",
+          "",
+          ""
+        ],
+        "orgTypes": []
+      },
+      "tertiary": {
+        "role": "",
+        "roleSuggestions": [],
+        "sectors": [],
+        "jobType": "",
+        "salary": "",
+        "locations": [
+          "",
+          "",
+          ""
+        ],
+        "orgTypes": []
+      }
+    },
+    "experience": [],
+    "hasExperience": false,
+    "skills": [],
+    "certifications": [],
+    "hasCertifications": false
+  },
+  "output_generated_report": {
+    "status": "success_deterministic",
+    "generated_at": "2026-03-16T13:38:01.023Z",
+    "primary": {
+      "zone": "Red",
+      "zone_message": "This role usually requires a different background. Extra preparation required.",
+      "preparation_time": "6+ months",
+      "match_explanation": "Your alignment score is 20%. You have 0 matching skills.",
+      "tab1": {
+        "role_name": "Full Stack Developer",
+        "role_description": "Responsible for core operations within the Full Stack Developer domain.",
+        "typical_employers_india": "MNCs, Startups, IT Consultancies",
+        "common_entry_paths": "Campus Placements, Internships",
+        "job_demand": "High Growth",
+        "salary_range": "3-8 LPA",
+        "ai_impact": "AI systems are augmenting Full Stack Developer roles significantly.",
+        "emerging_roles": [
+          {
+            "name": "AI-Enhanced Full Stack Developer",
+            "description": "Uses AI tools daily."
+          }
+        ]
+      },
+      "tab2": {
+        "must_have": [],
+        "nice_to_have": []
+      },
+      "tab3": {
+        "ai_tools": [
+          {
+            "name": "GitHub Copilot (free for students)",
+            "category": "AI-Powered",
+            "usage": "AI-assisted coding across frontend and backend",
+            "adoption_level": "Growing"
+          },
+          {
+            "name": "VS Code (free)",
+            "category": "AI-Powered",
+            "usage": "Full stack development IDE",
+            "adoption_level": "Growing"
+          },
+          {
+            "name": "Cursor (free tier) / Vercel AI SDK (free open-source)",
+            "category": "AI-Powered",
+            "usage": "AI-native full stack development and AI feature integration",
+            "adoption_level": "Growing"
+          }
+        ],
+        "ai_exposure": {
+          "percentage": "40%",
+          "level": "Moderate",
+          "tasks_assisted": "Repetitive drafting/coding",
+          "human_value": "Strategy & Review"
+        },
+        "human_skills": [
+          "Analytical Thinking",
+          "Communication",
+          "Problem Solving"
+        ]
+      },
+      "tab5": {
+        "future_scope": "Full Stack Developer is evolving rapidly with AI integration.",
+        "target_audience": "Enterprise and Tech-forward companies.",
+        "growth_trajectory": "Expected to branch into more specialized architectural roles."
+      }
+    },
+    "secondary": {
+      "zone": "Red",
+      "zone_message": "This role usually requires a different background. Extra preparation required.",
+      "preparation_time": "6+ months",
+      "match_explanation": "Your alignment score is 20%. You have 0 matching skills.",
+      "tab1": {
+        "role_name": "Secondary Role",
+        "role_description": "Responsible for core operations within the Secondary Role domain.",
+        "typical_employers_india": "MNCs, Startups, IT Consultancies",
+        "common_entry_paths": "Campus Placements, Internships",
+        "job_demand": "High Growth",
+        "salary_range": "3-8 LPA",
+        "ai_impact": "AI systems are augmenting Secondary Role roles significantly.",
+        "emerging_roles": [
+          {
+            "name": "AI-Enhanced Secondary Role",
+            "description": "Uses AI tools daily."
+          }
+        ]
+      },
+      "tab2": {
+        "must_have": [
+          {
+            "skill": "Domain Knowledge",
+            "priority": "High",
+            "description": "Essential core skill."
+          }
+        ],
+        "nice_to_have": []
+      },
+      "tab3": {
+        "ai_tools": [
+          {
+            "name": "ChatGPT",
+            "category": "AI-Powered",
+            "usage": "General Assistance",
+            "adoption_level": "Growing"
+          }
+        ],
+        "ai_exposure": {
+          "percentage": "40%",
+          "level": "Moderate",
+          "tasks_assisted": "Repetitive drafting/coding",
+          "human_value": "Strategy & Review"
+        },
+        "human_skills": [
+          "Analytical Thinking",
+          "Communication",
+          "Problem Solving"
+        ]
+      },
+      "tab5": {
+        "future_scope": "Secondary Role is evolving rapidly with AI integration.",
+        "target_audience": "Enterprise and Tech-forward companies.",
+        "growth_trajectory": "Expected to branch into more specialized architectural roles."
+      }
+    },
+    "tertiary": {
+      "zone": "Red",
+      "zone_message": "This role usually requires a different background. Extra preparation required.",
+      "preparation_time": "6+ months",
+      "match_explanation": "Your alignment score is 20%. You have 0 matching skills.",
+      "tab1": {
+        "role_name": "Tertiary Role",
+        "role_description": "Responsible for core operations within the Tertiary Role domain.",
+        "typical_employers_india": "MNCs, Startups, IT Consultancies",
+        "common_entry_paths": "Campus Placements, Internships",
+        "job_demand": "High Growth",
+        "salary_range": "3-8 LPA",
+        "ai_impact": "AI systems are augmenting Tertiary Role roles significantly.",
+        "emerging_roles": [
+          {
+            "name": "AI-Enhanced Tertiary Role",
+            "description": "Uses AI tools daily."
+          }
+        ]
+      },
+      "tab2": {
+        "must_have": [
+          {
+            "skill": "Domain Knowledge",
+            "priority": "High",
+            "description": "Essential core skill."
+          }
+        ],
+        "nice_to_have": []
+      },
+      "tab3": {
+        "ai_tools": [
+          {
+            "name": "ChatGPT",
+            "category": "AI-Powered",
+            "usage": "General Assistance",
+            "adoption_level": "Growing"
+          }
+        ],
+        "ai_exposure": {
+          "percentage": "40%",
+          "level": "Moderate",
+          "tasks_assisted": "Repetitive drafting/coding",
+          "human_value": "Strategy & Review"
+        },
+        "human_skills": [
+          "Analytical Thinking",
+          "Communication",
+          "Problem Solving"
+        ]
+      },
+      "tab5": {
+        "future_scope": "Tertiary Role is evolving rapidly with AI integration.",
+        "target_audience": "Enterprise and Tech-forward companies.",
+        "growth_trajectory": "Expected to branch into more specialized architectural roles."
+      }
+    },
+    "combined_tab4": {
+      "combined_pathway_summary": "Your immediate focus must be learning the missing fundamentals for Full Stack Developer.",
+      "skill_gap": {
+        "current_skills": [
+          "Basic Academics",
+          "Communication"
+        ],
+        "missing_skills": [
+          "React.js / Angular / Vue.js (Frontend)",
+          "Node.js / Python / Java (Backend)",
+          "SQL and NoSQL Databases",
+          "REST API / GraphQL",
+          "Docker / Kubernetes basics",
+          "Git / CI/CD basics",
+          "AI feature integration (OpenAI API — free tier, LangChain)"
+        ]
+      },
+      "learning_roadmap": [
+        {
+          "step": "Step 1 - Foundation Skills",
+          "description": "Master prerequisites and theoretical fundamentals."
+        },
+        {
+          "step": "Step 2 - Core Technical Skills",
+          "description": "Learn React.js / Angular / Vue.js (Frontend)."
+        },
+        {
+          "step": "Step 3 - Advanced Applications",
+          "description": "Apply skills in complex scenarios."
+        },
+        {
+          "step": "Step 4 - Projects & Portfolio",
+          "description": "Deploy market-ready portfolios demonstrating these skills."
+        }
+      ],
+      "certifications": [
+        {
+          "name": "Certified Full Stack Developer Professional",
+          "issuer": "Industry Standard Provider",
+          "difficulty": "Intermediate",
+          "duration": "3 months"
+        }
+      ],
+      "free_courses": [
+        {
+          "course_name": "Full Stack Developer Crash Course",
+          "platform": "YouTube / Coursera",
+          "link_status": "Free"
+        }
+      ],
+      "projects": [
+        {
+          "project_name": "Full Stack Developer Capstone",
+          "description": "A complete end-to-end implementation.",
+          "skills_demonstrated": "React.js / Angular / Vue.js (Frontend), Node.js / Python / Java (Backend), SQL and NoSQL Databases"
+        }
+      ]
+    }
+  }
+}

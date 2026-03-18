@@ -1,0 +1,370 @@
+{
+  "timestamp": "2026-03-18T06:12:28.526Z",
+  "status": "completed",
+  "input_user_data": {
+    "education": [
+      {
+        "degreeLevel": "Undergraduate (UG)",
+        "domain": "Engineering & Technology",
+        "degreeGroup": "Bachelor of Technology",
+        "specialization": "Artificial Intelligence and Data Science",
+        "specialization2": "",
+        "currentlyPursuing": true,
+        "isOtherSpec": true,
+        "isOtherSpec2": false,
+        "isDualSpecialization": false
+      }
+    ],
+    "preferences": {
+      "primary": {
+        "role": "AI Engineer",
+        "roleSuggestions": [],
+        "sectors": [
+          "Information Technology & Software"
+        ],
+        "jobType": "Full-Time",
+        "salary": "5–8 LPA",
+        "locations": [
+          "Chennai",
+          "Mumbai",
+          "Bangalore"
+        ],
+        "orgTypes": [
+          "Open to any organization type"
+        ]
+      },
+      "secondary": {
+        "role": "ML Engineer",
+        "roleSuggestions": [],
+        "sectors": [
+          "Information Technology & Software"
+        ],
+        "jobType": "Full-Time",
+        "salary": "8+ LPA",
+        "locations": [
+          "Mumbai",
+          "Bangalore",
+          "Chennai"
+        ],
+        "orgTypes": [
+          "Multinational Corporation (MNC)"
+        ]
+      },
+      "tertiary": {
+        "role": "CV Engineer",
+        "roleSuggestions": [],
+        "sectors": [
+          "Information Technology & Software"
+        ],
+        "jobType": "Full-Time",
+        "salary": "8+ LPA",
+        "locations": [
+          "Chennai",
+          "Bangalore",
+          "Mumbai"
+        ],
+        "orgTypes": [
+          "Multinational Corporation (MNC)",
+          "Open to any organization type"
+        ]
+      }
+    },
+    "experience": [
+      {
+        "orgName": "SMAARTH Healthcare",
+        "designation": "AI Engineer",
+        "designationOther": false,
+        "sector": "Information Technology & Software",
+        "sectorOther": "",
+        "startDate": "2025-12-29",
+        "endDate": "",
+        "currentlyWorking": true
+      }
+    ],
+    "hasExperience": true,
+    "skills": [
+      "Data Cellecting",
+      "Generative AI",
+      "Langchain",
+      "OpenCV"
+    ],
+    "certifications": [
+      {
+        "name": "IIT Madras Verified Data Science",
+        "issuer": "IIT Madras",
+        "year": "2025",
+        "mode": "URL",
+        "url": "https://gemini.google.com/u/4/app?utm_source=app_launcher&utm_medium=owned&utm_campaign=base_all&pageId=none",
+        "fileUrl": "",
+        "skills": [
+          "Data Cellecting",
+          "Generative AI",
+          "Langchain",
+          "OpenCV"
+        ]
+      }
+    ],
+    "hasCertifications": true
+  },
+  "output_generated_report": {
+    "status": "success_deterministic",
+    "generated_at": "2026-03-18T06:12:28.575Z",
+    "primary": {
+      "zone": "Red",
+      "zone_message": "This role usually requires a different background. Extra preparation required.",
+      "preparation_time": "6+ months",
+      "match_explanation": "Your alignment score is 24%. You have 1 matching skills.",
+      "tab1": {
+        "role_name": "AI Engineer",
+        "role_description": "Responsible for core operations within the AI Engineer domain.",
+        "typical_employers_india": "MNCs, Startups, IT Consultancies",
+        "common_entry_paths": "Campus Placements, Internships",
+        "job_demand": "High Growth",
+        "salary_range": "3-8 LPA",
+        "ai_impact": "AI systems are augmenting AI Engineer roles significantly.",
+        "emerging_roles": [
+          {
+            "name": "AI-Enhanced AI Engineer",
+            "description": "Uses AI tools daily."
+          }
+        ]
+      },
+      "tab2": {
+        "must_have": [],
+        "nice_to_have": []
+      },
+      "tab3": {
+        "ai_tools": [
+          {
+            "name": "LangChain (free open-source)",
+            "category": "AI-Powered",
+            "usage": "Building LLM-powered applications and agents",
+            "adoption_level": "Growing"
+          },
+          {
+            "name": "OpenAI API (free tier)",
+            "category": "AI-Powered",
+            "usage": "LLM integration for AI-powered features",
+            "adoption_level": "Growing"
+          },
+          {
+            "name": "HuggingFace Hub (free)",
+            "category": "AI-Powered",
+            "usage": "Model hosting, fine-tuning, and deployment",
+            "adoption_level": "Growing"
+          },
+          {
+            "name": "Chroma (free open-source vector database)",
+            "category": "AI-Powered",
+            "usage": "Vector database for RAG pipelines",
+            "adoption_level": "Growing"
+          },
+          {
+            "name": "LlamaIndex (free open-source)",
+            "category": "AI-Powered",
+            "usage": "Document indexing and retrieval for LLM apps",
+            "adoption_level": "Growing"
+          },
+          {
+            "name": "CrewAI / AutoGen (free open-source)",
+            "category": "AI-Powered",
+            "usage": "Multi-agent orchestration frameworks",
+            "adoption_level": "Growing"
+          }
+        ],
+        "ai_exposure": {
+          "percentage": "40%",
+          "level": "Moderate",
+          "tasks_assisted": "Repetitive drafting/coding",
+          "human_value": "Strategy & Review"
+        },
+        "human_skills": [
+          "Analytical Thinking",
+          "Communication",
+          "Problem Solving"
+        ]
+      },
+      "tab5": {
+        "future_scope": "AI Engineer is evolving rapidly with AI integration.",
+        "target_audience": "Enterprise and Tech-forward companies.",
+        "growth_trajectory": "Expected to branch into more specialized architectural roles."
+      }
+    },
+    "secondary": {
+      "zone": "Red",
+      "zone_message": "This role usually requires a different background. Extra preparation required.",
+      "preparation_time": "6+ months",
+      "match_explanation": "Your alignment score is 20%. You have 0 matching skills.",
+      "tab1": {
+        "role_name": "ML Engineer",
+        "role_description": "Responsible for core operations within the ML Engineer domain.",
+        "typical_employers_india": "MNCs, Startups, IT Consultancies",
+        "common_entry_paths": "Campus Placements, Internships",
+        "job_demand": "High Growth",
+        "salary_range": "3-8 LPA",
+        "ai_impact": "AI systems are augmenting ML Engineer roles significantly.",
+        "emerging_roles": [
+          {
+            "name": "AI-Enhanced ML Engineer",
+            "description": "Uses AI tools daily."
+          }
+        ]
+      },
+      "tab2": {
+        "must_have": [
+          {
+            "skill": "Domain Knowledge",
+            "priority": "High",
+            "description": "Essential core skill."
+          }
+        ],
+        "nice_to_have": []
+      },
+      "tab3": {
+        "ai_tools": [
+          {
+            "name": "ChatGPT",
+            "category": "AI-Powered",
+            "usage": "General Assistance",
+            "adoption_level": "Growing"
+          }
+        ],
+        "ai_exposure": {
+          "percentage": "40%",
+          "level": "Moderate",
+          "tasks_assisted": "Repetitive drafting/coding",
+          "human_value": "Strategy & Review"
+        },
+        "human_skills": [
+          "Analytical Thinking",
+          "Communication",
+          "Problem Solving"
+        ]
+      },
+      "tab5": {
+        "future_scope": "ML Engineer is evolving rapidly with AI integration.",
+        "target_audience": "Enterprise and Tech-forward companies.",
+        "growth_trajectory": "Expected to branch into more specialized architectural roles."
+      }
+    },
+    "tertiary": {
+      "zone": "Red",
+      "zone_message": "This role usually requires a different background. Extra preparation required.",
+      "preparation_time": "6+ months",
+      "match_explanation": "Your alignment score is 20%. You have 0 matching skills.",
+      "tab1": {
+        "role_name": "CV Engineer",
+        "role_description": "Responsible for core operations within the CV Engineer domain.",
+        "typical_employers_india": "MNCs, Startups, IT Consultancies",
+        "common_entry_paths": "Campus Placements, Internships",
+        "job_demand": "High Growth",
+        "salary_range": "3-8 LPA",
+        "ai_impact": "AI systems are augmenting CV Engineer roles significantly.",
+        "emerging_roles": [
+          {
+            "name": "AI-Enhanced CV Engineer",
+            "description": "Uses AI tools daily."
+          }
+        ]
+      },
+      "tab2": {
+        "must_have": [
+          {
+            "skill": "Domain Knowledge",
+            "priority": "High",
+            "description": "Essential core skill."
+          }
+        ],
+        "nice_to_have": []
+      },
+      "tab3": {
+        "ai_tools": [
+          {
+            "name": "ChatGPT",
+            "category": "AI-Powered",
+            "usage": "General Assistance",
+            "adoption_level": "Growing"
+          }
+        ],
+        "ai_exposure": {
+          "percentage": "40%",
+          "level": "Moderate",
+          "tasks_assisted": "Repetitive drafting/coding",
+          "human_value": "Strategy & Review"
+        },
+        "human_skills": [
+          "Analytical Thinking",
+          "Communication",
+          "Problem Solving"
+        ]
+      },
+      "tab5": {
+        "future_scope": "CV Engineer is evolving rapidly with AI integration.",
+        "target_audience": "Enterprise and Tech-forward companies.",
+        "growth_trajectory": "Expected to branch into more specialized architectural roles."
+      }
+    },
+    "combined_tab4": {
+      "combined_pathway_summary": "Your immediate focus must be learning the missing fundamentals for AI Engineer.",
+      "skill_gap": {
+        "current_skills": [
+          "Data Cellecting",
+          "Generative AI",
+          "Langchain",
+          "OpenCV"
+        ],
+        "missing_skills": [
+          "Python (NumPy, Pandas, Scikit-learn)",
+          "Deep Learning (PyTorch / TensorFlow)",
+          "LLM Fine-tuning and Prompt Engineering",
+          "MLOps / Model Deployment",
+          "Vector Databases (Pinecone, Weaviate)",
+          "Cloud ML Platforms (AWS SageMaker / Azure ML)",
+          "API Integration (OpenAI, Anthropic, HuggingFace)",
+          "Agentic AI / Multi-Agent Systems",
+          "Model Evaluation and Red-Teaming"
+        ]
+      },
+      "learning_roadmap": [
+        {
+          "step": "Step 1 - Foundation Skills",
+          "description": "Master prerequisites and theoretical fundamentals."
+        },
+        {
+          "step": "Step 2 - Core Technical Skills",
+          "description": "Learn Python (NumPy, Pandas, Scikit-learn)."
+        },
+        {
+          "step": "Step 3 - Advanced Applications",
+          "description": "Apply skills in complex scenarios."
+        },
+        {
+          "step": "Step 4 - Projects & Portfolio",
+          "description": "Deploy market-ready portfolios demonstrating these skills."
+        }
+      ],
+      "certifications": [
+        {
+          "name": "Certified AI Engineer Professional",
+          "issuer": "Industry Standard Provider",
+          "difficulty": "Intermediate",
+          "duration": "3 months"
+        }
+      ],
+      "free_courses": [
+        {
+          "course_name": "AI Engineer Crash Course",
+          "platform": "YouTube / Coursera",
+          "link_status": "Free"
+        }
+      ],
+      "projects": [
+        {
+          "project_name": "AI Engineer Capstone",
+          "description": "A complete end-to-end implementation.",
+          "skills_demonstrated": "Python (NumPy, Pandas, Scikit-learn), Deep Learning (PyTorch / TensorFlow), LLM Fine-tuning and Prompt Engineering"
+        }
+      ]
+    }
+  }
+}

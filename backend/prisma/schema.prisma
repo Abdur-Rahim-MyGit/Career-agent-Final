@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Role {
+  id                  String   @id @default(uuid())
+  title               String   @unique
+  category            String?
+  description         String?
+  requiredMatchScore  Float    @default(0.5)
+  skills              RoleSkill[]
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model Skill {
+  id              String   @id @default(uuid())
+  name            String   @unique
+  category        String   // technical, soft, tool
+  uniquenessScore Float    @default(1.0)
+  roles           RoleSkill[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model RoleSkill {
+  id        String   @id @default(uuid())
+  roleId    String
+  skillId   String
+  priority  String   // Foundation, Specialization, Edge
+  weight    Float    @default(1.0)
+  role      Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  skill     Skill    @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  
+  @@unique([roleId, skillId])
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         String   @default("STUDENT")
+  profile      StudentProfile?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model StudentProfile {
+  id              String   @id @default(uuid())
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id])
+  degree          String?
+  interests       String?  // Stored as JSON string
+  completedSkills String?  // Stored as JSON string
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
