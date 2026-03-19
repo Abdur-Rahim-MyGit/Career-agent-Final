@@ -1,5 +1,23 @@
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios');
+
+const ML_SERVICE_URL = process.env.ML_SERVICE_URL || 'http://localhost:5001';
+
+async function getMLPrediction(studentData, roleName) {
+  try {
+    const response = await axios.post(`${ML_SERVICE_URL}/match`, {
+      student_skills: (studentData.skills || []).map(s => s.name || s),
+      role_name: roleName,
+      degree_group: studentData.education?.degreeGroup || '',
+      experience: (studentData.experience || []).map(e => e.role || '')
+    }, { timeout: 8000 });
+    return response.data;
+  } catch (e) {
+    console.warn('[ML SERVICE] Unavailable, using JSON fallback:', e.message);
+    return null;
+  }
+}
 
 let roleSkillsDB = {};
 try {
@@ -136,9 +154,10 @@ const generateRoleTab = (roleName, studentData) => {
  */
 const processCareerIntelligence = async (studentData) => {
   const { preferences, skills } = studentData;
-  const pRole = preferences.primary.role || "Target Role";
-  const sRole = preferences.secondary.role || "Secondary Role";
-  const tRole = preferences.tertiary.role || "Tertiary Role";
+  const primaryRole = preferences.primary?.role || preferences.primary?.jobRole || "Target Role";
+  const pRole = primaryRole;
+  const sRole = preferences.secondary?.role || preferences.secondary?.jobRole || "Secondary Role";
+  const tRole = preferences.tertiary?.role || preferences.tertiary?.jobRole || "Tertiary Role";
 
   const primaryTab = generateRoleTab(pRole, studentData);
   const secondaryTab = generateRoleTab(sRole, studentData);
@@ -146,19 +165,50 @@ const processCareerIntelligence = async (studentData) => {
 
   // Calculate missing skills across the primary role for the roadmap
   const pRoleData = roleSkillsDB[pRole] || { tech_skills: [] };
-  const { missingSkills } = calculateSkillGaps(skills, pRoleData);
+  const { missingSkills, mathingSkills } = calculateSkillGaps(skills, pRoleData);
+
+  const preVerified = {
+    primaryZone: { employer_zone: primaryTab.zone },
+    secondaryZone: { employer_zone: secondaryTab.zone },
+    tertiaryZone: { employer_zone: tertiaryTab.zone },
+    primarySkillGap: {
+      missing: missingSkills.map(m => m.skill_name),
+      matched: mathingSkills,
+      coveragePct: (missingSkills.length + mathingSkills.length) > 0 ? Math.round((mathingSkills.length / (missingSkills.length + mathingSkills.length)) * 100) : 0,
+      source: 'local'
+    }
+  };
+
+  if (primaryRole) {
+    const mlResult = await getMLPrediction(studentData, primaryRole);
+    if (mlResult) {
+      preVerified.mlSemanticMatches = mlResult.semantic_matches || [];
+      preVerified.mlSuccessProbability = mlResult.success_probability || null;
+      if (mlResult.missing_skills && mlResult.missing_skills.length > 0) {
+        preVerified.primarySkillGap = {
+          ...preVerified.primarySkillGap,
+          missing: mlResult.missing_skills,
+          dataReady: true,
+          source: 'ml'
+        };
+      }
+    }
+  }
+
+  const probStr = preVerified.mlSuccessProbability ? Math.round(preVerified.mlSuccessProbability * 100) + '%' : 'Calculating';
 
   return {
-    status: 'success_deterministic',
+    status: preVerified.mlSemanticMatches ? 'success_ml_assisted' : 'success_deterministic',
     generated_at: new Date().toISOString(),
+    preVerified,
     primary: primaryTab,
     secondary: secondaryTab,
     tertiary: tertiaryTab,
     combined_tab4: {
-      combined_pathway_summary: `Your immediate focus must be learning the missing fundamentals for ${pRole}.`,
+      combined_pathway_summary: `Your immediate focus must be learning the missing fundamentals for ${pRole}. Role success probability: ${probStr}`,
       skill_gap: {
         current_skills: skills.length ? skills : ["Basic Academics", "Communication"],
-        missing_skills: missingSkills.map(m => m.skill_name)
+        missing_skills: preVerified.primarySkillGap.missing
       },
       learning_roadmap: [
         { step: "Step 1 - Foundation Skills", description: "Master prerequisites and theoretical fundamentals." },

@@ -8,13 +8,16 @@ import Passport from './pages/Passport';
 import MarketInsights from './pages/MarketInsights';
 import AdminDashboard from './pages/AdminDashboard';
 import PODashboard from './pages/PODashboard';
-
+import Login from './pages/Login';
+import Register from './pages/Register';
 function App() {
   return (
     <Router>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/passport" element={<Passport />} />
