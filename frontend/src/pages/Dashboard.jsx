@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { RadialBarChart, RadialBar, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import {
     Target, TrendingUp, AlertCircle, CheckCircle2, XCircle,
     Loader2, Star, Globe, Cpu, Layers, Sparkles
@@ -166,13 +167,37 @@ const Dashboard = () => {
         );
     };
 
-    const renderTab1 = () => (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {renderZoneCard('Primary Preference', data.input_user_data?.preferences?.primary?.jobRole || data.preferences?.primary?.jobRole, preVerified.primaryZone)}
-            {renderZoneCard('Secondary Preference', data.input_user_data?.preferences?.secondary?.jobRole || data.preferences?.secondary?.jobRole, preVerified.secondaryZone)}
-            {renderZoneCard('Tertiary Preference', data.input_user_data?.preferences?.tertiary?.jobRole || data.preferences?.tertiary?.jobRole, preVerified.tertiaryZone)}
-        </div>
-    );
+    const renderTab1 = () => {
+        const primaryRole = data.input_user_data?.preferences?.primary?.jobRole || data.preferences?.primary?.jobRole || 'Target Role';
+        const coverageData = [{ name: 'Coverage', value: preVerified.primaryZone?.skill_coverage_pct || 0, fill: '#1D9E75' }];
+
+        return (
+            <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {renderZoneCard('Primary Preference', primaryRole, preVerified.primaryZone)}
+                    {renderZoneCard('Secondary Preference', data.input_user_data?.preferences?.secondary?.jobRole || data.preferences?.secondary?.jobRole, preVerified.secondaryZone)}
+                    {renderZoneCard('Tertiary Preference', data.input_user_data?.preferences?.tertiary?.jobRole || data.preferences?.tertiary?.jobRole, preVerified.tertiaryZone)}
+                </div>
+                {dataFilesReady && preVerified.primaryZone && (
+                    <div className="mt-4">
+                      <p className="text-xs text-text-secondary text-center mb-2">
+                        Skill coverage — {preVerified.primaryZone.skill_coverage_pct || 0}%
+                      </p>
+                      <ResponsiveContainer width="100%" height={140}>
+                        <RadialBarChart
+                          cx="50%" cy="50%"
+                          innerRadius="55%" outerRadius="80%"
+                          startAngle={90} endAngle={-270}
+                          data={[{ name: 'Coverage', value: preVerified.primaryZone.skill_coverage_pct || 0, fill: '#1D9E75' }]}
+                        >
+                          <RadialBar dataKey="value" cornerRadius={4} />
+                        </RadialBarChart>
+                      </ResponsiveContainer>
+                    </div>
+                )}
+            </div>
+        );
+    };
 
     const renderTab2 = () => {
         const pm = preVerified.primaryMarket;
@@ -188,6 +213,16 @@ const Dashboard = () => {
                 </div>
             );
         }
+
+        const min = pm?.salary_min_lpa || 2;
+        const max = pm?.salary_max_lpa || 8;
+        const salaryData = [
+          { year: 'Year 0-1', lpa: min },
+          { year: 'Year 2-3', lpa: min + 1.5 },
+          { year: 'Year 4-5', lpa: max - 1 },
+          { year: 'Year 6+',  lpa: max }
+        ];
+
         return (
             <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -204,6 +239,27 @@ const Dashboard = () => {
                         <p className="text-[10px] text-text-secondary uppercase tracking-widest mt-2">AI Automation Risk</p>
                     </div>
                 </div>
+                {pm && (
+                    <div className="bg-surface border border-surface-border p-4 rounded-xl">
+                      <p className="text-xs font-bold text-text-secondary uppercase tracking-widest mb-3">Salary trajectory</p>
+                      <ResponsiveContainer width="100%" height={140}>
+                        <BarChart
+                          data={[
+                            { year: 'Year 0-1', lpa: pm.salary_min_lpa || 2 },
+                            { year: 'Year 2-3', lpa: (pm.salary_min_lpa || 2) + 1.5 },
+                            { year: 'Year 4-5', lpa: (pm.salary_max_lpa || 8) - 1 },
+                            { year: 'Year 6+',  lpa: pm.salary_max_lpa || 8 }
+                          ]}
+                          margin={{ top: 4, right: 8, bottom: 4, left: 0 }}
+                        >
+                          <XAxis dataKey="year" tick={{ fontSize: 10 }} />
+                          <YAxis tick={{ fontSize: 10 }} unit="L" />
+                          <Tooltip formatter={(v) => v + ' LPA'} />
+                          <Bar dataKey="lpa" fill="#185FA5" radius={[4,4,0,0]} />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </div>
+                )}
                 {pm.emerging_roles && pm.emerging_roles.length > 0 && (
                     <div className="bg-surface border border-surface-border p-6 rounded-xl">
                         <h5 className="text-sm font-bold text-text-primary mb-4 border-b border-surface-border pb-2">Emerging Sub-roles</h5>

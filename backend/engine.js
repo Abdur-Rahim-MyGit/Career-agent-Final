@@ -1,5 +1,66 @@
 const fs = require('fs');
 const path = require('path');
+const axios = require('axios');
+
+const ML_SERVICE_URL = process.env.ML_SERVICE_URL || 'http://localhost:5001';
+const ML_URL = process.env.ML_SERVICE_URL || 'http://127.0.0.1:5001';
+
+async function getMLEnrichment(studentData, roleName, roleData) {
+  try {
+    // Step 1: Use extracted skills from resume text if available, else join skills array
+    const skillText = (studentData.skills || []).join(', ');
+    
+    let semanticSkills = studentData.skills || [];
+    try {
+      const parseRes = await axios.post(`${ML_URL}/parse-resume`, { text: skillText }, { timeout: 6000 });
+      if (parseRes.data?.extracted_skills?.length > 0) {
+        semanticSkills = parseRes.data.extracted_skills;
+      }
+    } catch (e) {
+      console.warn('[ML /parse-resume] Unavailable:', e.message);
+    }
+
+    // Step 2: Build features for success prediction
+    // features = [skill_match_count, degree_relevance_score (0-10), market_demand_score (0-10)]
+    const requiredSkills = (roleData?.tech_skills || []).map(s => s.skill_name.toLowerCase());
+    const skillMatchCount = semanticSkills.filter(ss =>
+      requiredSkills.some(rs => rs.includes(ss.toLowerCase()) || ss.toLowerCase().includes(rs))
+    ).length;
+    const degreeScore = 5; // default middle score — can be refined later
+    const demandScore = 7; // default — will be replaced when market_data.json exists
+
+    let successProbability = null;
+    try {
+      const predRes = await axios.post(`${ML_URL}/predict-success`,
+        { features: [skillMatchCount, degreeScore, demandScore] },
+        { timeout: 6000 }
+      );
+      successProbability = predRes.data?.success_probability || null;
+    } catch (e) {
+      console.warn('[ML /predict-success] Unavailable:', e.message);
+    }
+
+    return { semanticSkills, successProbability };
+  } catch (e) {
+    console.warn('[ML ENRICHMENT] Failed gracefully:', e.message);
+    return { semanticSkills: studentData.skills || [], successProbability: null };
+  }
+}
+
+async function getMLPrediction(studentData, roleName) {
+  try {
+    const response = await axios.post(`${ML_SERVICE_URL}/match`, {
+      student_skills: (studentData.skills || []).map(s => s.name || s),
+      role_name: roleName,
+      degree_group: studentData.education?.degreeGroup || '',
+      experience: (studentData.experience || []).map(e => e.role || '')
+    }, { timeout: 8000 });
+    return response.data;
+  } catch (e) {
+    console.warn('[ML SERVICE] Unavailable, using JSON fallback:', e.message);
+    return null;
+  }
+}
 
 let roleSkillsDB = {};
 try {
@@ -136,29 +197,69 @@ const generateRoleTab = (roleName, studentData) => {
  */
 const processCareerIntelligence = async (studentData) => {
   const { preferences, skills } = studentData;
-  const pRole = preferences.primary.role || "Target Role";
-  const sRole = preferences.secondary.role || "Secondary Role";
-  const tRole = preferences.tertiary.role || "Tertiary Role";
+  const primaryRole = preferences.primary?.role || preferences.primary?.jobRole || "Target Role";
+  const pRole = primaryRole;
+  const sRole = preferences.secondary?.role || preferences.secondary?.jobRole || "Secondary Role";
+  const tRole = preferences.tertiary?.role || preferences.tertiary?.jobRole || "Tertiary Role";
 
   const primaryTab = generateRoleTab(pRole, studentData);
   const secondaryTab = generateRoleTab(sRole, studentData);
   const tertiaryTab = generateRoleTab(tRole, studentData);
 
+  let mlEnrichment = { semanticSkills: [], successProbability: null };
+  try {
+    const pRoleDataForML = roleSkillsDB[pRole] || { tech_skills: [] };
+    mlEnrichment = await getMLEnrichment(studentData, pRole, pRoleDataForML);
+  } catch (e) {}
+
   // Calculate missing skills across the primary role for the roadmap
   const pRoleData = roleSkillsDB[pRole] || { tech_skills: [] };
-  const { missingSkills } = calculateSkillGaps(skills, pRoleData);
+  const { missingSkills, mathingSkills } = calculateSkillGaps(skills, pRoleData);
+
+  const preVerified = {
+    primaryZone: { employer_zone: primaryTab.zone },
+    secondaryZone: { employer_zone: secondaryTab.zone },
+    tertiaryZone: { employer_zone: tertiaryTab.zone },
+    primarySkillGap: {
+      missing: missingSkills.map(m => m.skill_name),
+      matched: mathingSkills,
+      coveragePct: (missingSkills.length + mathingSkills.length) > 0 ? Math.round((mathingSkills.length / (missingSkills.length + mathingSkills.length)) * 100) : 0,
+      source: 'local'
+    }
+  };
+
+  if (primaryRole) {
+    const mlResult = await getMLPrediction(studentData, primaryRole);
+    if (mlResult) {
+      preVerified.mlSemanticMatches = mlResult.semantic_matches || [];
+      preVerified.mlSuccessProbability = mlResult.success_probability || null;
+      if (mlResult.missing_skills && mlResult.missing_skills.length > 0) {
+        preVerified.primarySkillGap = {
+          ...preVerified.primarySkillGap,
+          missing: mlResult.missing_skills,
+          dataReady: true,
+          source: 'ml'
+        };
+      }
+    }
+  }
+
+  const probStr = preVerified.mlSuccessProbability ? Math.round(preVerified.mlSuccessProbability * 100) + '%' : 'Calculating';
 
   return {
-    status: 'success_deterministic',
+    status: preVerified.mlSemanticMatches ? 'success_ml_assisted' : 'success_deterministic',
     generated_at: new Date().toISOString(),
+    preVerified,
     primary: primaryTab,
     secondary: secondaryTab,
     tertiary: tertiaryTab,
+    ml_success_probability: mlEnrichment.successProbability,
+    ml_semantic_skills: mlEnrichment.semanticSkills,
     combined_tab4: {
-      combined_pathway_summary: `Your immediate focus must be learning the missing fundamentals for ${pRole}.`,
+      combined_pathway_summary: `Your immediate focus must be learning the missing fundamentals for ${pRole}. Role success probability: ${probStr}`,
       skill_gap: {
         current_skills: skills.length ? skills : ["Basic Academics", "Communication"],
-        missing_skills: missingSkills.map(m => m.skill_name)
+        missing_skills: preVerified.primarySkillGap.missing
       },
       learning_roadmap: [
         { step: "Step 1 - Foundation Skills", description: "Master prerequisites and theoretical fundamentals." },

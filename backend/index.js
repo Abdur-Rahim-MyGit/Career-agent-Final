@@ -49,6 +49,18 @@ connectMongoDB();
 
 // --- API ROUTES ---
 
+// Auth Middleware
+function authMiddleware(req, res, next) {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) return res.status(401).json({ message: 'No token' });
+  try { 
+    req.user = jwt.verify(token, process.env.JWT_SECRET || 'fallback_secret'); 
+    next(); 
+  } catch (e) { 
+    res.status(401).json({ message: 'Invalid token' }); 
+  }
+}
+
 // 0. Authentication (Register / Login)
 app.post('/api/auth/register', async (req, res) => {
   try {
