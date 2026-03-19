@@ -47,26 +47,34 @@ async function getMLEnrichment(studentData, roleName, roleData) {
   }
 }
 
-async function getMLPrediction(studentData, roleName) {
-  try {
-    const response = await axios.post(`${ML_SERVICE_URL}/match`, {
-      student_skills: (studentData.skills || []).map(s => s.name || s),
-      role_name: roleName,
-      degree_group: studentData.education?.degreeGroup || '',
-      experience: (studentData.experience || []).map(e => e.role || '')
-    }, { timeout: 8000 });
-    return response.data;
-  } catch (e) {
-    console.warn('[ML SERVICE] Unavailable, using JSON fallback:', e.message);
-    return null;
-  }
-}
 
 let roleSkillsDB = {};
 try {
   roleSkillsDB = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/role_skills_db.json'), 'utf8'));
 } catch (err) {
   console.warn("Could not load role_skills_db.json:", err.message);
+}
+
+let zoneMatrix = {};
+try {
+  const zmPath = path.join(__dirname, 'data', 'zone_matrix.json');
+  if (fs.existsSync(zmPath)) zoneMatrix = JSON.parse(fs.readFileSync(zmPath, 'utf8'));
+} catch (err) { console.warn('zone_matrix.json not loaded:', err.message); }
+
+let marketData = {};
+try {
+  const mdPath = path.join(__dirname, 'data', 'market_data.json');
+  if (fs.existsSync(mdPath)) marketData = JSON.parse(fs.readFileSync(mdPath, 'utf8'));
+} catch (err) { console.warn('market_data.json not loaded:', err.message); }
+
+function getZoneFromMatrix(degreeGroup, roleName) {
+  if (!zoneMatrix || !zoneMatrix[degreeGroup]) return null;
+  return zoneMatrix[degreeGroup][roleName] || null;
+}
+
+function getMarketFromData(roleName) {
+  if (!marketData) return null;
+  return marketData[roleName] || null;
 }
 
 // Helper: Count matching keywords
@@ -216,38 +224,41 @@ const processCareerIntelligence = async (studentData) => {
   const pRoleData = roleSkillsDB[pRole] || { tech_skills: [] };
   const { missingSkills, mathingSkills } = calculateSkillGaps(skills, pRoleData);
 
+  const degreeGroup = studentData.education?.[0]?.degreeGroup || studentData.education?.degreeGroup || '';
+
+  // Try zone_matrix.json first (Member 2's data — more accurate)
+  // Fall back to generateRoleTab() zone score (always available)
+  const zoneFromMatrix = getZoneFromMatrix(degreeGroup, pRole);
+  const marketFromData = getMarketFromData(pRole);
+
   const preVerified = {
-    primaryZone: { employer_zone: primaryTab.zone },
-    secondaryZone: { employer_zone: secondaryTab.zone },
-    tertiaryZone: { employer_zone: tertiaryTab.zone },
+    dataFilesReady: Object.keys(zoneMatrix).length > 0,
+    primaryZone: zoneFromMatrix || { employer_zone: primaryTab.zone, skill_coverage_pct: 0 },
+    secondaryZone: getZoneFromMatrix(degreeGroup, sRole) || { employer_zone: secondaryTab.zone },
+    tertiaryZone: getZoneFromMatrix(degreeGroup, tRole) || { employer_zone: tertiaryTab.zone },
+    primaryMarket: marketFromData || null,
     primarySkillGap: {
       missing: missingSkills.map(m => m.skill_name),
       matched: mathingSkills,
-      coveragePct: (missingSkills.length + mathingSkills.length) > 0 ? Math.round((mathingSkills.length / (missingSkills.length + mathingSkills.length)) * 100) : 0,
+      coveragePct: (missingSkills.length + mathingSkills.length) > 0
+        ? Math.round((mathingSkills.length / (missingSkills.length + mathingSkills.length)) * 100)
+        : 0,
+      dataReady: true,
       source: 'local'
     }
   };
 
-  if (primaryRole) {
-    const mlResult = await getMLPrediction(studentData, primaryRole);
-    if (mlResult) {
-      preVerified.mlSemanticMatches = mlResult.semantic_matches || [];
-      preVerified.mlSuccessProbability = mlResult.success_probability || null;
-      if (mlResult.missing_skills && mlResult.missing_skills.length > 0) {
-        preVerified.primarySkillGap = {
-          ...preVerified.primarySkillGap,
-          missing: mlResult.missing_skills,
-          dataReady: true,
-          source: 'ml'
-        };
-      }
-    }
+  // Calculate skill coverage % for fallback zone
+  const preVerified_skillCoverage = preVerified.primarySkillGap.coveragePct;
+  // Fix: update fallback primaryZone with real coverage now that we have it
+  if (!zoneFromMatrix) {
+    preVerified.primaryZone.skill_coverage_pct = preVerified_skillCoverage;
   }
 
-  const probStr = preVerified.mlSuccessProbability ? Math.round(preVerified.mlSuccessProbability * 100) + '%' : 'Calculating';
+  const probStr = mlEnrichment.successProbability ? Math.round(mlEnrichment.successProbability * 100) + '%' : 'Calculating';
 
   return {
-    status: preVerified.mlSemanticMatches ? 'success_ml_assisted' : 'success_deterministic',
+    status: mlEnrichment.semanticSkills.length > 0 ? 'success_ml_assisted' : 'success_deterministic',
     generated_at: new Date().toISOString(),
     preVerified,
     primary: primaryTab,
@@ -280,4 +291,4 @@ const processCareerIntelligence = async (studentData) => {
   };
 };
 
-module.exports = { processCareerIntelligence };
+module.exports = { processCareerIntelligence, calculateDirectionScore, calculateSkillGaps, determineZone };

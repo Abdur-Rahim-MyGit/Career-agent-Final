@@ -24,6 +24,23 @@ dotenv.config();
 // Prisma Client for Auth
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
+
+let redisClient = null;
+try {
+  const { createClient } = require('redis');
+  redisClient = createClient({ url: process.env.REDIS_URL || 'redis://localhost:6379' });
+  redisClient.on('error', (e) => { console.warn('[REDIS] Error:', e.message); redisClient = null; });
+  redisClient.connect().catch(() => { redisClient = null; });
+} catch (e) { console.warn('[REDIS] Not available — running without cache'); }
+
+async function getCached(key) {
+  if (!redisClient) return null;
+  try { return await redisClient.get(key); } catch { return null; }
+}
+async function setCached(key, value, ttlSeconds = 3600) {
+  if (!redisClient) return;
+  try { await redisClient.set(key, value, { EX: ttlSeconds }); } catch {}
+}
 const PORT = process.env.PORT || 5000;
 
 const app = express();
@@ -460,8 +477,28 @@ app.get('/api/po/:collegeCode/dashboard', async (req, res) => {
   }
 });
 
-app.get('/api/roles', (req, res) => {
-  res.json(roles);
+app.get('/api/roles', async (req, res) => {
+  const cached = await getCached('all_roles');
+  if (cached) return res.json(JSON.parse(cached));
+  const result = roles; // existing roles data
+  await setCached('all_roles', JSON.stringify(result), 3600);
+  res.json(result);
+});
+
+app.get('/api/career-directions', async (req, res) => {
+  const cached = await getCached('career_directions');
+  if (cached) return res.json(JSON.parse(cached));
+  // Group roles by job family from role_skills_db.json
+  const { processCareerIntelligence, getRoleSkillsDB } = require('./engine');
+  // For now return top-level families grouped from the data
+  const families = {};
+  Object.keys(roles).forEach(role => {
+    const family = roles[role]?.family || 'General';
+    if (!families[family]) families[family] = [];
+    families[family].push(role);
+  });
+  await setCached('career_directions', JSON.stringify(families), 3600);
+  res.json(families);
 });
 
 app.get('/', (req, res) => {
