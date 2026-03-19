@@ -3,6 +3,49 @@ const path = require('path');
 const axios = require('axios');
 
 const ML_SERVICE_URL = process.env.ML_SERVICE_URL || 'http://localhost:5001';
+const ML_URL = process.env.ML_SERVICE_URL || 'http://127.0.0.1:5001';
+
+async function getMLEnrichment(studentData, roleName, roleData) {
+  try {
+    // Step 1: Use extracted skills from resume text if available, else join skills array
+    const skillText = (studentData.skills || []).join(', ');
+    
+    let semanticSkills = studentData.skills || [];
+    try {
+      const parseRes = await axios.post(`${ML_URL}/parse-resume`, { text: skillText }, { timeout: 6000 });
+      if (parseRes.data?.extracted_skills?.length > 0) {
+        semanticSkills = parseRes.data.extracted_skills;
+      }
+    } catch (e) {
+      console.warn('[ML /parse-resume] Unavailable:', e.message);
+    }
+
+    // Step 2: Build features for success prediction
+    // features = [skill_match_count, degree_relevance_score (0-10), market_demand_score (0-10)]
+    const requiredSkills = (roleData?.tech_skills || []).map(s => s.skill_name.toLowerCase());
+    const skillMatchCount = semanticSkills.filter(ss =>
+      requiredSkills.some(rs => rs.includes(ss.toLowerCase()) || ss.toLowerCase().includes(rs))
+    ).length;
+    const degreeScore = 5; // default middle score — can be refined later
+    const demandScore = 7; // default — will be replaced when market_data.json exists
+
+    let successProbability = null;
+    try {
+      const predRes = await axios.post(`${ML_URL}/predict-success`,
+        { features: [skillMatchCount, degreeScore, demandScore] },
+        { timeout: 6000 }
+      );
+      successProbability = predRes.data?.success_probability || null;
+    } catch (e) {
+      console.warn('[ML /predict-success] Unavailable:', e.message);
+    }
+
+    return { semanticSkills, successProbability };
+  } catch (e) {
+    console.warn('[ML ENRICHMENT] Failed gracefully:', e.message);
+    return { semanticSkills: studentData.skills || [], successProbability: null };
+  }
+}
 
 async function getMLPrediction(studentData, roleName) {
   try {
@@ -163,6 +206,12 @@ const processCareerIntelligence = async (studentData) => {
   const secondaryTab = generateRoleTab(sRole, studentData);
   const tertiaryTab = generateRoleTab(tRole, studentData);
 
+  let mlEnrichment = { semanticSkills: [], successProbability: null };
+  try {
+    const pRoleDataForML = roleSkillsDB[pRole] || { tech_skills: [] };
+    mlEnrichment = await getMLEnrichment(studentData, pRole, pRoleDataForML);
+  } catch (e) {}
+
   // Calculate missing skills across the primary role for the roadmap
   const pRoleData = roleSkillsDB[pRole] || { tech_skills: [] };
   const { missingSkills, mathingSkills } = calculateSkillGaps(skills, pRoleData);
@@ -204,6 +253,8 @@ const processCareerIntelligence = async (studentData) => {
     primary: primaryTab,
     secondary: secondaryTab,
     tertiary: tertiaryTab,
+    ml_success_probability: mlEnrichment.successProbability,
+    ml_semantic_skills: mlEnrichment.semanticSkills,
     combined_tab4: {
       combined_pathway_summary: `Your immediate focus must be learning the missing fundamentals for ${pRole}. Role success probability: ${probStr}`,
       skill_gap: {

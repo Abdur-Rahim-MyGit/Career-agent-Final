@@ -1,28 +1,50 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { ChevronRight } from 'lucide-react';
 
 export default function Register() {
-  const navigate = useNavigate();
+    return (
+        <div className="min-h-screen bg-background py-16 px-4 selection:bg-primary/20 flex flex-col items-center justify-center">
+            
+            <div className="mb-8 text-center">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 mb-4">
+                    <span className="text-xl font-bold text-primary">S</span>
+                </div>
+                <h1 className="text-3xl font-black text-text-primary tracking-tight outfit">Create your SMAART account</h1>
+                <p className="text-sm text-text-secondary mt-2 max-w-sm mx-auto">
+                    Your account is created when you complete the onboarding form.
+                </p>
+            </div>
 
-  return (
-    <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8 border border-neutral-100 text-center">
-        <h2 className="text-2xl font-bold text-neutral-900 mb-2">Create your SMAART account</h2>
-        <p className="text-neutral-600 mb-8">Registration is part of our comprehensive onboarding process.</p>
-        
-        <button
-          onClick={() => navigate('/onboarding')}
-          className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow-md shadow-blue-200 transition-colors mb-6"
-        >
-          Start onboarding
-        </button>
+            <div className="w-full max-w-md bg-surface border border-surface-border rounded-2xl p-8 shadow-xl text-center flex flex-col items-center">
+                
+                <div className="w-16 h-16 rounded-full bg-surface-hover border border-surface-border flex items-center justify-center mb-6">
+                    <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                        <div className="w-4 h-4 rounded-full bg-primary animate-pulse" />
+                    </div>
+                </div>
 
-        <div className="text-sm text-neutral-600">
-          <Link to="/login" className="text-blue-600 hover:text-blue-800 font-medium">
-            Already have an account? Login
-          </Link>
+                <h2 className="text-lg font-bold text-text-primary mb-2">Ready to begin?</h2>
+                <p className="text-sm text-text-secondary mb-8 leading-relaxed">
+                    We'll guide you through a 5-step process to capture your academic baseline, career interests, and verified skills.
+                </p>
+
+                <Link 
+                    to="/onboarding"
+                    className="w-full bg-primary text-white py-3.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-all shadow-lg shadow-primary/20"
+                >
+                    Start onboarding <ChevronRight size={18} />
+                </Link>
+
+                <div className="mt-8 pt-6 border-t border-surface-border w-full">
+                    <p className="text-sm font-medium text-text-secondary">
+                        Already have an account?{' '}
+                        <Link to="/login" className="text-primary hover:text-primary/80 transition-colors font-bold">
+                            Login
+                        </Link>
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }

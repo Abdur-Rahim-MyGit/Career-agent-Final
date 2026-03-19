@@ -1,89 +1,106 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { Loader2, AlertCircle } from 'lucide-react';
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({ email: '', password: '' });
+    const [errorMsg, setErrorMsg] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
+    const handleChange = (e) => {
+        setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    };
 
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
-      const data = await response.json();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setErrorMsg('');
+        setIsSubmitting(true);
 
-      if (response.ok && data.token) {
-        localStorage.setItem('smaart_token', data.token);
-        navigate('/dashboard');
-      } else {
-        setError("Invalid email or password");
-      }
-    } catch (err) {
-      setError("Invalid email or password");
-    } finally {
-      setLoading(false);
-    }
-  };
+        try {
+            const res = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            const data = await res.json();
+            
+            if (res.ok && data.success) {
+                localStorage.setItem('smaart_token', data.token);
+                navigate('/dashboard');
+            } else {
+                setErrorMsg(data.message || 'Invalid credentials');
+            }
+        } catch (err) {
+            setErrorMsg('A network error occurred. Please try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
-  return (
-    <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8 border border-neutral-100">
-        <h2 className="text-2xl font-bold text-neutral-900 mb-6 text-center">Login to SMAART</h2>
-        
-        {error && (
-          <div className="bg-red-50 text-red-700 p-3 rounded-lg mb-4 text-sm font-medium">
-            {error}
-          </div>
-        )}
+    return (
+        <div className="min-h-screen bg-background py-16 px-4 selection:bg-primary/20 flex flex-col items-center justify-center">
+            
+            <div className="mb-8 text-center">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 mb-4">
+                    <span className="text-xl font-bold text-primary">S</span>
+                </div>
+                <h1 className="text-3xl font-black text-text-primary tracking-tight outfit">Welcome Back</h1>
+                <p className="text-sm text-text-secondary mt-2">Enter your credentials to access your dashboard.</p>
+            </div>
 
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-neutral-700 mb-1">Email</label>
-            <input
-              type="email"
-              required
-              className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-neutral-700 mb-1">Password</label>
-            <input
-              type="password"
-              required
-              className="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-            />
-          </div>
-          
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow-md shadow-blue-200 transition-colors disabled:opacity-50"
-          >
-            {loading ? 'Logging in...' : 'Login'}
-          </button>
-        </form>
+            <div className="w-full max-w-md bg-surface border border-surface-border rounded-2xl p-8 shadow-xl">
+                <form onSubmit={handleSubmit} className="space-y-5">
+                    <div>
+                        <label className="block text-xs font-bold text-text-secondary uppercase mb-2 tracking-wider">Email Address</label>
+                        <input 
+                            type="email" 
+                            name="email" 
+                            value={formData.email} 
+                            onChange={handleChange} 
+                            required
+                            className="w-full bg-background border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-500 font-medium text-text-primary" 
+                            placeholder="your@email.com" 
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-xs font-bold text-text-secondary uppercase mb-2 tracking-wider">Password</label>
+                        <input 
+                            type="password" 
+                            name="password" 
+                            value={formData.password} 
+                            onChange={handleChange} 
+                            required
+                            className="w-full bg-background border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-500 font-medium text-text-primary" 
+                            placeholder="••••••••" 
+                        />
+                    </div>
 
-        <div className="mt-6 text-center text-sm text-neutral-600">
-          <Link to="/register" className="text-blue-600 hover:text-blue-800 font-medium">
-            Don't have an account? Register
-          </Link>
+                    {errorMsg && (
+                        <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center gap-2 text-red-500 text-sm font-semibold">
+                            <AlertCircle size={16} />
+                            {errorMsg}
+                        </div>
+                    )}
+
+                    <button 
+                        type="submit" 
+                        disabled={isSubmitting} 
+                        className="w-full bg-primary text-white py-3 rounded-lg text-sm font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-all shadow-md shadow-primary/20 disabled:opacity-70 mt-4"
+                    >
+                        {isSubmitting ? <Loader2 size={18} className="animate-spin" /> : 'Sign In'}
+                    </button>
+                </form>
+
+                <div className="mt-8 text-center border-t border-surface-border pt-6">
+                    <p className="text-sm font-medium text-text-secondary">
+                        Don't have an account?{' '}
+                        <Link to="/onboarding" className="text-primary hover:text-primary/80 transition-colors font-bold">
+                            Start onboarding
+                        </Link>
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }

@@ -178,16 +178,21 @@ const Dashboard = () => {
                     {renderZoneCard('Secondary Preference', data.input_user_data?.preferences?.secondary?.jobRole || data.preferences?.secondary?.jobRole, preVerified.secondaryZone)}
                     {renderZoneCard('Tertiary Preference', data.input_user_data?.preferences?.tertiary?.jobRole || data.preferences?.tertiary?.jobRole, preVerified.tertiaryZone)}
                 </div>
-                {dataFilesReady && (
-                    <div className="bg-surface border border-surface-border p-6 rounded-xl">
-                        <ResponsiveContainer width="100%" height={160}>
-                          <RadialBarChart cx="50%" cy="50%" innerRadius="60%" outerRadius="80%" data={coverageData} startAngle={90} endAngle={-270}>
-                            <RadialBar dataKey="value" cornerRadius={4} />
-                          </RadialBarChart>
-                        </ResponsiveContainer>
-                        <p className="text-center text-sm text-gray-500 mt-1 font-medium tracking-wide">
-                          Skill coverage for {primaryRole} — {preVerified.primaryZone?.skill_coverage_pct || 0}%
-                        </p>
+                {dataFilesReady && preVerified.primaryZone && (
+                    <div className="mt-4">
+                      <p className="text-xs text-text-secondary text-center mb-2">
+                        Skill coverage — {preVerified.primaryZone.skill_coverage_pct || 0}%
+                      </p>
+                      <ResponsiveContainer width="100%" height={140}>
+                        <RadialBarChart
+                          cx="50%" cy="50%"
+                          innerRadius="55%" outerRadius="80%"
+                          startAngle={90} endAngle={-270}
+                          data={[{ name: 'Coverage', value: preVerified.primaryZone.skill_coverage_pct || 0, fill: '#1D9E75' }]}
+                        >
+                          <RadialBar dataKey="value" cornerRadius={4} />
+                        </RadialBarChart>
+                      </ResponsiveContainer>
                     </div>
                 )}
             </div>
@@ -235,16 +240,24 @@ const Dashboard = () => {
                     </div>
                 </div>
                 {pm && (
-                    <div className="bg-surface border border-surface-border p-6 rounded-xl">
-                        <h5 className="text-sm font-bold text-text-primary mb-4 border-b border-surface-border pb-2">Salary Trajectory</h5>
-                        <ResponsiveContainer width="100%" height={160}>
-                          <BarChart data={salaryData} margin={{ top: 4, right: 8, bottom: 4, left: 0 }}>
-                            <XAxis dataKey="year" tick={{ fontSize: 11 }} />
-                            <YAxis tick={{ fontSize: 11 }} unit="L" />
-                            <Tooltip formatter={(v) => v + ' LPA'} />
-                            <Bar dataKey="lpa" fill="#185FA5" radius={[4,4,0,0]} />
-                          </BarChart>
-                        </ResponsiveContainer>
+                    <div className="bg-surface border border-surface-border p-4 rounded-xl">
+                      <p className="text-xs font-bold text-text-secondary uppercase tracking-widest mb-3">Salary trajectory</p>
+                      <ResponsiveContainer width="100%" height={140}>
+                        <BarChart
+                          data={[
+                            { year: 'Year 0-1', lpa: pm.salary_min_lpa || 2 },
+                            { year: 'Year 2-3', lpa: (pm.salary_min_lpa || 2) + 1.5 },
+                            { year: 'Year 4-5', lpa: (pm.salary_max_lpa || 8) - 1 },
+                            { year: 'Year 6+',  lpa: pm.salary_max_lpa || 8 }
+                          ]}
+                          margin={{ top: 4, right: 8, bottom: 4, left: 0 }}
+                        >
+                          <XAxis dataKey="year" tick={{ fontSize: 10 }} />
+                          <YAxis tick={{ fontSize: 10 }} unit="L" />
+                          <Tooltip formatter={(v) => v + ' LPA'} />
+                          <Bar dataKey="lpa" fill="#185FA5" radius={[4,4,0,0]} />
+                        </BarChart>
+                      </ResponsiveContainer>
                     </div>
                 )}
                 {pm.emerging_roles && pm.emerging_roles.length > 0 && (
