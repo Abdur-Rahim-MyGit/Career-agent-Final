@@ -8,6 +8,11 @@ const rateLimit = require('express-rate-limit');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+const crypto = require('crypto');
+// records dir
+const RECORDS_DIR = path.join(__dirname, 'records');
+if (!fs.existsSync(RECORDS_DIR)) fs.mkdirSync(RECORDS_DIR, { recursive: true });
+
 const { roles } = require('./data/mockRoles');
 const { generateCareerIntelligence } = require('./services/aiService');
 const { processCareerIntelligence } = require('./engine');
@@ -145,11 +150,68 @@ app.post('/api/predict-success', async (req, res) => {
   }
 });
 
+function makeProfileHash(studentData) {
+  const key = JSON.stringify({
+    education: studentData.education,
+    preferences: studentData.preferences,
+    skills: (studentData.skills || []).map(s => s.name || s).sort()
+  });
+  return crypto.createHash('sha256').update(key).digest('hex');
+}
+
+function findCachedRecord(hash) {
+  try {
+    const files = fs.readdirSync(RECORDS_DIR).filter(f => f.endsWith('.json') && f !== 'training_log.json' && f !== 'feedback.json');
+    for (const file of files) {
+      const data = JSON.parse(fs.readFileSync(path.join(RECORDS_DIR, file), 'utf8'));
+      if (data.profile_hash === hash) return data;
+    }
+  } catch (e) {}
+  return null;
+}
+
+function logTrainingData(traceId, studentData, analysis, preVerified) {
+  try {
+    const logFile = path.join(RECORDS_DIR, 'training_log.json');
+    let log = [];
+    if (fs.existsSync(logFile)) {
+      try { log = JSON.parse(fs.readFileSync(logFile, 'utf8')); } catch(e) { log = []; }
+    }
+    const entry = {
+      id: traceId,
+      timestamp: new Date().toISOString(),
+      prompt: buildTrainingPrompt(studentData, preVerified),
+      completion: typeof analysis === 'object' ? analysis.tab4CareerPath || JSON.stringify(analysis) : analysis,
+      zone: preVerified?.primaryZone?.employer_zone || 'Unknown',
+      degree: studentData.education?.degreeGroup || 'Unknown',
+      role: studentData.preferences?.primary?.jobRole || 'Unknown',
+      rating: null,       // filled later by /api/feedback
+      is_synthetic: false
+    };
+    log.push(entry);
+    fs.writeFileSync(logFile, JSON.stringify(log, null, 2));
+  } catch (e) {
+    console.error('[TRAINING LOG ERROR - non-fatal]', e.message);
+    // NEVER throw — this must not fail the main response
+  }
+}
+
+function buildTrainingPrompt(studentData, preVerified) {
+  return `Student degree: ${studentData.education?.degreeGroup || 'Unknown'} | Domain: ${studentData.education?.domain || 'Unknown'} | Target role: ${studentData.preferences?.primary?.jobRole || 'Unknown'} | Skills: ${(studentData.skills || []).map(s => s.name || s).join(', ')} | Zone: ${preVerified?.primaryZone?.employer_zone || 'Unknown'} | Missing: ${(preVerified?.primarySkillGap?.missing || []).join(', ')} | Generate career path:`;
+}
+
 // 3. Main Onboarding Engine
 app.post('/api/onboarding', async (req, res) => {
   try {
     const studentData = req.body;
     console.log('Processing Onboarding Data...');
+
+    const profileHash = makeProfileHash(studentData);
+    const cached = findCachedRecord(profileHash);
+    if (cached) {
+      console.log('[CACHE HIT] Returning cached result for hash:', profileHash.slice(0, 8));
+      return res.json({ success: true, cached: true, data: cached });
+    }
 
     // --- IMMEDIATE Safety Fallback: Save user input draft ---
     const recordsDir = path.join(__dirname, 'records');
@@ -176,7 +238,13 @@ app.post('/api/onboarding', async (req, res) => {
       analysis = await processCareerIntelligence(studentData);
       
       // Update record with analysis
-      const finalRecord = { ...initialRecord, status: 'completed', output_generated_report: analysis };
+      const finalRecord = {
+        ...initialRecord,
+        status: 'completed',
+        output_generated_report: analysis,
+        profile_hash: profileHash,
+        created_at: new Date().toISOString()
+      };
       fs.writeFileSync(recordPath, JSON.stringify(finalRecord, null, 2));
       console.log(`✅ Trace [${traceId}]: Analysis appended to record.`);
     } catch (procErr) {
@@ -212,18 +280,33 @@ app.post('/api/onboarding', async (req, res) => {
 
     // Save to MongoDB
     try {
+      const preVerifiedData = analysis.preVerified || {};
+      const analysisResult = analysis.analysis || analysis;
+
       const mongoRecord = new CareerAnalysisModel({
         student_name: studentName,
         student_email: studentEmail,
         primary_role: primaryRole,
         input_data: studentData,
-        output_data: analysis
+        output_data: analysis,
+        profile_hash: profileHash,
+        college_code: req.body.collegeCode,
+        zone_primary: preVerifiedData?.primaryZone?.employer_zone || 'Unknown',
+        zone_secondary: preVerifiedData?.secondaryZone?.employer_zone || 'Unknown',
+        zone_tertiary: preVerifiedData?.tertiaryZone?.employer_zone || 'Unknown',
+        missing_skills: preVerifiedData?.primarySkillGap?.missing || [],
+        matched_skills: preVerifiedData?.primarySkillGap?.matched || [],
+        skill_coverage_pct: preVerifiedData?.primarySkillGap?.coveragePct || 0,
+        path_text: analysisResult?.tab4CareerPath || '',
+        future_scope_text: analysisResult?.tab5FutureScope || ''
       });
       await mongoRecord.save();
       console.log('✅ Analysis saved to MongoDB');
     } catch (mongoErr) {
       console.error('⚠️ Failed to save to MongoDB:', mongoErr.message);
     }
+
+    logTrainingData(traceId, studentData, analysis.analysis || analysis, analysis.preVerified || null);
 
     res.json({
       status: 'success',
@@ -280,6 +363,88 @@ app.post('/api/admin/drafts/reject', (req, res) => {
     res.json({ success: true, message: "Draft rejected." });
   } else {
     res.status(404).json({ error: "No drafts found" });
+  }
+});
+
+app.get('/api/dashboard/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    // Step 1: Search /records folder
+    const files = fs.readdirSync(RECORDS_DIR).filter(f => f.endsWith('.json') && f !== 'training_log.json' && f !== 'feedback.json');
+    for (const file of files) {
+      const data = JSON.parse(fs.readFileSync(path.join(RECORDS_DIR, file), 'utf8'));
+      if (data.id === id || data.analysisId === id || file.includes(id)) {
+        return res.json({ success: true, source: 'local', data });
+      }
+    }
+    // Step 2: Fallback to PostgreSQL
+    const result = await executeQuery('SELECT * FROM career_analyses WHERE id = $1', [id]);
+    if (result && result.length > 0) {
+      return res.json({ success: true, source: 'postgres', data: result[0] });
+    }
+    return res.status(404).json({ success: false, message: 'Analysis not found' });
+  } catch (e) {
+    res.status(500).json({ success: false, error: e.message });
+  }
+});
+
+app.post('/api/feedback', async (req, res) => {
+  try {
+    const { analysisId, rating, comment } = req.body;
+    if (!analysisId || !rating || rating < 1 || rating > 5) {
+      return res.status(400).json({ success: false, message: 'analysisId and rating (1-5) required' });
+    }
+    
+    // Save to feedback.json
+    const feedbackFile = path.join(RECORDS_DIR, 'feedback.json');
+    let feedbacks = [];
+    if (fs.existsSync(feedbackFile)) {
+      try { feedbacks = JSON.parse(fs.readFileSync(feedbackFile, 'utf8')); } catch(e) {}
+    }
+    feedbacks.push({ analysisId, rating, comment: comment || '', timestamp: new Date().toISOString() });
+    fs.writeFileSync(feedbackFile, JSON.stringify(feedbacks, null, 2));
+
+    // Update training_log entry with rating
+    try {
+      const logFile = path.join(RECORDS_DIR, 'training_log.json');
+      if (fs.existsSync(logFile)) {
+        let log = JSON.parse(fs.readFileSync(logFile, 'utf8'));
+        const idx = log.findIndex(e => e.id === analysisId);
+        if (idx !== -1) { log[idx].rating = rating; fs.writeFileSync(logFile, JSON.stringify(log, null, 2)); }
+      }
+    } catch(e) {} // non-fatal
+
+    res.json({ success: true, message: 'Feedback saved' });
+  } catch (e) {
+    res.status(500).json({ success: false, error: e.message });
+  }
+});
+
+app.get('/api/po/:collegeCode/dashboard', async (req, res) => {
+  try {
+    const { collegeCode } = req.params;
+    // Read all records and filter by collegeCode
+    const files = fs.readdirSync(RECORDS_DIR).filter(f => f.endsWith('.json') && f !== 'training_log.json' && f !== 'feedback.json');
+    const students = [];
+    for (const file of files) {
+      try {
+        const data = JSON.parse(fs.readFileSync(path.join(RECORDS_DIR, file), 'utf8'));
+        if (data.collegeCode === collegeCode || data.college_code === collegeCode) students.push(data);
+      } catch(e) {}
+    }
+    // Build analytics
+    const zones = { Green: 0, Amber: 0, Red: 0 };
+    const directions = {};
+    const locations = {};
+    students.forEach(s => {
+      const z = s.preVerified?.primaryZone?.employer_zone || 'Amber';
+      if (zones[z] !== undefined) zones[z]++;
+      const role = s.preferences?.primary?.jobRole || 'Unknown';
+      directions[role] = (directions[role] || 0) + 1;
+    });
+    res.json({ success: true, collegeCode, totalStudents: students.length, zones, directions, students: students.map(s => ({ id: s.id || s.analysisId, name: s.name, zone: s.preVerified?.primaryZone?.employer_zone, lastActive: s.created_at })) });
+  } catch (e) {
+    res.status(500).json({ success: false, error: e.message });
   }
 });
 

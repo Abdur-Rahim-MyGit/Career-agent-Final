@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import Passport from './pages/Passport';
 import MarketInsights from './pages/MarketInsights';
 import AdminDashboard from './pages/AdminDashboard';
+import PODashboard from './pages/PODashboard';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           <Route path="/passport" element={<Passport />} />
           <Route path="/insights" element={<MarketInsights />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/po/:collegeCode" element={<PODashboard />} />
+          <Route path="/po" element={<PODashboard />} />
         </Routes>
       </Layout>
     </Router>
