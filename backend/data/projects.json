@@ -1,0 +1,4729 @@
+{
+  ".NET Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "C#",
+        "Windows Forms"
+      ],
+      "hours_estimate": 12,
+      "tool": "Visual Studio Community",
+      "how_to_share": "Post GitHub repository link on LinkedIn"
+    },
+    {
+      "title": "E-commerce Website",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "ASP.NET",
+        "SQL Server",
+        "HTML/CSS"
+      ],
+      "hours_estimate": 25,
+      "tool": "Visual Studio Community",
+      "how_to_share": "Deploy on Azure free account and share link"
+    }
+  ],
+  "5G Network Engineer": [
+    {
+      "title": "Network Topology Design",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network fundamentals",
+        "Cisco packet tracer"
+      ],
+      "hours_estimate": 10,
+      "tool": "Cisco Packet Tracer (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "5G Network Simulation",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "NS-3",
+        "5G network architecture"
+      ],
+      "hours_estimate": 28,
+      "tool": "NS-3 (free)",
+      "how_to_share": "Post GitHub repository link on LinkedIn"
+    }
+  ],
+  "AI Engineer": [
+    {
+      "title": "Image Classification using TensorFlow",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Python",
+        "TensorFlow",
+        "Machine learning"
+      ],
+      "hours_estimate": 15,
+      "tool": "Google Colab (free)",
+      "how_to_share": "Post GitHub repository link on LinkedIn"
+    },
+    {
+      "title": "Chatbot using Natural Language Processing",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Python",
+        "NLTK",
+        "Dialogflow"
+      ],
+      "hours_estimate": 22,
+      "tool": "Google Colab (free) and Dialogflow (free)",
+      "how_to_share": "Deploy on Google Cloud free account and share link"
+    }
+  ],
+  "AI Ethics Specialist": [
+    {
+      "title": "Bias Detection in AI Models",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data Analysis",
+        "AI Ethics"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Colab (free)",
+      "how_to_share": "Post code on GitHub"
+    },
+    {
+      "title": "Fairness Audit of AI Systems",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Data Visualization",
+        "AI Ethics",
+        "Statistics"
+      ],
+      "hours_estimate": 25,
+      "tool": "Tableau Public (free)",
+      "how_to_share": "Create a blog post with visualizations"
+    }
+  ],
+  "AI Product Manager": [
+    {
+      "title": "AI-Powered Chatbot for Customer Support",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Product Development",
+        "AI Applications"
+      ],
+      "hours_estimate": 10,
+      "tool": "Dialogflow (free)",
+      "how_to_share": "Create a video demo on YouTube"
+    },
+    {
+      "title": "Market Analysis for AI-Driven Products",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Market Research",
+        "Data Analysis",
+        "AI Trends"
+      ],
+      "hours_estimate": 28,
+      "tool": "Google Trends (free)",
+      "how_to_share": "Create a presentation on SlideShare"
+    }
+  ],
+  "AI Safety Researcher": [
+    {
+      "title": "Adversarial Attack on Image Classification Models",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Python Programming",
+        "AI Security"
+      ],
+      "hours_estimate": 15,
+      "tool": "Jupyter Notebook (free)",
+      "how_to_share": "Post code on Kaggle"
+    },
+    {
+      "title": "Robustness Evaluation of AI Models",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Machine Learning",
+        "AI Safety",
+        "Statistics"
+      ],
+      "hours_estimate": 22,
+      "tool": "TensorFlow (free)",
+      "how_to_share": "Publish a research paper on arXiv"
+    }
+  ],
+  "AI Trainer / Data Labeller": [
+    {
+      "title": "Image Classification Dataset Creation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data collection",
+        "Data labelling",
+        "Dataset creation"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Colab (free)",
+      "how_to_share": "Share dataset on Kaggle"
+    },
+    {
+      "title": "Text Classification Model Training",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Data preprocessing",
+        "Model training",
+        "Model evaluation"
+      ],
+      "hours_estimate": 25,
+      "tool": "Hugging Face Transformers (free)",
+      "how_to_share": "Share model on Hugging Face Model Hub"
+    }
+  ],
+  "AR/VR Developer": [
+    {
+      "title": "360-Degree Panorama Viewer",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Unity basics",
+        "360-degree panorama"
+      ],
+      "hours_estimate": 10,
+      "tool": "Unity (free)",
+      "how_to_share": "Share build on GitHub"
+    },
+    {
+      "title": "Interactive 3D Model Viewer",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "3D modelling",
+        "Unity scripting",
+        "User interaction"
+      ],
+      "hours_estimate": 28,
+      "tool": "Unity (free) and Blender (free)",
+      "how_to_share": "Share build on GitHub and video on YouTube"
+    }
+  ],
+  "AWS Solutions Architect": [
+    {
+      "title": "Static Website Hosting on S3",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "AWS S3",
+        "Static website hosting"
+      ],
+      "hours_estimate": 12,
+      "tool": "AWS Free Tier (free)",
+      "how_to_share": "Share website URL on LinkedIn"
+    },
+    {
+      "title": "Serverless API using Lambda and API Gateway",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "AWS Lambda",
+        "API Gateway",
+        "Serverless architecture"
+      ],
+      "hours_estimate": 22,
+      "tool": "AWS Free Tier (free)",
+      "how_to_share": "Share API documentation on GitHub"
+    }
+  ],
+  "Accessibility Tester": [
+    {
+      "title": "Website Accessibility Audit",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "WCAG guidelines",
+        "Screen reader usage"
+      ],
+      "hours_estimate": 12,
+      "tool": "WAVE Web Accessibility Tool (free)",
+      "how_to_share": "Post report on GitHub"
+    },
+    {
+      "title": "Mobile App Accessibility Testing",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Android Studio",
+        "iOS Accessibility Inspector"
+      ],
+      "hours_estimate": 25,
+      "tool": "Android Studio (free) and iOS Accessibility Inspector (free)",
+      "how_to_share": "Create a video walkthrough on YouTube"
+    }
+  ],
+  "Agile Coach": [
+    {
+      "title": "Personal Kanban Board Creation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Kanban principles",
+        "Trello usage"
+      ],
+      "hours_estimate": 10,
+      "tool": "Trello (free)",
+      "how_to_share": "Share board on Twitter"
+    },
+    {
+      "title": "Team Velocity Tracking and Analysis",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Jira usage",
+        "Velocity calculation"
+      ],
+      "hours_estimate": 28,
+      "tool": "Jira (free trial) and Google Sheets (free)",
+      "how_to_share": "Write a blog post on Medium"
+    }
+  ],
+  "Analog Design Engineer": [
+    {
+      "title": "Simple Op-Amp Circuit Design",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Circuit analysis",
+        "SPICE simulation"
+      ],
+      "hours_estimate": 15,
+      "tool": "Ngspice (free)",
+      "how_to_share": "Share schematics on Reddit"
+    },
+    {
+      "title": "Voltage Regulator Design and Simulation",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Circuit design",
+        "LTspice simulation"
+      ],
+      "hours_estimate": 22,
+      "tool": "LTspice (free)",
+      "how_to_share": "Create a GitHub repository with design files"
+    }
+  ],
+  "Analytics Engineer": [
+    {
+      "title": "Sales Dashboard",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data Visualization",
+        "Data Analysis"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Data Studio (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Customer Segmentation",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Machine Learning",
+        "Statistical Modeling"
+      ],
+      "hours_estimate": 25,
+      "tool": "Python (free) with scikit-learn library",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    }
+  ],
+  "Android Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Java",
+        "Android Studio"
+      ],
+      "hours_estimate": 10,
+      "tool": "Android Studio (free)",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    },
+    {
+      "title": "Weather Forecast App",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "API Integration",
+        "JSON Parsing"
+      ],
+      "hours_estimate": 28,
+      "tool": "Android Studio (free) with OpenWeatherMap API",
+      "how_to_share": "Share APK file and GitHub repository link on LinkedIn"
+    }
+  ],
+  "Angular Developer": [
+    {
+      "title": "Personal Website",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "HTML",
+        "CSS",
+        "Angular"
+      ],
+      "hours_estimate": 15,
+      "tool": "Angular CLI (free)",
+      "how_to_share": "Share GitHub Pages link on LinkedIn"
+    },
+    {
+      "title": "E-commerce Website",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Component-based Architecture",
+        "State Management"
+      ],
+      "hours_estimate": 22,
+      "tool": "Angular CLI (free) with Firebase",
+      "how_to_share": "Share GitHub repository link and live demo on LinkedIn"
+    }
+  ],
+  "Ansible Engineer": [
+    {
+      "title": "Automating Server Setup",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Ansible",
+        "Linux",
+        "Automation"
+      ],
+      "hours_estimate": 12,
+      "tool": "Ansible (free)",
+      "how_to_share": "Share playbook on GitHub"
+    },
+    {
+      "title": "Deploying Web Application",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Ansible",
+        "Linux",
+        "Automation",
+        "Web Development"
+      ],
+      "hours_estimate": 25,
+      "tool": "Ansible (free), Docker (free)",
+      "how_to_share": "Share deployment script on GitHub and demo on YouTube"
+    }
+  ],
+  "Application Security Engineer": [
+    {
+      "title": "Vulnerability Scanning",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Security",
+        "Vulnerability Scanning"
+      ],
+      "hours_estimate": 10,
+      "tool": "Nmap (free)",
+      "how_to_share": "Share scan results on LinkedIn"
+    },
+    {
+      "title": "Secure Coding Practices",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Security",
+        "Secure Coding",
+        "OWASP"
+      ],
+      "hours_estimate": 28,
+      "tool": "OWASP ZAP (free), GitHub (free)",
+      "how_to_share": "Share secure code examples on GitHub and blog on Medium"
+    }
+  ],
+  "Artificial Intelligence Specialist": [
+    {
+      "title": "Image Classification",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Machine Learning",
+        "Python"
+      ],
+      "hours_estimate": 15,
+      "tool": "TensorFlow (free), Google Colab (free)",
+      "how_to_share": "Share model on Kaggle"
+    },
+    {
+      "title": "Chatbot Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Natural Language Processing",
+        "Python",
+        "Dialogflow"
+      ],
+      "hours_estimate": 22,
+      "tool": "Dialogflow (free), Python (free)",
+      "how_to_share": "Share chatbot demo on YouTube and code on GitHub"
+    }
+  ],
+  "Associate Product Manager": [
+    {
+      "title": "Market Research Analysis",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Market research",
+        "Data analysis",
+        "Excel"
+      ],
+      "hours_estimate": 12,
+      "tool": "MS Excel (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Product Launch Plan",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Product development",
+        "Project management",
+        "Presentation skills"
+      ],
+      "hours_estimate": 25,
+      "tool": "Google Slides (free)",
+      "how_to_share": "Share link on GitHub"
+    }
+  ],
+  "Azure Solutions Architect": [
+    {
+      "title": "Azure Virtual Machine Deployment",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Cloud computing",
+        "Azure",
+        "Virtualization"
+      ],
+      "hours_estimate": 10,
+      "tool": "Azure Free Account",
+      "how_to_share": "Share screenshot on Twitter"
+    },
+    {
+      "title": "Azure Kubernetes Service Cluster Deployment",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Containerization",
+        "Orchestration",
+        "Azure"
+      ],
+      "hours_estimate": 28,
+      "tool": "Azure Free Account",
+      "how_to_share": "Share link on GitHub"
+    }
+  ],
+  "BI Developer": [
+    {
+      "title": "Sales Dashboard Creation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data visualization",
+        "Excel"
+      ],
+      "hours_estimate": 15,
+      "tool": "MS Excel (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Data Warehouse Design and Implementation",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Data modeling",
+        "Data warehousing",
+        "SQL"
+      ],
+      "hours_estimate": 22,
+      "tool": "MySQL (free)",
+      "how_to_share": "Share link on GitHub"
+    }
+  ],
+  "Back End Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "hours_estimate": 12,
+      "tool": "Visual Studio Code (free)",
+      "how_to_share": "Post GitHub link on LinkedIn"
+    },
+    {
+      "title": "Personal Expense Tracker API",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Node.js",
+        "Express.js",
+        "MongoDB"
+      ],
+      "hours_estimate": 25,
+      "tool": "Node.js (free), MongoDB (free)",
+      "how_to_share": "Post API documentation on GitHub and share on LinkedIn"
+    }
+  ],
+  "Big Data Engineer": [
+    {
+      "title": "Data Analysis with Python",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Python",
+        "Pandas",
+        "NumPy"
+      ],
+      "hours_estimate": 10,
+      "tool": "Jupyter Notebook (free)",
+      "how_to_share": "Post notebook on GitHub and share on LinkedIn"
+    },
+    {
+      "title": "Building a Data Pipeline with Apache Beam",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Apache Beam",
+        "Google Cloud Platform",
+        "Python"
+      ],
+      "hours_estimate": 28,
+      "tool": "Apache Beam (free), Google Cloud Platform (free tier)",
+      "how_to_share": "Post pipeline code on GitHub and share on LinkedIn"
+    }
+  ],
+  "Big Data Specialist": [
+    {
+      "title": "Data Visualization with Tableau",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Tableau",
+        "Data Visualization"
+      ],
+      "hours_estimate": 15,
+      "tool": "Tableau Public (free)",
+      "how_to_share": "Post visualization on Tableau Public and share on LinkedIn"
+    },
+    {
+      "title": "Predicting Customer Churn with Machine Learning",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Python",
+        "Scikit-learn",
+        "Machine Learning"
+      ],
+      "hours_estimate": 22,
+      "tool": "Jupyter Notebook (free), Scikit-learn (free)",
+      "how_to_share": "Post model code on GitHub and share on LinkedIn"
+    }
+  ],
+  "Blockchain Developer": [
+    {
+      "title": "Blockchain-based Supply Chain Management",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Smart Contracts",
+        "Blockchain Architecture"
+      ],
+      "hours_estimate": 12,
+      "tool": "Remix IDE (free)",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    },
+    {
+      "title": "Decentralized Application Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Solidity",
+        "Web3.js",
+        "Ganache"
+      ],
+      "hours_estimate": 25,
+      "tool": "Truffle Suite (free)",
+      "how_to_share": "Deploy on Testnet and share transaction hash on Twitter"
+    }
+  ],
+  "Blue Team Specialist": [
+    {
+      "title": "Network Traffic Analysis",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network Protocols",
+        "Wireshark"
+      ],
+      "hours_estimate": 10,
+      "tool": "Wireshark (free)",
+      "how_to_share": "Post screenshot of packet capture on Instagram"
+    },
+    {
+      "title": "Incident Response Plan Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Threat Intelligence",
+        "Incident Response",
+        "NIST Framework"
+      ],
+      "hours_estimate": 28,
+      "tool": "Microsoft Word (free trial)",
+      "how_to_share": "Share plan document on GitHub and tweet about it"
+    }
+  ],
+  "Build and Release Engineer": [
+    {
+      "title": "Automated Build Pipeline",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Jenkins",
+        "Git"
+      ],
+      "hours_estimate": 15,
+      "tool": "Jenkins (free)",
+      "how_to_share": "Share Jenkinsfile on GitHub and explain on Reddit"
+    },
+    {
+      "title": "Continuous Integration and Deployment",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Docker",
+        "Kubernetes",
+        "CI/CD"
+      ],
+      "hours_estimate": 22,
+      "tool": "GitLab CI/CD (free)",
+      "how_to_share": "Share .gitlab-ci.yml file on GitLab and discuss on Stack Overflow"
+    }
+  ],
+  "Business Analyst": [
+    {
+      "title": "Market Research Analysis",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data Analysis",
+        "Market Research"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Trends (free)",
+      "how_to_share": "Post insights on LinkedIn"
+    },
+    {
+      "title": "Business Process Improvement",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Process Mapping",
+        "SWOT Analysis"
+      ],
+      "hours_estimate": 25,
+      "tool": "Lucidchart (free version)",
+      "how_to_share": "Share process maps on GitHub"
+    }
+  ],
+  "Business Intelligence Analyst": [
+    {
+      "title": "Sales Dashboard Creation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data Visualization",
+        "Excel"
+      ],
+      "hours_estimate": 10,
+      "tool": "MS Excel (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Customer Segmentation Analysis",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Data Mining",
+        "Tableau"
+      ],
+      "hours_estimate": 28,
+      "tool": "Tableau Public (free)",
+      "how_to_share": "Share dashboard on Tableau Public"
+    }
+  ],
+  "C++ Developer": [
+    {
+      "title": "Command Line Calculator",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "C++ Basics",
+        "Algorithmic Thinking"
+      ],
+      "hours_estimate": 12,
+      "tool": "Code::Blocks (free)",
+      "how_to_share": "Share code on GitHub"
+    },
+    {
+      "title": "To-Do List App",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Object-Oriented Programming",
+        "File Input/Output"
+      ],
+      "hours_estimate": 25,
+      "tool": "Visual Studio Code (free)",
+      "how_to_share": "Share code on GitHub"
+    }
+  ],
+  "CISO": [
+    {
+      "title": "Vulnerability Assessment Report",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Risk Management",
+        "Vulnerability Assessment"
+      ],
+      "hours_estimate": 12,
+      "tool": "Nessus (free trial)",
+      "how_to_share": "Post report summary on LinkedIn"
+    },
+    {
+      "title": "Incident Response Plan Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Incident Response",
+        "Compliance"
+      ],
+      "hours_estimate": 25,
+      "tool": "Microsoft Word (free trial)",
+      "how_to_share": "Share plan document on GitHub"
+    }
+  ],
+  "CTO": [
+    {
+      "title": "Personal Website Development",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "hours_estimate": 15,
+      "tool": "GitHub Pages (free)",
+      "how_to_share": "Share website link on LinkedIn"
+    },
+    {
+      "title": "E-commerce Website Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "React",
+        "Node.js",
+        "MongoDB"
+      ],
+      "hours_estimate": 28,
+      "tool": "Heroku (free plan)",
+      "how_to_share": "Share website link on GitHub"
+    }
+  ],
+  "Chief AI Officer": [
+    {
+      "title": "Image Classification using TensorFlow",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Python",
+        "TensorFlow",
+        "Machine Learning"
+      ],
+      "hours_estimate": 10,
+      "tool": "Google Colab (free)",
+      "how_to_share": "Share notebook on GitHub"
+    },
+    {
+      "title": "Chatbot Development using Natural Language Processing",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Python",
+        "NLTK",
+        "Dialogflow"
+      ],
+      "hours_estimate": 22,
+      "tool": "Dialogflow (free plan)",
+      "how_to_share": "Share chatbot demo on YouTube"
+    }
+  ],
+  "Chief Product Officer": [
+    {
+      "title": "Product Roadmap Development",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Product Management",
+        "Roadmap Planning"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Jamboard (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Market Analysis and Competitor Research",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Market Research",
+        "Competitor Analysis",
+        "Data Analysis"
+      ],
+      "hours_estimate": 25,
+      "tool": "Google Trends and Google Data Studio (free)",
+      "how_to_share": "Share a blog post with findings"
+    }
+  ],
+  "Chip Architect": [
+    {
+      "title": "Basic Digital Circuit Design",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Digital Logic",
+        "Circuit Design"
+      ],
+      "hours_estimate": 10,
+      "tool": "Logisim (free)",
+      "how_to_share": "Share a screenshot of the design"
+    },
+    {
+      "title": "RTL Design and Simulation",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "RTL Design",
+        "Simulation",
+        "Verilog"
+      ],
+      "hours_estimate": 28,
+      "tool": "Icarus Verilog (free)",
+      "how_to_share": "Share a GitHub repository with the design files"
+    }
+  ],
+  "Cloud Architect": [
+    {
+      "title": "Simple Web Application Deployment",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Cloud Computing",
+        "Web Application Deployment"
+      ],
+      "hours_estimate": 15,
+      "tool": "Microsoft Azure Free Account (free)",
+      "how_to_share": "Share a screenshot of the deployed application"
+    },
+    {
+      "title": "Scalable Architecture Design",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Cloud Architecture",
+        "Scalability",
+        "Security"
+      ],
+      "hours_estimate": 22,
+      "tool": "AWS Architecture Center (free)",
+      "how_to_share": "Create a blog post with the design and share on LinkedIn"
+    }
+  ],
+  "Cloud Engineer": [
+    {
+      "title": "Deploying a Simple Web Application on AWS",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "AWS",
+        "Cloud Computing",
+        "Deployment"
+      ],
+      "hours_estimate": 12,
+      "tool": "AWS Free Tier",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Building a Scalable Architecture on Google Cloud",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Google Cloud",
+        "Scalability",
+        "Architecture"
+      ],
+      "hours_estimate": 25,
+      "tool": "Google Cloud Free Tier",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    }
+  ],
+  "Cloud Security Architect": [
+    {
+      "title": "Designing a Secure Cloud Architecture on Azure",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Azure",
+        "Cloud Security",
+        "Architecture"
+      ],
+      "hours_estimate": 10,
+      "tool": "Azure Free Account",
+      "how_to_share": "Post diagram on LinkedIn"
+    },
+    {
+      "title": "Implementing Compliance and Security on AWS",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "AWS",
+        "Compliance",
+        "Security"
+      ],
+      "hours_estimate": 28,
+      "tool": "AWS Free Tier",
+      "how_to_share": "Share blog post link on LinkedIn"
+    }
+  ],
+  "Cloud Security Engineer": [
+    {
+      "title": "Configuring Security Groups and Network ACLs on AWS",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "AWS",
+        "Security Groups",
+        "Network ACLs"
+      ],
+      "hours_estimate": 15,
+      "tool": "AWS Free Tier",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Deploying a Cloud Security Information and Event Management (SIEM) System",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Cloud Security",
+        "SIEM",
+        "Deployment"
+      ],
+      "hours_estimate": 22,
+      "tool": "Google Cloud Free Tier",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    }
+  ],
+  "Computer Programmer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Python",
+        "Data Structures"
+      ],
+      "hours_estimate": 12,
+      "tool": "PyCharm Community Edition (free)",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    },
+    {
+      "title": "Personal Expense Tracker",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "JavaScript",
+        "Front-end Development",
+        "Database Management"
+      ],
+      "hours_estimate": 25,
+      "tool": "Visual Studio Code (free) and MongoDB (free)",
+      "how_to_share": "Deploy on GitHub Pages and share link on LinkedIn"
+    }
+  ],
+  "Computer Vision Engineer": [
+    {
+      "title": "Image Classification using Pre-trained Models",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Python",
+        "TensorFlow",
+        "Image Processing"
+      ],
+      "hours_estimate": 10,
+      "tool": "Google Colab (free)",
+      "how_to_share": "Share Google Colab notebook link on LinkedIn"
+    },
+    {
+      "title": "Object Detection using YOLO",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Python",
+        "OpenCV",
+        "Object Detection"
+      ],
+      "hours_estimate": 28,
+      "tool": "Python with OpenCV (free) and YOLO (free)",
+      "how_to_share": "Share GitHub repository link and demo video on LinkedIn"
+    }
+  ],
+  "Configuration Manager": [
+    {
+      "title": "Automating System Configuration using Scripts",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Bash Scripting",
+        "Linux"
+      ],
+      "hours_estimate": 15,
+      "tool": "Linux (free) and Vim (free)",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    },
+    {
+      "title": "Infrastructure as Code using Terraform",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Terraform",
+        "Cloud Computing",
+        "Infrastructure Management"
+      ],
+      "hours_estimate": 22,
+      "tool": "Terraform (free) and AWS Free Tier (free)",
+      "how_to_share": "Share GitHub repository link and Terraform configuration files on LinkedIn"
+    }
+  ],
+  "Creative Director (Tech)": [
+    {
+      "title": "Personal Website Development",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "hours_estimate": 12,
+      "tool": "GitHub Pages (free)",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    },
+    {
+      "title": "Interactive Storytelling",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Adobe XD",
+        "UI/UX Design",
+        "Prototyping"
+      ],
+      "hours_estimate": 25,
+      "tool": "Adobe XD (free trial)",
+      "how_to_share": "Share interactive prototype link on Behance"
+    }
+  ],
+  "Cyber Threat Hunter": [
+    {
+      "title": "Network Traffic Analysis",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Wireshark",
+        "Network Protocols"
+      ],
+      "hours_estimate": 10,
+      "tool": "Wireshark (free)",
+      "how_to_share": "Post screenshot of network capture on Twitter"
+    },
+    {
+      "title": "Malware Analysis",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Reverse Engineering",
+        "Malware Analysis"
+      ],
+      "hours_estimate": 28,
+      "tool": "Remnux (free)",
+      "how_to_share": "Write a blog post about malware analysis and share on Medium"
+    }
+  ],
+  "Cybersecurity Analyst": [
+    {
+      "title": "Vulnerability Assessment",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Nmap",
+        "Vulnerability Scanning"
+      ],
+      "hours_estimate": 12,
+      "tool": "Nmap (free)",
+      "how_to_share": "Post screenshot of scan results on LinkedIn"
+    },
+    {
+      "title": "Incident Response Plan",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Incident Response",
+        "Risk Management"
+      ],
+      "hours_estimate": 25,
+      "tool": "Microsoft Word (free trial)",
+      "how_to_share": "Share plan document on GitHub and link on LinkedIn"
+    }
+  ],
+  "Cybersecurity Consultant": [
+    {
+      "title": "Vulnerability Assessment",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network Scanning",
+        "Vulnerability Identification"
+      ],
+      "hours_estimate": 12,
+      "tool": "Nmap (free)",
+      "how_to_share": "Post report on GitHub"
+    },
+    {
+      "title": "Incident Response Plan",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Threat Analysis",
+        "Incident Response"
+      ],
+      "hours_estimate": 25,
+      "tool": "Microsoft Word (free trial)",
+      "how_to_share": "Share document on LinkedIn"
+    }
+  ],
+  "DFT Engineer": [
+    {
+      "title": "Molecular Dynamics Simulation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Quantum Mechanics",
+        "Simulation"
+      ],
+      "hours_estimate": 10,
+      "tool": "Gaussian (free trial)",
+      "how_to_share": "Post results on ResearchGate"
+    },
+    {
+      "title": "Material Properties Prediction",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Density Functional Theory",
+        "Materials Science"
+      ],
+      "hours_estimate": 28,
+      "tool": "VASP (free trial)",
+      "how_to_share": "Publish paper on arXiv"
+    }
+  ],
+  "Data Analyst": [
+    {
+      "title": "Data Visualization",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data Visualization",
+        "Excel"
+      ],
+      "hours_estimate": 12,
+      "tool": "MS Excel (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Predictive Modeling",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Machine Learning",
+        "Statistics"
+      ],
+      "hours_estimate": 22,
+      "tool": "Google Colab (free)",
+      "how_to_share": "Share notebook on Kaggle"
+    }
+  ],
+  "Data Annotator": [
+    {
+      "title": "Image Classification Annotation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data labeling",
+        "Classification"
+      ],
+      "hours_estimate": 12,
+      "tool": "Labelbox (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Text Annotation for Sentiment Analysis",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Text annotation",
+        "Sentiment analysis",
+        "Data preprocessing"
+      ],
+      "hours_estimate": 25,
+      "tool": "Hugging Face Dataset (free)",
+      "how_to_share": "Share a GitHub repository"
+    }
+  ],
+  "Data Architect": [
+    {
+      "title": "Designing a Simple Database Schema",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Database design",
+        "Entity-relationship modeling"
+      ],
+      "hours_estimate": 10,
+      "tool": "DbDesigner 4 (free)",
+      "how_to_share": "Post a diagram on Twitter"
+    },
+    {
+      "title": "Creating a Data Warehouse Architecture",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Data warehousing",
+        "ETL design",
+        "Star schema"
+      ],
+      "hours_estimate": 28,
+      "tool": "Apache NiFi (free)",
+      "how_to_share": "Write a blog post"
+    }
+  ],
+  "Data Engineer": [
+    {
+      "title": "Building a Simple Data Pipeline",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data ingestion",
+        "Data processing",
+        "Apache Beam"
+      ],
+      "hours_estimate": 15,
+      "tool": "Apache Beam (free)",
+      "how_to_share": "Share a GitHub repository"
+    },
+    {
+      "title": "Developing a Real-time Data Streaming Application",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Stream processing",
+        "Apache Kafka",
+        "Apache Spark"
+      ],
+      "hours_estimate": 22,
+      "tool": "Confluent Kafka (free)",
+      "how_to_share": "Create a YouTube tutorial"
+    }
+  ],
+  "Data Governance Analyst": [
+    {
+      "title": "Data Quality Check",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data Validation",
+        "Data Cleaning"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Sheets (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Data Governance Framework",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Data Governance",
+        "Compliance",
+        "Risk Management"
+      ],
+      "hours_estimate": 25,
+      "tool": "Lucidchart (free)",
+      "how_to_share": "Share link to Lucidchart document"
+    }
+  ],
+  "Data Product Manager": [
+    {
+      "title": "Product Requirements Document",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Product Development",
+        "Stakeholder Management"
+      ],
+      "hours_estimate": 10,
+      "tool": "Google Docs (free)",
+      "how_to_share": "Share link to Google Doc"
+    },
+    {
+      "title": "Data-Driven Product Roadmap",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Data Analysis",
+        "Product Strategy",
+        "Prioritization"
+      ],
+      "hours_estimate": 28,
+      "tool": "Tableau Public (free)",
+      "how_to_share": "Embed Tableau visualization on personal website"
+    }
+  ],
+  "Data Quality Engineer": [
+    {
+      "title": "Data Profiling and Validation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data Profiling",
+        "Data Validation"
+      ],
+      "hours_estimate": 15,
+      "tool": "Trifacta (free)",
+      "how_to_share": "Share screenshot of Trifacta workflow"
+    },
+    {
+      "title": "Data Pipeline Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Data Pipeline",
+        "Data Engineering",
+        "Apache Beam"
+      ],
+      "hours_estimate": 22,
+      "tool": "Apache Beam (free)",
+      "how_to_share": "Share link to GitHub repository"
+    }
+  ],
+  "Data Scientist": [
+    {
+      "title": "Exploratory Data Analysis on Iris Dataset",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Python",
+        "Pandas",
+        "Data Visualization"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Colab (free)",
+      "how_to_share": "Share link to Colab notebook on GitHub"
+    },
+    {
+      "title": "Building a Simple Regression Model",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Python",
+        "Scikit-learn",
+        "Machine Learning"
+      ],
+      "hours_estimate": 25,
+      "tool": "Jupyter Notebook (free)",
+      "how_to_share": "Post code and results on Kaggle"
+    }
+  ],
+  "Data Steward": [
+    {
+      "title": "Data Quality Check on Sample Dataset",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data Validation",
+        "Data Cleaning"
+      ],
+      "hours_estimate": 10,
+      "tool": "OpenRefine (free)",
+      "how_to_share": "Share before-and-after screenshots on LinkedIn"
+    },
+    {
+      "title": "Designing a Data Governance Framework",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Data Governance",
+        "Data Security",
+        "Compliance"
+      ],
+      "hours_estimate": 28,
+      "tool": "Microsoft Visio (free trial)",
+      "how_to_share": "Share diagram and report on GitHub"
+    }
+  ],
+  "Database Administrator": [
+    {
+      "title": "Designing a Simple Database Schema",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Database Design",
+        "SQL"
+      ],
+      "hours_estimate": 12,
+      "tool": "DBDesigner 4 (free)",
+      "how_to_share": "Share schema diagram on LinkedIn"
+    },
+    {
+      "title": "Optimizing Database Performance",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Database Performance Tuning",
+        "Query Optimization"
+      ],
+      "hours_estimate": 22,
+      "tool": "MySQL Workbench (free)",
+      "how_to_share": "Share before-and-after performance metrics on GitHub"
+    }
+  ],
+  "Database Engineer": [
+    {
+      "title": "Student Database Management",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data Modeling",
+        "SQL"
+      ],
+      "hours_estimate": 12,
+      "tool": "MySQL (free)",
+      "how_to_share": "Post schema on GitHub"
+    },
+    {
+      "title": "E-commerce Database Optimization",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Indexing",
+        "Query Optimization",
+        "Database Design"
+      ],
+      "hours_estimate": 25,
+      "tool": "PostgreSQL (free)",
+      "how_to_share": "Write a blog on Medium"
+    }
+  ],
+  "Deep Learning Engineer": [
+    {
+      "title": "Handwritten Digit Recognition",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "TensorFlow",
+        "Convolutional Neural Networks"
+      ],
+      "hours_estimate": 15,
+      "tool": "Google Colab (free)",
+      "how_to_share": "Share notebook on GitHub"
+    },
+    {
+      "title": "Image Classification using Transfer Learning",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "PyTorch",
+        "Transfer Learning",
+        "Data Augmentation"
+      ],
+      "hours_estimate": 28,
+      "tool": "Google Colab (free)",
+      "how_to_share": "Create a video on YouTube"
+    }
+  ],
+  "Design System Specialist": [
+    {
+      "title": "UI Kit for a Mobile App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Figma",
+        "User Interface Design"
+      ],
+      "hours_estimate": 10,
+      "tool": "Figma (free)",
+      "how_to_share": "Post design on Dribbble"
+    },
+    {
+      "title": "Design System for an E-commerce Website",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Design Systems",
+        "Style Guides",
+        "Front-end Development"
+      ],
+      "hours_estimate": 22,
+      "tool": "Storybook (free)",
+      "how_to_share": "Write a case study on Behance"
+    }
+  ],
+  "DevOps Engineer": [
+    {
+      "title": "Automating a Simple Deployment",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Python",
+        "Automation",
+        "CI/CD"
+      ],
+      "hours_estimate": 12,
+      "tool": "GitHub Actions (free)",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    },
+    {
+      "title": "Monitoring and Logging for a Web Application",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Prometheus",
+        "Grafana",
+        "ELK Stack"
+      ],
+      "hours_estimate": 25,
+      "tool": "Prometheus and Grafana (free)",
+      "how_to_share": "Share dashboard screenshots and GitHub repository link on LinkedIn"
+    }
+  ],
+  "Digital Forensics Analyst": [
+    {
+      "title": "Analyzing Network Traffic with Wireshark",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network Analysis",
+        "Wireshark"
+      ],
+      "hours_estimate": 10,
+      "tool": "Wireshark (free)",
+      "how_to_share": "Post screenshot of network capture on LinkedIn"
+    },
+    {
+      "title": "Investigating a Mock Cybercrime Scene",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Digital Forensics",
+        "Incident Response",
+        "Volatility"
+      ],
+      "hours_estimate": 28,
+      "tool": "Volatility and SANS Investigative Forensic Toolkit (free)",
+      "how_to_share": "Share investigation report and findings on LinkedIn"
+    }
+  ],
+  "Digital Twin Engineer": [
+    {
+      "title": "Creating a Simple Digital Twin with Blender",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "3D Modeling",
+        "Blender"
+      ],
+      "hours_estimate": 15,
+      "tool": "Blender (free)",
+      "how_to_share": "Share 3D model on LinkedIn and GitHub"
+    },
+    {
+      "title": "Developing a Digital Twin for Predictive Maintenance",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Python",
+        "Machine Learning",
+        "Azure Digital Twins"
+      ],
+      "hours_estimate": 22,
+      "tool": "Azure Digital Twins (free trial) and Python",
+      "how_to_share": "Share GitHub repository link and Azure Digital Twins dashboard on LinkedIn"
+    }
+  ],
+  "Director of Product": [
+    {
+      "title": "Product Roadmap Creation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Product Management",
+        "Roadmap Planning"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Jamboard (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Market Research and Analysis",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Market Research",
+        "Data Analysis",
+        "Competitor Analysis"
+      ],
+      "hours_estimate": 25,
+      "tool": "Google Trends, Google Analytics (free)",
+      "how_to_share": "Share a blog post on Medium"
+    }
+  ],
+  "Drone Engineer": [
+    {
+      "title": "Drone Simulation using Python",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Python Programming",
+        "Drone Simulation"
+      ],
+      "hours_estimate": 10,
+      "tool": "Python (free), Pygame (free)",
+      "how_to_share": "Share code on GitHub"
+    },
+    {
+      "title": "Object Detection using Drone Footage",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Computer Vision",
+        "Object Detection",
+        "Drone Footage Analysis"
+      ],
+      "hours_estimate": 28,
+      "tool": "OpenCV (free), Python (free)",
+      "how_to_share": "Share a video on YouTube"
+    }
+  ],
+  "ERP Consultant": [
+    {
+      "title": "ERP System Configuration",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "ERP Configuration",
+        "System Setup"
+      ],
+      "hours_estimate": 15,
+      "tool": "ERPNext (free trial)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "ERP System Implementation Case Study",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "ERP Implementation",
+        "Case Study Analysis",
+        "System Integration"
+      ],
+      "hours_estimate": 22,
+      "tool": "ERPNext (free trial), Google Docs (free)",
+      "how_to_share": "Share a case study on LinkedIn"
+    }
+  ],
+  "Edge Computing Engineer": [
+    {
+      "title": "Smart Home Automation using Edge Computing",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Python",
+        "Raspberry Pi",
+        "Edge Computing Concepts"
+      ],
+      "hours_estimate": 12,
+      "tool": "Raspberry Pi (free trial), Python (free)",
+      "how_to_share": "Share a video demonstration on YouTube"
+    },
+    {
+      "title": "Real-time Video Analytics using Edge Computing",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Python",
+        "OpenCV",
+        "Edge Computing",
+        "Computer Vision"
+      ],
+      "hours_estimate": 25,
+      "tool": "Raspberry Pi (free trial), Python (free), OpenCV (free)",
+      "how_to_share": "Write a blog post with code snippets on Medium"
+    }
+  ],
+  "Embedded Hardware Engineer": [
+    {
+      "title": "Designing a Simple LED Circuit using Arduino",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "C++",
+        "Arduino",
+        "Electronics"
+      ],
+      "hours_estimate": 10,
+      "tool": "Arduino (free), Fritzing (free)",
+      "how_to_share": "Post a photo of the circuit on Instagram"
+    },
+    {
+      "title": "Developing a Weather Station using ESP32",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "C++",
+        "ESP32",
+        "Sensor Integration",
+        "Wireless Communication"
+      ],
+      "hours_estimate": 28,
+      "tool": "ESP32 (free trial), Arduino IDE (free)",
+      "how_to_share": "Create a GitHub repository with code and documentation"
+    }
+  ],
+  "Embedded Systems Engineer": [
+    {
+      "title": "Building a Line Follower Robot using Arduino",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "C++",
+        "Arduino",
+        "Robotics"
+      ],
+      "hours_estimate": 15,
+      "tool": "Arduino (free), SimulIDE (free)",
+      "how_to_share": "Share a video of the robot in action on Twitter"
+    },
+    {
+      "title": "Designing a Home Automation System using STM32",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "C",
+        "STM32",
+        "Embedded Linux",
+        "Device Driver Development"
+      ],
+      "hours_estimate": 22,
+      "tool": "STM32 (free trial), Keil uVision (free trial)",
+      "how_to_share": "Write a technical report with schematics and code on Academia.edu"
+    }
+  ],
+  "Engineering Manager": [
+    {
+      "title": "Personal Project Management",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Project Planning",
+        "Time Management"
+      ],
+      "hours_estimate": 12,
+      "tool": "Trello (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Team Collaboration Tool Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Leadership",
+        "Communication",
+        "Asana"
+      ],
+      "hours_estimate": 25,
+      "tool": "Asana (free)",
+      "how_to_share": "Share a video walkthrough on YouTube"
+    }
+  ],
+  "Enterprise Architect": [
+    {
+      "title": "Simple Network Architecture Design",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Networking Fundamentals",
+        "Visio"
+      ],
+      "hours_estimate": 10,
+      "tool": "Draw.io (free)",
+      "how_to_share": "Share a diagram on GitHub"
+    },
+    {
+      "title": "Cloud-Based System Design",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Cloud Computing",
+        "System Design",
+        "AWS"
+      ],
+      "hours_estimate": 28,
+      "tool": "AWS Free Tier (free)",
+      "how_to_share": "Write a blog post on Medium"
+    }
+  ],
+  "Ethical Hacker": [
+    {
+      "title": "Vulnerability Scan using Nmap",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network Scanning",
+        "Nmap"
+      ],
+      "hours_estimate": 15,
+      "tool": "Nmap (free)",
+      "how_to_share": "Share a scan report on Reddit"
+    },
+    {
+      "title": "Web Application Penetration Testing",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Web Application Security",
+        "Burp Suite"
+      ],
+      "hours_estimate": 22,
+      "tool": "Burp Suite Community Edition (free)",
+      "how_to_share": "Create a video tutorial on Vimeo"
+    }
+  ],
+  "FPGA Engineer": [
+    {
+      "title": "VHDL Code Implementation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "VHDL",
+        "Digital Logic"
+      ],
+      "hours_estimate": 12,
+      "tool": "Vivado (free version)",
+      "how_to_share": "Post code snippet on GitHub"
+    },
+    {
+      "title": "FPGA-Based Image Processing",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "FPGA Architecture",
+        "Image Processing"
+      ],
+      "hours_estimate": 25,
+      "tool": "Vivado (free version) and OpenCV",
+      "how_to_share": "Share project report on LinkedIn"
+    }
+  ],
+  "Fab Technician": [
+    {
+      "title": "Basic SPC Chart Creation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Statistical Process Control",
+        "Data Analysis"
+      ],
+      "hours_estimate": 10,
+      "tool": "Google Sheets (free)",
+      "how_to_share": "Post chart on Instagram"
+    },
+    {
+      "title": "Equipment Maintenance Schedule",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Equipment Maintenance",
+        "Scheduling"
+      ],
+      "hours_estimate": 28,
+      "tool": "Microsoft Excel (free) and Google Calendar",
+      "how_to_share": "Share schedule on Twitter"
+    }
+  ],
+  "FinOps Engineer": [
+    {
+      "title": "Basic Financial Modeling",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Financial Modeling",
+        "Excel"
+      ],
+      "hours_estimate": 15,
+      "tool": "Microsoft Excel (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Cloud Cost Optimization",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Cloud Computing",
+        "Cost Optimization"
+      ],
+      "hours_estimate": 22,
+      "tool": "AWS Free Tier and Google Cloud Cost Calculator",
+      "how_to_share": "Share case study on Medium"
+    }
+  ],
+  "Firmware Engineer": [
+    {
+      "title": "LED Blinking Project",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "C programming",
+        "Microcontroller"
+      ],
+      "hours_estimate": 12,
+      "tool": "Arduino IDE (free)",
+      "how_to_share": "Post code on GitHub"
+    },
+    {
+      "title": "Smart Home Automation System",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Embedded C",
+        "Sensor integration",
+        "Wireless communication"
+      ],
+      "hours_estimate": 25,
+      "tool": "Raspberry Pi (free tools)",
+      "how_to_share": "Create a YouTube video demonstration"
+    }
+  ],
+  "Flutter Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Dart programming",
+        "UI design"
+      ],
+      "hours_estimate": 10,
+      "tool": "Flutter (free)",
+      "how_to_share": "Publish on Google Play Store"
+    },
+    {
+      "title": "Weather Forecast App",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "API integration",
+        "State management",
+        "UI/UX"
+      ],
+      "hours_estimate": 28,
+      "tool": "Flutter (free) and OpenWeatherMap API (free)",
+      "how_to_share": "Write a blog post on Medium"
+    }
+  ],
+  "Front End Developer": [
+    {
+      "title": "Personal Website",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "hours_estimate": 15,
+      "tool": "Visual Studio Code (free)",
+      "how_to_share": "Host on GitHub Pages"
+    },
+    {
+      "title": "E-commerce Website",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Responsive design",
+        "React library",
+        "State management"
+      ],
+      "hours_estimate": 22,
+      "tool": "React (free) and Bootstrap (free)",
+      "how_to_share": "Create a CodePen showcase"
+    }
+  ],
+  "Full Stack Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "hours_estimate": 12,
+      "tool": "Visual Studio Code (free)",
+      "how_to_share": "Post GitHub repository link on LinkedIn"
+    },
+    {
+      "title": "Personal Website",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "React",
+        "Node.js",
+        "MongoDB"
+      ],
+      "hours_estimate": 25,
+      "tool": "Visual Studio Code (free)",
+      "how_to_share": "Deploy on GitHub Pages and share link on LinkedIn"
+    }
+  ],
+  "Functional Consultant": [
+    {
+      "title": "Business Process Mapping",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Excel",
+        "Visio"
+      ],
+      "hours_estimate": 10,
+      "tool": "MS Excel (free) and Lucidchart (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "ERP System Configuration",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "SAP",
+        "ERP configuration"
+      ],
+      "hours_estimate": 28,
+      "tool": "SAP ERP system (free trial)",
+      "how_to_share": "Record video walkthrough and share on YouTube"
+    }
+  ],
+  "GCP Solutions Architect": [
+    {
+      "title": "Cloud Storage Bucket Setup",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "GCP",
+        "Cloud Storage"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Cloud Platform (free tier)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Kubernetes Cluster Deployment",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Kubernetes",
+        "GCP",
+        "Containerization"
+      ],
+      "hours_estimate": 22,
+      "tool": "Google Cloud Platform (free tier) and Minikube (free)",
+      "how_to_share": "Record video walkthrough and share on YouTube"
+    }
+  ],
+  "GRC Analyst": [
+    {
+      "title": "Compliance Risk Assessment",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Risk Management",
+        "Regulatory Compliance"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Sheets (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Audit Control Matrix",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Audit Planning",
+        "Control Evaluation"
+      ],
+      "hours_estimate": 25,
+      "tool": "Microsoft Excel (free trial)",
+      "how_to_share": "Share on GitHub as a CSV file"
+    }
+  ],
+  "Game Engine Developer": [
+    {
+      "title": "2D Pong Game",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Game Development",
+        "Python Programming"
+      ],
+      "hours_estimate": 10,
+      "tool": "Pygame (free)",
+      "how_to_share": "Upload to GitHub as a public repository"
+    },
+    {
+      "title": "3D Maze Game",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "3D Modeling",
+        "Game Physics"
+      ],
+      "hours_estimate": 28,
+      "tool": "Unity (free version)",
+      "how_to_share": "Share a playable build on Itch.io"
+    }
+  ],
+  "Generative AI Engineer": [
+    {
+      "title": "Text Generation with Markov Chains",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Natural Language Processing",
+        "Python Programming"
+      ],
+      "hours_estimate": 12,
+      "tool": "Python with NLTK (free)",
+      "how_to_share": "Post code snippet on GitHub Gist"
+    },
+    {
+      "title": "Image Generation with GANs",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Deep Learning",
+        "Computer Vision"
+      ],
+      "hours_estimate": 25,
+      "tool": "TensorFlow (free)",
+      "how_to_share": "Share a Colab notebook with visualizations"
+    }
+  ],
+  "GitOps Engineer": [
+    {
+      "title": "Automating Deployment with GitHub Actions",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Git",
+        "GitHub Actions",
+        "YAML"
+      ],
+      "hours_estimate": 12,
+      "tool": "GitHub (free)",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    },
+    {
+      "title": "Implementing Continuous Integration and Deployment for a Web Application",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Git",
+        "Docker",
+        "Kubernetes",
+        "Jenkins"
+      ],
+      "hours_estimate": 25,
+      "tool": "GitHub, Docker, Kubernetes (free)",
+      "how_to_share": "Share GitHub repository link and DockerHub image on LinkedIn"
+    }
+  ],
+  "Golang Developer": [
+    {
+      "title": "Building a Simple RESTful API with Golang",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Golang",
+        "RESTful API",
+        "JSON"
+      ],
+      "hours_estimate": 10,
+      "tool": "GoLand (free trial), Postman (free)",
+      "how_to_share": "Share GitHub repository link and Postman collection on LinkedIn"
+    },
+    {
+      "title": "Creating a Command-Line Tool with Golang",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Golang",
+        "Cobra",
+        "Viper"
+      ],
+      "hours_estimate": 20,
+      "tool": "GoLand (free trial), Cobra, Viper (free)",
+      "how_to_share": "Share GitHub repository link and command-line tool demo on LinkedIn"
+    }
+  ],
+  "Hardware Test Engineer": [
+    {
+      "title": "Designing and Simulating a Simple Digital Circuit with Logisim",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Digital logic",
+        "Circuit design"
+      ],
+      "hours_estimate": 12,
+      "tool": "Logisim (free)",
+      "how_to_share": "Share Logisim circuit file and simulation screenshot on LinkedIn"
+    },
+    {
+      "title": "Testing and Validating a Microcontroller-Based System with Python",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Python",
+        "Microcontroller",
+        "Testing"
+      ],
+      "hours_estimate": 25,
+      "tool": "Python (free), PyCharm (free trial), Microcontroller (e.g. Arduino)",
+      "how_to_share": "Share GitHub repository link, test report, and system demo on LinkedIn"
+    }
+  ],
+  "IT Asset Manager": [
+    {
+      "title": "Asset Inventory Management",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Excel",
+        "Data Management"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Sheets (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Asset Lifecycle Management",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Project Management",
+        "Data Analysis"
+      ],
+      "hours_estimate": 25,
+      "tool": "Trello (free)",
+      "how_to_share": "Share board link on GitHub"
+    }
+  ],
+  "IT Auditor": [
+    {
+      "title": "Risk Assessment Template",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Excel",
+        "Risk Management"
+      ],
+      "hours_estimate": 10,
+      "tool": "LibreOffice (free)",
+      "how_to_share": "Upload to GitHub repository"
+    },
+    {
+      "title": "Compliance Audit Checklist",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Audit Procedures",
+        "Regulatory Compliance"
+      ],
+      "hours_estimate": 28,
+      "tool": "Notion (free)",
+      "how_to_share": "Publish on personal blog"
+    }
+  ],
+  "IT Consultant": [
+    {
+      "title": "IT Service Catalog",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Excel",
+        "Service Management"
+      ],
+      "hours_estimate": 15,
+      "tool": "OpenOffice (free)",
+      "how_to_share": "Share on Twitter"
+    },
+    {
+      "title": "IT Roadmap Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Strategic Planning",
+        "Stakeholder Management"
+      ],
+      "hours_estimate": 22,
+      "tool": "MindMeister (free)",
+      "how_to_share": "Present on YouTube"
+    }
+  ],
+  "IT Help Desk Technician": [
+    {
+      "title": "Troubleshooting a Sample Network Issue",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network fundamentals",
+        "Troubleshooting"
+      ],
+      "hours_estimate": 12,
+      "tool": "Cisco Packet Tracer (free)",
+      "how_to_share": "Post a video explanation on YouTube"
+    },
+    {
+      "title": "Creating a Help Desk Ticketing System",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Database management",
+        "Help desk software"
+      ],
+      "hours_estimate": 25,
+      "tool": "Zoho Desk (free)",
+      "how_to_share": "Share a demo link on GitHub"
+    }
+  ],
+  "IT Project Manager": [
+    {
+      "title": "Creating a Project Plan for a Sample IT Project",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Project planning",
+        "Gantt charts"
+      ],
+      "hours_estimate": 10,
+      "tool": "Asana (free)",
+      "how_to_share": "Post a screenshot on LinkedIn"
+    },
+    {
+      "title": "Developing a Risk Management Plan for an IT Project",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Risk management",
+        "Project monitoring"
+      ],
+      "hours_estimate": 28,
+      "tool": "Trello (free)",
+      "how_to_share": "Share a presentation on SlideShare"
+    }
+  ],
+  "IT Recruiter": [
+    {
+      "title": "Creating a Job Description for an IT Role",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Job analysis",
+        "Recruitment"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Docs (free)",
+      "how_to_share": "Post a link on Twitter"
+    },
+    {
+      "title": "Building a Candidate Pipeline for IT Roles",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Sourcing",
+        "Candidate management"
+      ],
+      "hours_estimate": 22,
+      "tool": "LinkedIn Recruiter (free trial)",
+      "how_to_share": "Share a video on Vimeo"
+    }
+  ],
+  "IT Vendor Manager": [
+    {
+      "title": "Vendor Contract Management",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Excel",
+        "Contract Management"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Sheets (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Vendor Performance Dashboard",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Data Analysis",
+        "Dashboard Creation",
+        "Excel"
+      ],
+      "hours_estimate": 25,
+      "tool": "Google Data Studio (free)",
+      "how_to_share": "Share public link on GitHub"
+    }
+  ],
+  "ITSM Manager": [
+    {
+      "title": "Incident Management Process",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Process Mapping",
+        "ITIL"
+      ],
+      "hours_estimate": 10,
+      "tool": "Draw.io (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Service Desk Metrics Dashboard",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Data Analysis",
+        "Dashboard Creation",
+        "ITIL"
+      ],
+      "hours_estimate": 28,
+      "tool": "Tableau Public (free)",
+      "how_to_share": "Share public link on GitHub"
+    }
+  ],
+  "Identity and Access Management Specialist": [
+    {
+      "title": "Access Control Matrix",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Access Control",
+        "Excel"
+      ],
+      "hours_estimate": 12,
+      "tool": "LibreOffice Calc (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Identity and Access Management Audit",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Audit",
+        "Compliance",
+        "Access Control"
+      ],
+      "hours_estimate": 22,
+      "tool": "OpenAudit (free)",
+      "how_to_share": "Share public link on GitHub"
+    }
+  ],
+  "Incident Response Specialist": [
+    {
+      "title": "Simulated Incident Response",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Problem solving",
+        "Communication"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Docs (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Incident Response Plan Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Risk assessment",
+        "Policy development",
+        "Collaboration"
+      ],
+      "hours_estimate": 25,
+      "tool": "Trello (free)",
+      "how_to_share": "Share Trello board on GitHub"
+    }
+  ],
+  "Information Security Analyst": [
+    {
+      "title": "Vulnerability Assessment using Nmap",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network scanning",
+        "Vulnerability identification"
+      ],
+      "hours_estimate": 10,
+      "tool": "Nmap (free)",
+      "how_to_share": "Post scan results on Twitter"
+    },
+    {
+      "title": "Security Information and Event Management (SIEM) System Setup",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Log analysis",
+        "Threat detection",
+        "System configuration"
+      ],
+      "hours_estimate": 28,
+      "tool": "ELK Stack (free)",
+      "how_to_share": "Share ELK Stack dashboard on Reddit"
+    }
+  ],
+  "Infrastructure Engineer": [
+    {
+      "title": "Virtual Private Network (VPN) Setup",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network configuration",
+        "Security"
+      ],
+      "hours_estimate": 15,
+      "tool": "OpenVPN (free)",
+      "how_to_share": "Post setup guide on Medium"
+    },
+    {
+      "title": "Containerization using Docker",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Container management",
+        "Orchestration",
+        "DevOps"
+      ],
+      "hours_estimate": 22,
+      "tool": "Docker (free)",
+      "how_to_share": "Share Dockerfile on Docker Hub"
+    }
+  ],
+  "Interaction Designer": [
+    {
+      "title": "Design a Mobile App Onboarding Process",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "User Research",
+        "Wireframing",
+        "Prototyping"
+      ],
+      "hours_estimate": 12,
+      "tool": "Figma (free)",
+      "how_to_share": "Share a link to the Figma design file on LinkedIn"
+    },
+    {
+      "title": "Redesign a Website for Accessibility",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "User Experience",
+        "Visual Design",
+        "Accessibility Guidelines"
+      ],
+      "hours_estimate": 25,
+      "tool": "Adobe XD (free)",
+      "how_to_share": "Post a case study on Behance and share on LinkedIn"
+    }
+  ],
+  "IoT Developer": [
+    {
+      "title": "Build a Weather Station using Arduino",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Microcontrollers",
+        "Sensor Integration",
+        "Programming"
+      ],
+      "hours_estimate": 15,
+      "tool": "Arduino IDE (free)",
+      "how_to_share": "Share a video of the working prototype on YouTube and LinkedIn"
+    },
+    {
+      "title": "Develop a Home Automation System using Raspberry Pi",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Linux Programming",
+        "Networking",
+        "Device Integration"
+      ],
+      "hours_estimate": 28,
+      "tool": "Raspberry Pi (free OS)",
+      "how_to_share": "Write a blog post about the project and share on LinkedIn and GitHub"
+    }
+  ],
+  "IoT Solutions Architect": [
+    {
+      "title": "Design a Smart Energy Management System",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "System Design",
+        "Energy Management",
+        "IoT Devices"
+      ],
+      "hours_estimate": 10,
+      "tool": "Microsoft Visio (free trial)",
+      "how_to_share": "Share a diagram of the system architecture on LinkedIn"
+    },
+    {
+      "title": "Develop a Industrial Automation Solution using IoT",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "System Integration",
+        "Data Analytics",
+        "Industrial Protocols"
+      ],
+      "hours_estimate": 22,
+      "tool": "IBM Watson IoT (free trial)",
+      "how_to_share": "Create a presentation about the solution and share on SlideShare and LinkedIn"
+    }
+  ],
+  "Java Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Java",
+        "Data Structures"
+      ],
+      "hours_estimate": 12,
+      "tool": "Eclipse (free)",
+      "how_to_share": "Post code on GitHub"
+    },
+    {
+      "title": "Chatbot Using Java",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Java",
+        "Natural Language Processing",
+        "Machine Learning"
+      ],
+      "hours_estimate": 25,
+      "tool": "NetBeans (free)",
+      "how_to_share": "Share video demo on YouTube"
+    }
+  ],
+  "Jenkins Engineer": [
+    {
+      "title": "Automating Build Process",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Jenkins",
+        "CI/CD"
+      ],
+      "hours_estimate": 10,
+      "tool": "Jenkins (free)",
+      "how_to_share": "Write blog on Medium"
+    },
+    {
+      "title": "Creating Pipeline for Deployment",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Jenkins",
+        "Groovy",
+        "Docker"
+      ],
+      "hours_estimate": 28,
+      "tool": "Jenkins (free) and Docker (free)",
+      "how_to_share": "Create tutorial on Udemy"
+    }
+  ],
+  "Kafka Engineer": [
+    {
+      "title": "Real-Time Data Processing",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Kafka",
+        "Data Streaming"
+      ],
+      "hours_estimate": 15,
+      "tool": "Apache Kafka (free)",
+      "how_to_share": "Share presentation on SlideShare"
+    },
+    {
+      "title": "Building Kafka Cluster",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Kafka",
+        "Zookeeper",
+        "Clustering"
+      ],
+      "hours_estimate": 22,
+      "tool": "Apache Kafka (free) and Zookeeper (free)",
+      "how_to_share": "Create video course on Coursera"
+    }
+  ],
+  "Kotlin Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Kotlin",
+        "Android App Development"
+      ],
+      "hours_estimate": 12,
+      "tool": "Android Studio (free)",
+      "how_to_share": "Post GitHub repository link on LinkedIn"
+    },
+    {
+      "title": "Weather Forecast App",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Kotlin",
+        "API Integration",
+        "UI/UX Design"
+      ],
+      "hours_estimate": 25,
+      "tool": "Android Studio (free), OpenWeatherMap API (free)",
+      "how_to_share": "Post GitHub repository link and app demo video on LinkedIn"
+    }
+  ],
+  "Kubernetes Administrator": [
+    {
+      "title": "Deploying a Simple Web Server",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Kubernetes",
+        "Containerization"
+      ],
+      "hours_estimate": 10,
+      "tool": "Minikube (free), Docker (free)",
+      "how_to_share": "Post deployment configuration files on GitHub and share link on LinkedIn"
+    },
+    {
+      "title": "Deploying a Multi-Tier Application",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Kubernetes",
+        "Containerization",
+        "Orchestration"
+      ],
+      "hours_estimate": 28,
+      "tool": "Minikube (free), Docker (free), Kubernetes Dashboard (free)",
+      "how_to_share": "Post deployment configuration files and application demo video on LinkedIn"
+    }
+  ],
+  "L1 Support Engineer": [
+    {
+      "title": "Troubleshooting a Simple Network Issue",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Networking Fundamentals",
+        "Troubleshooting"
+      ],
+      "hours_estimate": 12,
+      "tool": "Wireshark (free), VirtualBox (free)",
+      "how_to_share": "Post troubleshooting steps and solution on LinkedIn"
+    },
+    {
+      "title": "Creating a Knowledge Base for Common Issues",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Technical Writing",
+        "Troubleshooting",
+        "Documentation"
+      ],
+      "hours_estimate": 22,
+      "tool": "Confluence (free trial), Google Docs (free)",
+      "how_to_share": "Post knowledge base link on LinkedIn and share example articles"
+    }
+  ],
+  "L2 Support Engineer": [
+    {
+      "title": "Troubleshooting a Simple Network Issue",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network Fundamentals",
+        "Troubleshooting"
+      ],
+      "hours_estimate": 12,
+      "tool": "Wireshark (free)",
+      "how_to_share": "Post a step-by-step guide on a personal blog"
+    },
+    {
+      "title": "Creating a Knowledge Base for Common Issues",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Documentation",
+        "Problem-Solving"
+      ],
+      "hours_estimate": 25,
+      "tool": "Confluence (free trial)",
+      "how_to_share": "Share a link to the knowledge base on GitHub"
+    }
+  ],
+  "L3 Support Engineer": [
+    {
+      "title": "Analyzing System Logs for Error Detection",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Log Analysis",
+        "System Administration"
+      ],
+      "hours_estimate": 10,
+      "tool": "Splunk (free version)",
+      "how_to_share": "Post a video explanation on YouTube"
+    },
+    {
+      "title": "Designing a Disaster Recovery Plan",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Disaster Recovery",
+        "System Architecture"
+      ],
+      "hours_estimate": 28,
+      "tool": "Draw.io (free)",
+      "how_to_share": "Share a diagram on LinkedIn"
+    }
+  ],
+  "LLM Engineer": [
+    {
+      "title": "Fine-Tuning a Pre-Trained Language Model",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "NLP",
+        "Deep Learning"
+      ],
+      "hours_estimate": 15,
+      "tool": "Hugging Face Transformers (free)",
+      "how_to_share": "Share a notebook on GitHub"
+    },
+    {
+      "title": "Building a Chatbot using a Language Model",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Conversational AI",
+        "Software Development"
+      ],
+      "hours_estimate": 22,
+      "tool": "Rasa (free)",
+      "how_to_share": "Deploy the chatbot on a personal website"
+    }
+  ],
+  "Linux Administrator": [
+    {
+      "title": "Setting up a Home Server",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Linux installation",
+        "Network configuration",
+        "Basic security"
+      ],
+      "hours_estimate": 12,
+      "tool": "Ubuntu (free)",
+      "how_to_share": "Post a blog on Medium about the setup process"
+    },
+    {
+      "title": "Automating System Tasks",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Bash scripting",
+        "Cron jobs",
+        "System monitoring"
+      ],
+      "hours_estimate": 25,
+      "tool": "Ubuntu (free)",
+      "how_to_share": "Share a GitHub repository with scripts and documentation"
+    }
+  ],
+  "MLOps Engineer": [
+    {
+      "title": "Deploying a Simple Model",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Model deployment",
+        "API integration",
+        "Basic testing"
+      ],
+      "hours_estimate": 10,
+      "tool": "Streamlit (free)",
+      "how_to_share": "Share a Streamlit app on GitHub"
+    },
+    {
+      "title": "Building a CI/CD Pipeline",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Pipeline automation",
+        "Model training",
+        "Containerization"
+      ],
+      "hours_estimate": 28,
+      "tool": "GitHub Actions (free)",
+      "how_to_share": "Share a GitHub repository with pipeline configuration"
+    }
+  ],
+  "Machine Learning Engineer": [
+    {
+      "title": "Image Classification",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data preprocessing",
+        "Model training",
+        "Basic evaluation"
+      ],
+      "hours_estimate": 15,
+      "tool": "Google Colab (free)",
+      "how_to_share": "Share a Google Colab notebook on GitHub"
+    },
+    {
+      "title": "Natural Language Processing",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Text preprocessing",
+        "Model fine-tuning",
+        "Advanced evaluation"
+      ],
+      "hours_estimate": 22,
+      "tool": "Hugging Face Transformers (free)",
+      "how_to_share": "Share a GitHub repository with model code and results"
+    }
+  ],
+  "Manual Tester": [
+    {
+      "title": "Test Case Development for E-commerce Website",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Test Case Writing",
+        "Test Scenario Identification"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Sheets (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Automated Testing of Web Application using Selenium",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Selenium WebDriver",
+        "Java Programming",
+        "Test Automation"
+      ],
+      "hours_estimate": 25,
+      "tool": "Selenium WebDriver (free)",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    }
+  ],
+  "Metaverse Developer": [
+    {
+      "title": "Simple 3D Scene Creation using Blender",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "3D Modeling",
+        "Blender"
+      ],
+      "hours_estimate": 10,
+      "tool": "Blender (free)",
+      "how_to_share": "Share render on ArtStation"
+    },
+    {
+      "title": "Interactive 3D Experience Development using A-Frame",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "A-Frame",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "hours_estimate": 28,
+      "tool": "A-Frame (free)",
+      "how_to_share": "Share GitHub Pages link on LinkedIn"
+    }
+  ],
+  "Microservices Architect": [
+    {
+      "title": "Designing a Simple Microservices Architecture for E-commerce",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Microservices Architecture",
+        "System Design"
+      ],
+      "hours_estimate": 15,
+      "tool": "Draw.io (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Building a Microservices-based System using Docker and Kubernetes",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Docker",
+        "Kubernetes",
+        "Microservices Deployment"
+      ],
+      "hours_estimate": 22,
+      "tool": "Docker (free), Kubernetes (free)",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    }
+  ],
+  "Microsoft Dynamics Consultant": [
+    {
+      "title": "Dynamics 365 CRM Implementation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Dynamics 365",
+        "CRM"
+      ],
+      "hours_estimate": 12,
+      "tool": "Dynamics 365 Trial (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Customization and Configuration of Dynamics 365",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Dynamics 365",
+        "Customization",
+        "Configuration"
+      ],
+      "hours_estimate": 25,
+      "tool": "Dynamics 365 Trial (free)",
+      "how_to_share": "Share GitHub repository"
+    }
+  ],
+  "Mixed Signal Engineer": [
+    {
+      "title": "Analog to Digital Converter Design",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Analog Design",
+        "Digital Design"
+      ],
+      "hours_estimate": 10,
+      "tool": "SPICE Simulator (free)",
+      "how_to_share": "Post circuit diagram on GitHub"
+    },
+    {
+      "title": "Mixed Signal PCB Design and Simulation",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "PCB Design",
+        "Mixed Signal Simulation"
+      ],
+      "hours_estimate": 28,
+      "tool": "KiCad (free)",
+      "how_to_share": "Share YouTube video explaining the design"
+    }
+  ],
+  "Mobile App Developer": [
+    {
+      "title": "To-Do List App Development",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Java",
+        "Android Studio"
+      ],
+      "hours_estimate": 15,
+      "tool": "Android Studio (free)",
+      "how_to_share": "Share APK file on GitHub"
+    },
+    {
+      "title": "Weather Forecast App Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Java",
+        "API Integration",
+        "UI/UX"
+      ],
+      "hours_estimate": 22,
+      "tool": "Android Studio (free)",
+      "how_to_share": "Publish on Google Play Store"
+    }
+  ],
+  "Mobile App Tester": [
+    {
+      "title": "Test Case Development for a Simple Mobile App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Test case development",
+        "Mobile app testing"
+      ],
+      "hours_estimate": 12,
+      "tool": "TestRail (free trial)",
+      "how_to_share": "Post test case document on GitHub"
+    },
+    {
+      "title": "Automated Testing of a Mobile App using Appium",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Automated testing",
+        "Appium",
+        "Java"
+      ],
+      "hours_estimate": 25,
+      "tool": "Appium (free)",
+      "how_to_share": "Share test automation code on GitHub"
+    }
+  ],
+  "Motion Graphics Designer": [
+    {
+      "title": "2D Animation using OpenToonz",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "2D animation",
+        "Storyboarding"
+      ],
+      "hours_estimate": 10,
+      "tool": "OpenToonz (free)",
+      "how_to_share": "Share animation video on Vimeo"
+    },
+    {
+      "title": "3D Motion Graphics using Blender",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "3D modeling",
+        "Texturing",
+        "Lighting"
+      ],
+      "hours_estimate": 28,
+      "tool": "Blender (free)",
+      "how_to_share": "Share 3D model and animation on Sketchfab"
+    }
+  ],
+  "NLP Engineer": [
+    {
+      "title": "Text Classification using NLTK and Python",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Text preprocessing",
+        "Classification"
+      ],
+      "hours_estimate": 15,
+      "tool": "Python (free) with NLTK library",
+      "how_to_share": "Share code and results on Kaggle"
+    },
+    {
+      "title": "Chatbot Development using Rasa and Python",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Intent recognition",
+        "Entity extraction",
+        "Dialogue management"
+      ],
+      "hours_estimate": 22,
+      "tool": "Rasa (free)",
+      "how_to_share": "Share chatbot code and demo on GitHub"
+    }
+  ],
+  "Network Administrator": [
+    {
+      "title": "Setting up a Home Network",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network Configuration",
+        "Router Setup"
+      ],
+      "hours_estimate": 12,
+      "tool": "Cisco Netacad (free)",
+      "how_to_share": "Post a screenshot of the network diagram on LinkedIn"
+    },
+    {
+      "title": "Network Monitoring using Nagios",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Network Monitoring",
+        "Nagios Configuration"
+      ],
+      "hours_estimate": 25,
+      "tool": "Nagios Core (free)",
+      "how_to_share": "Share a video explaining the setup process on YouTube"
+    }
+  ],
+  "Network Engineer": [
+    {
+      "title": "Designing a Simple Network Topology",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network Design",
+        "Topology Planning"
+      ],
+      "hours_estimate": 10,
+      "tool": "Draw.io (free)",
+      "how_to_share": "Share the network diagram on GitHub"
+    },
+    {
+      "title": "Configuring a VPN using OpenVPN",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "VPN Configuration",
+        "OpenVPN Setup"
+      ],
+      "hours_estimate": 28,
+      "tool": "OpenVPN (free)",
+      "how_to_share": "Write a blog post explaining the setup process on Medium"
+    }
+  ],
+  "Network Security Engineer": [
+    {
+      "title": "Setting up a Firewall using iptables",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Firewall Configuration",
+        "iptables Setup"
+      ],
+      "hours_estimate": 15,
+      "tool": "Ubuntu (free)",
+      "how_to_share": "Share a screenshot of the firewall rules on Twitter"
+    },
+    {
+      "title": "Conducting a Vulnerability Scan using Nmap",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Vulnerability Scanning",
+        "Nmap Setup"
+      ],
+      "hours_estimate": 22,
+      "tool": "Nmap (free)",
+      "how_to_share": "Create a report and share it on GitHub"
+    }
+  ],
+  "Node.js Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "JavaScript",
+        "Node.js",
+        "Express"
+      ],
+      "hours_estimate": 12,
+      "tool": "Node.js (free)",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    },
+    {
+      "title": "Personal Website with Backend",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "JavaScript",
+        "Node.js",
+        "Express",
+        "MongoDB"
+      ],
+      "hours_estimate": 25,
+      "tool": "Node.js, MongoDB (free)",
+      "how_to_share": "Deploy on Heroku and share link on LinkedIn"
+    }
+  ],
+  "Oracle Consultant": [
+    {
+      "title": "HR Database Design",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Database Design",
+        "Oracle SQL"
+      ],
+      "hours_estimate": 10,
+      "tool": "Oracle SQL Developer (free)",
+      "how_to_share": "Post ER diagram on LinkedIn"
+    },
+    {
+      "title": "Sales Dashboard Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Oracle SQL",
+        "Oracle BI",
+        "Data Visualization"
+      ],
+      "hours_estimate": 28,
+      "tool": "Oracle SQL Developer, Oracle BI (free trial)",
+      "how_to_share": "Share dashboard screenshot on LinkedIn"
+    }
+  ],
+  "Oracle DBA": [
+    {
+      "title": "Database Installation and Configuration",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Oracle Database Installation",
+        "Configuration"
+      ],
+      "hours_estimate": 12,
+      "tool": "Oracle Database (free trial)",
+      "how_to_share": "Post installation steps on LinkedIn"
+    },
+    {
+      "title": "Database Performance Tuning",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Oracle Database Performance Tuning",
+        "Query Optimization"
+      ],
+      "hours_estimate": 22,
+      "tool": "Oracle Database (free trial), Oracle Enterprise Manager",
+      "how_to_share": "Share performance metrics before and after tuning on LinkedIn"
+    }
+  ],
+  "PCB Design Engineer": [
+    {
+      "title": "Simple LED Circuit Design",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Schematic Capture",
+        "PCB Layout"
+      ],
+      "hours_estimate": 12,
+      "tool": "KiCad (free)",
+      "how_to_share": "Share PCB design files on GitHub"
+    },
+    {
+      "title": "IoT Sensor Board Design",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Microcontroller Integration",
+        "Signal Integrity Analysis"
+      ],
+      "hours_estimate": 25,
+      "tool": "KiCad (free) and SPICE simulator",
+      "how_to_share": "Write a blog post with design files and simulation results"
+    }
+  ],
+  "PHP Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "PHP Basics",
+        "MySQL Database"
+      ],
+      "hours_estimate": 10,
+      "tool": "XAMPP (free) and PHPStorm",
+      "how_to_share": "Deploy on 000webhost and share link on LinkedIn"
+    },
+    {
+      "title": "Blog with User Authentication",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Object-Oriented Programming",
+        "Security Best Practices"
+      ],
+      "hours_estimate": 28,
+      "tool": "Laravel (free) and MySQL",
+      "how_to_share": "Create a GitHub repository and write a README with usage instructions"
+    }
+  ],
+  "Penetration Tester": [
+    {
+      "title": "Vulnerability Scan using Nmap",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network Scanning",
+        "Vulnerability Identification"
+      ],
+      "hours_estimate": 12,
+      "tool": "Nmap (free) and Kali Linux",
+      "how_to_share": "Write a report with scan results and share on Medium"
+    },
+    {
+      "title": "Web Application Penetration Testing",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "SQL Injection",
+        "Cross-Site Scripting (XSS)"
+      ],
+      "hours_estimate": 22,
+      "tool": "Burp Suite (free) and OWASP ZAP",
+      "how_to_share": "Create a video walkthrough and share on YouTube"
+    }
+  ],
+  "Performance Test Engineer": [
+    {
+      "title": "Load Testing of a Simple Web Application",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "JMeter",
+        "Load Testing"
+      ],
+      "hours_estimate": 12,
+      "tool": "Apache JMeter (free)",
+      "how_to_share": "Post screenshot of test results on LinkedIn"
+    },
+    {
+      "title": "Performance Testing of a Real-World Application",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Gatling",
+        "Performance Testing",
+        "Data Analysis"
+      ],
+      "hours_estimate": 25,
+      "tool": "Gatling (free)",
+      "how_to_share": "Share a detailed report on GitHub"
+    }
+  ],
+  "Physical Design Engineer": [
+    {
+      "title": "Design of a Simple Digital Circuit",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "VHDL",
+        "Digital Circuit Design"
+      ],
+      "hours_estimate": 10,
+      "tool": "Logisim (free)",
+      "how_to_share": "Post screenshot of circuit design on LinkedIn"
+    },
+    {
+      "title": "Design and Simulation of a Complex Digital System",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "VHDL",
+        "Verilog",
+        "Digital System Design",
+        "Simulation"
+      ],
+      "hours_estimate": 28,
+      "tool": "ModelSim (free version)",
+      "how_to_share": "Share a detailed design document on GitHub"
+    }
+  ],
+  "Platform Engineer": [
+    {
+      "title": "Deployment of a Simple Web Application on Cloud",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "AWS",
+        "Cloud Computing",
+        "DevOps"
+      ],
+      "hours_estimate": 15,
+      "tool": "AWS Free Tier (free)",
+      "how_to_share": "Post screenshot of deployment on LinkedIn"
+    },
+    {
+      "title": "Design and Deployment of a Scalable Cloud-Based System",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Kubernetes",
+        "Docker",
+        "Cloud Computing",
+        "DevOps"
+      ],
+      "hours_estimate": 22,
+      "tool": "Minikube (free)",
+      "how_to_share": "Share a detailed architecture document on GitHub"
+    }
+  ],
+  "Power BI Developer": [
+    {
+      "title": "Sales Dashboard",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data Visualization",
+        "Dashboard Creation"
+      ],
+      "hours_estimate": 12,
+      "tool": "Power BI Desktop (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Regional Sales Analysis",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Data Modeling",
+        "DAX Formulas",
+        "Data Visualization"
+      ],
+      "hours_estimate": 25,
+      "tool": "Power BI Desktop (free)",
+      "how_to_share": "Share interactive dashboard on Tableau Public"
+    }
+  ],
+  "Principal Engineer": [
+    {
+      "title": "Personal Website",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "hours_estimate": 10,
+      "tool": "Visual Studio Code (free)",
+      "how_to_share": "Host on GitHub Pages"
+    },
+    {
+      "title": "To-Do List App",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "React",
+        "Node.js",
+        "MongoDB"
+      ],
+      "hours_estimate": 28,
+      "tool": "Visual Studio Code (free)",
+      "how_to_share": "Deploy on Heroku"
+    }
+  ],
+  "Product Designer": [
+    {
+      "title": "Mobile App Redesign",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "User Experience",
+        "User Interface"
+      ],
+      "hours_estimate": 15,
+      "tool": "Figma (free)",
+      "how_to_share": "Post design on Dribbble"
+    },
+    {
+      "title": "E-commerce Website Design",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Wireframing",
+        "Prototyping",
+        "Design Systems"
+      ],
+      "hours_estimate": 22,
+      "tool": "Figma (free)",
+      "how_to_share": "Create interactive prototype and share on Behance"
+    }
+  ],
+  "Python Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Python",
+        "Data Structures"
+      ],
+      "hours_estimate": 12,
+      "tool": "PyCharm Community Edition (free)",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    },
+    {
+      "title": "Web Scraper",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Python",
+        "Web Scraping",
+        "Beautiful Soup"
+      ],
+      "hours_estimate": 25,
+      "tool": "PyCharm Community Edition (free), BeautifulSoup (free)",
+      "how_to_share": "Share GitHub repository link and a blog post on Medium"
+    }
+  ],
+  "QA Engineer": [
+    {
+      "title": "Test Cases for E-commerce Website",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Test Case Writing",
+        "Manual Testing"
+      ],
+      "hours_estimate": 10,
+      "tool": "Google Sheets (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Automation Testing using Selenium",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Selenium",
+        "Automation Testing",
+        "Java"
+      ],
+      "hours_estimate": 28,
+      "tool": "Eclipse (free), Selenium (free)",
+      "how_to_share": "Share GitHub repository link and a video on YouTube"
+    }
+  ],
+  "QA Lead": [
+    {
+      "title": "Test Plan for Mobile App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Test Planning",
+        "Risk Management"
+      ],
+      "hours_estimate": 12,
+      "tool": "Microsoft Word (free trial)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Defect Tracking and Reporting",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Defect Tracking",
+        "Reporting",
+        "JIRA"
+      ],
+      "hours_estimate": 22,
+      "tool": "JIRA (free trial), Excel (free)",
+      "how_to_share": "Share a report on LinkedIn and a presentation on SlideShare"
+    }
+  ],
+  "QA Manager": [
+    {
+      "title": "Test Case Documentation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Test Planning",
+        "Test Case Writing"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Sheets (free)",
+      "how_to_share": "Share Google Sheets link on LinkedIn"
+    },
+    {
+      "title": "Automated Testing using Selenium",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Automation Testing",
+        "Selenium WebDriver"
+      ],
+      "hours_estimate": 25,
+      "tool": "Selenium IDE (free)",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    }
+  ],
+  "Quantum Computing Researcher": [
+    {
+      "title": "Simulating Quantum Circuits using Qiskit",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Quantum Computing Basics",
+        "Qiskit"
+      ],
+      "hours_estimate": 10,
+      "tool": "Qiskit (free)",
+      "how_to_share": "Share Jupyter Notebook on GitHub"
+    },
+    {
+      "title": "Quantum Machine Learning using Pennylane",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Quantum Machine Learning",
+        "Pennylane"
+      ],
+      "hours_estimate": 28,
+      "tool": "Pennylane (free)",
+      "how_to_share": "Share research paper on arXiv"
+    }
+  ],
+  "REST API Developer": [
+    {
+      "title": "Building a Simple REST API using Flask",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "REST API Design",
+        "Flask"
+      ],
+      "hours_estimate": 15,
+      "tool": "Flask (free)",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    },
+    {
+      "title": "Developing a REST API using Node.js and Express",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "REST API Development",
+        "Node.js",
+        "Express"
+      ],
+      "hours_estimate": 22,
+      "tool": "Node.js and Express (free)",
+      "how_to_share": "Share API documentation on Postman"
+    }
+  ],
+  "RTL Design Engineer": [
+    {
+      "title": "Digital Clock Design",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Verilog",
+        "Digital Logic"
+      ],
+      "hours_estimate": 12,
+      "tool": "EDA Playground (free)",
+      "how_to_share": "Share link on GitHub"
+    },
+    {
+      "title": "32-bit ALU Design",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Verilog",
+        "Digital Logic",
+        "SystemVerilog"
+      ],
+      "hours_estimate": 25,
+      "tool": "Vivado (free version)",
+      "how_to_share": "Post design schematic on LinkedIn"
+    }
+  ],
+  "React Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "JavaScript",
+        "React",
+        "HTML/CSS"
+      ],
+      "hours_estimate": 10,
+      "tool": "CodeSandbox (free)",
+      "how_to_share": "Share link on GitHub"
+    },
+    {
+      "title": "Weather Forecast App",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "JavaScript",
+        "React",
+        "API Integration",
+        "State Management"
+      ],
+      "hours_estimate": 28,
+      "tool": "Create React App (free)",
+      "how_to_share": "Deploy on Vercel and share link on LinkedIn"
+    }
+  ],
+  "React Native Developer": [
+    {
+      "title": "Simple Chat App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "JavaScript",
+        "React Native",
+        "UI/UX"
+      ],
+      "hours_estimate": 15,
+      "tool": "Expo (free)",
+      "how_to_share": "Share APK on GitHub"
+    },
+    {
+      "title": "E-commerce App",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "JavaScript",
+        "React Native",
+        "API Integration",
+        "State Management",
+        "Navigation"
+      ],
+      "hours_estimate": 22,
+      "tool": "React Native CLI (free)",
+      "how_to_share": "Deploy on App Store/Play Store and share link on LinkedIn"
+    }
+  ],
+  "Robotics Engineer": [
+    {
+      "title": "Line Follower Robot",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Microcontrollers",
+        "Sensors",
+        "Programming"
+      ],
+      "hours_estimate": 12,
+      "tool": "Arduino IDE (free)",
+      "how_to_share": "Post a video on YouTube"
+    },
+    {
+      "title": "Autonomous Navigation System",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Computer Vision",
+        "Machine Learning",
+        "Python"
+      ],
+      "hours_estimate": 25,
+      "tool": "Python with OpenCV (free)",
+      "how_to_share": "Share a GitHub repository"
+    }
+  ],
+  "Robotics Software Engineer": [
+    {
+      "title": "Robot Arm Simulator",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Python",
+        "Robotics Libraries"
+      ],
+      "hours_estimate": 10,
+      "tool": "Python with Pygame (free)",
+      "how_to_share": "Post a GIF on Twitter"
+    },
+    {
+      "title": "SLAM Algorithm Implementation",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "C++",
+        "Computer Vision",
+        "SLAM"
+      ],
+      "hours_estimate": 28,
+      "tool": "C++ with OpenCV (free)",
+      "how_to_share": "Write a blog post on Medium"
+    }
+  ],
+  "Ruby on Rails Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Ruby",
+        "Rails",
+        "Database"
+      ],
+      "hours_estimate": 15,
+      "tool": "Ruby on Rails (free)",
+      "how_to_share": "Deploy on Heroku (free)"
+    },
+    {
+      "title": "Blog with User Authentication",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Ruby",
+        "Rails",
+        "Authentication"
+      ],
+      "hours_estimate": 22,
+      "tool": "Ruby on Rails (free)",
+      "how_to_share": "Share a GitHub repository"
+    }
+  ],
+  "SAP Consultant": [
+    {
+      "title": "SAP System Configuration Documentation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "SAP Navigation",
+        "Documentation"
+      ],
+      "hours_estimate": 12,
+      "tool": "SAP Trial Version (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "SAP Implementation Case Study",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "SAP Implementation",
+        "Analysis",
+        "Reporting"
+      ],
+      "hours_estimate": 25,
+      "tool": "SAP Trial Version (free) and Google Docs (free)",
+      "how_to_share": "Share Google Doc link on LinkedIn"
+    }
+  ],
+  "SAP FICO Consultant": [
+    {
+      "title": "Financial Statement Analysis using SAP",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Financial Analysis",
+        "SAP FI"
+      ],
+      "hours_estimate": 10,
+      "tool": "SAP Trial Version (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "SAP FICO Configuration and Testing",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "SAP FICO Configuration",
+        "Testing",
+        "Troubleshooting"
+      ],
+      "hours_estimate": 28,
+      "tool": "SAP Trial Version (free)",
+      "how_to_share": "Share video demonstration on YouTube"
+    }
+  ],
+  "SAP HCM Consultant": [
+    {
+      "title": "Employee Data Management using SAP HCM",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "SAP HCM",
+        "Data Management"
+      ],
+      "hours_estimate": 15,
+      "tool": "SAP Trial Version (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "SAP HCM Configuration and Integration",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "SAP HCM Configuration",
+        "Integration",
+        "Testing"
+      ],
+      "hours_estimate": 22,
+      "tool": "SAP Trial Version (free)",
+      "how_to_share": "Share presentation on SlideShare"
+    }
+  ],
+  "SAP MM Consultant": [
+    {
+      "title": "Material Master Data Management",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data Management",
+        "SAP MM"
+      ],
+      "hours_estimate": 12,
+      "tool": "SAP MM Sandbox (free trial)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Procurement Process Automation",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "SAP MM",
+        "Automation",
+        "Process Improvement"
+      ],
+      "hours_estimate": 25,
+      "tool": "SAP MM Sandbox (free trial) and Excel",
+      "how_to_share": "Share a video on YouTube"
+    }
+  ],
+  "SAP SD Consultant": [
+    {
+      "title": "Sales Order Processing",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "SAP SD",
+        "Sales Order Management"
+      ],
+      "hours_estimate": 10,
+      "tool": "SAP SD Sandbox (free trial)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Pricing and Discount Management",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "SAP SD",
+        "Pricing",
+        "Discount Management"
+      ],
+      "hours_estimate": 28,
+      "tool": "SAP SD Sandbox (free trial) and Excel",
+      "how_to_share": "Share a blog on Medium"
+    }
+  ],
+  "SDET": [
+    {
+      "title": "Automated Testing for Web Application",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Automation Testing",
+        "Selenium"
+      ],
+      "hours_estimate": 15,
+      "tool": "Selenium IDE (free)",
+      "how_to_share": "Post code on GitHub"
+    },
+    {
+      "title": "API Testing and Integration",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "API Testing",
+        "Postman",
+        "Integration"
+      ],
+      "hours_estimate": 22,
+      "tool": "Postman (free) and API Sandbox",
+      "how_to_share": "Share a video on YouTube"
+    }
+  ],
+  "Salesforce Consultant": [
+    {
+      "title": "Salesforce Org Setup and Configuration",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Salesforce Basics",
+        "Org Setup"
+      ],
+      "hours_estimate": 12,
+      "tool": "Salesforce Developer Edition (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Salesforce Dashboard Creation for Sales Team",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Salesforce Reporting",
+        "Dashboard Creation"
+      ],
+      "hours_estimate": 25,
+      "tool": "Salesforce Developer Edition (free)",
+      "how_to_share": "Share public link on GitHub"
+    }
+  ],
+  "Salesforce Developer": [
+    {
+      "title": "Apex Trigger and Class Creation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Apex Programming",
+        "Trigger Creation"
+      ],
+      "hours_estimate": 10,
+      "tool": "Salesforce Developer Edition (free) and Visual Studio Code (free)",
+      "how_to_share": "Share code on GitHub"
+    },
+    {
+      "title": "Salesforce Lightning Component Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Lightning Component",
+        "Aura Framework"
+      ],
+      "hours_estimate": 28,
+      "tool": "Salesforce Developer Edition (free) and Visual Studio Code (free)",
+      "how_to_share": "Share public link on GitHub"
+    }
+  ],
+  "Scala Developer": [
+    {
+      "title": "Scala Basics and Data Structures Implementation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Scala Basics",
+        "Data Structures"
+      ],
+      "hours_estimate": 15,
+      "tool": "IntelliJ IDEA Community Edition (free)",
+      "how_to_share": "Share code on GitHub"
+    },
+    {
+      "title": "Scala and Apache Spark Integration for Data Processing",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Scala and Spark Integration",
+        "Data Processing"
+      ],
+      "hours_estimate": 22,
+      "tool": "IntelliJ IDEA Community Edition (free) and Apache Spark (free)",
+      "how_to_share": "Share public link on GitHub"
+    }
+  ],
+  "Scrum Master": [
+    {
+      "title": "Personal Project Management",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Agile",
+        "Project Planning"
+      ],
+      "hours_estimate": 12,
+      "tool": "Trello (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Team Collaboration Tool Setup",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Collaboration",
+        "Communication",
+        "Jira"
+      ],
+      "hours_estimate": 25,
+      "tool": "Jira (free trial)",
+      "how_to_share": "Share a video walkthrough on YouTube"
+    }
+  ],
+  "Security Architect": [
+    {
+      "title": "Home Network Security Audit",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network Security",
+        "Risk Assessment"
+      ],
+      "hours_estimate": 10,
+      "tool": "Nmap (free)",
+      "how_to_share": "Write a blog post on Medium"
+    },
+    {
+      "title": "Cloud Security Design",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Cloud Security",
+        "Compliance",
+        "Architecture"
+      ],
+      "hours_estimate": 28,
+      "tool": "AWS Free Tier",
+      "how_to_share": "Create a presentation on SlideShare"
+    }
+  ],
+  "Security Engineer": [
+    {
+      "title": "Vulnerability Scan using OpenVAS",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Vulnerability Assessment",
+        "Penetration Testing"
+      ],
+      "hours_estimate": 15,
+      "tool": "OpenVAS (free)",
+      "how_to_share": "Post a report on GitHub"
+    },
+    {
+      "title": "Incident Response Plan Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Incident Response",
+        "Threat Analysis",
+        "Communication"
+      ],
+      "hours_estimate": 22,
+      "tool": "Microsoft Word (free trial)",
+      "how_to_share": "Share a document on Google Drive"
+    }
+  ],
+  "ServiceNow Administrator": [
+    {
+      "title": "Incident Management Process Implementation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "ITSM",
+        "ServiceNow Basics"
+      ],
+      "hours_estimate": 12,
+      "tool": "ServiceNow Personal Developer Instance (free)",
+      "how_to_share": "Post a video walkthrough on YouTube"
+    },
+    {
+      "title": "Customized Service Portal with Incident Management",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Service Portal",
+        "JavaScript",
+        "HTML/CSS"
+      ],
+      "hours_estimate": 25,
+      "tool": "ServiceNow Personal Developer Instance (free)",
+      "how_to_share": "Share a GitHub repository with code and documentation"
+    }
+  ],
+  "ServiceNow Architect": [
+    {
+      "title": "Designing a CMDB for a Small Enterprise",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "CMDB",
+        "Data Modeling"
+      ],
+      "hours_estimate": 10,
+      "tool": "ServiceNow Personal Developer Instance (free)",
+      "how_to_share": "Create a blog post with design diagrams and explanations"
+    },
+    {
+      "title": "Integration of ServiceNow with External Systems using APIs",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "API Integration",
+        "RESTful APIs",
+        "JavaScript"
+      ],
+      "hours_estimate": 28,
+      "tool": "ServiceNow Personal Developer Instance (free) and Postman (free)",
+      "how_to_share": "Create a video tutorial on integrating ServiceNow with an external system"
+    }
+  ],
+  "ServiceNow Developer": [
+    {
+      "title": "Building a Custom ServiceNow Application",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "ServiceNow Development",
+        "JavaScript",
+        "HTML/CSS"
+      ],
+      "hours_estimate": 15,
+      "tool": "ServiceNow Personal Developer Instance (free)",
+      "how_to_share": "Share a GitHub repository with code and documentation"
+    },
+    {
+      "title": "Automating Business Processes using ServiceNow Workflows",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Workflows",
+        "Business Rules",
+        "JavaScript"
+      ],
+      "hours_estimate": 22,
+      "tool": "ServiceNow Personal Developer Instance (free)",
+      "how_to_share": "Create a step-by-step guide with screenshots and explanations"
+    }
+  ],
+  "Snowflake Data Engineer": [
+    {
+      "title": "Loading Sample Data into Snowflake",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data Loading",
+        "Snowflake Basics"
+      ],
+      "hours_estimate": 12,
+      "tool": "Snowflake Free Trial",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Building a Data Warehouse with Snowflake",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Data Warehousing",
+        "SQL",
+        "Snowflake"
+      ],
+      "hours_estimate": 25,
+      "tool": "Snowflake Free Trial",
+      "how_to_share": "Share a GitHub repository with code and documentation"
+    }
+  ],
+  "Software Architect": [
+    {
+      "title": "Designing a Simple E-commerce System",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "System Design",
+        "UML"
+      ],
+      "hours_estimate": 10,
+      "tool": "Draw.io (free)",
+      "how_to_share": "Post a diagram on LinkedIn"
+    },
+    {
+      "title": "Microservices Architecture for a Real-World Application",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Microservices",
+        "System Design",
+        "Containerization"
+      ],
+      "hours_estimate": 28,
+      "tool": "Draw.io (free) and Docker (free)",
+      "how_to_share": "Share a GitHub repository with design documents and code"
+    }
+  ],
+  "Software Developer": [
+    {
+      "title": "To-Do List App with Frontend and Backend",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "JavaScript",
+        "HTML/CSS",
+        "Backend Basics"
+      ],
+      "hours_estimate": 15,
+      "tool": "CodePen (free) and Node.js (free)",
+      "how_to_share": "Share a CodePen link"
+    },
+    {
+      "title": "Building a RESTful API with Node.js and MongoDB",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Node.js",
+        "MongoDB",
+        "RESTful API"
+      ],
+      "hours_estimate": 22,
+      "tool": "Node.js (free) and MongoDB (free)",
+      "how_to_share": "Share a GitHub repository with code and API documentation"
+    }
+  ],
+  "Space Tech Software Engineer": [
+    {
+      "title": "Satellite Orbit Simulation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Python",
+        "Mathematics",
+        "Problem Solving"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Colab (free)",
+      "how_to_share": "Share link to Colab notebook on GitHub"
+    },
+    {
+      "title": "Space Mission Design and Optimization",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Python",
+        "Data Analysis",
+        "Machine Learning"
+      ],
+      "hours_estimate": 25,
+      "tool": "Jupyter Notebook (free)",
+      "how_to_share": "Post project report on LinkedIn and share code on GitHub"
+    }
+  ],
+  "Spark Engineer": [
+    {
+      "title": "Data Processing with Spark",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Java",
+        "Scala",
+        "Big Data"
+      ],
+      "hours_estimate": 10,
+      "tool": "Apache Spark (free)",
+      "how_to_share": "Share code on GitHub and explain on LinkedIn"
+    },
+    {
+      "title": "Real-time Data Analytics with Spark Streaming",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Java",
+        "Scala",
+        "Data Streaming"
+      ],
+      "hours_estimate": 28,
+      "tool": "Apache Spark (free) and IntelliJ IDEA (free community edition)",
+      "how_to_share": "Create a video explaining the project and share on YouTube"
+    }
+  ],
+  "Staff Engineer": [
+    {
+      "title": "Technical Debt Analysis and Reduction",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Code Review",
+        "Refactoring",
+        "Communication"
+      ],
+      "hours_estimate": 15,
+      "tool": "GitHub (free) and Visual Studio Code (free)",
+      "how_to_share": "Write a blog post about the experience and share on Medium"
+    },
+    {
+      "title": "System Architecture Design and Implementation",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "System Design",
+        "Architecture",
+        "Leadership"
+      ],
+      "hours_estimate": 22,
+      "tool": "Draw.io (free) and Google Docs (free)",
+      "how_to_share": "Create a presentation and share on SlideShare"
+    }
+  ],
+  "Storage Engineer": [
+    {
+      "title": "Personal Cloud Storage Setup",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data Management",
+        "Cloud Storage"
+      ],
+      "hours_estimate": 12,
+      "tool": "Google Drive (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Disk Space Analyzer Tool",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Scripting",
+        "Data Analysis",
+        "Storage Optimization"
+      ],
+      "hours_estimate": 25,
+      "tool": "Python (free) with Matplotlib library",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    }
+  ],
+  "Swift Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Swift Programming",
+        "UI/UX Design"
+      ],
+      "hours_estimate": 15,
+      "tool": "Xcode (free)",
+      "how_to_share": "Post app screenshot on LinkedIn"
+    },
+    {
+      "title": "Weather Forecast App",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "API Integration",
+        "Data Parsing",
+        "Swift Programming"
+      ],
+      "hours_estimate": 28,
+      "tool": "Xcode (free) with OpenWeatherMap API",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    }
+  ],
+  "Systems Administrator": [
+    {
+      "title": "Home Network Setup",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network Configuration",
+        "Security Basics"
+      ],
+      "hours_estimate": 10,
+      "tool": "Router Configuration Interface (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Automated Backup Script",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Scripting",
+        "Data Backup",
+        "Cron Job Scheduling"
+      ],
+      "hours_estimate": 22,
+      "tool": "Bash Scripting (free) with Crontab",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    }
+  ],
+  "Technical Lead": [
+    {
+      "title": "Personal Project Management",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Project Planning",
+        "Gantt Charts"
+      ],
+      "hours_estimate": 12,
+      "tool": "Trello (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Team Collaboration Tool Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "API Integration",
+        "Front-end Development"
+      ],
+      "hours_estimate": 25,
+      "tool": "GitHub (free) and React (free)",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    }
+  ],
+  "Technical Program Manager": [
+    {
+      "title": "Agile Project Simulation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Agile Methodologies",
+        "Jira"
+      ],
+      "hours_estimate": 10,
+      "tool": "Jira (free trial)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Technical Debt Management",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Technical Debt Analysis",
+        "Prioritization"
+      ],
+      "hours_estimate": 28,
+      "tool": "Google Sheets (free) and Asana (free)",
+      "how_to_share": "Share Google Sheets link on LinkedIn"
+    }
+  ],
+  "Technical Support Engineer": [
+    {
+      "title": "Troubleshooting Guide Creation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Troubleshooting",
+        "Documentation"
+      ],
+      "hours_estimate": 15,
+      "tool": "Google Docs (free)",
+      "how_to_share": "Share Google Docs link on LinkedIn"
+    },
+    {
+      "title": "Automated Ticketing System Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Automation",
+        "Python"
+      ],
+      "hours_estimate": 22,
+      "tool": "Python (free) and GitHub (free)",
+      "how_to_share": "Share GitHub repository link on LinkedIn"
+    }
+  ],
+  "Threat Intelligence Analyst": [
+    {
+      "title": "Malware Analysis Report",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Data Analysis",
+        "Research",
+        "Reporting"
+      ],
+      "hours_estimate": 12,
+      "tool": "Microsoft Excel (free)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Threat Intelligence Dashboard",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Data Visualization",
+        "Dashboard Creation",
+        "Threat Analysis"
+      ],
+      "hours_estimate": 25,
+      "tool": "Tableau Public (free)",
+      "how_to_share": "Share link on GitHub"
+    }
+  ],
+  "UI Designer": [
+    {
+      "title": "Personal Website Design",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Wireframing",
+        "Prototyping",
+        "Design Principles"
+      ],
+      "hours_estimate": 10,
+      "tool": "Figma (free)",
+      "how_to_share": "Share link on Behance"
+    },
+    {
+      "title": "Mobile App Redesign",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "User Experience",
+        "User Interface",
+        "Design Systems"
+      ],
+      "hours_estimate": 28,
+      "tool": "Adobe XD (free)",
+      "how_to_share": "Share link on Dribbble"
+    }
+  ],
+  "UI Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "hours_estimate": 15,
+      "tool": "Visual Studio Code (free)",
+      "how_to_share": "Share link on GitHub"
+    },
+    {
+      "title": "Personal Website Development",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Responsive Design",
+        "Front-end Development",
+        "Version Control"
+      ],
+      "hours_estimate": 22,
+      "tool": "React (free)",
+      "how_to_share": "Share link on Netlify"
+    }
+  ],
+  "VLSI Design Engineer": [
+    {
+      "title": "Basic Digital Circuit Design",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Digital Logic",
+        "Circuit Design"
+      ],
+      "hours_estimate": 12,
+      "tool": "Logisim (free)",
+      "how_to_share": "Share design files on GitHub"
+    },
+    {
+      "title": "Implementation of a Simple Processor",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "VHDL",
+        "Digital System Design"
+      ],
+      "hours_estimate": 25,
+      "tool": "VHDL Simulator (free)",
+      "how_to_share": "Write a blog post with design explanation and simulation results"
+    }
+  ],
+  "VP Engineering": [
+    {
+      "title": "Project Management Dashboard",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Project Management",
+        "Data Analysis"
+      ],
+      "hours_estimate": 10,
+      "tool": "Google Sheets (free)",
+      "how_to_share": "Share dashboard on LinkedIn"
+    },
+    {
+      "title": "Technical Debt Analysis and Prioritization",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Technical Debt Management",
+        "Prioritization"
+      ],
+      "hours_estimate": 20,
+      "tool": "Jira (free trial)",
+      "how_to_share": "Create a presentation and share on SlideShare"
+    }
+  ],
+  "VR/AR Content Designer": [
+    {
+      "title": "Simple 3D Model Creation",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "3D Modeling",
+        "Texturing"
+      ],
+      "hours_estimate": 15,
+      "tool": "Blender (free)",
+      "how_to_share": "Share 3D model on Sketchfab"
+    },
+    {
+      "title": "Interactive VR Experience Design",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "VR Design",
+        "Interaction Design"
+      ],
+      "hours_estimate": 30,
+      "tool": "A-Frame (free)",
+      "how_to_share": "Host experience on GitHub Pages and share link"
+    }
+  ],
+  "Vue.js Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Vue.js",
+        "HTML",
+        "CSS"
+      ],
+      "hours_estimate": 12,
+      "tool": "Vue.js CLI (free)",
+      "how_to_share": "Host on GitHub Pages and share link"
+    },
+    {
+      "title": "Weather Forecast Dashboard",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Vue.js",
+        "API Integration",
+        "JavaScript"
+      ],
+      "hours_estimate": 25,
+      "tool": "Vue.js CLI (free) and OpenWeatherMap API (free)",
+      "how_to_share": "Host on Netlify and share link"
+    }
+  ],
+  "Vulnerability Assessment Analyst": [
+    {
+      "title": "Network Scanning using Nmap",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network Scanning",
+        "Nmap"
+      ],
+      "hours_estimate": 10,
+      "tool": "Nmap (free)",
+      "how_to_share": "Post screenshot of scan results on LinkedIn"
+    },
+    {
+      "title": "Vulnerability Assessment of a Web Application",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Vulnerability Assessment",
+        "OWASP ZAP"
+      ],
+      "hours_estimate": 28,
+      "tool": "OWASP ZAP (free)",
+      "how_to_share": "Create a report and share on GitHub"
+    }
+  ],
+  "Wearable App Developer": [
+    {
+      "title": "Step Counter App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Android Studio",
+        "Java"
+      ],
+      "hours_estimate": 15,
+      "tool": "Android Studio (free)",
+      "how_to_share": "Share APK file on GitHub"
+    },
+    {
+      "title": "Heart Rate Monitor App",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Android Studio",
+        "Java",
+        "Wearable API"
+      ],
+      "hours_estimate": 22,
+      "tool": "Android Studio (free) and Wear OS (free)",
+      "how_to_share": "Host on Google Play Store and share link"
+    }
+  ],
+  "Workday Developer": [
+    {
+      "title": "Employee Data Management System",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Workday Studio",
+        "XML"
+      ],
+      "hours_estimate": 12,
+      "tool": "Workday Studio (free trial)",
+      "how_to_share": "Post screenshot on LinkedIn"
+    },
+    {
+      "title": "Integrating Workday with External Systems",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Workday Integration",
+        "API"
+      ],
+      "hours_estimate": 25,
+      "tool": "Workday Integration Cloud (free trial)",
+      "how_to_share": "Share a video demo on YouTube"
+    }
+  ],
+  "Zero Trust Architect": [
+    {
+      "title": "Network Segmentation Project",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Network Security",
+        "Firewall Configuration"
+      ],
+      "hours_estimate": 10,
+      "tool": "Cisco Packet Tracer (free)",
+      "how_to_share": "Share a network diagram on GitHub"
+    },
+    {
+      "title": "Implementing Zero Trust Architecture",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "Zero Trust Principles",
+        "Identity and Access Management"
+      ],
+      "hours_estimate": 28,
+      "tool": "Google Cloud Security (free tier)",
+      "how_to_share": "Write a blog post on Medium"
+    }
+  ],
+  "iOS Developer": [
+    {
+      "title": "To-Do List App",
+      "level": "Beginner",
+      "skills_demonstrated": [
+        "Swift",
+        "UIKit"
+      ],
+      "hours_estimate": 15,
+      "tool": "Xcode (free)",
+      "how_to_share": "Share a GitHub repository"
+    },
+    {
+      "title": "Weather Forecast App",
+      "level": "Intermediate",
+      "skills_demonstrated": [
+        "API Integration",
+        "Core Data"
+      ],
+      "hours_estimate": 22,
+      "tool": "Xcode (free) and OpenWeatherMap API (free)",
+      "how_to_share": "Publish on the App Store"
+    }
+  ]
+}
