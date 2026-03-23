@@ -1,0 +1,5540 @@
+{
+  "Chief Executives": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Chief Sustainability Officers": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "General and Operations Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Legislators": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Advertising and Promotions Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Marketing Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Sales Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Public Relations Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Fundraising Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Administrative Services Managers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Facilities Managers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Security Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Computer and Information Systems Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Financial Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Treasurers and Controllers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Investment Fund Managers": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Industrial Production Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Quality Control Systems Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Geothermal Production Managers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Biofuels Production Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Biomass Power Plant Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Hydroelectric Production Managers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Purchasing Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Transportation, Storage, and Distribution Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Supply Chain Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Compensation and Benefits Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Human Resources Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Training and Development Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Farmers, Ranchers, and Other Agricultural Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Construction Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Education and Childcare Administrators, Preschool and Daycare": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Education Administrators, Kindergarten through Secondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Education Administrators, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Architectural and Engineering Managers": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Biofuels/Biodiesel Technology and Product Development Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Food Service Managers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Gambling Managers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Entertainment and Recreation Managers, Except Gambling": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Lodging Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Medical and Health Services Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Natural Sciences Managers": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Clinical Research Coordinators": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Water Resource Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Postmasters and Mail Superintendents": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Property, Real Estate, and Community Association Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Social and Community Service Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Emergency Management Directors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Funeral Home Managers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Fitness and Wellness Coordinators": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Spa Managers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Regulatory Affairs Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Compliance Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Loss Prevention Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Wind Energy Operations Managers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Wind Energy Development Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Brownfield Redevelopment Specialists and Site Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Agents and Business Managers of Artists, Performers, and Athletes": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Buyers and Purchasing Agents, Farm Products": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Wholesale and Retail Buyers, Except Farm Products": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Purchasing Agents, Except Wholesale, Retail, and Farm Products": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Claims Adjusters, Examiners, and Investigators": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Insurance Appraisers, Auto Damage": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Compliance Officers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Environmental Compliance Inspectors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Equal Opportunity Representatives and Officers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Government Property Inspectors and Investigators": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Coroners": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Regulatory Affairs Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Customs Brokers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Cost Estimators": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Human Resources Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Farm Labor Contractors": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Labor Relations Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Logisticians": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Logistics Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Logistics Analysts": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Project Management Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Management Analysts": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Meeting, Convention, and Event Planners": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Fundraisers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Compensation, Benefits, and Job Analysis Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Training and Development Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Market Research Analysts and Marketing Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Search Marketing Strategists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Business Continuity Planners": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Sustainability Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Online Merchants": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Security Management Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Accountants and Auditors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Appraisers of Personal and Business Property": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Appraisers and Assessors of Real Estate": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Budget Analysts": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Credit Analysts": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Financial and Investment Analysts": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Personal Financial Advisors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Insurance Underwriters": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Financial Risk Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Financial Examiners": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Credit Counselors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Loan Officers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Tax Examiners and Collectors, and Revenue Agents": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Tax Preparers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Financial Quantitative Analysts": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Fraud Examiners, Investigators and Analysts": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Computer Systems Analysts": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Health Informatics Specialists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Information Security Analysts": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Computer and Information Research Scientists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Computer Network Support Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Computer User Support Specialists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Computer Network Architects": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Telecommunications Engineering Specialists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Database Administrators": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Database Architects": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Data Warehousing Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Network and Computer Systems Administrators": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Computer Programmers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Software Developers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Software Quality Assurance Analysts and Testers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Web Developers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Web and Digital Interface Designers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Video Game Designers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Web Administrators": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Geographic Information Systems Technologists and Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Document Management Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Penetration Testers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Information Security Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Digital Forensics Analysts": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Blockchain Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Computer Systems Engineers/Architects": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Information Technology Project Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Actuaries": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Mathematicians": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Operations Research Analysts": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Statisticians": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Biostatisticians": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Data Scientists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Business Intelligence Analysts": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Clinical Data Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Bioinformatics Technicians": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Architects, Except Landscape and Naval": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Landscape Architects": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Cartographers and Photogrammetrists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Surveyors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Geodetic Surveyors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Aerospace Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Agricultural Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Bioengineers and Biomedical Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Chemical Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Civil Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Transportation Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Water/Wastewater Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Computer Hardware Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Electrical Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Electronics Engineers, Except Computer": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Radio Frequency Identification Device Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Environmental Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Health and Safety Engineers, Except Mining Safety Engineers and Inspectors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Fire-Prevention and Protection Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Industrial Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Human Factors Engineers and Ergonomists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Validation Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Manufacturing Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Marine Engineers and Naval Architects": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Materials Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Mechanical Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Fuel Cell Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Automotive Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Mining and Geological Engineers, Including Mining Safety Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Nuclear Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Petroleum Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Energy Engineers, Except Wind and Solar": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Mechatronics Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Microsystems Engineers": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Photonics Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Robotics Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Nanosystems Engineers": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Wind Energy Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Solar Energy Systems Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Architectural and Civil Drafters": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Electrical and Electronics Drafters": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Mechanical Drafters": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Aerospace Engineering and Operations Technologists and Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Civil Engineering Technologists and Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Electrical and Electronic Engineering Technologists and Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Electro-Mechanical and Mechatronics Technologists and Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Robotics Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Environmental Engineering Technologists and Technicians": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Industrial Engineering Technologists and Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Nanotechnology Engineering Technologists and Technicians": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Mechanical Engineering Technologists and Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Automotive Engineering Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Calibration Technologists and Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Non-Destructive Testing Specialists": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Photonics Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Surveying and Mapping Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Animal Scientists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Food Scientists and Technologists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Soil and Plant Scientists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Biochemists and Biophysicists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Microbiologists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Zoologists and Wildlife Biologists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Bioinformatics Scientists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Molecular and Cellular Biologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Geneticists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Biologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Conservation Scientists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Range Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Park Naturalists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Foresters": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Epidemiologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Medical Scientists, Except Epidemiologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Astronomers": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Physicists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Atmospheric and Space Scientists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Chemists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Materials Scientists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Environmental Scientists and Specialists, Including Health": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Climate Change Policy Analysts": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Environmental Restoration Planners": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Industrial Ecologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Geoscientists, Except Hydrologists and Geographers": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Hydrologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Remote Sensing Scientists and Technologists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Economists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Environmental Economists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Survey Researchers": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Industrial-Organizational Psychologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Clinical and Counseling Psychologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "School Psychologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Neuropsychologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Clinical Neuropsychologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Sociologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Urban and Regional Planners": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Anthropologists and Archeologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Geographers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Historians": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Political Scientists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Transportation Planners": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Agricultural Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Precision Agriculture Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Food Science Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Biological Technicians": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Chemical Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Environmental Science and Protection Technicians, Including Health": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Geological Technicians, Except Hydrologic Technicians": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Hydrologic Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Nuclear Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Nuclear Monitoring Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Social Science Research Assistants": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Forest and Conservation Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Forensic Science Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Quality Control Analysts": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Remote Sensing Technicians": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Occupational Health and Safety Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Occupational Health and Safety Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Substance Abuse and Behavioral Disorder Counselors": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Educational, Guidance, and Career Counselors and Advisors": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Marriage and Family Therapists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Mental Health Counselors": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Rehabilitation Counselors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Child, Family, and School Social Workers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Healthcare Social Workers": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Mental Health and Substance Abuse Social Workers": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Health Education Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Probation Officers and Correctional Treatment Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Social and Human Service Assistants": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Community Health Workers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Clergy": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Directors, Religious Activities and Education": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Lawyers": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Judicial Law Clerks": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Administrative Law Judges, Adjudicators, and Hearing Officers": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Arbitrators, Mediators, and Conciliators": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Judges, Magistrate Judges, and Magistrates": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Paralegals and Legal Assistants": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Title Examiners, Abstractors, and Searchers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Business Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Computer Science Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Mathematical Science Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Architecture Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Engineering Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Agricultural Sciences Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Biological Science Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Forestry and Conservation Science Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Atmospheric, Earth, Marine, and Space Sciences Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Chemistry Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Environmental Science Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Physics Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Anthropology and Archeology Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Area, Ethnic, and Cultural Studies Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Economics Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Geography Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Political Science Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Psychology Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Sociology Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Health Specialties Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Nursing Instructors and Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Education Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Library Science Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Criminal Justice and Law Enforcement Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Law Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Social Work Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Art, Drama, and Music Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Communications Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "English Language and Literature Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Foreign Language and Literature Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "History Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Philosophy and Religion Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Family and Consumer Sciences Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Recreation and Fitness Studies Teachers, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Career/Technical Education Teachers, Postsecondary": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Preschool Teachers, Except Special Education": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Kindergarten Teachers, Except Special Education": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Elementary School Teachers, Except Special Education": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Middle School Teachers, Except Special and Career/Technical Education": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Career/Technical Education Teachers, Middle School": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Secondary School Teachers, Except Special and Career/Technical Education": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Career/Technical Education Teachers, Secondary School": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Special Education Teachers, Preschool": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Special Education Teachers, Kindergarten": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Special Education Teachers, Elementary School": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Special Education Teachers, Middle School": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Special Education Teachers, Secondary School": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Adapted Physical Education Specialists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Adult Basic Education, Adult Secondary Education, and English as a Second Language Instructors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Self-Enrichment Teachers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Substitute Teachers, Short-Term": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Tutors": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Archivists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Curators": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Museum Technicians and Conservators": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Librarians and Media Collections Specialists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Library Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Farm and Home Management Educators": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Instructional Coordinators": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Teaching Assistants, Preschool, Elementary, Middle, and Secondary School, Except Special Education": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Teaching Assistants, Special Education": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Teaching Assistants, Postsecondary": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Art Directors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Craft Artists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Fine Artists, Including Painters, Sculptors, and Illustrators": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Special Effects Artists and Animators": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Commercial and Industrial Designers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Fashion Designers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Floral Designers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Graphic Designers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Interior Designers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Merchandise Displayers and Window Trimmers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Set and Exhibit Designers": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Actors": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Producers and Directors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Media Programming Directors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Talent Directors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Media Technical Directors/Managers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Athletes and Sports Competitors": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Coaches and Scouts": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Umpires, Referees, and Other Sports Officials": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Dancers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Choreographers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Music Directors and Composers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Musicians and Singers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Disc Jockeys, Except Radio": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Broadcast Announcers and Radio Disc Jockeys": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "News Analysts, Reporters, and Journalists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Public Relations Specialists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Editors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Technical Writers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Writers and Authors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Poets, Lyricists and Creative Writers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Interpreters and Translators": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Court Reporters and Simultaneous Captioners": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Audio and Video Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Broadcast Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Sound Engineering Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Lighting Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Photographers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Camera Operators, Television, Video, and Film": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Film and Video Editors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Chiropractors": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Dentists, General": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Oral and Maxillofacial Surgeons": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Orthodontists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Prosthodontists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Dietitians and Nutritionists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Optometrists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Pharmacists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Physician Assistants": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Anesthesiologist Assistants": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Podiatrists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Occupational Therapists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Low Vision Therapists, Orientation and Mobility Specialists, and Vision Rehabilitation Therapists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Physical Therapists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Radiation Therapists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Recreational Therapists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Respiratory Therapists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Speech-Language Pathologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Exercise Physiologists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Art Therapists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Music Therapists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Veterinarians": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Registered Nurses": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Acute Care Nurses": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Advanced Practice Psychiatric Nurses": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Critical Care Nurses": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Clinical Nurse Specialists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Nurse Anesthetists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Nurse Midwives": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Nurse Practitioners": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Audiologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Anesthesiologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Cardiologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Dermatologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Emergency Medicine Physicians": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Family Medicine Physicians": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "General Internal Medicine Physicians": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Neurologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Obstetricians and Gynecologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Pediatricians, General": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Physicians, Pathologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Psychiatrists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Radiologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Allergists and Immunologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Hospitalists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Urologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Physical Medicine and Rehabilitation Physicians": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Preventive Medicine Physicians": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Sports Medicine Physicians": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Ophthalmologists, Except Pediatric": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Orthopedic Surgeons, Except Pediatric": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Pediatric Surgeons": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Acupuncturists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Dental Hygienists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Naturopathic Physicians": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Orthoptists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Medical and Clinical Laboratory Technologists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Cytogenetic Technologists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Cytotechnologists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Histotechnologists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Medical and Clinical Laboratory Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Histology Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Cardiovascular Technologists and Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Diagnostic Medical Sonographers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Nuclear Medicine Technologists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Radiologic Technologists and Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Magnetic Resonance Imaging Technologists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Medical Dosimetrists": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Emergency Medical Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Paramedics": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Dietetic Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Pharmacy Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Psychiatric Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Surgical Technologists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Veterinary Technologists and Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Ophthalmic Medical Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Licensed Practical and Licensed Vocational Nurses": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Medical Records Specialists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Opticians, Dispensing": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Orthotists and Prosthetists": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Hearing Aid Specialists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Neurodiagnostic Technologists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Ophthalmic Medical Technologists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Patient Representatives": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Health Information Technologists and Medical Registrars": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Athletic Trainers": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Genetic Counselors": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Surgical Assistants": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Midwives": {
+    "job_zone": 5,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Home Health Aides": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Personal Care Aides": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Nursing Assistants": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Orderlies": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Psychiatric Aides": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Occupational Therapy Assistants": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Occupational Therapy Aides": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Physical Therapist Assistants": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Physical Therapist Aides": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Massage Therapists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Dental Assistants": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Medical Assistants": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Medical Equipment Preparers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Medical Transcriptionists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Pharmacy Aides": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Veterinary Assistants and Laboratory Animal Caretakers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Phlebotomists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Speech-Language Pathology Assistants": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Endoscopy Technicians": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "First-Line Supervisors of Correctional Officers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "First-Line Supervisors of Police and Detectives": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "First-Line Supervisors of Firefighting and Prevention Workers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "First-Line Supervisors of Security Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Firefighters": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Fire Inspectors and Investigators": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Forest Fire Inspectors and Prevention Specialists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Bailiffs": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Correctional Officers and Jailers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Detectives and Criminal Investigators": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Police Identification and Records Officers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Intelligence Analysts": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Fish and Game Wardens": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Parking Enforcement Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Police and Sheriff's Patrol Officers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Customs and Border Protection Officers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Transit and Railroad Police": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Animal Control Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Private Detectives and Investigators": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Gambling Surveillance Officers and Gambling Investigators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Security Guards": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Crossing Guards and Flaggers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Lifeguards, Ski Patrol, and Other Recreational Protective Service Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Transportation Security Screeners": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "School Bus Monitors": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Retail Loss Prevention Specialists": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Chefs and Head Cooks": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "First-Line Supervisors of Food Preparation and Serving Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Cooks, Fast Food": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Cooks, Institution and Cafeteria": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Cooks, Private Household": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Cooks, Restaurant": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Cooks, Short Order": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Food Preparation Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Bartenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Fast Food and Counter Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Baristas": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Waiters and Waitresses": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Food Servers, Nonrestaurant": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Dining Room and Cafeteria Attendants and Bartender Helpers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Dishwashers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Hosts and Hostesses, Restaurant, Lounge, and Coffee Shop": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "First-Line Supervisors of Housekeeping and Janitorial Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Janitors and Cleaners, Except Maids and Housekeeping Cleaners": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Maids and Housekeeping Cleaners": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Pest Control Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Landscaping and Groundskeeping Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Pesticide Handlers, Sprayers, and Applicators, Vegetation": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Tree Trimmers and Pruners": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "First-Line Supervisors of Gambling Services Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "First-Line Supervisors of Entertainment and Recreation Workers, Except Gambling Services": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "First-Line Supervisors of Personal Service Workers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Animal Trainers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Animal Caretakers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Gambling Dealers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Gambling and Sports Book Writers and Runners": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Motion Picture Projectionists": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Ushers, Lobby Attendants, and Ticket Takers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Amusement and Recreation Attendants": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Costume Attendants": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Locker Room, Coatroom, and Dressing Room Attendants": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Embalmers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Crematory Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Funeral Attendants": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Morticians, Undertakers, and Funeral Arrangers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Barbers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Hairdressers, Hairstylists, and Cosmetologists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Makeup Artists, Theatrical and Performance": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Manicurists and Pedicurists": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Shampooers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Skincare Specialists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Baggage Porters and Bellhops": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Concierges": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Tour Guides and Escorts": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Travel Guides": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Childcare Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Nannies": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Exercise Trainers and Group Fitness Instructors": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Recreation Workers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Residential Advisors": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "First-Line Supervisors of Retail Sales Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "First-Line Supervisors of Non-Retail Sales Workers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Cashiers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Gambling Change Persons and Booth Cashiers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Counter and Rental Clerks": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Parts Salespersons": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Retail Salespersons": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Advertising Sales Agents": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Insurance Sales Agents": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Securities, Commodities, and Financial Services Sales Agents": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Travel Agents": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Sales Representatives of Services, Except Advertising, Insurance, Financial Services, and Travel": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Solar Sales Representatives and Assessors": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Demonstrators and Product Promoters": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Models": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Real Estate Brokers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Real Estate Sales Agents": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Sales Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Telemarketers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Door-to-Door Sales Workers, News and Street Vendors, and Related Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "First-Line Supervisors of Office and Administrative Support Workers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Switchboard Operators, Including Answering Service": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Telephone Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Bill and Account Collectors": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Billing and Posting Clerks": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Bookkeeping, Accounting, and Auditing Clerks": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Gambling Cage Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Payroll and Timekeeping Clerks": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Procurement Clerks": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Tellers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Brokerage Clerks": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Correspondence Clerks": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Court, Municipal, and License Clerks": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Credit Authorizers, Checkers, and Clerks": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Customer Service Representatives": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Eligibility Interviewers, Government Programs": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "File Clerks": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Hotel, Motel, and Resort Desk Clerks": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Interviewers, Except Eligibility and Loan": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Library Assistants, Clerical": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Loan Interviewers and Clerks": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "New Accounts Clerks": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Order Clerks": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Human Resources Assistants, Except Payroll and Timekeeping": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Receptionists and Information Clerks": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Reservation and Transportation Ticket Agents and Travel Clerks": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Cargo and Freight Agents": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Freight Forwarders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Couriers and Messengers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Public Safety Telecommunicators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Dispatchers, Except Police, Fire, and Ambulance": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Meter Readers, Utilities": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Postal Service Clerks": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Postal Service Mail Carriers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Postal Service Mail Sorters, Processors, and Processing Machine Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Production, Planning, and Expediting Clerks": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Shipping, Receiving, and Inventory Clerks": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Weighers, Measurers, Checkers, and Samplers, Recordkeeping": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Executive Secretaries and Executive Administrative Assistants": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Legal Secretaries and Administrative Assistants": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Medical Secretaries and Administrative Assistants": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Secretaries and Administrative Assistants, Except Legal, Medical, and Executive": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Data Entry Keyers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Word Processors and Typists": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Desktop Publishers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Insurance Claims and Policy Processing Clerks": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Mail Clerks and Mail Machine Operators, Except Postal Service": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Office Clerks, General": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Office Machine Operators, Except Computer": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Proofreaders and Copy Markers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Statistical Assistants": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "First-Line Supervisors of Farming, Fishing, and Forestry Workers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Agricultural Inspectors": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Animal Breeders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Graders and Sorters, Agricultural Products": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Agricultural Equipment Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Farmworkers and Laborers, Crop, Nursery, and Greenhouse": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Farmworkers, Farm, Ranch, and Aquacultural Animals": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Fishing and Hunting Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Forest and Conservation Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Fallers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Logging Equipment Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Log Graders and Scalers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "First-Line Supervisors of Construction Trades and Extraction Workers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Solar Energy Installation Managers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Boilermakers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Brickmasons and Blockmasons": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Stonemasons": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Carpenters": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Carpet Installers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Floor Layers, Except Carpet, Wood, and Hard Tiles": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Floor Sanders and Finishers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Tile and Stone Setters": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Cement Masons and Concrete Finishers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Terrazzo Workers and Finishers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Construction Laborers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Paving, Surfacing, and Tamping Equipment Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Pile Driver Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Operating Engineers and Other Construction Equipment Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Drywall and Ceiling Tile Installers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Tapers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Electricians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Glaziers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Insulation Workers, Floor, Ceiling, and Wall": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Insulation Workers, Mechanical": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Painters, Construction and Maintenance": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Paperhangers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Pipelayers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Plumbers, Pipefitters, and Steamfitters": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Solar Thermal Installers and Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Plasterers and Stucco Masons": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Reinforcing Iron and Rebar Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Roofers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Sheet Metal Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Structural Iron and Steel Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Solar Photovoltaic Installers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Helpers--Carpenters": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Helpers--Electricians": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Helpers--Painters, Paperhangers, Plasterers, and Stucco Masons": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Helpers--Pipelayers, Plumbers, Pipefitters, and Steamfitters": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Helpers--Roofers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Construction and Building Inspectors": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Energy Auditors": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Elevator and Escalator Installers and Repairers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Fence Erectors": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Hazardous Materials Removal Workers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Highway Maintenance Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Rail-Track Laying and Maintenance Equipment Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Septic Tank Servicers and Sewer Pipe Cleaners": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Segmental Pavers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Weatherization Installers and Technicians": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Derrick Operators, Oil and Gas": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Rotary Drill Operators, Oil and Gas": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Service Unit Operators, Oil and Gas": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Excavating and Loading Machine and Dragline Operators, Surface Mining": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Earth Drillers, Except Oil and Gas": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Explosives Workers, Ordnance Handling Experts, and Blasters": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Continuous Mining Machine Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Roof Bolters, Mining": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Loading and Moving Machine Operators, Underground Mining": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Rock Splitters, Quarry": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Roustabouts, Oil and Gas": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Helpers--Extraction Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "First-Line Supervisors of Mechanics, Installers, and Repairers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Computer, Automated Teller, and Office Machine Repairers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Radio, Cellular, and Tower Equipment Installers and Repairers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Telecommunications Equipment Installers and Repairers, Except Line Installers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Avionics Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Electric Motor, Power Tool, and Related Repairers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Electrical and Electronics Installers and Repairers, Transportation Equipment": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Electrical and Electronics Repairers, Commercial and Industrial Equipment": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Electrical and Electronics Repairers, Powerhouse, Substation, and Relay": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Electronic Equipment Installers and Repairers, Motor Vehicles": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Audiovisual Equipment Installers and Repairers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Security and Fire Alarm Systems Installers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Aircraft Mechanics and Service Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Automotive Body and Related Repairers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Automotive Glass Installers and Repairers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Automotive Service Technicians and Mechanics": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Bus and Truck Mechanics and Diesel Engine Specialists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Farm Equipment Mechanics and Service Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Mobile Heavy Equipment Mechanics, Except Engines": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Rail Car Repairers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Motorboat Mechanics and Service Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Motorcycle Mechanics": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Outdoor Power Equipment and Other Small Engine Mechanics": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Bicycle Repairers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Recreational Vehicle Service Technicians": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Tire Repairers and Changers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Mechanical Door Repairers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Control and Valve Installers and Repairers, Except Mechanical Door": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Heating, Air Conditioning, and Refrigeration Mechanics and Installers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Home Appliance Repairers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Industrial Machinery Mechanics": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Maintenance Workers, Machinery": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Millwrights": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Refractory Materials Repairers, Except Brickmasons": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Electrical Power-Line Installers and Repairers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Telecommunications Line Installers and Repairers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Camera and Photographic Equipment Repairers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Medical Equipment Repairers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Musical Instrument Repairers and Tuners": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Watch and Clock Repairers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Maintenance and Repair Workers, General": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Wind Turbine Service Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Coin, Vending, and Amusement Machine Servicers and Repairers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Commercial Divers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Locksmiths and Safe Repairers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Manufactured Building and Mobile Home Installers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Riggers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Signal and Track Switch Repairers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Helpers--Installation, Maintenance, and Repair Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Geothermal Technicians": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "First-Line Supervisors of Production and Operating Workers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Aircraft Structure, Surfaces, Rigging, and Systems Assemblers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Coil Winders, Tapers, and Finishers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Electrical and Electronic Equipment Assemblers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Electromechanical Equipment Assemblers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Engine and Other Machine Assemblers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Structural Metal Fabricators and Fitters": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Fiberglass Laminators and Fabricators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Timing Device Assemblers and Adjusters": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Team Assemblers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Bakers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Butchers and Meat Cutters": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Meat, Poultry, and Fish Cutters and Trimmers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Slaughterers and Meat Packers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Food and Tobacco Roasting, Baking, and Drying Machine Operators and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Food Batchmakers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Food Cooking Machine Operators and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Extruding and Drawing Machine Setters, Operators, and Tenders, Metal and Plastic": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Forging Machine Setters, Operators, and Tenders, Metal and Plastic": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Rolling Machine Setters, Operators, and Tenders, Metal and Plastic": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Cutting, Punching, and Press Machine Setters, Operators, and Tenders, Metal and Plastic": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Drilling and Boring Machine Tool Setters, Operators, and Tenders, Metal and Plastic": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Grinding, Lapping, Polishing, and Buffing Machine Tool Setters, Operators, and Tenders, Metal and Plastic": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Lathe and Turning Machine Tool Setters, Operators, and Tenders, Metal and Plastic": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Milling and Planing Machine Setters, Operators, and Tenders, Metal and Plastic": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Machinists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Metal-Refining Furnace Operators and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Pourers and Casters, Metal": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Model Makers, Metal and Plastic": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Patternmakers, Metal and Plastic": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Foundry Mold and Coremakers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Molding, Coremaking, and Casting Machine Setters, Operators, and Tenders, Metal and Plastic": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Tool and Die Makers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Welders, Cutters, Solderers, and Brazers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Welding, Soldering, and Brazing Machine Setters, Operators, and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Heat Treating Equipment Setters, Operators, and Tenders, Metal and Plastic": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Layout Workers, Metal and Plastic": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Plating Machine Setters, Operators, and Tenders, Metal and Plastic": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Tool Grinders, Filers, and Sharpeners": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Prepress Technicians and Workers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Printing Press Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Print Binding and Finishing Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Laundry and Dry-Cleaning Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Pressers, Textile, Garment, and Related Materials": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Sewing Machine Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Shoe and Leather Workers and Repairers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Shoe Machine Operators and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Sewers, Hand": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Tailors, Dressmakers, and Custom Sewers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Textile Bleaching and Dyeing Machine Operators and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Textile Cutting Machine Setters, Operators, and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Textile Knitting and Weaving Machine Setters, Operators, and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Textile Winding, Twisting, and Drawing Out Machine Setters, Operators, and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Extruding and Forming Machine Setters, Operators, and Tenders, Synthetic and Glass Fibers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Fabric and Apparel Patternmakers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Upholsterers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Cabinetmakers and Bench Carpenters": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Furniture Finishers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Model Makers, Wood": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Patternmakers, Wood": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Sawing Machine Setters, Operators, and Tenders, Wood": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Woodworking Machine Setters, Operators, and Tenders, Except Sawing": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Nuclear Power Reactor Operators": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Power Distributors and Dispatchers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Power Plant Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Biomass Plant Technicians": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Hydroelectric Plant Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Stationary Engineers and Boiler Operators": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Water and Wastewater Treatment Plant and System Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Chemical Plant and System Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Gas Plant Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Petroleum Pump System Operators, Refinery Operators, and Gaugers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Biofuels Processing Technicians": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Chemical Equipment Operators and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Separating, Filtering, Clarifying, Precipitating, and Still Machine Setters, Operators, and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Crushing, Grinding, and Polishing Machine Setters, Operators, and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Grinding and Polishing Workers, Hand": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Mixing and Blending Machine Setters, Operators, and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Cutters and Trimmers, Hand": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Cutting and Slicing Machine Setters, Operators, and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Extruding, Forming, Pressing, and Compacting Machine Setters, Operators, and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Furnace, Kiln, Oven, Drier, and Kettle Operators and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Inspectors, Testers, Sorters, Samplers, and Weighers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Jewelers and Precious Stone and Metal Workers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Gem and Diamond Workers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Dental Laboratory Technicians": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Medical Appliance Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Ophthalmic Laboratory Technicians": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Packaging and Filling Machine Operators and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Painting, Coating, and Decorating Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Coating, Painting, and Spraying Machine Setters, Operators, and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Semiconductor Processing Technicians": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Photographic Process Workers and Processing Machine Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Computer Numerically Controlled Tool Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Computer Numerically Controlled Tool Programmers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Adhesive Bonding Machine Operators and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Cleaning, Washing, and Metal Pickling Equipment Operators and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Cooling and Freezing Equipment Operators and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Etchers and Engravers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Molders, Shapers, and Casters, Except Metal and Plastic": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Stone Cutters and Carvers, Manufacturing": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Glass Blowers, Molders, Benders, and Finishers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Potters, Manufacturing": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Paper Goods Machine Setters, Operators, and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Tire Builders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Helpers--Production Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Aircraft Cargo Handling Supervisors": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "First-Line Supervisors of Helpers, Laborers, and Material Movers, Hand": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Recycling Coordinators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "First-Line Supervisors of Material-Moving Machine and Vehicle Operators": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "First-Line Supervisors of Passenger Attendants": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Airline Pilots, Copilots, and Flight Engineers": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Commercial Pilots": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Air Traffic Controllers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Airfield Operations Specialists": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Flight Attendants": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Ambulance Drivers and Attendants, Except Emergency Medical Technicians": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Driver/Sales Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Heavy and Tractor-Trailer Truck Drivers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Light Truck Drivers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Bus Drivers, School": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Bus Drivers, Transit and Intercity": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Shuttle Drivers and Chauffeurs": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Taxi Drivers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Locomotive Engineers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Rail Yard Engineers, Dinkey Operators, and Hostlers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Railroad Brake, Signal, and Switch Operators and Locomotive Firers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Railroad Conductors and Yardmasters": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Subway and Streetcar Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Sailors and Marine Oilers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Captains, Mates, and Pilots of Water Vessels": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Motorboat Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Ship Engineers": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Bridge and Lock Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Parking Attendants": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Automotive and Watercraft Service Attendants": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Aircraft Service Attendants": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Traffic Technicians": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Transportation Inspectors": {
+    "job_zone": 4,
+    "education_required": "",
+    "employer_zone": "Green",
+    "skill_coverage_pct": 60
+  },
+  "Aviation Inspectors": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Transportation Vehicle, Equipment and Systems Inspectors, Except Aviation": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Passenger Attendants": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Conveyor Operators and Tenders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Crane and Tower Operators": {
+    "job_zone": 3,
+    "education_required": "",
+    "employer_zone": "Amber",
+    "skill_coverage_pct": 40
+  },
+  "Dredge Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Hoist and Winch Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Industrial Truck and Tractor Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Cleaners of Vehicles and Equipment": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Laborers and Freight, Stock, and Material Movers, Hand": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Recycling and Reclamation Workers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Machine Feeders and Offbearers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Packers and Packagers, Hand": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Stockers and Order Fillers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Gas Compressor and Gas Pumping Station Operators": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Pump Operators, Except Wellhead Pumpers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Wellhead Pumpers": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Refuse and Recyclable Material Collectors": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  },
+  "Tank Car, Truck, and Ship Loaders": {
+    "job_zone": 2,
+    "education_required": "",
+    "employer_zone": "Red",
+    "skill_coverage_pct": 20
+  }
+}

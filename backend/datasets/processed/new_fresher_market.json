@@ -1,0 +1,22 @@
+{
+  "AI/ML Engineer": {
+    "demand_level": "Low",
+    "salary_min_lpa": 3,
+    "salary_max_lpa": 8,
+    "ai_automation_risk": "Medium",
+    "emerging_roles": [
+      "Machine Learning",
+      "Python",
+      "SQL"
+    ],
+    "hiring_companies": [
+      "Startup",
+      "Capgemini",
+      "Accenture",
+      "Infosys",
+      "Deloitte"
+    ],
+    "locations": [],
+    "experience_level": "Fresher"
+  }
+}
