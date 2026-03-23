@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const S = {
   page:  { minHeight: '80vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-sans)', padding: '32px 16px', background: 'var(--bg-primary)' },
@@ -17,6 +18,8 @@ const S = {
 
 export default function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { login: authLogin, isAuthenticated } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -24,6 +27,15 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [focusEmail, setFocusEmail] = useState(false);
   const [focusPwd, setFocusPwd] = useState(false);
+
+  // Where to go after login (from ProtectedRoute redirect, or /dashboard)
+  const returnTo = location.state?.from || '/dashboard';
+
+  // If already logged in, redirect away
+  if (isAuthenticated) {
+    navigate(returnTo, { replace: true });
+    return null;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,20 +50,18 @@ export default function Login() {
       const data = await res.json();
 
       if (res.ok && data.token) {
-        localStorage.setItem('smaart_token', data.token);
-        localStorage.setItem('smaart_user', JSON.stringify(data.user || {}));
-        navigate('/dashboard');
+        authLogin(data.token, data.user || { email, role: 'STUDENT' });
+        navigate(returnTo, { replace: true });
       } else {
         setError(data.error || data.message || 'Invalid email or password.');
       }
     } catch {
-      /* Backend is not running — use demo mode.
-         Any valid email + password ≥ 6 chars bypasses to dashboard. */
+      /* Backend not running — demo mode */
       if (email && password.length >= 6) {
         setInfo('Backend not running — entering demo mode…');
-        localStorage.setItem('smaart_token', 'demo_token');
-        localStorage.setItem('smaart_user', JSON.stringify({ name: email.split('@')[0], role: 'STUDENT' }));
-        setTimeout(() => navigate('/dashboard'), 800);
+        const demoUser = { name: email.split('@')[0], email, role: 'STUDENT' };
+        authLogin('demo_token', demoUser);
+        setTimeout(() => navigate(returnTo, { replace: true }), 800);
       } else {
         setError('Backend not reachable. Enter any email and a password of 6+ characters to continue in demo mode.');
       }

@@ -91,13 +91,24 @@ app.post('/api/auth/login', async (req, res) => {
     const validPassword = await bcrypt.compare(password, user.passwordHash);
     if (!validPassword) return res.status(400).json({ error: 'Invalid credentials' });
     const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET || 'fallback_secret', { expiresIn: '24h' });
-    res.json({ message: 'Logged in successfully', token, user: { id: user.id, name: user.name, role: user.role } });
+    res.json({ message: 'Logged in successfully', token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
   } catch (err) {
     res.status(500).json({ error: 'Login failed', details: err.message });
   }
 });
 
-app.post('/api/admin/generate-role', async (req, res) => {
+// ── Session validation (used by AuthContext on page refresh) ──
+app.get('/api/me', authMiddleware, async (req, res) => {
+  try {
+    const user = await prisma.user.findUnique({ where: { id: req.user.id } });
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    res.json({ user: { id: user.id, name: user.name, email: user.email, role: user.role } });
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to fetch user', details: err.message });
+  }
+});
+
+app.post('/api/admin/generate-role', authMiddleware, async (req, res) => {
   const { roleTitle } = req.body;
   const prompt = `Generate a detailed career role profile for "${roleTitle}" in JSON format.`;
   try {
