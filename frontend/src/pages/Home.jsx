@@ -3,182 +3,178 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, Target, Zap, BarChart3, Award, Clock, Plus, X } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
+const S = {
+  wrap: { fontFamily: 'var(--font-sans)', padding: '32px 0' },
+  hero: { display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', marginBottom: 64 },
+  tag: { display: 'inline-flex', alignItems: 'center', gap: 6, padding: '4px 12px', borderRadius: 6, background: 'var(--bg-info)', color: 'var(--text-info)', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 20 },
+  h1: { fontSize: 40, fontWeight: 700, color: 'var(--text-primary)', margin: '0 0 16px', lineHeight: 1.2, letterSpacing: '-0.02em' },
+  sub: { fontSize: 14, color: 'var(--text-secondary)', maxWidth: 560, lineHeight: 1.7, margin: '0 auto 32px' },
+  btnRow: { display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' },
+  btnPrimary: { display: 'inline-flex', alignItems: 'center', gap: 6, padding: '10px 24px', borderRadius: 8, background: '#185FA5', color: '#fff', border: 'none', fontSize: 14, fontWeight: 500, cursor: 'pointer', textDecoration: 'none' },
+  btnGhost: { display: 'inline-flex', alignItems: 'center', gap: 6, padding: '10px 24px', borderRadius: 8, background: 'var(--bg-secondary)', color: 'var(--text-secondary)', border: '0.5px solid var(--border)', fontSize: 14, fontWeight: 500, cursor: 'pointer' },
+  mockWrap: { marginTop: 48, width: '100%', maxWidth: 800 },
+  mockOuter: { background: 'var(--bg-primary)', border: '0.5px solid var(--border)', borderRadius: 12, padding: 8, boxShadow: '0 4px 24px rgba(0,0,0,0.06)' },
+  mockBar: { height: 32, borderBottom: '0.5px solid var(--border)', borderRadius: '6px 6px 0 0', display: 'flex', alignItems: 'center', padding: '0 14px', gap: 6, background: 'var(--bg-secondary)' },
+  dot: { width: 10, height: 10, borderRadius: '50%', background: 'var(--border)' },
+  mockGrid: { padding: 16, display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10, background: 'var(--bg-primary)' },
+  mockCard: { height: 88, borderRadius: 8, background: 'var(--bg-secondary)', border: '0.5px solid var(--border)', padding: 14, display: 'flex', flexDirection: 'column', gap: 8 },
+  mockLine: { height: 8, borderRadius: 4, background: 'var(--border)' },
+  mockRow2: { display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 10, padding: '0 16px 16px' },
+  mockTall: { height: 160, borderRadius: 8, background: 'var(--bg-secondary)', border: '0.5px solid var(--border)', padding: 16, display: 'flex', flexDirection: 'column', gap: 10 },
+};
+
 const Home = () => {
-    const navigate = useNavigate();
-    const [showHistorySidebar, setShowHistorySidebar] = useState(false);
-    const [historyEntries, setHistoryEntries] = useState([]);
+  const navigate = useNavigate();
+  const [showHistory, setShowHistory] = useState(false);
+  const [historyEntries, setHistoryEntries] = useState([]);
 
-    useEffect(() => {
-        setHistoryEntries(JSON.parse(localStorage.getItem('careerHistory') || '[]'));
-    }, []);
+  useEffect(() => {
+    setHistoryEntries(JSON.parse(localStorage.getItem('careerHistory') || '[]'));
+  }, [showHistory]);
 
-    const loadHistoryEntry = (entry) => {
-        localStorage.setItem('careerMatch', JSON.stringify(entry.data));
-        navigate('/dashboard');
-    };
+  const loadEntry = (entry) => {
+    /* Store the full analysis data so Dashboard can find it without API call */
+    if (entry.data) {
+      localStorage.setItem('careerMatch', JSON.stringify(entry.data));
+      /* smaart_last_analysis is the key Dashboard falls back to */
+      localStorage.setItem('smaart_last_analysis', JSON.stringify(entry.data));
+    }
+    if (entry.analysisId) {
+      localStorage.setItem('smaart_analysis_id', String(entry.analysisId));
+    }
+    /* Store the role as interest hint */
+    if (entry.role) {
+      localStorage.setItem('smaart_interest', entry.role);
+    }
+    setShowHistory(false);
+    navigate('/dashboard');
+  };
 
-    const startNewEntry = () => {
-        localStorage.removeItem('latestFormData');
-        navigate('/onboarding');
-    };
-    return (
-        <div className="space-y-24 py-16">
-            <section className="relative flex flex-col items-center text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="max-w-3xl space-y-6"
-                >
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary font-bold text-[10px] tracking-widest uppercase mb-4">
-                        <Zap size={14} className="animate-pulse" />
-                        AI Intelligence Protocol
-                    </div>
+  return (
+    <div style={S.wrap}>
+      {/* Hero */}
+      <motion.section style={S.hero} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+        <div style={S.tag}><Zap size={12} /> AI Career Intelligence</div>
+        <h1 style={S.h1}>Architecting Your<br /><span style={{ color: 'var(--text-secondary)' }}>Future Career</span></h1>
+        <p style={S.sub}>Stop guessing your professional trajectory. SMAART analyses your academic profile, matches industry-verified roles, and gives you a clear roadmap to employment.</p>
 
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight outfit leading-tight text-text-primary capitalize">
-                        Architecting Your <br />
-                        <span className="text-text-secondary">Future Career</span>
-                    </h1>
-
-                    <p className="text-sm text-text-secondary max-w-2xl mx-auto leading-relaxed">
-                        Stop guessing your professional trajectory. SMAART uses high-fidelity intelligence to analyze your academic baseline, match industry-verified roles, and provide a clinical roadmap to employment.
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-                        <Link to="/onboarding" className="btn btn-primary h-10 px-6 font-semibold">
-                            Build Your Career Profile
-                            <ChevronRight size={16} />
-                        </Link>
-                        <button onClick={() => setShowHistorySidebar(true)} className="btn btn-outline h-10 px-6 font-semibold flex items-center gap-2 justify-center">
-                            <Clock size={16} /> View History
-                        </button>
-                    </div>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.2, duration: 0.6 }}
-                    className="mt-16 w-full max-w-4xl"
-                >
-                    <div className="glass-card p-2 shadow-sm relative">
-                        <div className="bg-background border border-surface-border rounded overflow-hidden shadow-inner">
-                            <div className="h-8 border-b border-surface-border flex items-center px-4 gap-2 bg-surface">
-                                <div className="w-2.5 h-2.5 rounded-full bg-surface-border"></div>
-                                <div className="w-2.5 h-2.5 rounded-full bg-surface-border"></div>
-                                <div className="w-2.5 h-2.5 rounded-full bg-surface-border"></div>
-                            </div>
-                            <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-4 bg-background">
-                                {[1, 2, 3].map(i => (
-                                    <div key={i} className="h-24 rounded bg-surface border border-surface-border p-4 flex flex-col gap-3">
-                                        <div className="w-6 h-6 rounded bg-surface-hover"></div>
-                                        <div className="w-full h-2 bg-surface-hover rounded"></div>
-                                    </div>
-                                ))}
-                                <div className="md:col-span-2 h-48 rounded bg-surface border border-surface-border p-6 space-y-4">
-                                    <div className="w-1/3 h-4 bg-surface-hover rounded"></div>
-                                    <div className="w-full h-16 bg-surface-hover rounded"></div>
-                                </div>
-                                <div className="h-48 rounded bg-surface border border-surface-border p-6 space-y-3">
-                                    <div className="w-1/2 h-4 bg-surface-hover rounded mb-4"></div>
-                                    {[1, 2, 3].map(i => <div key={i} className="h-6 bg-surface-hover rounded"></div>)}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-            </section>
-
-            <section className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                {[
-                    {
-                        icon: <Target className="text-primary" size={20} />,
-                        title: "Algorithmic Matching",
-                        desc: "Cross-references your academic genesis to find your optimal career vector."
-                    },
-                    {
-                        icon: <BarChart3 className="text-secondary" size={20} />,
-                        title: "Gap Synthesis",
-                        desc: "Pinpoints exactly which competencies are missing from your profile."
-                    },
-                    {
-                        icon: <Award className="text-accent" size={20} />,
-                        title: "Verified Identity",
-                        desc: "Consolidates your achievements into a recognized digital passport."
-                    }
-                ].map((feature, i) => (
-                    <motion.div
-                        key={i}
-                        whileHover={{ y: -2 }}
-                        className="glass-card p-6 flex flex-col items-start gap-4 hover:border-primary/30"
-                    >
-                        <div className="w-10 h-10 rounded border border-surface-border flex items-center justify-center bg-surface-hover">
-                            {feature.icon}
-                        </div>
-                        <div className="space-y-1">
-                            <h3 className="text-lg font-bold text-text-primary tracking-tight">{feature.title}</h3>
-                            <p className="text-text-secondary text-sm leading-relaxed">
-                                {feature.desc}
-                            </p>
-                        </div>
-                    </motion.div>
-                ))}
-            </section>
-
-            {/* History Sidebar */}
-            <AnimatePresence>
-                {showHistorySidebar && (
-                    <>
-                        <motion.div
-                            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                            className="fixed inset-0 z-[2000] bg-black/60 backdrop-blur-sm"
-                            onClick={() => setShowHistorySidebar(false)}
-                        />
-                        <motion.div
-                            initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                            className="fixed top-0 right-0 w-80 h-full bg-surface border-l border-surface-border shadow-2xl z-[2001] flex flex-col text-left"
-                        >
-                            <div className="p-5 border-b border-surface-border flex justify-between items-center bg-surface w-full">
-                                <h3 className="text-sm font-bold text-text-primary uppercase tracking-widest flex items-center gap-2">
-                                    <Clock size={16} className="text-primary" /> Analysis History
-                                </h3>
-                                <button onClick={() => setShowHistorySidebar(false)} className="text-text-secondary hover:text-text-primary p-1">
-                                    <X size={18} />
-                                </button>
-                            </div>
-                            <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-background">
-                                {historyEntries.length === 0 ? (
-                                    <p className="text-xs text-text-secondary text-center mt-10">No past analysis available.</p>
-                                ) : (
-                                    historyEntries.map((entry, i) => (
-                                        <div
-                                            key={entry.id}
-                                            onClick={() => loadHistoryEntry(entry)}
-                                            className="p-4 bg-surface border border-surface-border rounded-lg cursor-pointer hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/5 group"
-                                        >
-                                            <div className="flex justify-between items-start mb-2">
-                                                <span className="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded font-bold uppercase tracking-widest">Run 0{historyEntries.length - i}</span>
-                                                <span className="text-[10px] text-text-secondary font-medium">{new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-                                            </div>
-                                            <h4 className="text-xs font-bold text-text-primary mb-1 group-hover:text-primary transition-colors">{entry.role}</h4>
-                                            <p className="text-[10px] text-text-secondary uppercase tracking-widest">
-                                                {new Date(entry.timestamp).toLocaleDateString()}
-                                            </p>
-                                        </div>
-                                    ))
-                                )}
-                            </div>
-                            <div className="p-4 bg-surface border-t border-surface-border">
-                                <button onClick={startNewEntry} className="btn w-full btn-primary py-2.5 text-[10px] uppercase font-bold tracking-widest flex items-center justify-center gap-2">
-                                    <Plus size={14} /> Start New Vectors
-                                </button>
-                            </div>
-                        </motion.div>
-                    </>
-                )}
-            </AnimatePresence>
+        <div style={S.btnRow}>
+          <Link to="/onboarding" style={S.btnPrimary}>
+            Build Your Career Profile <ChevronRight size={15} />
+          </Link>
+          <button onClick={() => setShowHistory(true)} style={S.btnGhost}>
+            <Clock size={15} /> View History
+          </button>
         </div>
-    );
+
+        {/* Mock dashboard preview */}
+        <div style={S.mockWrap}>
+          <div style={S.mockOuter}>
+            <div style={S.mockBar}>
+              <div style={S.dot} /><div style={S.dot} /><div style={S.dot} />
+            </div>
+            <div style={S.mockGrid}>
+              {[1, 2, 3].map(i => (
+                <div key={i} style={S.mockCard}>
+                  <div style={{ ...S.mockLine, width: 32, height: 32, borderRadius: 6 }} />
+                  <div style={{ ...S.mockLine, width: '80%' }} />
+                  <div style={{ ...S.mockLine, width: '60%' }} />
+                </div>
+              ))}
+            </div>
+            <div style={S.mockRow2}>
+              <div style={S.mockTall}>
+                <div style={{ ...S.mockLine, width: '40%', height: 10 }} />
+                <div style={{ ...S.mockLine, width: '100%', height: 40, borderRadius: 6 }} />
+                <div style={{ ...S.mockLine, width: '70%' }} />
+              </div>
+              <div style={S.mockTall}>
+                <div style={{ ...S.mockLine, width: '60%', height: 10, marginBottom: 4 }} />
+                {[1, 2, 3, 4].map(i => <div key={i} style={{ ...S.mockLine, width: '100%', height: 14, borderRadius: 6 }} />)}
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Features */}
+      <section style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 16, maxWidth: 800, margin: '0 auto' }}>
+        {[
+          { icon: <Target size={18} color="var(--text-info)" />, title: 'Algorithmic Matching', desc: 'Cross-references your academic profile to find your optimal career direction.' },
+          { icon: <BarChart3 size={18} color="var(--text-info)" />, title: 'Gap Synthesis', desc: 'Pinpoints exactly which skills are missing from your profile with priority tiers.' },
+          { icon: <Award size={18} color="var(--text-info)" />, title: 'Verified Identity', desc: 'Consolidates your achievements into a recognised digital career passport.' },
+        ].map((f, i) => (
+          <motion.div key={i} whileHover={{ y: -2 }}
+            style={{ background: 'var(--bg-primary)', border: '0.5px solid var(--border)', borderRadius: 12, padding: 20, display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <div style={{ width: 36, height: 36, borderRadius: 8, background: 'var(--bg-info)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              {f.icon}
+            </div>
+            <div>
+              <p style={{ fontSize: 14, fontWeight: 600, margin: '0 0 4px', color: 'var(--text-primary)' }}>{f.title}</p>
+              <p style={{ fontSize: 12, color: 'var(--text-secondary)', margin: 0, lineHeight: 1.6 }}>{f.desc}</p>
+            </div>
+          </motion.div>
+        ))}
+      </section>
+
+      {/* History Sidebar */}
+      <AnimatePresence>
+        {showHistory && (
+          <>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              style={{ position: 'fixed', inset: 0, zIndex: 2000, background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)' }}
+              onClick={() => setShowHistory(false)} />
+
+            <motion.div initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 28, stiffness: 220 }}
+              style={{ position: 'fixed', top: 0, right: 0, width: 320, height: '100%', background: 'var(--bg-primary)', borderLeft: '0.5px solid var(--border)', zIndex: 2001, display: 'flex', flexDirection: 'column', fontFamily: 'var(--font-sans)' }}>
+
+              <div style={{ padding: '16px 20px', borderBottom: '0.5px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <Clock size={14} color="var(--text-info)" /> Analysis History
+                </span>
+                <button onClick={() => setShowHistory(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-secondary)', padding: 4 }}>
+                  <X size={16} />
+                </button>
+              </div>
+
+              <div style={{ flex: 1, overflowY: 'auto', padding: 16 }}>
+                {historyEntries.length === 0 ? (
+                  <div style={{ textAlign: 'center', marginTop: 48 }}>
+                    <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: '0 0 8px' }}>No past analyses yet.</p>
+                    <p style={{ fontSize: 12, color: 'var(--text-secondary)', margin: 0 }}>Complete onboarding to see your history here.</p>
+                  </div>
+                ) : historyEntries.map((entry, i) => (
+                  <div key={entry.id} onClick={() => loadEntry(entry)}
+                    style={{ padding: '14px 16px', background: 'var(--bg-secondary)', border: '0.5px solid var(--border)', borderRadius: 10, marginBottom: 10, cursor: 'pointer', transition: 'border-color 0.15s' }}
+                    onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--border-info)'}
+                    onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+                      <span style={{ fontSize: 10, fontWeight: 700, background: 'var(--bg-info)', color: 'var(--text-info)', padding: '2px 8px', borderRadius: 8, textTransform: 'uppercase' }}>
+                        RUN {String(historyEntries.length - i).padStart(2, '0')}
+                      </span>
+                      <span style={{ fontSize: 11, color: 'var(--text-secondary)' }}>
+                        {new Date(entry.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      </span>
+                    </div>
+                    <p style={{ fontSize: 13, fontWeight: 500, margin: '4px 0 2px', color: 'var(--text-primary)' }}>{entry.role || 'Career Analysis'}</p>
+                    <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: 0 }}>{new Date(entry.timestamp).toLocaleDateString()}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ padding: 16, borderTop: '0.5px solid var(--border)' }}>
+                <button onClick={() => { setShowHistory(false); navigate('/onboarding'); }}
+                  style={{ width: '100%', padding: '10px 0', border: 'none', borderRadius: 8, background: '#185FA5', color: '#fff', fontSize: 13, fontWeight: 500, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+                  <Plus size={14} /> Start New Analysis
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </div>
+  );
 };
 
 export default Home;

@@ -30,6 +30,19 @@ Thumbs.db
 coverage/
 .next/
 
+# Secrets / Session memory (contains API keys)
+SMAART_Session_Memory*.md
+**/backend/.env
+*.env.local
+*.env.*.local
+
+# Logs & temp
+backend/records/
+backend/output_zone.log
+backend/debug_headers.txt
+backend/inspect_output.txt
+backend/eslint_output.txt
+
 # Python
 venv/
 .venv/

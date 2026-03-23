@@ -1,445 +1,519 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { RadialBarChart, RadialBar, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import {
-    Target, TrendingUp, AlertCircle, CheckCircle2, XCircle,
-    Loader2, Star, Globe, Cpu, Layers, Sparkles
+  Target, TrendingUp, Cpu, BookOpen, Star,
+  CheckCircle2, XCircle, RefreshCw, Sparkles,
+  BarChart3, Globe, Layers, Loader2,
 } from 'lucide-react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const Dashboard = () => {
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-    const [data, setData] = useState(null);
-    const [activeTab, setActiveTab] = useState(1);
-    const [rating, setRating] = useState(0);
-    const [rated, setRated] = useState(false);
-
-    useEffect(() => {
-        const fetchAnalysis = async () => {
-            try {
-                const analysisId = localStorage.getItem('smaart_analysis_id');
-                if (analysisId) {
-                    const res = await fetch(`/api/dashboard/${analysisId}`);
-                    const result = await res.json();
-                    if (result.success && result.data) {
-                        setData(result.data.output_data || result.data.analysis || result.data);
-                        setLoading(false);
-                        return;
-                    }
-                }
-                // Fallback to offline
-                const fallback = localStorage.getItem('smaart_last_analysis');
-                if (fallback) {
-                    setData(JSON.parse(fallback));
-                    setLoading(false);
-                    return;
-                }
-                setError(true);
-                setLoading(false);
-            } catch (err) {
-                const fallback = localStorage.getItem('smaart_last_analysis');
-                if (fallback) {
-                    setData(JSON.parse(fallback));
-                    setLoading(false);
-                    return;
-                }
-                setError(true);
-                setLoading(false);
-            }
-        };
-        fetchAnalysis();
-    }, []);
-
-    const submitRating = async (stars) => {
-        setRating(stars);
-        const analysisId = localStorage.getItem('smaart_analysis_id') || (data && data.id) || 'unknown';
-        try {
-            await fetch('/api/feedback', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ analysisId, rating: stars })
-            });
-        } catch (err) {}
-        setRated(true);
-    };
-
-    if (loading) {
-        return (
-            <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4">
-                <Loader2 className="animate-spin text-primary" size={24} />
-                <p className="text-sm font-bold text-text-secondary tracking-widest uppercase">Fetching intelligence vectors...</p>
-            </div>
-        );
-    }
-
-    if (error || !data) {
-        return (
-            <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4">
-                <AlertCircle className="text-red-500" size={32} />
-                <p className="text-sm font-medium text-text-primary text-center">
-                    We could not load your analysis. Please complete the onboarding form again.
-                </p>
-            </div>
-        );
-    }
-
-    const preVerified = data.preVerified || {};
-    const dataFilesReady = preVerified.dataFilesReady === true;
-
-    // Optional student info
-    const studentName = data.input_user_data?.personalDetails?.name || data.personalDetails?.name || '';
-    const studentDegree = data.input_user_data?.education?.degreeGroup || data.education?.degreeGroup || '';
-
-    // Overlap logic
-    const calcOverlap = () => {
-        const pMissing = preVerified.primarySkillGap?.missing || [];
-        if (pMissing.length === 0) return 0;
-        // Naive mock overlap check just if we have some missing skills
-        // If secondary/tertiary missing exist, we'd check intersection. For now, simulate if we have > 3 missing
-        return pMissing.length > 2 ? 35 : 10;
-    };
-    const overlapPct = calcOverlap();
-    const showOverlapBanner = overlapPct > 30;
-
-    // AI Text variables
-    const aiText = data.analysis || data.combined_tab4?.combined_pathway_summary || (typeof data === 'string' ? data : JSON.stringify(data));
-    let futureScopeText = data.tab5?.future_scope || 'Analysis in progress — refresh in a moment.';
-
-    const renderTabs = () => {
-        const tabs = [
-            { id: 1, label: 'Hiring pattern', icon: <Target size={14} /> },
-            { id: 2, label: 'Market intelligence', icon: <Globe size={14} /> },
-            { id: 3, label: 'Skills & AI tools', icon: <Cpu size={14} /> },
-            { id: 4, label: 'Career path', icon: <Layers size={14} /> },
-            { id: 5, label: 'Future scope', icon: <TrendingUp size={14} /> }
-        ];
-        return (
-            <div className="flex overflow-x-auto gap-2 border-b border-surface-border pb-px mb-8">
-                {tabs.map(tab => (
-                    <button
-                        key={tab.id}
-                        onClick={() => setActiveTab(tab.id)}
-                        className={`flex items-center gap-2 px-4 py-3 text-xs font-semibold whitespace-nowrap transition-all border-b-2 -mb-px ${activeTab === tab.id ? 'border-primary text-primary bg-primary/5' : 'border-transparent text-text-secondary hover:text-text-primary hover:bg-surface-hover'}`}
-                    >
-                        {tab.icon} {tab.label}
-                    </button>
-                ))}
-            </div>
-        );
-    };
-
-    const renderZoneCard = (title, role, zoneData) => {
-        if (!dataFilesReady || !zoneData) {
-            return (
-                <div className="p-4 bg-gray-50 border border-gray-100 rounded-xl relative overflow-hidden flex flex-col items-center justify-center text-center h-full min-h-[120px]">
-                    <p className="text-[11px] text-gray-500 font-medium">Zone data is being prepared.<br/>Your career path in Tab 4 is already ready.</p>
-                </div>
-            );
-        }
-        const zone = zoneData.employer_zone || 'Amber';
-        const colors = {
-            Green: 'bg-green-50 text-green-700 border-green-200',
-            Amber: 'bg-amber-50 text-amber-700 border-amber-200',
-            Red: 'bg-red-50 text-red-700 border-red-200'
-        }[zone] || 'bg-gray-50 text-gray-700 border-gray-200';
-
-        const pct = zoneData.skill_coverage_pct || 0;
-
-        return (
-            <div className={`p-4 border rounded-xl flex flex-col gap-3 h-full min-h-[120px] ${colors}`}>
-                <div className="text-[10px] font-bold uppercase tracking-widest opacity-70">{title}</div>
-                <div className="flex justify-between items-start gap-2">
-                    <h4 className="text-sm font-bold leading-tight flex-1">{role || 'Target Role'}</h4>
-                    <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-white/50 border border-black/5 shadow-sm">
-                        {zone}
-                    </span>
-                </div>
-                <div className="mt-auto">
-                    <div className="flex justify-between items-center text-[10px] font-bold mb-1 opacity-80">
-                        <span>Skill Coverage</span>
-                        <span>{pct}%</span>
-                    </div>
-                    <div className="h-1.5 w-full bg-black/10 rounded-full overflow-hidden">
-                        <div className="h-full bg-current rounded-full" style={{ width: `${pct}%` }}></div>
-                    </div>
-                </div>
-            </div>
-        );
-    };
-
-    const renderTab1 = () => {
-        const primaryRole = data.input_user_data?.preferences?.primary?.jobRole || data.preferences?.primary?.jobRole || 'Target Role';
-        const coverageData = [{ name: 'Coverage', value: preVerified.primaryZone?.skill_coverage_pct || 0, fill: '#1D9E75' }];
-
-        return (
-            <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {renderZoneCard('Primary Preference', primaryRole, preVerified.primaryZone)}
-                    {renderZoneCard('Secondary Preference', data.input_user_data?.preferences?.secondary?.jobRole || data.preferences?.secondary?.jobRole, preVerified.secondaryZone)}
-                    {renderZoneCard('Tertiary Preference', data.input_user_data?.preferences?.tertiary?.jobRole || data.preferences?.tertiary?.jobRole, preVerified.tertiaryZone)}
-                </div>
-                {dataFilesReady && preVerified.primaryZone && (
-                    <div className="mt-4">
-                      <p className="text-xs text-text-secondary text-center mb-2">
-                        Skill coverage — {preVerified.primaryZone.skill_coverage_pct || 0}%
-                      </p>
-                      <ResponsiveContainer width="100%" height={140}>
-                        <RadialBarChart
-                          cx="50%" cy="50%"
-                          innerRadius="55%" outerRadius="80%"
-                          startAngle={90} endAngle={-270}
-                          data={[{ name: 'Coverage', value: preVerified.primaryZone.skill_coverage_pct || 0, fill: '#1D9E75' }]}
-                        >
-                          <RadialBar dataKey="value" cornerRadius={4} />
-                        </RadialBarChart>
-                      </ResponsiveContainer>
-                    </div>
-                )}
-            </div>
-        );
-    };
-
-    const renderTab2 = () => {
-        const pm = preVerified.primaryMarket;
-        if (!pm) {
-            return (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {[1, 2, 3].map(i => (
-                        <div key={i} className="p-6 bg-surface border border-surface-border rounded-xl text-center">
-                            <h4 className="text-xl font-bold text-text-secondary">—</h4>
-                            <p className="text-[10px] text-text-secondary uppercase tracking-widest mt-2">Market data being prepared</p>
-                        </div>
-                    ))}
-                </div>
-            );
-        }
-
-        const min = pm?.salary_min_lpa || 2;
-        const max = pm?.salary_max_lpa || 8;
-        const salaryData = [
-          { year: 'Year 0-1', lpa: min },
-          { year: 'Year 2-3', lpa: min + 1.5 },
-          { year: 'Year 4-5', lpa: max - 1 },
-          { year: 'Year 6+',  lpa: max }
-        ];
-
-        return (
-            <div className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="p-6 bg-surface border border-surface-border rounded-xl text-center">
-                        <h4 className="text-xl font-bold text-primary capitalize">{pm.demand_level || 'Unknown'}</h4>
-                        <p className="text-[10px] text-text-secondary uppercase tracking-widest mt-2">Demand Level</p>
-                    </div>
-                    <div className="p-6 bg-surface border border-surface-border rounded-xl text-center">
-                        <h4 className="text-xl font-bold text-emerald-500">{pm.salary_min_lpa}-{pm.salary_max_lpa} LPA</h4>
-                        <p className="text-[10px] text-text-secondary uppercase tracking-widest mt-2">Salary Range</p>
-                    </div>
-                    <div className="p-6 bg-surface border border-surface-border rounded-xl text-center">
-                        <h4 className="text-xl font-bold text-amber-500 capitalize">{pm.ai_automation_risk || 'Unknown'}</h4>
-                        <p className="text-[10px] text-text-secondary uppercase tracking-widest mt-2">AI Automation Risk</p>
-                    </div>
-                </div>
-                {pm && (
-                    <div className="bg-surface border border-surface-border p-4 rounded-xl">
-                      <p className="text-xs font-bold text-text-secondary uppercase tracking-widest mb-3">Salary trajectory</p>
-                      <ResponsiveContainer width="100%" height={140}>
-                        <BarChart
-                          data={[
-                            { year: 'Year 0-1', lpa: pm.salary_min_lpa || 2 },
-                            { year: 'Year 2-3', lpa: (pm.salary_min_lpa || 2) + 1.5 },
-                            { year: 'Year 4-5', lpa: (pm.salary_max_lpa || 8) - 1 },
-                            { year: 'Year 6+',  lpa: pm.salary_max_lpa || 8 }
-                          ]}
-                          margin={{ top: 4, right: 8, bottom: 4, left: 0 }}
-                        >
-                          <XAxis dataKey="year" tick={{ fontSize: 10 }} />
-                          <YAxis tick={{ fontSize: 10 }} unit="L" />
-                          <Tooltip formatter={(v) => v + ' LPA'} />
-                          <Bar dataKey="lpa" fill="#185FA5" radius={[4,4,0,0]} />
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </div>
-                )}
-                {pm.emerging_roles && pm.emerging_roles.length > 0 && (
-                    <div className="bg-surface border border-surface-border p-6 rounded-xl">
-                        <h5 className="text-sm font-bold text-text-primary mb-4 border-b border-surface-border pb-2">Emerging Sub-roles</h5>
-                        <ul className="list-disc pl-5 space-y-2 text-sm text-text-secondary">
-                            {pm.emerging_roles.map((r, i) => <li key={i}>{typeof r === 'string' ? r : (r.name || JSON.stringify(r))}</li>)}
-                        </ul>
-                    </div>
-                )}
-            </div>
-        );
-    };
-
-    const renderTab3 = () => {
-        const sg = preVerified.primarySkillGap;
-        if (!sg || !sg.dataReady) {
-            return (
-                <div className="p-8 bg-surface border border-surface-border rounded-xl text-center">
-                    <Loader2 className="animate-spin text-text-secondary mx-auto mb-4" size={24} />
-                    <p className="text-sm text-text-secondary">Skill analysis being prepared.<br/>Your career path in Tab 4 already covers your key skill gaps.</p>
-                </div>
-            );
-        }
-
-        return (
-            <div className="space-y-6">
-                {showOverlapBanner && (
-                    <div className="bg-blue-50 border border-blue-200 text-blue-800 p-4 rounded-xl flex items-start gap-3 text-sm font-medium">
-                        <AlertCircle className="shrink-0 mt-0.5 text-blue-600" size={16} />
-                        Your skill gaps overlap across multiple target roles — fixing these helps all 3 directions.
-                    </div>
-                )}
-                
-                <div className="bg-surface border border-surface-border p-6 rounded-xl">
-                    <div className="flex justify-between items-center text-xs font-bold mb-2">
-                        <span className="text-text-secondary uppercase tracking-widest">Target Role Coverage</span>
-                        <span className="text-primary">{sg.coveragePct || 0}%</span>
-                    </div>
-                    <div className="h-2 w-full bg-surface-hover rounded-full overflow-hidden">
-                        <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${sg.coveragePct || 0}%` }}></div>
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-emerald-50/50 border border-emerald-100 rounded-xl p-6">
-                        <h4 className="text-xs font-bold text-emerald-700 uppercase tracking-widest mb-4 flex items-center gap-2">
-                            <CheckCircle2 size={16} /> Skills you have
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                            {(sg.matched || []).map((s, i) => (
-                                <span key={i} className="px-3 py-1.5 bg-emerald-100 text-emerald-800 text-xs font-semibold rounded-lg border border-emerald-200">
-                                    {s}
-                                </span>
-                            ))}
-                            {(sg.matched || []).length === 0 && <span className="text-xs text-emerald-600/60 italic">None detected</span>}
-                        </div>
-                    </div>
-                    <div className="bg-red-50/50 border border-red-100 rounded-xl p-6">
-                        <h4 className="text-xs font-bold text-red-700 uppercase tracking-widest mb-4 flex items-center gap-2">
-                            <XCircle size={16} /> Skills you need
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                            {(sg.missing || []).map((s, i) => (
-                                <span key={i} className="px-3 py-1.5 bg-red-100 text-red-800 text-xs font-semibold rounded-lg border border-red-200">
-                                    {s}
-                                </span>
-                            ))}
-                            {(sg.missing || []).length === 0 && <span className="text-xs text-red-600/60 italic">None required</span>}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    };
-
-    const renderTab4 = () => {
-        const textToParse = typeof aiText === 'string' ? aiText : JSON.stringify(aiText);
-        // Simple regex to split by "Week " headers
-        const weeks = textToParse.split(/(?=Week\s*\d+:?)/i).filter(s => s.trim().length > 0);
-        
-        return (
-            <div className="space-y-6">
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 w-fit">
-                    <Sparkles className="text-primary" size={12} />
-                    <span className="text-[10px] font-bold text-primary uppercase tracking-widest">
-                        {dataFilesReady ? "AI-generated · verified against market data" : "AI-generated · market data sync in progress"}
-                    </span>
-                </div>
-                
-                <div className="space-y-4">
-                    {weeks.length === 1 && weeks[0].length < 200 && (
-                        <div className="p-6 bg-surface border border-surface-border rounded-xl shadow-sm">
-                            <p className="text-sm text-text-secondary whitespace-pre-wrap">{weeks[0]}</p>
-                        </div>
-                    )}
-                    {weeks.length > 0 && weeks.map((w, i) => {
-                        const wTitleMatch = w.match(/(Week\s*\d+[^:\n]*):?\s*\n?/i);
-                        const title = wTitleMatch ? wTitleMatch[1] : `Section ${i+1}`;
-                        const content = wTitleMatch ? w.replace(wTitleMatch[0], '').trim() : w.trim();
-                        return (
-                            <div key={i} className="bg-surface border border-surface-border p-6 rounded-xl hover:shadow-md hover:border-primary/30 transition-all">
-                                <h4 className="text-sm font-bold mb-3 text-primary">{title}</h4>
-                                <div className="text-sm text-text-secondary whitespace-pre-wrap leading-relaxed">
-                                    {content.replace(/\*\*/g, '')}
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
-        );
-    };
-
-    const renderTab5 = () => (
-        <div className="bg-surface border border-surface-border p-6 rounded-xl shadow-sm">
-            <h4 className="text-xs font-bold text-text-primary uppercase tracking-widest mb-4 flex items-center gap-2">
-                <Globe size={16} className="text-primary" /> Future Horizon
-            </h4>
-            <p className="text-sm text-text-secondary leading-relaxed whitespace-pre-wrap">
-                {futureScopeText}
-            </p>
-        </div>
-    );
-
-    return (
-        <div className="max-w-5xl mx-auto py-10 px-4 min-h-screen">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10 border-b border-surface-border pb-6">
-                <div>
-                    <h1 className="text-2xl font-black text-text-primary tracking-tight">Career Dashboard</h1>
-                    {(studentName || studentDegree) && (
-                        <p className="text-sm text-text-secondary mt-1 font-medium">
-                            {studentName} {studentName && studentDegree && '•'} {studentDegree}
-                        </p>
-                    )}
-                </div>
-            </div>
-
-            {renderTabs()}
-
-            <div className="min-h-[400px]">
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={activeTab}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
-                    >
-                        {activeTab === 1 && renderTab1()}
-                        {activeTab === 2 && renderTab2()}
-                        {activeTab === 3 && renderTab3()}
-                        {activeTab === 4 && renderTab4()}
-                        {activeTab === 5 && renderTab5()}
-                    </motion.div>
-                </AnimatePresence>
-            </div>
-
-            <div className="mt-16 pt-8 border-t border-surface-border flex flex-col items-center text-center">
-                <h6 className="text-xs font-bold text-text-secondary uppercase tracking-widest mb-4">How helpful was this analysis?</h6>
-                {rated ? (
-                    <div className="text-sm font-bold text-emerald-500 bg-emerald-50 px-4 py-2 rounded-lg border border-emerald-100 flex items-center gap-2 shadow-sm">
-                        <CheckCircle2 size={16} /> Thank you for your feedback!
-                    </div>
-                ) : (
-                    <div className="flex gap-2">
-                        {[1, 2, 3, 4, 5].map(star => (
-                            <button
-                                key={star}
-                                onClick={() => submitRating(star)}
-                                onMouseEnter={() => setRating(star)}
-                                onMouseLeave={() => setRating(0)}
-                                className={`transition-all hover:scale-110 ${rating >= star ? 'text-amber-400' : 'text-gray-300'}`}
-                            >
-                                <Star size={28} fill={rating >= star ? 'currentColor' : 'none'} />
-                            </button>
-                        ))}
-                    </div>
-                )}
-            </div>
-        </div>
-    );
+/* ── design tokens ──────────────────────────────────────────────────── */
+const C = {
+  card: { background:'var(--bg-primary)', border:'0.5px solid var(--border)', borderRadius:12, padding:'16px 20px', marginBottom:12 },
+  cardInfo: { background:'var(--bg-info)', border:'0.5px solid var(--border-info)', borderRadius:12, padding:'16px 20px', marginBottom:12 },
 };
 
-export default Dashboard;
+function Badge({ text, bg, fg }) {
+  return <span style={{ display:'inline-block', padding:'2px 8px', borderRadius:8, background:bg, color:fg, fontSize:11, fontWeight:500 }}>{text}</span>;
+}
+
+function Bar({ pct, color, width }) {
+  return (
+    <div style={{ height:6, background:'var(--border)', borderRadius:3, width:width||'100%', overflow:'hidden' }}>
+      <div style={{ height:'100%', width:`${Math.min(pct,100)}%`, background:color||'#1D9E75', borderRadius:3, transition:'width 0.8s ease' }} />
+    </div>
+  );
+}
+
+function SH({ title, sub, icon }) {
+  return (
+    <div style={{ margin:'20px 0 12px', display:'flex', alignItems:'center', gap:8 }}>
+      {icon && <span style={{ color:'var(--text-info)' }}>{icon}</span>}
+      <div>
+        <p style={{ fontSize:15, fontWeight:600, margin:0, color:'var(--text-primary)' }}>{title}</p>
+        {sub && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'1px 0 0' }}>{sub}</p>}
+      </div>
+    </div>
+  );
+}
+
+/* ── zone helpers ───────────────────────────────────────────────────── */
+const ZONE_STYLE = {
+  Green: { bg:'var(--bg-success)', fg:'var(--text-success)', dot:'🟢', border:'#1D9E75' },
+  Amber: { bg:'var(--bg-warning)', fg:'var(--text-warning)', dot:'🟡', border:'#BA7517' },
+  Red:   { bg:'var(--bg-danger)',  fg:'var(--text-danger)',  dot:'🔴', border:'#A32D2D' },
+};
+const zs = z => ZONE_STYLE[z] || ZONE_STYLE.Amber;
+
+/* ══════════════════════════════════════════════════════════════════════
+   MAIN
+══════════════════════════════════════════════════════════════════════ */
+export default function Dashboard() {
+  const navigate = useNavigate();
+  const [data, setData]         = useState(null);
+  const [loading, setLoading]   = useState(true);
+  const [regen, setRegen]       = useState(false);
+  const [activeTab, setActiveTab] = useState('Hiring Pattern');
+  const [rating, setRating]     = useState(0);
+  const [hovered, setHovered]   = useState(0);
+  const [rated, setRated]       = useState(false);
+  const [redAck, setRedAck]     = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const id = localStorage.getItem('smaart_analysis_id');
+        if (id) {
+          const res = await fetch(`/api/dashboard/${id}`);
+          const j = await res.json();
+          if (j.success && j.data) { setData(j.data.output_data || j.data.analysis || j.data); setLoading(false); return; }
+        }
+        const fb = localStorage.getItem('smaart_last_analysis');
+        if (fb) { setData(JSON.parse(fb)); setLoading(false); return; }
+        setLoading(false);
+      } catch {
+        const fb = localStorage.getItem('smaart_last_analysis');
+        if (fb) { setData(JSON.parse(fb)); setLoading(false); return; }
+        setLoading(false);
+      }
+    })();
+  }, []);
+
+  const regenerate = async () => {
+    const raw = localStorage.getItem('latestFormData');
+    if (!raw) { navigate('/onboarding'); return; }
+    setRegen(true);
+    try {
+      const res = await axios.post('/api/onboarding', JSON.parse(raw));
+      localStorage.setItem('smaart_analysis_id', res.data?.analysisId || 'local');
+      window.location.reload();
+    } catch { setRegen(false); }
+  };
+
+  const submitRating = async stars => {
+    setRating(stars); setRated(true);
+    try { await axios.post('/api/feedback', { analysisId: localStorage.getItem('smaart_analysis_id')||'unknown', rating: stars }); } catch {}
+  };
+
+  /* ── loading ── */
+  if (loading) return (
+    <div style={{ display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', minHeight:'40vh', gap:12, fontFamily:'var(--font-sans)' }}>
+      <Loader2 size={24} style={{ color:'var(--text-info)', animation:'spin 1s linear infinite' }} />
+      <p style={{ fontSize:13, color:'var(--text-secondary)', margin:0 }}>Loading your career intelligence…</p>
+      <style>{`@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}`}</style>
+    </div>
+  );
+
+  if (!data) return (
+    <div style={{ display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', minHeight:'40vh', gap:8, fontFamily:'var(--font-sans)' }}>
+      <p style={{ fontSize:14, color:'var(--text-primary)', margin:0, fontWeight:500 }}>No analysis found.</p>
+      <p style={{ fontSize:13, color:'var(--text-secondary)', margin:0 }}>Please complete onboarding first.</p>
+      <button onClick={() => navigate('/onboarding')}
+        style={{ marginTop:12, padding:'8px 20px', border:'none', borderRadius:8, background:'var(--bg-info)', color:'var(--text-info)', cursor:'pointer', fontWeight:500 }}>
+        Start Onboarding
+      </button>
+    </div>
+  );
+
+  /* ── derive data ── */
+  const pv = data.preVerified || {};
+  const sg = pv.primarySkillGap || {};
+  const pm = pv.primaryMarket || null;
+  const matched = sg.matched || [];
+  const missing = sg.missing || [];
+  const coveragePct = sg.coveragePct || 0;
+  const total = matched.length + missing.length;
+
+  const direction = data.input_user_data?.interests?.area || localStorage.getItem('smaart_interest') || 'Career Direction';
+  const primaryRole   = data.input_user_data?.preferences?.primary?.jobRole   || data.preferences?.primary?.jobRole   || 'Primary Role';
+  const secondaryRole = data.input_user_data?.preferences?.secondary?.jobRole || data.preferences?.secondary?.jobRole || '';
+  const tertiaryRole  = data.input_user_data?.preferences?.tertiary?.jobRole  || data.preferences?.tertiary?.jobRole  || '';
+  const roadmap = data.combined_tab4?.learning_roadmap || [
+    { step:'Step 1 — Foundation Skills', description:'Master prerequisites and theoretical fundamentals.' },
+    { step:'Step 2 — Core Technical Skills', description:'Learn the primary tools and technologies for this role.' },
+    { step:'Step 3 — Advanced Applications', description:'Apply skills in complex real-world scenarios.' },
+    { step:'Step 4 — Projects & Portfolio', description:'Build market-ready portfolio demonstrating your skills.' },
+  ];
+  const certs    = data.combined_tab4?.certifications || [];
+  const courses  = data.combined_tab4?.free_courses   || [];
+  const projects = data.role_projects || data.projects || [];
+  const aiMust   = data.combined_tab3?.must_have || [];
+  const aiNice   = data.combined_tab3?.nice_to_have || [];
+
+  const clusterRoles = [
+    { n:primaryRole,   s: pm ? `${pm.salary_min_lpa}-${pm.salary_max_lpa}L` : '3-8L', ai: pm?.ai_automation_risk||'Moderate', d:matched.length, t:total, a:missing.length, zone: pv.primaryZone?.employer_zone||'Amber' },
+    secondaryRole && { n:secondaryRole,  s:'3-7L', ai:'Low',      d:Math.max(0,matched.length-1), t:total, a:missing.length+1, zone: pv.secondaryZone?.employer_zone||'Amber' },
+    tertiaryRole  && { n:tertiaryRole,   s:'2-6L', ai:'Moderate', d:Math.max(0,matched.length-2), t:total, a:missing.length+2, zone: pv.tertiaryZone?.employer_zone||'Red'   },
+  ].filter(Boolean);
+
+  const eduZone   = pv?.primaryZone?.employer_zone || 'Amber';
+  const skillZone = coveragePct >= 50 ? 'Green' : coveragePct >= 25 ? 'Amber' : 'Red';
+  const expArr    = JSON.parse(localStorage.getItem('smaart_experience') || '[]');
+  const expZone   = expArr.length > 0 ? 'Green' : 'Amber';
+
+  const indicators = [
+    { label:'Education – Role Fit',          zone:eduZone,   green:'Your degree is commonly accepted for this role.', amber:'Your degree is somewhat related. Strong skills can help.', red:'Your degree is not usually preferred. Extra certifications needed.' },
+    { label:'Skills – Role Match',           zone:skillZone, green:'You have most key skills for this role.',          amber:'You have some skills but need to develop more.',          red:'Significant upskilling is required before applying.' },
+    { label:'Work Experience – Role Match',  zone:expZone,   green:'Your experience is relevant and strengthens your profile.', amber:'Limited experience — internships will help.',          red:'No relevant experience yet. Projects will build your profile.' },
+  ];
+
+  const tier1 = missing.slice(0, Math.ceil(missing.length/3));
+  const tier2 = missing.slice(Math.ceil(missing.length/3), Math.ceil(missing.length*2/3));
+  const tier3 = missing.slice(Math.ceil(missing.length*2/3));
+
+  const salMin = pm?.salary_min_lpa || 2;
+  const salMax = pm?.salary_max_lpa || 8;
+
+  const TABS = [
+    { id:'Hiring Pattern',   icon:<Target size={14} />,   label:'Hiring Pattern' },
+    { id:'Technical Skills', icon:<Cpu size={14} />,      label:'Technical Skills' },
+    { id:'AI Tools',         icon:<Sparkles size={14} />, label:'AI Tools' },
+    { id:'Learning Path',    icon:<BookOpen size={14} />, label:'Learning Path' },
+  ];
+
+  /* ── Red zone acknowledgement gate ── */
+  if (eduZone === 'Red' && !redAck) return (
+    <div style={{ maxWidth:520, margin:'40px auto', fontFamily:'var(--font-sans)' }}>
+      <div style={{ ...C.card, borderLeft:'3px solid #A32D2D' }}>
+        <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:12 }}>
+          <span style={{ fontSize:24 }}>🔴</span>
+          <p style={{ fontSize:15, fontWeight:600, margin:0, color:'var(--text-danger)' }}>Career Change Zone</p>
+        </div>
+        <p style={{ fontSize:13, color:'var(--text-primary)', margin:'0 0 8px', lineHeight:1.6 }}>
+          This role usually needs a different educational background. Extra preparation: 6–12 months.
+        </p>
+        <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'0 0 16px' }}>
+          Students with a directly relevant degree start at 40–60% skill coverage. You would start at 5–15%. This is still achievable with dedicated effort.
+        </p>
+        <button onClick={() => setRedAck(true)}
+          style={{ padding:'10px 20px', border:'none', borderRadius:8, background:'var(--bg-danger)', color:'var(--text-danger)', cursor:'pointer', fontWeight:500, fontSize:13, width:'100%' }}>
+          I understand the additional preparation needed — Continue
+        </button>
+      </div>
+    </div>
+  );
+
+  /* ══════════════════════════════════════════════════════════════
+     RENDER
+  ══════════════════════════════════════════════════════════════ */
+  return (
+    <div style={{ maxWidth:680, margin:'0 auto', fontFamily:'var(--font-sans)' }}>
+
+      {/* ── Header ── */}
+      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:16, paddingBottom:12, borderBottom:'0.5px solid var(--border)' }}>
+        <div>
+          <div style={{ display:'flex', alignItems:'center', gap:6, marginBottom:4 }}>
+            <span style={{ fontSize:10, fontWeight:700, textTransform:'uppercase', letterSpacing:'0.08em', padding:'2px 8px', borderRadius:10, background:'var(--bg-info)', color:'var(--text-info)' }}>
+              Career Intelligence Report
+            </span>
+            <span style={{ display:'inline-flex', alignItems:'center', gap:4, fontSize:10, fontWeight:700, textTransform:'uppercase', padding:'2px 8px', borderRadius:10, background:'var(--bg-success)', color:'var(--text-success)' }}>
+              <span style={{ width:6, height:6, borderRadius:'50%', background:'currentColor', animation:'pulse 2s infinite' }} />
+              Active
+            </span>
+          </div>
+          <p style={{ fontSize:18, fontWeight:600, margin:0, color:'var(--text-primary)' }}>Career Intelligence Dashboard</p>
+        </div>
+        <button onClick={regenerate} disabled={regen}
+          style={{ display:'flex', alignItems:'center', gap:6, padding:'7px 14px', border:'0.5px solid var(--border)', borderRadius:8, background:'var(--bg-secondary)', color:'var(--text-secondary)', cursor:regen?'wait':'pointer', fontSize:12, fontWeight:500 }}>
+          <RefreshCw size={13} style={regen ? { animation:'spin 1s linear infinite' } : {}} />
+          {regen ? 'Regenerating…' : 'Regenerate'}
+        </button>
+      </div>
+
+      {/* ── Vector Cards (Primary / Secondary / Tertiary) ── */}
+      <div style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap:8, marginBottom:16 }}>
+        {clusterRoles.map((r, i) => {
+          const zst = zs(r.zone);
+          const labels = ['Primary','Secondary','Tertiary'];
+          const icons  = [<Target size={12}/>, <TrendingUp size={12}/>, <Globe size={12}/>];
+          return (
+            <div key={i} style={{ ...C.card, borderLeft:`3px solid ${zst.border}`, marginBottom:0, padding:'12px 14px' }}>
+              <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:6 }}>
+                <span style={{ fontSize:10, fontWeight:700, color:'var(--text-secondary)', textTransform:'uppercase', letterSpacing:'0.07em', display:'flex', alignItems:'center', gap:4 }}>
+                  {icons[i]} {labels[i]}
+                </span>
+                <span style={{ padding:'1px 6px', borderRadius:6, background:zst.bg, color:zst.fg, fontSize:10, fontWeight:600 }}>{r.zone}</span>
+              </div>
+              <p style={{ fontSize:13, fontWeight:600, margin:'0 0 4px', color:'var(--text-primary)', lineHeight:1.3 }}>{r.n}</p>
+              <p style={{ fontSize:11, color:'var(--text-secondary)', margin:0 }}>{r.a} skills away · ₹{r.s}</p>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* ── Employer Hiring Pattern Analysis ── */}
+      <div style={C.card}>
+        <p style={{ fontSize:13, fontWeight:600, margin:'0 0 12px', color:'var(--text-primary)', display:'flex', alignItems:'center', gap:6 }}>
+          <Layers size={14} style={{ color:'var(--text-info)' }} /> Employer Hiring Pattern Analysis
+        </p>
+        {indicators.map((ind, i) => {
+          const zst = zs(ind.zone);
+          return (
+            <div key={i} style={{ padding:'10px 0', borderBottom: i < 2 ? '0.5px solid var(--border)' : 'none' }}>
+              <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:3 }}>
+                <span style={{ fontSize:12 }}>{zst.dot}</span>
+                <span style={{ fontSize:13, fontWeight:600, color:'var(--text-primary)', flex:1 }}>{ind.label}</span>
+                <span style={{ padding:'1px 8px', borderRadius:6, background:zst.bg, color:zst.fg, fontSize:10, fontWeight:600 }}>{ind.zone}</span>
+              </div>
+              <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0, paddingLeft:20, lineHeight:1.5 }}>
+                {ind.zone === 'Green' ? ind.green : ind.zone === 'Amber' ? ind.amber : ind.red}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* ── Direction Banner ── */}
+      <div style={{ background:'#1B3A5C', borderRadius:12, padding:'20px 24px', marginBottom:16, color:'#fff' }}>
+        <p style={{ fontSize:12, opacity:0.7, margin:0 }}>Career direction</p>
+        <p style={{ fontSize:20, fontWeight:500, margin:'4px 0 2px' }}>{direction}</p>
+        <div style={{ display:'flex', gap:16, fontSize:12, opacity:0.7, marginBottom:12 }}>
+          <span>{clusterRoles.length} roles</span>
+          <span>{total} unique skills</span>
+          <span>{matched.length} skills developed</span>
+        </div>
+        <div style={{ display:'flex', alignItems:'center', gap:12 }}>
+          <div style={{ flex:1, height:8, background:'rgba(255,255,255,0.15)', borderRadius:4, overflow:'hidden' }}>
+            <div style={{ width:`${coveragePct}%`, height:'100%', background:'#1D9E75', transition:'width 1s ease' }} />
+          </div>
+          <span style={{ fontSize:14, fontWeight:500 }}>{matched.length} of {total} skills developed</span>
+        </div>
+      </div>
+
+      {/* ── Tabs ── */}
+      <div style={{ display:'flex', gap:0, borderBottom:'0.5px solid var(--border)', marginBottom:20, overflowX:'auto' }}>
+        {TABS.map(t => (
+          <button key={t.id} onClick={() => setActiveTab(t.id)}
+            style={{
+              padding:'10px 16px', background:'none', border:'none',
+              borderBottom: activeTab === t.id ? '2px solid var(--text-info)' : '2px solid transparent',
+              cursor:'pointer', whiteSpace:'nowrap', fontSize:13,
+              fontWeight: activeTab === t.id ? 600 : 400,
+              color: activeTab === t.id ? 'var(--text-info)' : 'var(--text-secondary)',
+              display:'flex', alignItems:'center', gap:6, transition:'all 0.15s',
+            }}>
+            {t.icon} {t.label}
+          </button>
+        ))}
+      </div>
+
+      {/* ── Tab Content ── */}
+      <AnimatePresence mode="wait">
+        <motion.div key={activeTab} initial={{ opacity:0, y:8 }} animate={{ opacity:1, y:0 }} exit={{ opacity:0, y:-8 }} transition={{ duration:0.18 }}>
+
+          {/* TAB 1 — Hiring Pattern */}
+          {activeTab === 'Hiring Pattern' && (
+            <div>
+              <SH title="Roles in your cluster" sub="Sorted by distance — closest first" icon={<Target size={14}/>} />
+              <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10, marginBottom:20 }}>
+                {clusterRoles.map((r, i) => {
+                  const zst = zs(r.zone);
+                  return (
+                    <div key={i} style={C.card}>
+                      <div style={{ display:'flex', justifyContent:'space-between', marginBottom:6 }}>
+                        <p style={{ fontSize:14, fontWeight:500, margin:0, color:'var(--text-primary)' }}>{r.n}</p>
+                        <span style={{ padding:'1px 7px', borderRadius:6, background:zst.bg, color:zst.fg, fontSize:10, fontWeight:600 }}>{r.zone}</span>
+                      </div>
+                      <div style={{ display:'flex', gap:6, marginBottom:8 }}>
+                        <Badge text={`₹${r.s}`} bg="var(--bg-secondary)" fg="var(--text-secondary)" />
+                        <Badge text={`AI: ${r.ai}`} bg={r.ai==='Moderate'||r.ai==='Medium'?'var(--bg-warning)':'var(--bg-secondary)'} fg={r.ai==='Moderate'||r.ai==='Medium'?'var(--text-warning)':'var(--text-secondary)'} />
+                      </div>
+                      <Bar pct={r.t>0?Math.round((r.d/r.t)*100):0} color="#1D9E75" />
+                      <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'6px 0 0' }}>{r.d} of {r.t} skills · {r.a} away</p>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {pm && (
+                <>
+                  <SH title="Market Intelligence" icon={<BarChart3 size={14}/>} />
+                  <div style={C.card}>
+                    <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:10, marginBottom:12 }}>
+                      {[
+                        { label:'Demand Level', value:pm.demand_level, zn: pm.demand_level==='High'?'Green':pm.demand_level==='Medium'?'Amber':'Red' },
+                        { label:'Salary Range', value:`₹${pm.salary_min_lpa}–${pm.salary_max_lpa}L`, zn:'Green' },
+                        { label:'AI Risk', value:pm.ai_automation_risk, zn: pm.ai_automation_risk==='Low'?'Green':pm.ai_automation_risk==='Medium'?'Amber':'Red' },
+                      ].map((m,i) => {
+                        const zst = zs(m.zn);
+                        return (
+                          <div key={i} style={{ textAlign:'center', padding:'12px 8px', background:'var(--bg-secondary)', borderRadius:8 }}>
+                            <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'0 0 4px' }}>{m.label}</p>
+                            <p style={{ fontSize:15, fontWeight:600, margin:0, color:zst.fg }}>{m.value}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <div style={{ paddingTop:12, borderTop:'0.5px solid var(--border)' }}>
+                      <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'0 0 6px' }}>Salary trajectory</p>
+                      {[
+                        { label:`Year 0-1: ${salMin}–${(salMin+1).toFixed(1)}L`, pct:25, color:'#BA7517' },
+                        { label:`Year 2-3: ${(salMin+1).toFixed(1)}–${(salMin+3).toFixed(1)}L ← your target`, pct:50, color:'#1D9E75', bold:true },
+                        { label:`Year 4-5: ${(salMin+3).toFixed(1)}–${(salMax-1).toFixed(1)}L`, pct:70, color:'#1D9E75' },
+                        { label:`Year 6+: ${(salMax-1).toFixed(1)}–${salMax}L`, pct:90, color:'#1D9E75' },
+                      ].map((row,i) => (
+                        <div key={i} style={{ display:'flex', alignItems:'center', gap:8, marginBottom:4 }}>
+                          <Bar pct={row.pct} color={row.color} width="56px" />
+                          <span style={{ fontSize:11, fontWeight:row.bold?600:400, color:row.bold?'var(--text-success)':'var(--text-primary)' }}>{row.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {pm.emerging_roles?.length > 0 && (
+                      <div style={{ marginTop:12, paddingTop:12, borderTop:'0.5px solid var(--border)' }}>
+                        <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'0 0 6px', fontWeight:500 }}>Emerging roles</p>
+                        <div style={{ display:'flex', flexWrap:'wrap', gap:6 }}>
+                          {pm.emerging_roles.map((r,i) => <Badge key={i} text={typeof r==='string'?r:r.name||r} bg="var(--bg-secondary)" fg="var(--text-secondary)" />)}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+
+          {/* TAB 2 — Technical Skills */}
+          {activeTab === 'Technical Skills' && (
+            <div>
+              {missing[0] && (
+                <div style={C.cardInfo}>
+                  <p style={{ fontSize:12, color:'var(--text-info)', margin:0 }}>Next best skill to develop</p>
+                  <p style={{ fontSize:15, fontWeight:600, margin:'4px 0', color:'var(--text-info)' }}>{missing[0]}</p>
+                  <p style={{ fontSize:12, color:'var(--text-info)', margin:0 }}>Search "{missing[0]} free course" on Coursera, NPTEL, or YouTube</p>
+                </div>
+              )}
+
+              <SH title="Must Have Skills" sub="Skills you already have matched" icon={<CheckCircle2 size={14}/>} />
+              <div style={{ display:'flex', flexWrap:'wrap', gap:7, marginBottom:20 }}>
+                {matched.map((sk,i) => (
+                  <div key={i} style={{ padding:'5px 12px', background:'var(--bg-success)', color:'var(--text-success)', borderRadius:16, fontSize:12, fontWeight:500, display:'flex', alignItems:'center', gap:5 }}>
+                    <CheckCircle2 size={12} /> {sk}
+                  </div>
+                ))}
+                {matched.length === 0 && <p style={{ fontSize:13, color:'var(--text-secondary)' }}>No matched skills yet.</p>}
+              </div>
+
+              <SH title="Skills to Develop" sub="Prioritised by tier" icon={<XCircle size={14}/>} />
+              <div style={C.card}>
+                {[
+                  { tier:'CRITICAL', label:'Foundation', color:'danger', skills:tier1 },
+                  { tier:'HIGH',     label:'Specialisation', color:'warning', skills:tier2 },
+                  { tier:'MEDIUM',   label:'Edge', color:'secondary', skills:tier3 },
+                ].map(({ tier, label, color, skills }) => skills.map((sk,i) => (
+                  <div key={`${tier}-${i}`} style={{ display:'flex', alignItems:'center', gap:10, padding:'9px 0', borderBottom:'0.5px solid var(--border)' }}>
+                    <Badge text={tier} bg={`var(--bg-${color})`} fg={`var(--text-${color})`} />
+                    <span style={{ fontSize:13, flex:1, color:'var(--text-primary)', fontWeight:500 }}>{sk}</span>
+                    <span style={{ fontSize:11, color:'var(--text-secondary)' }}>{label}</span>
+                  </div>
+                )))}
+                {missing.length === 0 && <p style={{ fontSize:13, color:'var(--text-success)', margin:0 }}>✓ You have all the required skills!</p>}
+              </div>
+            </div>
+          )}
+
+          {/* TAB 3 — AI Tools */}
+          {activeTab === 'AI Tools' && (
+            <div>
+              <SH title="AI Tools for this Role" icon={<Sparkles size={14}/>} />
+              <div style={C.card}>
+                <p style={{ fontSize:13, fontWeight:600, margin:'0 0 10px', color:'var(--text-primary)' }}>Must Have</p>
+                {aiMust.length > 0
+                  ? <div style={{ display:'flex', flexWrap:'wrap', gap:7, marginBottom:16 }}>{aiMust.map((t,i) => <Badge key={i} text={t} bg="var(--bg-info)" fg="var(--text-info)" />)}</div>
+                  : <p style={{ fontSize:12, color:'var(--text-secondary)', marginBottom:16 }}>No specific must-have tools listed yet.</p>
+                }
+                <p style={{ fontSize:13, fontWeight:600, margin:'0 0 10px', color:'var(--text-primary)', borderTop:'0.5px solid var(--border)', paddingTop:12 }}>Nice to Have</p>
+                {aiNice.length > 0
+                  ? <div style={{ display:'flex', flexWrap:'wrap', gap:7 }}>{aiNice.map((t,i) => <Badge key={i} text={t} bg="var(--bg-secondary)" fg="var(--text-secondary)" />)}</div>
+                  : <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0 }}>No nice-to-have tools listed yet.</p>
+                }
+              </div>
+              <div style={{ padding:'12px 16px', background:'var(--bg-secondary)', borderRadius:8, marginTop:12 }}>
+                <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0, lineHeight:1.6 }}>
+                  <strong style={{ color:'var(--text-primary)' }}>Tip:</strong> AI tools for this role are generated quarterly from real job postings. The data was last updated based on verified market signals.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 4 — Learning Path */}
+          {activeTab === 'Learning Path' && (
+            <div>
+              <SH title="Career Roadmap" icon={<Layers size={14}/>} />
+              <div style={C.card}>
+                {roadmap.map((s, i) => (
+                  <div key={i} style={{ display:'flex', gap:12, padding:'10px 0', borderBottom: i < roadmap.length-1 ? '0.5px solid var(--border)' : 'none' }}>
+                    <div style={{ width:26, height:26, borderRadius:'50%', flexShrink:0, background:'var(--bg-info)', color:'var(--text-info)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:12, fontWeight:600 }}>{i+1}</div>
+                    <div>
+                      <p style={{ fontSize:13, fontWeight:600, margin:'0 0 2px', color:'var(--text-primary)' }}>{s.step||s.title||`Step ${i+1}`}</p>
+                      <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0, lineHeight:1.5 }}>{s.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <SH title="Recommended Certificates" />
+              <div style={C.card}>
+                {certs.length > 0
+                  ? certs.map((c,i) => <div key={i} style={{ padding:'8px 0', borderBottom: i<certs.length-1 ? '0.5px solid var(--border)' : 'none' }}><p style={{ fontSize:13, fontWeight:500, margin:0, color:'var(--text-primary)' }}>{c.name||c}</p></div>)
+                  : <p style={{ fontSize:13, color:'var(--text-secondary)', margin:0 }}>No specific certifications listed yet.</p>
+                }
+              </div>
+
+              <SH title="Free Courses" />
+              <div style={C.card}>
+                {courses.length > 0
+                  ? courses.map((c,i) => (
+                    <div key={i} style={{ padding:'8px 0', borderBottom: i<courses.length-1 ? '0.5px solid var(--border)' : 'none' }}>
+                      <p style={{ fontSize:13, fontWeight:500, margin:'0 0 2px', color:'var(--text-primary)' }}>{c.title||c.name||c}</p>
+                      {(c.platform||c.provider) && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0 }}>Platform: {c.platform||c.provider}</p>}
+                    </div>
+                  ))
+                  : <p style={{ fontSize:13, color:'var(--text-secondary)', margin:0 }}>No free courses listed yet.</p>
+                }
+              </div>
+
+              <SH title="Recommended Projects" />
+              <div style={C.card}>
+                {projects.length > 0
+                  ? projects.map((p,i) => (
+                    <div key={i} style={{ padding:'10px 0', borderBottom: i<projects.length-1 ? '0.5px solid var(--border)' : 'none' }}>
+                      <p style={{ fontSize:13, fontWeight:500, margin:'0 0 3px', color:'var(--text-primary)' }}>{p.title||p.name||p}</p>
+                      {p.description && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0 }}>{p.description}</p>}
+                    </div>
+                  ))
+                  : <p style={{ fontSize:13, color:'var(--text-secondary)', margin:0 }}>No projects listed yet.</p>
+                }
+              </div>
+            </div>
+          )}
+
+        </motion.div>
+      </AnimatePresence>
+
+      {/* ── Rating ── */}
+      <div style={{ textAlign:'center', padding:'20px 0', borderTop:'0.5px solid var(--border)', marginTop:24 }}>
+        <p style={{ fontSize:12, color:'var(--text-secondary)', marginBottom:12 }}>How helpful was this analysis?</p>
+        {rated
+          ? <div style={{ display:'inline-flex', alignItems:'center', gap:6, padding:'8px 16px', background:'var(--bg-success)', borderRadius:8, fontSize:13, color:'var(--text-success)', fontWeight:500 }}>
+              <CheckCircle2 size={14} /> Thank you for your feedback!
+            </div>
+          : <div style={{ display:'flex', gap:8, justifyContent:'center' }}>
+              {[1,2,3,4,5].map(star => (
+                <button key={star} onClick={() => submitRating(star)}
+                  onMouseEnter={() => setHovered(star)} onMouseLeave={() => setHovered(0)}
+                  style={{ background:'none', border:'none', cursor:'pointer', fontSize:28, lineHeight:1, color:(hovered||rating)>=star?'#F59E0B':'var(--border)', transition:'color 0.1s' }}>
+                  <Star size={24} fill={(hovered||rating)>=star?'#F59E0B':'none'} color={(hovered||rating)>=star?'#F59E0B':'var(--border)'} />
+                </button>
+              ))}
+            </div>
+        }
+      </div>
+
+      <style>{`
+        @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+        @keyframes pulse { 0%{opacity:1} 50%{opacity:0.5} 100%{opacity:1} }
+      `}</style>
+    </div>
+  );
+}

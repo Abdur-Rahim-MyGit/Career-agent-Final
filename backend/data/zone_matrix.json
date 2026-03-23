@@ -899,6 +899,30 @@
     "iOS Developer": {
       "employer_zone": "Amber",
       "skill_coverage_pct": 40
+    },
+    "Financial Analyst": {
+      "employer_zone": "Amber",
+      "skill_coverage_pct": 35
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 10
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
     }
   },
   "Bachelor of Engineering": {
@@ -1801,6 +1825,30 @@
     "iOS Developer": {
       "employer_zone": "Amber",
       "skill_coverage_pct": 35
+    },
+    "Financial Analyst": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 10
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
     }
   },
   "Bachelor of Computer Applications": {
@@ -2703,6 +2751,30 @@
     "iOS Developer": {
       "employer_zone": "Amber",
       "skill_coverage_pct": 40
+    },
+    "Financial Analyst": {
+      "employer_zone": "Amber",
+      "skill_coverage_pct": 35
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 10
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
     }
   },
   "Bachelor of Science": {
@@ -3605,6 +3677,30 @@
     "iOS Developer": {
       "employer_zone": "Red",
       "skill_coverage_pct": 10
+    },
+    "Financial Analyst": {
+      "employer_zone": "Amber",
+      "skill_coverage_pct": 40
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
     }
   },
   "Bachelor of Commerce": {
@@ -4505,6 +4601,30 @@
       "skill_coverage_pct": 5
     },
     "iOS Developer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Financial Analyst": {
+      "employer_zone": "Amber",
+      "skill_coverage_pct": 35
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
       "employer_zone": "Red",
       "skill_coverage_pct": 5
     }
@@ -5409,6 +5529,30 @@
     "iOS Developer": {
       "employer_zone": "Red",
       "skill_coverage_pct": 5
+    },
+    "Financial Analyst": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 10
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
     }
   },
   "Bachelor of Arts": {
@@ -6309,6 +6453,30 @@
       "skill_coverage_pct": 5
     },
     "iOS Developer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Financial Analyst": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 10
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
       "employer_zone": "Red",
       "skill_coverage_pct": 5
     }
@@ -7213,6 +7381,30 @@
     "iOS Developer": {
       "employer_zone": "Red",
       "skill_coverage_pct": 5
+    },
+    "Financial Analyst": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 10
     }
   },
   "Bachelor of Medicine & Bachelor of Surgery": {
@@ -8113,6 +8305,30 @@
       "skill_coverage_pct": 5
     },
     "iOS Developer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Financial Analyst": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
       "employer_zone": "Red",
       "skill_coverage_pct": 5
     }
@@ -9017,6 +9233,30 @@
     "iOS Developer": {
       "employer_zone": "Red",
       "skill_coverage_pct": 5
+    },
+    "Financial Analyst": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 10
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
     }
   },
   "Bachelor of Architecture": {
@@ -9919,6 +10159,30 @@
     "iOS Developer": {
       "employer_zone": "Red",
       "skill_coverage_pct": 10
+    },
+    "Financial Analyst": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
     }
   },
   "Master of Technology": {
@@ -10821,6 +11085,30 @@
     "iOS Developer": {
       "employer_zone": "Amber",
       "skill_coverage_pct": 40
+    },
+    "Financial Analyst": {
+      "employer_zone": "Amber",
+      "skill_coverage_pct": 40
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 10
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
     }
   },
   "Master of Computer Applications": {
@@ -11723,6 +12011,30 @@
     "iOS Developer": {
       "employer_zone": "Amber",
       "skill_coverage_pct": 40
+    },
+    "Financial Analyst": {
+      "employer_zone": "Amber",
+      "skill_coverage_pct": 40
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 10
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
     }
   },
   "Master of Business Administration": {
@@ -12623,6 +12935,30 @@
       "skill_coverage_pct": 5
     },
     "iOS Developer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Financial Analyst": {
+      "employer_zone": "Amber",
+      "skill_coverage_pct": 35
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
       "employer_zone": "Red",
       "skill_coverage_pct": 5
     }
@@ -13527,6 +13863,30 @@
     "iOS Developer": {
       "employer_zone": "Red",
       "skill_coverage_pct": 10
+    },
+    "Financial Analyst": {
+      "employer_zone": "Amber",
+      "skill_coverage_pct": 40
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
     }
   },
   "Master of Commerce": {
@@ -14427,6 +14787,30 @@
       "skill_coverage_pct": 5
     },
     "iOS Developer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Financial Analyst": {
+      "employer_zone": "Amber",
+      "skill_coverage_pct": 35
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
       "employer_zone": "Red",
       "skill_coverage_pct": 5
     }
@@ -15331,6 +15715,30 @@
     "iOS Developer": {
       "employer_zone": "Amber",
       "skill_coverage_pct": 40
+    },
+    "Financial Analyst": {
+      "employer_zone": "Amber",
+      "skill_coverage_pct": 40
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 10
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
     }
   },
   "Post Graduate Diploma in Management": {
@@ -16231,6 +16639,30 @@
       "skill_coverage_pct": 5
     },
     "iOS Developer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Financial Analyst": {
+      "employer_zone": "Amber",
+      "skill_coverage_pct": 35
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
       "employer_zone": "Red",
       "skill_coverage_pct": 5
     }
@@ -17135,6 +17567,30 @@
     "iOS Developer": {
       "employer_zone": "Red",
       "skill_coverage_pct": 10
+    },
+    "Financial Analyst": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
     }
   },
   "Diploma in Engineering (Polytechnic)": {
@@ -18037,6 +18493,30 @@
     "iOS Developer": {
       "employer_zone": "Red",
       "skill_coverage_pct": 10
+    },
+    "Financial Analyst": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Accountant": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Content Writer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 10
+    },
+    "Human Resources Executive": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Corporate Lawyer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
+    },
+    "Compliance Officer": {
+      "employer_zone": "Red",
+      "skill_coverage_pct": 5
     }
   }
 }
