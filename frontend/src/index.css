@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 /* ─── Force light colour-scheme so OS dark mode never overrides ───────── */
@@ -12,6 +12,7 @@ html {
 
   /* Backgrounds */
   --bg-primary:   #ffffff;
+  --card-bg:      rgba(255,255,255,0.85);
   --bg-secondary: #f5f5f4;
   --bg-tertiary:  #eeeeec;
   --bg-info:      #E6F1FB;
@@ -67,38 +68,94 @@ html {
 .dark {
   color-scheme: dark;
 
-  --bg-primary:   #1a1a1a;
-  --bg-secondary: #2a2a2a;
-  --bg-tertiary:  #333333;
-  --bg-info:      #042C53;
-  --bg-success:   #173404;
-  --bg-warning:   #412402;
-  --bg-danger:    #501313;
-  --text-primary:   #e8e8e6;
-  --text-secondary: #B4B2A9;
-  --text-info:      #85B7EB;
-  --text-success:   #97C459;
-  --text-warning:   #FAC775;
-  --text-danger:    #F09595;
-  --border:      rgba(255,255,255,0.12);
-  --border-info: #378ADD;
+  /* Stitch MCP "Digital Oracle" — Deep Space palette */
+  --bg-primary:   #0e0e0e;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary:  #262626;
+  --card-bg:      rgba(26,26,26,0.6);
+  --bg-info:      #0a1e3d;
+  --bg-success:   #0d2b14;
+  --bg-warning:   #2b1a04;
+  --bg-danger:    #3a1010;
+  --text-primary:   #ffffff;
+  --text-secondary: #adaaaa;
+  --text-info:      #85adff;
+  --text-success:   #9bffce;
+  --text-warning:   #f8a010;
+  --text-danger:    #ff716c;
+  --border:      rgba(72,72,71,0.30);
+  --border-info: #5391ff;
 
-  --color-background-primary:   #1a1a1a;
-  --color-background-secondary: #2a2a2a;
-  --color-background-tertiary:  #333333;
-  --color-background-info:      #042C53;
-  --color-background-success:   #173404;
-  --color-background-warning:   #412402;
-  --color-background-danger:    #501313;
-  --color-text-primary:   #e8e8e6;
-  --color-text-secondary: #B4B2A9;
-  --color-text-info:      #85B7EB;
-  --color-text-success:   #97C459;
-  --color-text-warning:   #FAC775;
-  --color-text-danger:    #F09595;
-  --color-border-tertiary: rgba(255,255,255,0.12);
-  --color-border-info:    #378ADD;
+  --primary:    #85adff;
+  --primary-bg: #0a1e3d;
+
+  /* Stitch MCP "Luminous Insight" — Surface Hierarchy */
+  --surface-base:      #0e0e0e;
+  --surface-low:       #1c1b1b;
+  --surface-container: #201f1f;
+  --surface-high:      #2a2a2a;
+  --surface-highest:   #353534;
+  --surface-bright:    #3a3939;
+  --surface-tint:      #adc6ff;
+  --ambient-shadow:    0 4px 40px rgba(177,201,255,0.04);
+  --ghost-border:      0.5px solid rgba(72,72,71,0.30);
+
+  --color-background-primary:   #0e0e0e;
+  --color-background-secondary: #1a1a1a;
+  --color-background-tertiary:  #262626;
+  --color-background-info:      #0a1e3d;
+  --color-background-success:   #0d2b14;
+  --color-background-warning:   #2b1a04;
+  --color-background-danger:    #3a1010;
+  --color-text-primary:   #ffffff;
+  --color-text-secondary: #adaaaa;
+  --color-text-info:      #85adff;
+  --color-text-success:   #9bffce;
+  --color-text-warning:   #f8a010;
+  --color-text-danger:    #ff716c;
+  --color-border-tertiary: rgba(72,72,71,0.30);
+  --color-border-info:    #5391ff;
 }
+
+/* Stitch MCP — Tonal Section System (No-Line Rule) */
+.dark .surface-base    { background: var(--surface-base); }
+.dark .surface-low     { background: var(--surface-low); }
+.dark .surface-high    { background: var(--surface-high); }
+.dark .surface-highest { background: var(--surface-highest); }
+
+/* Stitch MCP — Intelligence Pulse (real-time data indicator) */
+.intelligence-pulse {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #f8a010;
+  box-shadow: 0 0 15px rgba(248,160,16,0.5);
+  animation: intelligencePulse 2s ease-in-out infinite;
+}
+@keyframes intelligencePulse { 0%,100%{box-shadow:0 0 8px rgba(248,160,16,0.3)} 50%{box-shadow:0 0 20px rgba(248,160,16,0.6)} }
+
+/* Stitch MCP — Capsule Button (premium pill shape) */
+.dark .btn-capsule {
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #b1c9ff, #85adff);
+  color: #002e6a;
+  font-weight: 600;
+  border: none;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+.dark .btn-capsule:hover { box-shadow: 0 4px 24px rgba(133,173,255,0.3); }
+
+/* Stitch MCP — Ghost Button */
+.dark .btn-ghost {
+  border-radius: 9999px;
+  background: transparent;
+  border: var(--ghost-border);
+  color: var(--text-secondary);
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.dark .btn-ghost:hover { background: rgba(133,173,255,0.1); color: var(--text-info); }
 
 /* ─── Base ───────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
@@ -134,9 +191,17 @@ input, select, textarea, button { font-family: var(--font-sans); }
 .s-card-warning { background: var(--bg-primary); border: 0.5px solid var(--border); border-left: 3px solid #BA7517; border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; }
 .s-card-muted   { background: var(--bg-primary); border: 0.5px solid var(--border); border-left: 3px solid #888780; border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; }
 
-/* Legacy aliases */
-.glass-card  { background: var(--bg-primary); border: 0.5px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; }
-.smaart-card { background: var(--bg-primary); border: 0.5px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; }
+/* Stitch MCP — Glassmorphism */
+.glass-card  { background: var(--card-bg, var(--bg-primary)); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 0.5px solid rgba(72,72,71,0.20); border-radius: 16px; padding: 20px 24px; margin-bottom: 12px; transition: box-shadow 0.3s ease; }
+.dark .glass-card:hover { box-shadow: 0 0 32px rgba(133,173,255,0.06); }
+.smaart-card { background: var(--card-bg, var(--bg-primary)); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 0.5px solid rgba(72,72,71,0.20); border-radius: 16px; padding: 20px 24px; margin-bottom: 12px; }
+
+/* Stitch MCP — Soul Gradient (for hero/info cards) */
+.dark .soul-gradient { background: linear-gradient(135deg, rgba(133,173,255,0.12) 0%, rgba(110,159,255,0.06) 100%); }
+
+/* Stitch MCP — Ambient Glow */
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(133,173,255,0.25)} 50%{box-shadow:0 0 12px 4px rgba(133,173,255,0.15)} }
+@keyframes ambientGlow { 0%,100%{box-shadow:0 0 24px rgba(133,173,255,0.06)} 50%{box-shadow:0 0 48px rgba(133,173,255,0.12)} }
 
 /* ─── Form ───────────────────────────────────────────────── */
 .s-field  { margin-bottom: 12px; }

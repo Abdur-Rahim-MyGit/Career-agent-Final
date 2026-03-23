@@ -27,7 +27,7 @@ function App() {
             <Route path="/insights" element={<MarketInsights />} />
 
             {/* Protected routes — require authentication */}
-            <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
+            <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/directions" element={<ProtectedRoute><DirectionSelection /></ProtectedRoute>} />
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/passport" element={<ProtectedRoute><Passport /></ProtectedRoute>} />

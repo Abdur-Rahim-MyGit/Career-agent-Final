@@ -57,7 +57,7 @@ const Layout = ({ children }) => {
         height: 48,
         display: 'flex', alignItems: 'center',
       }}>
-        <div style={{ maxWidth: 960, width: '100%', margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ maxWidth: 1440, width: '100%', margin: '0 auto', padding: '0 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
           {/* Brand */}
           <NavLink to="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
@@ -148,13 +148,13 @@ const Layout = ({ children }) => {
       </nav>
 
       {/* ── Main ── */}
-      <main style={{ flexGrow: 1, maxWidth: 960, width: '100%', margin: '0 auto', padding: '16px 24px' }}>
+      <main style={{ flexGrow: 1, width: '100%', padding: '0' }}>
         {children}
       </main>
 
       {/* ── Footer ── */}
       <footer style={{ borderTop: '0.5px solid var(--border)', padding: '16px 24px', marginTop: 32 }}>
-        <div style={{ maxWidth: 960, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 12, color: 'var(--text-secondary)' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: 12, color: 'var(--text-secondary)' }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <div style={{ width: 16, height: 16, borderRadius: '50%', background: 'var(--bg-info)', border: '1px solid var(--border-info)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 9, fontWeight: 600, color: 'var(--text-info)' }}>S</div>
             SMAART © 2026. All rights reserved.

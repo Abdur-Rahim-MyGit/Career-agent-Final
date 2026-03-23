@@ -93,6 +93,14 @@ app.post('/api/auth/login', async (req, res) => {
     const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET || 'fallback_secret', { expiresIn: '24h' });
     res.json({ message: 'Logged in successfully', token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
   } catch (err) {
+    // Prisma/PostgreSQL unavailable — provide demo mode access
+    const { email, password } = req.body;
+    if (email && password && password.length >= 6) {
+      const demoUser = { id: 'demo_' + Date.now(), name: email.split('@')[0], email, role: 'STUDENT' };
+      const token = jwt.sign({ id: demoUser.id, role: demoUser.role }, process.env.JWT_SECRET || 'fallback_secret', { expiresIn: '24h' });
+      console.log('⚠️  DB unavailable — demo login for', email);
+      return res.json({ message: 'Logged in (demo mode)', token, user: demoUser, demo: true });
+    }
     res.status(500).json({ error: 'Login failed', details: err.message });
   }
 });
@@ -130,6 +138,59 @@ app.post('/api/parse-resume', async (req, res) => {
     res.json(mlResponse.data);
   } catch (err) {
     res.status(500).json({ error: 'Failed to communicate with ML Service' });
+  }
+});
+
+// ── Career News (Groq AI — personalized per user interest) ─────────────────
+app.post('/api/career-news', async (req, res) => {
+  const { interest } = req.body;
+  const cacheKey = `career_news_${(interest || 'general').toLowerCase().replace(/\s+/g, '_')}`;
+
+  // Check Redis cache first (1-hour TTL)
+  const cached = await getCached(cacheKey);
+  if (cached) return res.json(JSON.parse(cached));
+
+  try {
+    const GROQ_KEY = process.env.GROQ_API_KEY;
+    if (!GROQ_KEY) return res.json({ news: [], source: 'no_api_key' });
+
+    const groqRes = await axios.post('https://api.groq.com/openai/v1/chat/completions', {
+      model: 'llama-3.3-70b-versatile',
+      messages: [{
+        role: 'system',
+        content: 'You generate realistic Indian job market news items. Return ONLY a JSON array of 6 objects with keys: source (string — real publication name like "LinkedIn", "India Today", "The Hindu", "Economic Times", "Naukri", "X (Twitter)"), icon (emoji), title (1-line headline), url (real URL to that publication\'s jobs/careers section), tag (short category), tagColor (hex color).'
+      }, {
+        role: 'user',
+        content: `Generate 6 current Indian job market news headlines relevant to someone interested in "${interest || 'technology'}". Include: hiring trends, layoff news, skill demand changes, government policies, and salary updates. Make them realistic for March 2026 India.`
+      }],
+      temperature: 0.8,
+      max_tokens: 1200,
+    }, { headers: { 'Authorization': `Bearer ${GROQ_KEY}`, 'Content-Type': 'application/json' } });
+
+    const raw = groqRes.data.choices?.[0]?.message?.content || '[]';
+    const cleaned = raw.replace(/```json|```/g, '').trim();
+    const news = JSON.parse(cleaned);
+    const result = { news, source: 'groq_ai', generatedAt: new Date().toISOString() };
+    await setCached(cacheKey, JSON.stringify(result), 3600); // 1-hour cache
+    res.json(result);
+  } catch (err) {
+    console.error('Career news generation failed:', err.message);
+    res.json({ news: [], source: 'error', error: err.message });
+  }
+});
+
+// ── Save News Item for Training Dataset ────────────────────────────────────
+app.post('/api/save-news-training', async (req, res) => {
+  try {
+    const entry = { ...req.body, savedAt: new Date().toISOString() };
+    const logPath = path.join(RECORDS_DIR, 'training_news_log.json');
+    let existing = [];
+    try { existing = JSON.parse(fs.readFileSync(logPath, 'utf8')); } catch {}
+    existing.push(entry);
+    fs.writeFileSync(logPath, JSON.stringify(existing, null, 2));
+    res.json({ saved: true, total: existing.length });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to save', details: err.message });
   }
 });
 
