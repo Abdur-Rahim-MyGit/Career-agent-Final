@@ -12,7 +12,7 @@ const ORG_TYPES = ['Startup (Early-stage / Growth-stage)','Scale-up / High-growt
 const SECTORS = ['Information Technology & Software','Banking & Financial Services','Healthcare & Life Sciences','Manufacturing','Retail & E-Commerce','Energy (Oil, Gas & Renewables)','Agriculture & Food','Construction & Real Estate','Telecom & Technology Infrastructure','Automotive & Electric Vehicles','Education & EdTech','Media, Entertainment & Advertising','Pharmaceuticals & Biotechnology','Logistics & Supply Chain','Hospitality, Travel & Tourism','Government & Public Sector','Professional Services (Legal, Consulting, Accounting)','Aerospace & Defence','Renewable Energy & Clean Tech','FMCG & Consumer Goods'];
 const EXP_TYPES = ['Full-Time','Part-Time','Internship (Full-Time)','Internship (Part-Time)','Freelance / Gig Work','Remote (Fully Distributed)','Volunteering'];
 const VERIFY_MODES = ['URL','QR Code','Not verified'];
-const EXTRA_BTECH_SPECS = ['Artificial Intelligence & Data Science','Artificial Intelligence','Machine Learning','Cyber Security','Internet of Things (IoT)','Data Science','Blockchain Technology','Robotics & Automation','Cloud Computing','AR / VR Technology'];
+const EXTRA_BTECH_SPECS = ['Artificial Intelligence & Data Science','Artificial Intelligence','Machine Learning','Cyber Security','Internet of Things (IoT)','Data Science','Blockchain Technology','Robotics & Automation','Cloud Computing','AR / VR Technology','Mechatronics','Nanotechnology','Biomedical Engineering','Instrumentation & Control','Food Technology','Textile Engineering','Polymer Engineering','Agricultural Engineering','Production Engineering','Power Engineering','Environmental Engineering','Genetic Engineering','Smart Manufacturing'];
 
 const SKILLS_POOL = ['Python','JavaScript','Java','C++','C#','PHP','Ruby','Swift','Kotlin','Go','Rust','TypeScript','React','Angular','Vue.js','Node.js','Django','Flask','Spring Boot','Laravel','FastAPI','SQL','MySQL','PostgreSQL','MongoDB','Redis','Elasticsearch','Firebase','Cassandra','AWS','Azure','GCP','Docker','Kubernetes','Terraform','Ansible','Jenkins','Git','Linux','Machine Learning','Deep Learning','TensorFlow','PyTorch','Scikit-learn','NLP','Computer Vision','Data Analysis','Power BI','Tableau','Excel','Pandas','NumPy','R Programming','MATLAB','ChatGPT','GitHub Copilot','Midjourney','DALL-E','Claude AI','Gemini','Perplexity AI','Figma','Adobe Photoshop','Illustrator','Canva','Sketch','InVision','Framer','SEO','Google Analytics','Google Ads','Meta Ads','Email Marketing','Salesforce','HubSpot','Tally ERP','QuickBooks','SAP','Oracle ERP','Financial Modelling','Excel Advanced','Communication','Leadership','Problem Solving','Project Management','Agile','Scrum','JIRA','AutoCAD','SolidWorks','LabVIEW','PLC Programming','Circuit Design','VLSI','Cyber Security','Ethical Hacking','Network Security','Penetration Testing','SIEM','IoT','Raspberry Pi','Arduino','Embedded C','Robotics','ROS','Drone Technology','Blockchain','Solidity','Smart Contracts','Web3','Ethereum','UI/UX Design','Wireframing','Prototyping','User Research','A/B Testing','Content Writing','Copywriting','Research Methodology','Academic Writing','Legal Research','Clinical Knowledge','Medical Terminology','Patient Communication','Healthcare Software'];
 
@@ -84,18 +84,46 @@ function FSelect({ label, value, onChange, options, disabled }) {
 function RoleSearch({ value, onChange, placeholder }) {
   const [q, setQ] = useState(value || '');
   const [sugg, setSugg] = useState([]); const [open, setOpen] = useState(false);
+  const [noMatch, setNoMatch] = useState(false);
   const ref = useRef(null);
   useEffect(() => { const h = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); }; document.addEventListener('mousedown', h); return () => document.removeEventListener('mousedown', h); }, []);
   useEffect(() => { if (value !== q && document.activeElement !== ref.current?.querySelector('input')) setQ(value || ''); }, [value]); // eslint-disable-line
   const handleChange = e => {
     const v = e.target.value; setQ(v); onChange(v);
-    if (v.length >= 2) { const lo = v.toLowerCase(); const f = jobRolesData.roles.filter(r => r.role.toLowerCase().includes(lo)).slice(0,10); setSugg(f); setOpen(f.length > 0); }
-    else { setSugg([]); setOpen(false); }
+    if (v.length >= 2) {
+      const lo = v.toLowerCase();
+      const f = jobRolesData.roles.filter(r => r.role.toLowerCase().includes(lo)).slice(0,10);
+      setSugg(f); setOpen(true); setNoMatch(f.length === 0);
+    } else { setSugg([]); setOpen(false); setNoMatch(false); }
   };
   return (
     <div ref={ref} style={{ ...cs.field, position:'relative' }}>
-      <input value={q} onChange={handleChange} placeholder={placeholder || 'Type 2+ letters to search roles…'} style={{ ...cs.input }} autoComplete="off" />
-      {open && <ul style={dropStyle}>{sugg.map((item,i) => <li key={i} onMouseDown={() => { setQ(item.role); onChange(item.role); setSugg([]); setOpen(false); }} style={dropLi} onMouseEnter={e => e.currentTarget.style.background='var(--bg-info)'} onMouseLeave={e => e.currentTarget.style.background='transparent'}><div style={{ fontSize:13, fontWeight:500, color:'var(--text-primary)' }}>{item.role}</div><div style={{ fontSize:11, color:'var(--text-secondary)' }}>{item.family}</div></li>)}</ul>}
+      <input value={q} onChange={handleChange}
+        placeholder={placeholder || 'Type 2+ letters — e.g. Data Analyst, ML Engineer…'}
+        style={{ ...cs.input }} autoComplete="off"
+        onKeyDown={e => { if (e.key === 'Enter' && q.trim()) { onChange(q.trim()); setOpen(false); } }} />
+      {open && (
+        <ul style={dropStyle}>
+          {sugg.map((item,i) => (
+            <li key={i} onMouseDown={() => { setQ(item.role); onChange(item.role); setSugg([]); setOpen(false); }}
+              style={dropLi} onMouseEnter={e => e.currentTarget.style.background='var(--bg-info)'}
+              onMouseLeave={e => e.currentTarget.style.background='transparent'}>
+              <div style={{ fontSize:13, fontWeight:500, color:'var(--text-primary)' }}>{item.role}</div>
+              <div style={{ fontSize:11, color:'var(--text-secondary)' }}>{item.family}</div>
+            </li>
+          ))}
+          {noMatch && q.trim().length >= 2 && (
+            <li
+              onMouseDown={() => { onChange(q.trim()); setOpen(false); setNoMatch(false); }}
+              style={{ ...dropLi, background:'rgba(133,173,255,0.06)', borderTop:'1px solid var(--border-info)' }}
+              onMouseEnter={e => e.currentTarget.style.background='var(--bg-info)'}
+              onMouseLeave={e => e.currentTarget.style.background='rgba(133,173,255,0.06)'}>
+              <div style={{ fontSize:13, fontWeight:600, color:'var(--text-info)' }}>+ Add "{q.trim()}" as custom role</div>
+              <div style={{ fontSize:11, color:'var(--text-secondary)' }}>This role will be saved for future AI model training</div>
+            </li>
+          )}
+        </ul>
+      )}
     </div>
   );
 }
@@ -149,6 +177,17 @@ function OrgPicker({ selected, onChange }) {
   );
 }
 
+function InfoTooltip({ text }) {
+  const [show, setShow] = useState(false);
+  return (
+    <span style={{ position:'relative', display:'inline-block', marginLeft:6, cursor:'pointer' }}
+      onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
+      <span style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', width:16, height:16, borderRadius:'50%', background:'var(--bg-info)', color:'var(--text-info)', fontSize:10, fontWeight:700 }}>i</span>
+      {show && <div style={{ position:'absolute', bottom:'calc(100% + 6px)', left:'50%', transform:'translateX(-50%)', width:240, padding:'10px 12px', background:'var(--bg-primary)', border:'0.5px solid var(--border-info)', borderRadius:10, boxShadow:'0 4px 20px rgba(0,0,0,0.2)', fontSize:12, lineHeight:1.5, color:'var(--text-primary)', zIndex:200 }}>{text}</div>}
+    </span>
+  );
+}
+
 function PrefCard({ label, pref, onUpdate, onUpdateLoc, accentColor, accentDark, number }) {
   const locs = pref.locations?.length === 3 ? pref.locations : ['','',''];
   return (
@@ -160,11 +199,17 @@ function PrefCard({ label, pref, onUpdate, onUpdateLoc, accentColor, accentDark,
       </div>
       <div style={cs.field}>
         <label style={cs.label}>Target Job Role</label>
-        <RoleSearch value={pref.role} onChange={val => onUpdate('role', val)} placeholder="Type 2+ letters — e.g. Data Analyst, Software Engineer…" />
+        <RoleSearch value={pref.role} onChange={val => onUpdate('role', val)} placeholder="Type 2+ letters — e.g. Data Analyst, CV Engineer, ML Engineer…" />
       </div>
       <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
-        <FInput label="Job Function" value={pref.jobFunction||''} onChange={val => onUpdate('jobFunction', val)} placeholder="e.g. Software Engineering" />
-        <FInput label="Job Family" value={pref.jobFamily||''} onChange={val => onUpdate('jobFamily', val)} placeholder="e.g. Data & Analytics" />
+        <div style={cs.field}>
+          <label style={cs.label}>Job Function <InfoTooltip text="The broad functional area of your role. Example: 'Software Engineering', 'Marketing', 'Finance'. This helps match you with the right skill framework and career ladder." /></label>
+          <input value={pref.jobFunction||''} onChange={e => onUpdate('jobFunction', e.target.value)} placeholder="e.g. Software Engineering" style={cs.input} />
+        </div>
+        <div style={cs.field}>
+          <label style={cs.label}>Job Family <InfoTooltip text="A group of related roles within a function. Example: Under 'Engineering', families include 'Frontend', 'Backend', 'Data & Analytics', 'DevOps'. This narrows skill recommendations to your niche." /></label>
+          <input value={pref.jobFamily||''} onChange={e => onUpdate('jobFamily', e.target.value)} placeholder="e.g. Data & Analytics" style={cs.input} />
+        </div>
       </div>
       <div style={cs.field}>
         <label style={cs.label}>Job Sector <span style={{ fontWeight:400 }}>(select up to 3)</span></label>
@@ -322,7 +367,7 @@ export default function Onboarding() {
 
       let resData;
       try {
-        const res = await axios.post('http://localhost:5000/api/onboarding', payload);
+        const res = await axios.post('/api/onboarding', payload);
         resData = res.data;
       } catch {
         /* Backend down — create local analysis so dashboard shows real data */
@@ -438,17 +483,75 @@ export default function Onboarding() {
             </div>
           )}
 
-          {step === 3 && (
-            <div style={{ maxWidth:580, margin:'0 auto', padding:'0 0 16px' }}>
+          {step === 3 && (() => {
+            /* Derive recommended skills from selected job role */
+            const ROLE_SKILL_MAP = {
+              'software':['Python','JavaScript','React','Node.js','Git','Docker','AWS','SQL','TypeScript','Agile'],
+              'data':['Python','SQL','Pandas','NumPy','Power BI','Tableau','Machine Learning','Excel','R Programming','Data Analysis'],
+              'machine learning':['Python','TensorFlow','PyTorch','Scikit-learn','Deep Learning','NLP','Computer Vision','Docker','AWS','Git'],
+              'web':['JavaScript','React','Node.js','HTML','CSS','Git','TypeScript','MongoDB','PostgreSQL','Docker'],
+              'devops':['Docker','Kubernetes','AWS','Terraform','Jenkins','Linux','Git','Ansible','Azure','GCP'],
+              'cyber':['Cyber Security','Ethical Hacking','Network Security','Penetration Testing','SIEM','Linux','Python','Cloud Computing'],
+              'marketing':['SEO','Google Analytics','Google Ads','Meta Ads','Content Writing','Email Marketing','Canva','HubSpot','Salesforce','A/B Testing'],
+              'design':['Figma','Adobe Photoshop','Illustrator','UI/UX Design','Wireframing','Prototyping','Canva','User Research','Framer','InVision'],
+              'finance':['Financial Modelling','Excel Advanced','Tally ERP','SAP','QuickBooks','Power BI','SQL','Python','R Programming','Communication'],
+              'ai':['Python','Machine Learning','Deep Learning','TensorFlow','PyTorch','NLP','Computer Vision','ChatGPT','GitHub Copilot','Docker'],
+              'cloud':['AWS','Azure','GCP','Docker','Kubernetes','Terraform','Linux','Python','Git','Jenkins'],
+              'blockchain':['Blockchain','Solidity','Smart Contracts','Web3','Ethereum','JavaScript','Python','Cryptography','Git','Docker'],
+              'iot':['IoT','Raspberry Pi','Arduino','Embedded C','Python','MQTT','AWS','Linux','Sensors','Robotics'],
+              'video':['Adobe Premiere Pro','After Effects','DaVinci Resolve','Canva','Midjourney','DALL-E','Content Writing','ChatGPT','Figma','Photography'],
+              'content':['Content Writing','Copywriting','SEO','ChatGPT','Claude AI','Canva','Google Analytics','Email Marketing','WordPress','Grammarly'],
+            };
+            const roleText = (primary.role + ' ' + secondary.role + ' ' + tertiary.role).toLowerCase();
+            let recommended = [];
+            for (const [key, rSkills] of Object.entries(ROLE_SKILL_MAP)) {
+              if (roleText.includes(key)) { recommended = [...new Set([...recommended, ...rSkills])]; }
+            }
+            if (recommended.length === 0) recommended = ['Python','JavaScript','Communication','Excel','Git','SQL','Leadership','Problem Solving','Project Management','Power BI'];
+            recommended = recommended.filter(s => !skills.some(sk => sk.name === s)).slice(0,12);
+
+            return (
+            <div style={{ maxWidth:780, margin:'0 auto', padding:'0 0 16px' }}>
               <StepHead n={3} total={5} label="Skills & certifications (optional)" />
-              <div style={cs.card}>
-                <p style={{ fontSize:15, fontWeight:500, margin:'0 0 4px', color:'var(--text-primary)' }}>What skills do you have?</p>
-                <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'0 0 16px', lineHeight:1.6 }}>Search and add any skill. Type a skill not in the list and press Enter or click + Add.</p>
-                <SkillSearch selected={skills} onAdd={addSkill} />
-                {skills.length === 0 && <div style={{ textAlign:'center', padding:'20px 0', color:'var(--text-secondary)', fontSize:13 }}>No skills added yet.</div>}
-                {skills.map(sk => <SkillRow key={sk.name} sk={sk} onRemove={removeSkill} onUpdate={updateSkill} />)}
+              <div style={{ display:'grid', gridTemplateColumns:'1fr 280px', gap:16, alignItems:'start' }}>
+                {/* Main skills panel */}
+                <div style={cs.card}>
+                  <p style={{ fontSize:15, fontWeight:500, margin:'0 0 4px', color:'var(--text-primary)' }}>What skills do you have?</p>
+                  <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'0 0 16px', lineHeight:1.6 }}>Search and add any skill. Type a skill not in the list and press Enter or click + Add.</p>
+                  <SkillSearch selected={skills} onAdd={addSkill} />
+                  {skills.length === 0 && <div style={{ textAlign:'center', padding:'20px 0', color:'var(--text-secondary)', fontSize:13 }}>No skills added yet.</div>}
+                  {skills.map(sk => <SkillRow key={sk.name} sk={sk} onRemove={removeSkill} onUpdate={updateSkill} />)}
+                </div>
+                {/* Recommended skills sidebar */}
+                <div style={{ ...cs.card, background:'var(--bg-secondary)', position:'sticky', top:80 }}>
+                  <div style={{ display:'flex', alignItems:'center', gap:6, marginBottom:12 }}>
+                    <span style={{ fontSize:16 }}>🎯</span>
+                    <span style={{ fontSize:13, fontWeight:600, color:'var(--text-primary)' }}>Recommended Skills</span>
+                  </div>
+                  <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'0 0 12px', lineHeight:1.5 }}>
+                    {primary.role ? `Based on your target: ${primary.role}` : 'Top in-demand skills for 2026'}
+                  </p>
+                  <div style={{ display:'flex', flexWrap:'wrap', gap:6 }}>
+                    {recommended.map(s => (
+                      <button key={s} onClick={() => addSkill({name:s, certName:'', issuer:'', year:'', mode:''})}
+                        style={{ padding:'5px 12px', fontSize:12, borderRadius:20, cursor:'pointer', border:'0.5px solid var(--border-info)', background:'transparent', color:'var(--text-info)', fontWeight:500, transition:'all 0.15s' }}
+                        onMouseEnter={e => { e.currentTarget.style.background='var(--bg-info)'; e.currentTarget.style.transform='scale(1.03)'; }}
+                        onMouseLeave={e => { e.currentTarget.style.background='transparent'; e.currentTarget.style.transform='scale(1)'; }}>
+                        + {s}
+                      </button>
+                    ))}
+                  </div>
+                  {skills.length > 0 && (
+                    <div style={{ marginTop:16, paddingTop:12, borderTop:'0.5px solid var(--border)' }}>
+                      <div style={{ fontSize:12, fontWeight:600, color:'var(--text-primary)', marginBottom:6 }}>Added ({skills.length})</div>
+                      <div style={{ display:'flex', flexWrap:'wrap', gap:4 }}>
+                        {skills.map(s => <span key={s.name} style={{ fontSize:11, padding:'3px 8px', borderRadius:6, background:'var(--bg-success)', color:'var(--text-success)', fontWeight:500 }}>✓ {s.name}</span>)}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
-              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:12 }}>
                 <button onClick={() => setStep(2)} style={cs.btnGhost}>← Back</button>
                 <div style={{ display:'flex', gap:8 }}>
                   <button onClick={() => setStep(4)} style={cs.btnGhost}>Skip for now</button>
@@ -456,7 +559,7 @@ export default function Onboarding() {
                 </div>
               </div>
             </div>
-          )}
+          );})()}
 
           {step === 4 && (
             <div style={{ maxWidth:580, margin:'0 auto', padding:'0 0 16px' }}>
@@ -491,6 +594,16 @@ export default function Onboarding() {
                   <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'0 0 2px' }}>Primary Preference</p>
                   <p style={{ fontSize:13, fontWeight:500, margin:0, color:'#1D9E75' }}>{primary.role}</p>
                   {primary.sectors.length > 0 && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'2px 0 0' }}>{primary.sectors.join(' · ')}</p>}
+                </div>}
+                {secondary.role && <div style={{ borderBottom:'0.5px solid var(--border)', paddingBottom:10, marginBottom:10 }}>
+                  <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'0 0 2px' }}>Secondary Preference</p>
+                  <p style={{ fontSize:13, fontWeight:500, margin:0, color:'#BA7517' }}>{secondary.role}</p>
+                  {secondary.sectors.length > 0 && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'2px 0 0' }}>{secondary.sectors.join(' · ')}</p>}
+                </div>}
+                {tertiary.role && <div style={{ borderBottom:'0.5px solid var(--border)', paddingBottom:10, marginBottom:10 }}>
+                  <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'0 0 2px' }}>Tertiary Preference</p>
+                  <p style={{ fontSize:13, fontWeight:500, margin:0, color:'#888780' }}>{tertiary.role}</p>
+                  {tertiary.sectors.length > 0 && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'2px 0 0' }}>{tertiary.sectors.join(' · ')}</p>}
                 </div>}
                 {skills.length > 0 && <div>
                   <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'0 0 6px' }}>Skills added ({skills.length})</p>

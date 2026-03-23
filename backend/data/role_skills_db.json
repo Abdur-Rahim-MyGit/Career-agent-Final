@@ -12699,5 +12699,1183 @@
         "where_to_learn": "Vendor docs"
       }
     ]
+  },
+  "CV Engineer": {
+    "tech_skills": [
+      {
+        "skill_name": "Computer Vision",
+        "priority": "CRITICAL",
+        "where_to_learn": "Coursera / CS231n Stanford (free)"
+      },
+      {
+        "skill_name": "Python + OpenCV",
+        "priority": "CRITICAL",
+        "where_to_learn": "OpenCV official docs (free) / PyImageSearch"
+      },
+      {
+        "skill_name": "Deep Learning (CNNs)",
+        "priority": "HIGH",
+        "where_to_learn": "fast.ai (free) / NPTEL Deep Learning"
+      },
+      {
+        "skill_name": "Image Processing",
+        "priority": "HIGH",
+        "where_to_learn": "NPTEL Digital Image Processing (free)"
+      },
+      {
+        "skill_name": "TensorFlow / PyTorch",
+        "priority": "HIGH",
+        "where_to_learn": "TensorFlow.org (free) / PyTorch tutorials"
+      },
+      {
+        "skill_name": "Object Detection (YOLO, SSD)",
+        "priority": "MEDIUM",
+        "where_to_learn": "Ultralytics docs (free) / YouTube"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "Roboflow (free tier)",
+        "priority": "HIGH",
+        "used_for": "Dataset management & model training"
+      },
+      {
+        "tool_name": "Label Studio (free)",
+        "priority": "HIGH",
+        "used_for": "Image annotation"
+      },
+      {
+        "tool_name": "Hugging Face (free)",
+        "priority": "MEDIUM",
+        "used_for": "Pre-trained vision models"
+      }
+    ]
+  },
+  "ML Engineer": {
+    "tech_skills": [
+      {
+        "skill_name": "Python Programming",
+        "priority": "CRITICAL",
+        "where_to_learn": "Coursera Python for Everybody (free audit)"
+      },
+      {
+        "skill_name": "Machine Learning Algorithms",
+        "priority": "CRITICAL",
+        "where_to_learn": "Andrew Ng ML Specialization (Coursera free audit)"
+      },
+      {
+        "skill_name": "TensorFlow / PyTorch",
+        "priority": "HIGH",
+        "where_to_learn": "Official docs (free) / fast.ai"
+      },
+      {
+        "skill_name": "Data Preprocessing (Pandas, NumPy)",
+        "priority": "HIGH",
+        "where_to_learn": "Kaggle Learn (free)"
+      },
+      {
+        "skill_name": "MLOps & Model Deployment",
+        "priority": "MEDIUM",
+        "where_to_learn": "MLflow docs (free) / Coursera MLOps"
+      },
+      {
+        "skill_name": "SQL & Data Pipelines",
+        "priority": "HIGH",
+        "where_to_learn": "Mode SQL Tutorial (free) / NPTEL DBMS"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "MLflow (free open-source)",
+        "priority": "HIGH",
+        "used_for": "Experiment tracking & model registry"
+      },
+      {
+        "tool_name": "Weights & Biases (free tier)",
+        "priority": "HIGH",
+        "used_for": "ML experiment tracking"
+      },
+      {
+        "tool_name": "GitHub Copilot",
+        "priority": "MEDIUM",
+        "used_for": "Code generation for ML pipelines"
+      }
+    ]
+  },
+  "Chartered Accountant": {
+    "tech_skills": [
+      {
+        "skill_name": "Financial Accounting & Reporting",
+        "priority": "CRITICAL",
+        "where_to_learn": "ICAI study material (free) / Unacademy CA"
+      },
+      {
+        "skill_name": "Taxation (Direct & Indirect)",
+        "priority": "CRITICAL",
+        "where_to_learn": "ICAI modules / TaxGuru.in (free)"
+      },
+      {
+        "skill_name": "Audit & Assurance",
+        "priority": "HIGH",
+        "where_to_learn": "ICAI practice manuals (free)"
+      },
+      {
+        "skill_name": "Tally ERP 9 / Tally Prime",
+        "priority": "HIGH",
+        "where_to_learn": "Tally official tutorials (free) / YouTube"
+      },
+      {
+        "skill_name": "Excel Advanced (Pivot Tables, VLOOKUP)",
+        "priority": "HIGH",
+        "where_to_learn": "ExcelJet (free) / Coursera Excel Skills"
+      },
+      {
+        "skill_name": "GST Compliance",
+        "priority": "MEDIUM",
+        "where_to_learn": "ClearTax Academy (free) / GST Portal"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "ChatGPT",
+        "priority": "HIGH",
+        "used_for": "Tax research & compliance queries"
+      },
+      {
+        "tool_name": "Zoho Books AI",
+        "priority": "MEDIUM",
+        "used_for": "Automated bookkeeping"
+      },
+      {
+        "tool_name": "ClearTax AI",
+        "priority": "MEDIUM",
+        "used_for": "GST filing automation"
+      }
+    ]
+  },
+  "Digital Marketing Manager": {
+    "tech_skills": [
+      {
+        "skill_name": "SEO (Search Engine Optimization)",
+        "priority": "CRITICAL",
+        "where_to_learn": "Google Digital Garage (free) / Moz Academy"
+      },
+      {
+        "skill_name": "Google Ads & Meta Ads",
+        "priority": "CRITICAL",
+        "where_to_learn": "Google Skillshop (free) / Meta Blueprint"
+      },
+      {
+        "skill_name": "Google Analytics 4",
+        "priority": "HIGH",
+        "where_to_learn": "Google Analytics Academy (free)"
+      },
+      {
+        "skill_name": "Content Marketing Strategy",
+        "priority": "HIGH",
+        "where_to_learn": "HubSpot Academy (free certification)"
+      },
+      {
+        "skill_name": "Email Marketing",
+        "priority": "MEDIUM",
+        "where_to_learn": "Mailchimp Academy (free) / HubSpot"
+      },
+      {
+        "skill_name": "Social Media Management",
+        "priority": "MEDIUM",
+        "where_to_learn": "Hootsuite Academy (free tier)"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "ChatGPT / Claude",
+        "priority": "CRITICAL",
+        "used_for": "Content ideation & copywriting"
+      },
+      {
+        "tool_name": "Canva AI",
+        "priority": "HIGH",
+        "used_for": "Social media design & brand kits"
+      },
+      {
+        "tool_name": "Jasper AI",
+        "priority": "MEDIUM",
+        "used_for": "Marketing copy at scale"
+      },
+      {
+        "tool_name": "SurferSEO",
+        "priority": "MEDIUM",
+        "used_for": "AI-driven SEO content optimization"
+      }
+    ]
+  },
+  "Video Editor": {
+    "tech_skills": [
+      {
+        "skill_name": "Adobe Premiere Pro",
+        "priority": "CRITICAL",
+        "where_to_learn": "Adobe tutorials (free) / YouTube"
+      },
+      {
+        "skill_name": "DaVinci Resolve",
+        "priority": "HIGH",
+        "where_to_learn": "Blackmagic official training (free)"
+      },
+      {
+        "skill_name": "After Effects (Motion Graphics)",
+        "priority": "HIGH",
+        "where_to_learn": "School of Motion (free intro) / YouTube"
+      },
+      {
+        "skill_name": "Color Grading",
+        "priority": "MEDIUM",
+        "where_to_learn": "DaVinci Resolve training (free)"
+      },
+      {
+        "skill_name": "Audio Editing (Audacity)",
+        "priority": "MEDIUM",
+        "where_to_learn": "Audacity manual (free) / YouTube"
+      },
+      {
+        "skill_name": "Storytelling & Scripting",
+        "priority": "HIGH",
+        "where_to_learn": "YouTube Creator Academy (free)"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "CapCut AI",
+        "priority": "HIGH",
+        "used_for": "Auto captions & smart editing"
+      },
+      {
+        "tool_name": "Runway ML",
+        "priority": "HIGH",
+        "used_for": "AI video generation & effects"
+      },
+      {
+        "tool_name": "Descript",
+        "priority": "MEDIUM",
+        "used_for": "Text-based video editing with AI"
+      }
+    ]
+  },
+  "HR Manager": {
+    "tech_skills": [
+      {
+        "skill_name": "Talent Acquisition & Recruitment",
+        "priority": "CRITICAL",
+        "where_to_learn": "SHRM Learning System / Coursera HR (free audit)"
+      },
+      {
+        "skill_name": "Employee Relations & Labor Law",
+        "priority": "HIGH",
+        "where_to_learn": "NPTEL HR Management (free) / SHRM resources"
+      },
+      {
+        "skill_name": "HRIS (SAP HCM / Workday)",
+        "priority": "HIGH",
+        "where_to_learn": "SAP Learning Hub (free tier) / Workday Community"
+      },
+      {
+        "skill_name": "Performance Management",
+        "priority": "HIGH",
+        "where_to_learn": "Coursera People Analytics (free audit)"
+      },
+      {
+        "skill_name": "Compensation & Benefits",
+        "priority": "MEDIUM",
+        "where_to_learn": "SHRM resources / LinkedIn Learning"
+      },
+      {
+        "skill_name": "Excel & Data Analysis",
+        "priority": "MEDIUM",
+        "where_to_learn": "ExcelJet (free) / Coursera Excel Skills"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "ChatGPT",
+        "priority": "HIGH",
+        "used_for": "Job description writing & policy drafting"
+      },
+      {
+        "tool_name": "HireVue AI",
+        "priority": "MEDIUM",
+        "used_for": "AI-powered video interviews"
+      },
+      {
+        "tool_name": "Eightfold AI",
+        "priority": "LOW",
+        "used_for": "Talent intelligence platform"
+      }
+    ]
+  },
+  "Graphic Designer": {
+    "tech_skills": [
+      {
+        "skill_name": "Adobe Photoshop",
+        "priority": "CRITICAL",
+        "where_to_learn": "Adobe tutorials (free) / YouTube"
+      },
+      {
+        "skill_name": "Adobe Illustrator",
+        "priority": "CRITICAL",
+        "where_to_learn": "Adobe tutorials (free) / Skillshare"
+      },
+      {
+        "skill_name": "Figma / UI Design",
+        "priority": "HIGH",
+        "where_to_learn": "Figma official tutorials (free)"
+      },
+      {
+        "skill_name": "Typography & Color Theory",
+        "priority": "HIGH",
+        "where_to_learn": "Google Fonts + Coolors (free) / Coursera"
+      },
+      {
+        "skill_name": "Canva",
+        "priority": "MEDIUM",
+        "where_to_learn": "Canva Design School (free)"
+      },
+      {
+        "skill_name": "Brand Identity Design",
+        "priority": "MEDIUM",
+        "where_to_learn": "Coursera Graphic Design (CalArts) free audit"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "Midjourney",
+        "priority": "HIGH",
+        "used_for": "AI image generation for concepts"
+      },
+      {
+        "tool_name": "Adobe Firefly",
+        "priority": "HIGH",
+        "used_for": "Generative fill & AI design tools"
+      },
+      {
+        "tool_name": "Canva AI",
+        "priority": "MEDIUM",
+        "used_for": "Quick design generation"
+      }
+    ]
+  },
+  "Teacher": {
+    "tech_skills": [
+      {
+        "skill_name": "Pedagogy & Curriculum Design",
+        "priority": "CRITICAL",
+        "where_to_learn": "NCERT resources (free) / Coursera Teaching"
+      },
+      {
+        "skill_name": "Classroom Management",
+        "priority": "HIGH",
+        "where_to_learn": "Teaching Channel (free) / Coursera"
+      },
+      {
+        "skill_name": "Google Workspace (Docs, Slides, Forms)",
+        "priority": "HIGH",
+        "where_to_learn": "Google for Education (free)"
+      },
+      {
+        "skill_name": "Assessment & Evaluation",
+        "priority": "HIGH",
+        "where_to_learn": "Coursera Assessment in Higher Ed (free audit)"
+      },
+      {
+        "skill_name": "Educational Technology",
+        "priority": "MEDIUM",
+        "where_to_learn": "NPTEL Technology Enhanced Learning (free)"
+      },
+      {
+        "skill_name": "Communication & Presentation",
+        "priority": "MEDIUM",
+        "where_to_learn": "Coursera Public Speaking (free audit)"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "ChatGPT / Claude",
+        "priority": "HIGH",
+        "used_for": "Lesson planning & worksheet generation"
+      },
+      {
+        "tool_name": "Canva for Education (free)",
+        "priority": "HIGH",
+        "used_for": "Visual teaching materials"
+      },
+      {
+        "tool_name": "Quillionz AI",
+        "priority": "MEDIUM",
+        "used_for": "Auto-generate quiz questions from text"
+      }
+    ]
+  },
+  "Lawyer": {
+    "tech_skills": [
+      {
+        "skill_name": "Legal Research & Case Analysis",
+        "priority": "CRITICAL",
+        "where_to_learn": "SCC Online / Indian Kanoon (free) / NLSIU MOOCs"
+      },
+      {
+        "skill_name": "Drafting & Pleading",
+        "priority": "CRITICAL",
+        "where_to_learn": "Bar Council resources / NPTEL Law courses"
+      },
+      {
+        "skill_name": "Contract Law",
+        "priority": "HIGH",
+        "where_to_learn": "Coursera Contract Law (free audit) / Swayam"
+      },
+      {
+        "skill_name": "Cyber Law & IT Act",
+        "priority": "MEDIUM",
+        "where_to_learn": "NPTEL Cyber Law (free) / Swayam"
+      },
+      {
+        "skill_name": "Dispute Resolution & ADR",
+        "priority": "MEDIUM",
+        "where_to_learn": "Coursera Mediation (free audit)"
+      },
+      {
+        "skill_name": "Legal Tech Tools",
+        "priority": "LOW",
+        "where_to_learn": "Kira Systems docs / YouTube legal tech"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "ChatGPT / Claude",
+        "priority": "HIGH",
+        "used_for": "Legal research & draft review"
+      },
+      {
+        "tool_name": "CaseMine AI",
+        "priority": "MEDIUM",
+        "used_for": "Indian case law research"
+      },
+      {
+        "tool_name": "Legally India AI",
+        "priority": "LOW",
+        "used_for": "Legal document analysis"
+      }
+    ]
+  },
+  "Doctor (MBBS)": {
+    "tech_skills": [
+      {
+        "skill_name": "Clinical Diagnosis",
+        "priority": "CRITICAL",
+        "where_to_learn": "Osmosis (free tier) / Khan Academy Medicine"
+      },
+      {
+        "skill_name": "Patient Communication",
+        "priority": "CRITICAL",
+        "where_to_learn": "Coursera Health Communication (free audit)"
+      },
+      {
+        "skill_name": "Medical Record Keeping (EMR)",
+        "priority": "HIGH",
+        "where_to_learn": "WHO e-learning (free) / YouTube"
+      },
+      {
+        "skill_name": "Evidence-Based Medicine",
+        "priority": "HIGH",
+        "where_to_learn": "BMJ Best Practice (free trial) / Cochrane"
+      },
+      {
+        "skill_name": "Pharmacology",
+        "priority": "HIGH",
+        "where_to_learn": "NPTEL Pharmacology (free) / Lecturio free tier"
+      },
+      {
+        "skill_name": "Telemedicine",
+        "priority": "MEDIUM",
+        "where_to_learn": "WHO telemedicine guide (free) / Coursera"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "Epocrates (free)",
+        "priority": "HIGH",
+        "used_for": "Drug interactions & dosage"
+      },
+      {
+        "tool_name": "Figure1 (free)",
+        "priority": "MEDIUM",
+        "used_for": "Medical image case sharing"
+      },
+      {
+        "tool_name": "Glass Health AI",
+        "priority": "LOW",
+        "used_for": "AI-assisted clinical reasoning"
+      }
+    ]
+  },
+  "Journalist": {
+    "tech_skills": [
+      {
+        "skill_name": "News Writing & Reporting",
+        "priority": "CRITICAL",
+        "where_to_learn": "Reuters Journalism Course (free) / Coursera"
+      },
+      {
+        "skill_name": "Investigative Journalism",
+        "priority": "HIGH",
+        "where_to_learn": "Knight Center MOOCs (free) / ICFJ"
+      },
+      {
+        "skill_name": "Digital Media & Social Platforms",
+        "priority": "HIGH",
+        "where_to_learn": "Google News Initiative (free training)"
+      },
+      {
+        "skill_name": "Video Journalism (MoJo)",
+        "priority": "MEDIUM",
+        "where_to_learn": "YouTube MoJo tutorials / BBC Academy (free)"
+      },
+      {
+        "skill_name": "Data Journalism",
+        "priority": "MEDIUM",
+        "where_to_learn": "Google News Lab (free) / Knight Center"
+      },
+      {
+        "skill_name": "Media Ethics & Law",
+        "priority": "HIGH",
+        "where_to_learn": "Coursera Media Ethics (free audit)"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "ChatGPT / Claude",
+        "priority": "HIGH",
+        "used_for": "Research & story ideation"
+      },
+      {
+        "tool_name": "Otter.ai (free tier)",
+        "priority": "HIGH",
+        "used_for": "Interview transcription"
+      },
+      {
+        "tool_name": "Canva",
+        "priority": "MEDIUM",
+        "used_for": "Social media graphics for stories"
+      }
+    ]
+  },
+  "Event Manager": {
+    "tech_skills": [
+      {
+        "skill_name": "Event Planning & Logistics",
+        "priority": "CRITICAL",
+        "where_to_learn": "Coursera Event Management (free audit)"
+      },
+      {
+        "skill_name": "Budget Management",
+        "priority": "HIGH",
+        "where_to_learn": "Coursera Financial Management (free audit)"
+      },
+      {
+        "skill_name": "Vendor Management",
+        "priority": "HIGH",
+        "where_to_learn": "Industry blogs / Eventbrite Academy (free)"
+      },
+      {
+        "skill_name": "Marketing & Promotion",
+        "priority": "HIGH",
+        "where_to_learn": "HubSpot Academy (free) / Google Skillshop"
+      },
+      {
+        "skill_name": "CRM Tools (Salesforce / HubSpot)",
+        "priority": "MEDIUM",
+        "where_to_learn": "Salesforce Trailhead (free) / HubSpot Academy"
+      },
+      {
+        "skill_name": "Risk Management",
+        "priority": "MEDIUM",
+        "where_to_learn": "Coursera Risk Management (free audit)"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "ChatGPT",
+        "priority": "HIGH",
+        "used_for": "Event copy & itinerary planning"
+      },
+      {
+        "tool_name": "Canva AI",
+        "priority": "HIGH",
+        "used_for": "Event collateral design"
+      },
+      {
+        "tool_name": "Luma AI",
+        "priority": "LOW",
+        "used_for": "3D venue visualization"
+      }
+    ]
+  },
+  "Interior Designer": {
+    "tech_skills": [
+      {
+        "skill_name": "AutoCAD",
+        "priority": "CRITICAL",
+        "where_to_learn": "Autodesk free student license / YouTube"
+      },
+      {
+        "skill_name": "3D Visualization (SketchUp / 3ds Max)",
+        "priority": "HIGH",
+        "where_to_learn": "SketchUp free web / Autodesk tutorials"
+      },
+      {
+        "skill_name": "Space Planning",
+        "priority": "CRITICAL",
+        "where_to_learn": "Coursera Interior Design (free audit)"
+      },
+      {
+        "skill_name": "Material & Color Knowledge",
+        "priority": "HIGH",
+        "where_to_learn": "Pantone resources / Coolors.co (free)"
+      },
+      {
+        "skill_name": "Vastu / Building Codes",
+        "priority": "MEDIUM",
+        "where_to_learn": "National Building Code of India (free PDF)"
+      },
+      {
+        "skill_name": "Client Presentation",
+        "priority": "MEDIUM",
+        "where_to_learn": "Coursera Presentation Skills (free audit)"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "Midjourney",
+        "priority": "HIGH",
+        "used_for": "AI room visualization concepts"
+      },
+      {
+        "tool_name": "RoomGPT (free)",
+        "priority": "HIGH",
+        "used_for": "AI room redesign from photos"
+      },
+      {
+        "tool_name": "Canva AI",
+        "priority": "MEDIUM",
+        "used_for": "Mood boards & presentations"
+      }
+    ]
+  },
+  "Fashion Designer": {
+    "tech_skills": [
+      {
+        "skill_name": "Fashion Illustration",
+        "priority": "CRITICAL",
+        "where_to_learn": "YouTube / Skillshare free trial"
+      },
+      {
+        "skill_name": "Pattern Making & Draping",
+        "priority": "CRITICAL",
+        "where_to_learn": "NIFT resources / YouTube"
+      },
+      {
+        "skill_name": "Adobe Illustrator for Fashion",
+        "priority": "HIGH",
+        "where_to_learn": "Adobe tutorials (free) / YouTube"
+      },
+      {
+        "skill_name": "Textile Knowledge",
+        "priority": "HIGH",
+        "where_to_learn": "NPTEL Textile Engineering (free)"
+      },
+      {
+        "skill_name": "Fashion Merchandising",
+        "priority": "MEDIUM",
+        "where_to_learn": "Coursera Fashion Business (free audit)"
+      },
+      {
+        "skill_name": "Sustainable Fashion",
+        "priority": "MEDIUM",
+        "where_to_learn": "Future Learn Sustainable Fashion (free)"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "Midjourney / DALL-E",
+        "priority": "HIGH",
+        "used_for": "Fashion concept visualization"
+      },
+      {
+        "tool_name": "CLO 3D (free trial)",
+        "priority": "MEDIUM",
+        "used_for": "3D garment simulation"
+      },
+      {
+        "tool_name": "Canva",
+        "priority": "MEDIUM",
+        "used_for": "Lookbooks & portfolios"
+      }
+    ]
+  },
+  "Nutritionist": {
+    "tech_skills": [
+      {
+        "skill_name": "Clinical Nutrition",
+        "priority": "CRITICAL",
+        "where_to_learn": "Coursera Nutrition Science (free audit) / NPTEL"
+      },
+      {
+        "skill_name": "Diet Planning & Assessment",
+        "priority": "CRITICAL",
+        "where_to_learn": "WHO Nutrition resources (free) / edX"
+      },
+      {
+        "skill_name": "Food Science & Safety",
+        "priority": "HIGH",
+        "where_to_learn": "FSSAI resources (free) / Coursera Food Safety"
+      },
+      {
+        "skill_name": "Biochemistry of Nutrition",
+        "priority": "HIGH",
+        "where_to_learn": "Khan Academy (free) / NPTEL Biochemistry"
+      },
+      {
+        "skill_name": "Health Communication",
+        "priority": "MEDIUM",
+        "where_to_learn": "Coursera Health Communication (free audit)"
+      },
+      {
+        "skill_name": "Research & Evidence-Based Practice",
+        "priority": "MEDIUM",
+        "where_to_learn": "PubMed (free) / Cochrane Library"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "ChatGPT",
+        "priority": "HIGH",
+        "used_for": "Meal plan generation & nutrition queries"
+      },
+      {
+        "tool_name": "Nutritionix (free)",
+        "priority": "MEDIUM",
+        "used_for": "Food database & calorie tracking"
+      },
+      {
+        "tool_name": "Canva",
+        "priority": "LOW",
+        "used_for": "Diet chart & infographic design"
+      }
+    ]
+  },
+  "Psychologist": {
+    "tech_skills": [
+      {
+        "skill_name": "Clinical Assessment & Diagnosis",
+        "priority": "CRITICAL",
+        "where_to_learn": "Coursera Abnormal Psychology (free audit)"
+      },
+      {
+        "skill_name": "Counseling Techniques (CBT, DBT)",
+        "priority": "CRITICAL",
+        "where_to_learn": "Beck Institute (free resources) / Coursera"
+      },
+      {
+        "skill_name": "Psychological Testing",
+        "priority": "HIGH",
+        "where_to_learn": "APA resources / Coursera Psychological Testing"
+      },
+      {
+        "skill_name": "Research Methods & Statistics",
+        "priority": "HIGH",
+        "where_to_learn": "Coursera Research Methods (free audit) / NPTEL"
+      },
+      {
+        "skill_name": "Ethics in Psychology",
+        "priority": "HIGH",
+        "where_to_learn": "APA Ethics Guidelines (free) / RCI resources"
+      },
+      {
+        "skill_name": "Crisis Intervention",
+        "priority": "MEDIUM",
+        "where_to_learn": "WHO mhGAP (free) / NIMHANS resources"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "ChatGPT",
+        "priority": "MEDIUM",
+        "used_for": "Literature review & case study analysis"
+      },
+      {
+        "tool_name": "Woebot (AI therapy reference)",
+        "priority": "LOW",
+        "used_for": "Understanding AI in mental health"
+      },
+      {
+        "tool_name": "SPSS / R (free)",
+        "priority": "HIGH",
+        "used_for": "Statistical analysis for research"
+      }
+    ]
+  },
+  "Social Worker": {
+    "tech_skills": [
+      {
+        "skill_name": "Community Development",
+        "priority": "CRITICAL",
+        "where_to_learn": "NPTEL Social Work (free) / Coursera"
+      },
+      {
+        "skill_name": "Counseling & Case Management",
+        "priority": "HIGH",
+        "where_to_learn": "Coursera Social Work Practice (free audit)"
+      },
+      {
+        "skill_name": "Social Policy & Legislation",
+        "priority": "HIGH",
+        "where_to_learn": "IGNOU resources (free) / Swayam"
+      },
+      {
+        "skill_name": "Project Management",
+        "priority": "MEDIUM",
+        "where_to_learn": "Google Project Management Certificate (Coursera)"
+      },
+      {
+        "skill_name": "Data Collection & Report Writing",
+        "priority": "MEDIUM",
+        "where_to_learn": "Coursera Research Methods (free audit)"
+      },
+      {
+        "skill_name": "NGO Management",
+        "priority": "MEDIUM",
+        "where_to_learn": "NPTEL NGO Management (free)"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "ChatGPT",
+        "priority": "MEDIUM",
+        "used_for": "Report writing & proposal drafting"
+      },
+      {
+        "tool_name": "Canva",
+        "priority": "MEDIUM",
+        "used_for": "Awareness campaign materials"
+      },
+      {
+        "tool_name": "Google Forms (free)",
+        "priority": "HIGH",
+        "used_for": "Survey & data collection"
+      }
+    ]
+  },
+  "Civil Engineer": {
+    "tech_skills": [
+      {
+        "skill_name": "AutoCAD & Civil 3D",
+        "priority": "CRITICAL",
+        "where_to_learn": "Autodesk free student license / NPTEL"
+      },
+      {
+        "skill_name": "Structural Analysis",
+        "priority": "CRITICAL",
+        "where_to_learn": "NPTEL Structural Analysis (free) / MIT OCW"
+      },
+      {
+        "skill_name": "Concrete & Steel Design",
+        "priority": "HIGH",
+        "where_to_learn": "NPTEL Design of Concrete Structures (free)"
+      },
+      {
+        "skill_name": "Quantity Surveying & Estimation",
+        "priority": "HIGH",
+        "where_to_learn": "YouTube / NPTEL Construction Management"
+      },
+      {
+        "skill_name": "STAAD Pro / ETABS",
+        "priority": "HIGH",
+        "where_to_learn": "Bentley Education (free) / YouTube"
+      },
+      {
+        "skill_name": "Site Management",
+        "priority": "MEDIUM",
+        "where_to_learn": "Coursera Construction Management (free audit)"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "BIM 360 / Revit",
+        "priority": "HIGH",
+        "used_for": "Building Information Modeling"
+      },
+      {
+        "tool_name": "ChatGPT",
+        "priority": "MEDIUM",
+        "used_for": "Code compliance checks & calculations"
+      },
+      {
+        "tool_name": "Autodesk Forma (AI)",
+        "priority": "LOW",
+        "used_for": "AI-powered site analysis"
+      }
+    ]
+  },
+  "Mechanical Engineer": {
+    "tech_skills": [
+      {
+        "skill_name": "SolidWorks / AutoCAD",
+        "priority": "CRITICAL",
+        "where_to_learn": "SolidWorks student license (free) / NPTEL"
+      },
+      {
+        "skill_name": "Thermodynamics & Heat Transfer",
+        "priority": "CRITICAL",
+        "where_to_learn": "NPTEL Thermodynamics (free) / MIT OCW"
+      },
+      {
+        "skill_name": "Manufacturing Processes",
+        "priority": "HIGH",
+        "where_to_learn": "NPTEL Manufacturing (free) / Coursera"
+      },
+      {
+        "skill_name": "Finite Element Analysis (ANSYS)",
+        "priority": "HIGH",
+        "where_to_learn": "ANSYS student (free) / NPTEL FEM"
+      },
+      {
+        "skill_name": "Fluid Mechanics",
+        "priority": "HIGH",
+        "where_to_learn": "NPTEL Fluid Mechanics (free)"
+      },
+      {
+        "skill_name": "CNC Programming",
+        "priority": "MEDIUM",
+        "where_to_learn": "NPTEL CNC (free) / YouTube"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "ANSYS Discovery (AI-driven)",
+        "priority": "HIGH",
+        "used_for": "Simulation & generative design"
+      },
+      {
+        "tool_name": "ChatGPT",
+        "priority": "MEDIUM",
+        "used_for": "Design calculations & documentation"
+      },
+      {
+        "tool_name": "nTopology (free trial)",
+        "priority": "LOW",
+        "used_for": "AI-driven topology optimization"
+      }
+    ]
+  },
+  "Electrical Engineer": {
+    "tech_skills": [
+      {
+        "skill_name": "Circuit Design & Analysis",
+        "priority": "CRITICAL",
+        "where_to_learn": "NPTEL Circuit Theory (free) / MIT OCW"
+      },
+      {
+        "skill_name": "Power Systems",
+        "priority": "CRITICAL",
+        "where_to_learn": "NPTEL Power Systems (free)"
+      },
+      {
+        "skill_name": "MATLAB / Simulink",
+        "priority": "HIGH",
+        "where_to_learn": "MathWorks free student license / NPTEL"
+      },
+      {
+        "skill_name": "PLC Programming",
+        "priority": "HIGH",
+        "where_to_learn": "NPTEL PLC (free) / YouTube"
+      },
+      {
+        "skill_name": "Control Systems",
+        "priority": "HIGH",
+        "where_to_learn": "NPTEL Control Systems (free)"
+      },
+      {
+        "skill_name": "Electrical Machines",
+        "priority": "MEDIUM",
+        "where_to_learn": "NPTEL Electrical Machines (free)"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "MATLAB AI Toolbox",
+        "priority": "HIGH",
+        "used_for": "Power system simulation & optimization"
+      },
+      {
+        "tool_name": "ChatGPT",
+        "priority": "MEDIUM",
+        "used_for": "Code generation & documentation"
+      },
+      {
+        "tool_name": "ETAP (free trial)",
+        "priority": "LOW",
+        "used_for": "AI-powered electrical design"
+      }
+    ]
+  },
+  "Pharmacist": {
+    "tech_skills": [
+      {
+        "skill_name": "Pharmacology & Drug Interactions",
+        "priority": "CRITICAL",
+        "where_to_learn": "NPTEL Pharmacology (free) / Khan Academy"
+      },
+      {
+        "skill_name": "Clinical Pharmacy",
+        "priority": "HIGH",
+        "where_to_learn": "Coursera Clinical Pharmacy (free audit)"
+      },
+      {
+        "skill_name": "Pharmaceutical Chemistry",
+        "priority": "HIGH",
+        "where_to_learn": "NPTEL Medicinal Chemistry (free)"
+      },
+      {
+        "skill_name": "Drug Regulatory Affairs",
+        "priority": "MEDIUM",
+        "where_to_learn": "CDSCO guidelines (free) / WHO resources"
+      },
+      {
+        "skill_name": "Pharmacy Management",
+        "priority": "MEDIUM",
+        "where_to_learn": "Coursera Healthcare Management (free audit)"
+      },
+      {
+        "skill_name": "Quality Assurance",
+        "priority": "HIGH",
+        "where_to_learn": "NPTEL Pharmaceutical QA (free)"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "Epocrates (free)",
+        "priority": "HIGH",
+        "used_for": "Drug information & interactions"
+      },
+      {
+        "tool_name": "ChatGPT",
+        "priority": "MEDIUM",
+        "used_for": "Drug information queries"
+      },
+      {
+        "tool_name": "Medscape (free)",
+        "priority": "MEDIUM",
+        "used_for": "Medical reference & drug database"
+      }
+    ]
+  },
+  "Architect": {
+    "tech_skills": [
+      {
+        "skill_name": "AutoCAD & Revit",
+        "priority": "CRITICAL",
+        "where_to_learn": "Autodesk free student license / YouTube"
+      },
+      {
+        "skill_name": "3D Visualization (SketchUp / Lumion)",
+        "priority": "HIGH",
+        "where_to_learn": "SketchUp free web / Lumion student"
+      },
+      {
+        "skill_name": "Building Codes & Regulations",
+        "priority": "HIGH",
+        "where_to_learn": "National Building Code India (free PDF)"
+      },
+      {
+        "skill_name": "Sustainable Design",
+        "priority": "MEDIUM",
+        "where_to_learn": "Coursera Sustainable Architecture (free audit)"
+      },
+      {
+        "skill_name": "Project Management",
+        "priority": "MEDIUM",
+        "where_to_learn": "Google PM Certificate (Coursera free audit)"
+      },
+      {
+        "skill_name": "Structural Basics",
+        "priority": "HIGH",
+        "where_to_learn": "NPTEL Building Structures (free)"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "Midjourney",
+        "priority": "HIGH",
+        "used_for": "Architectural concept visualization"
+      },
+      {
+        "tool_name": "Autodesk Forma (AI)",
+        "priority": "MEDIUM",
+        "used_for": "AI-powered early-stage design"
+      },
+      {
+        "tool_name": "Spacemaker AI",
+        "priority": "LOW",
+        "used_for": "Site optimization"
+      }
+    ]
+  },
+  "Mechatronics Engineer": {
+    "tech_skills": [
+      {
+        "skill_name": "Embedded Systems (Arduino/Raspberry Pi)",
+        "priority": "CRITICAL",
+        "where_to_learn": "Arduino.cc (free) / NPTEL Embedded Systems"
+      },
+      {
+        "skill_name": "PLC Programming",
+        "priority": "HIGH",
+        "where_to_learn": "NPTEL PLC (free) / Siemens SCE"
+      },
+      {
+        "skill_name": "Robotics & Automation",
+        "priority": "CRITICAL",
+        "where_to_learn": "NPTEL Robotics (free) / edX Robotics MicroMasters"
+      },
+      {
+        "skill_name": "Sensors & Actuators",
+        "priority": "HIGH",
+        "where_to_learn": "NPTEL Instrumentation (free)"
+      },
+      {
+        "skill_name": "CAD/CAM (SolidWorks)",
+        "priority": "HIGH",
+        "where_to_learn": "SolidWorks student (free) / YouTube"
+      },
+      {
+        "skill_name": "Control Systems",
+        "priority": "MEDIUM",
+        "where_to_learn": "NPTEL Control Systems (free)"
+      }
+    ],
+    "ai_tools": [
+      {
+        "tool_name": "ROS (Robot Operating System)",
+        "priority": "HIGH",
+        "used_for": "Robot programming framework"
+      },
+      {
+        "tool_name": "ChatGPT",
+        "priority": "MEDIUM",
+        "used_for": "Code debugging & documentation"
+      },
+      {
+        "tool_name": "MATLAB Robotics Toolbox",
+        "priority": "MEDIUM",
+        "used_for": "Robotics simulation"
+      }
+    ]
   }
 }

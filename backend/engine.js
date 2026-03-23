@@ -154,13 +154,13 @@ const generateRoleTab = (roleName, studentData) => {
   
   const { missingSkills, mathingSkills } = calculateSkillGaps(studentData.skills, roleData);
   
-  // Format Must Have / Nice to have
+  // Format Must Have / Nice to have (case-insensitive priority matching)
   const mustHave = roleData.tech_skills
-    .filter(s => s.priority === "High" || s.priority === "Critical")
-    .map(s => ({ skill: s.skill_name, priority: s.priority, description: "Essential core skill." }));
+    .filter(s => /^(high|critical)$/i.test(s.priority))
+    .map(s => ({ skill: s.skill_name, priority: s.priority, description: "Essential core skill.", where_to_learn: s.where_to_learn || '' }));
     
   const niceToHave = roleData.tech_skills
-    .filter(s => s.priority === "Medium" || s.priority === "Low")
+    .filter(s => /^(medium|low)$/i.test(s.priority))
     .map(s => s.skill_name);
 
   const aiTools = roleData.ai_tools.map(t => ({
@@ -257,6 +257,84 @@ const processCareerIntelligence = async (studentData) => {
 
   const probStr = mlEnrichment.successProbability ? Math.round(mlEnrichment.successProbability * 100) + '%' : 'Calculating';
 
+  // ── Build rich combined_tab4 from real DB data ──
+  // 1. Recommended skills (full detail from DB)
+  const recommended_skills = pRoleData.tech_skills.map(s => ({
+    skill_name: s.skill_name,
+    priority: s.priority,
+    where_to_learn: s.where_to_learn || '',
+    is_matched: mathingSkills.includes(s.skill_name),
+  }));
+
+  // 2. Learning roadmap grouped by priority tier
+  const criticalSkills = missingSkills.filter(s => /^critical$/i.test(s.priority));
+  const highSkills     = missingSkills.filter(s => /^high$/i.test(s.priority));
+  const mediumSkills   = missingSkills.filter(s => /^medium$/i.test(s.priority));
+  const lowSkills      = missingSkills.filter(s => /^low$/i.test(s.priority));
+
+  const learning_roadmap = [
+    { step: 'Critical Foundation', description: criticalSkills.length > 0 ? `Master: ${criticalSkills.map(s=>s.skill_name).join(', ')}` : 'All critical skills covered ✓', icon: 'book', status: criticalSkills.length === 0 ? 'completed' : 'in-progress', duration: '~1 month', skills: criticalSkills.map(s => ({ name: s.skill_name, where: s.where_to_learn })) },
+    { step: 'Core Specialisation', description: highSkills.length > 0 ? `Learn: ${highSkills.map(s=>s.skill_name).join(', ')}` : 'All high-priority skills covered ✓', icon: 'code', status: criticalSkills.length > 0 ? 'locked' : (highSkills.length === 0 ? 'completed' : 'in-progress'), duration: '~2 months', skills: highSkills.map(s => ({ name: s.skill_name, where: s.where_to_learn })) },
+    { step: 'Advanced Edge Skills', description: mediumSkills.length > 0 ? `Develop: ${mediumSkills.map(s=>s.skill_name).join(', ')}` : 'All medium-priority skills covered ✓', icon: 'rocket', status: (criticalSkills.length + highSkills.length) > 0 ? 'locked' : (mediumSkills.length === 0 ? 'completed' : 'upcoming'), duration: '~1 month', skills: mediumSkills.map(s => ({ name: s.skill_name, where: s.where_to_learn })) },
+    { step: 'Projects & Portfolio', description: 'Build 2-3 production-ready projects demonstrating mastery for employers.', icon: 'briefcase', status: missingSkills.length > 3 ? 'locked' : 'upcoming', duration: '~1 month', skills: [] },
+  ];
+
+  // 3. Extract real certifications from where_to_learn
+  const certPlatforms = { 'Coursera': 'Coursera', 'Microsoft Learn': 'Microsoft', 'AWS': 'Amazon Web Services', 'Google': 'Google', 'HuggingFace': 'HuggingFace' };
+  const certSet = new Set();
+  const certifications = [];
+  pRoleData.tech_skills.forEach(s => {
+    if (!s.where_to_learn) return;
+    Object.entries(certPlatforms).forEach(([keyword, issuer]) => {
+      if (s.where_to_learn.toLowerCase().includes(keyword.toLowerCase()) && !certSet.has(keyword + s.skill_name)) {
+        certSet.add(keyword + s.skill_name);
+        if (certifications.length < 5) {
+          certifications.push({ name: `${s.skill_name} — ${keyword}`, issuer, difficulty: /critical/i.test(s.priority) ? 'Beginner' : /high/i.test(s.priority) ? 'Intermediate' : 'Advanced', hours: /critical/i.test(s.priority) ? 40 : 60, url: '' });
+        }
+      }
+    });
+  });
+  if (certifications.length === 0) {
+    certifications.push({ name: `${pRole} Professional Certificate`, issuer: 'Industry Standard', difficulty: 'Intermediate', hours: 80 });
+  }
+
+  // 4. Extract real free courses from where_to_learn
+  const courseSet = new Set();
+  const free_courses = [];
+  pRoleData.tech_skills.forEach(s => {
+    if (!s.where_to_learn) return;
+    const parts = s.where_to_learn.split('/');
+    const platform = parts[0].trim().replace(/\(free\)/gi, '').replace(/free /gi, '').trim();
+    if (!courseSet.has(s.skill_name) && free_courses.length < 6) {
+      courseSet.add(s.skill_name);
+      free_courses.push({ title: s.skill_name, platform: platform || 'Online', provider: s.where_to_learn, hours: /critical/i.test(s.priority) ? 40 : 20 });
+    }
+  });
+
+  // 5. Build projects from missing skills
+  const projects = [
+    { title: `${pRole} Fundamentals Project`, description: `Apply core ${pRole} skills in a guided project.`, difficulty: 'Beginner', tech: criticalSkills.slice(0,3).map(s => s.skill_name), skills_demonstrated: criticalSkills.slice(0,3).map(s=>s.skill_name).join(', ') },
+    { title: `${pRole} Integration Project`, description: `Build a real-world application combining multiple skills.`, difficulty: 'Intermediate', tech: highSkills.slice(0,3).map(s => s.skill_name), skills_demonstrated: highSkills.slice(0,3).map(s=>s.skill_name).join(', ') },
+    { title: `${pRole} Capstone Portfolio`, description: `Production-ready portfolio piece demonstrating mastery.`, difficulty: 'Advanced', tech: [...criticalSkills.slice(0,2), ...highSkills.slice(0,2)].map(s => s.skill_name), skills_demonstrated: missingSkills.slice(0, 4).map(s=>s.skill_name).join(', ') },
+  ];
+
+  // 6. AI tools from the primary role
+  const aiToolsNice = (pRoleData.ai_tools || []).filter(t => /^(medium|low)$/i.test(t.priority)).map(t => t.tool_name);
+  const aiToolsMust = (pRoleData.ai_tools || []).filter(t => /^(high|critical)$/i.test(t.priority)).map(t => t.tool_name);
+
+  const combined_tab4 = {
+    combined_pathway_summary: `Your immediate focus must be learning the missing fundamentals for ${pRole}. Role success probability: ${probStr}`,
+    skill_gap: {
+      current_skills: skills.length ? skills : ["Basic Academics", "Communication"],
+      missing_skills: preVerified.primarySkillGap.missing
+    },
+    recommended_skills,
+    learning_roadmap,
+    certifications,
+    free_courses,
+    projects,
+  };
+
   return {
     status: mlEnrichment.semanticSkills.length > 0 ? 'success_ml_assisted' : 'success_deterministic',
     generated_at: new Date().toISOString(),
@@ -266,28 +344,8 @@ const processCareerIntelligence = async (studentData) => {
     tertiary: tertiaryTab,
     ml_success_probability: mlEnrichment.successProbability,
     ml_semantic_skills: mlEnrichment.semanticSkills,
-    combined_tab4: {
-      combined_pathway_summary: `Your immediate focus must be learning the missing fundamentals for ${pRole}. Role success probability: ${probStr}`,
-      skill_gap: {
-        current_skills: skills.length ? skills : ["Basic Academics", "Communication"],
-        missing_skills: preVerified.primarySkillGap.missing
-      },
-      learning_roadmap: [
-        { step: "Step 1 - Foundation Skills", description: "Master prerequisites and theoretical fundamentals." },
-        { step: "Step 2 - Core Technical Skills", description: `Learn ${missingSkills[0]?.skill_name || 'core technologies'}.` },
-        { step: "Step 3 - Advanced Applications", description: "Apply skills in complex scenarios." },
-        { step: "Step 4 - Projects & Portfolio", description: "Deploy market-ready portfolios demonstrating these skills." }
-      ],
-      certifications: [
-        {name: `Certified ${pRole} Professional`, issuer: "Industry Standard Provider", difficulty: "Intermediate", duration: "3 months"}
-      ],
-      free_courses: [
-        {course_name: `${pRole} Crash Course`, platform: "YouTube / Coursera", link_status: "Free"}
-      ],
-      projects: [
-        {project_name: `${pRole} Capstone`, description: "A complete end-to-end implementation.", skills_demonstrated: missingSkills.slice(0, 3).map(s=>s.skill_name).join(', ')}
-      ]
-    }
+    combined_tab3: { must_have: (pRoleData.ai_tools || []).filter(t => /^(high|critical)$/i.test(t.priority)), nice_to_have: (pRoleData.ai_tools || []).filter(t => /^(medium|low)$/i.test(t.priority)) },
+    combined_tab4,
   };
 };
 

@@ -4,35 +4,38 @@ import {
   Target, TrendingUp, Cpu, BookOpen, Star,
   CheckCircle2, XCircle, RefreshCw, Sparkles,
   BarChart3, Globe, Layers, Loader2,
+  Award, ExternalLink, Clock, Rocket, Code2, Briefcase, GraduationCap, Zap,
 } from 'lucide-react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
-/* ── design tokens ──────────────────────────────────────────────────── */
+/* ── design tokens (Stitch MCP "Digital Oracle" — Premium SaaS) ────── */
 const C = {
-  card: { background:'var(--bg-primary)', border:'0.5px solid var(--border)', borderRadius:12, padding:'16px 20px', marginBottom:12 },
-  cardInfo: { background:'var(--bg-info)', border:'0.5px solid var(--border-info)', borderRadius:12, padding:'16px 20px', marginBottom:12 },
+  card: { background:'var(--card-bg, var(--bg-primary))', backdropFilter:'blur(24px)', WebkitBackdropFilter:'blur(24px)', border:'0.5px solid rgba(72,72,71,0.15)', borderRadius:18, padding:'22px 26px', marginBottom:14, transition:'box-shadow 0.35s cubic-bezier(.4,0,.2,1), transform 0.25s cubic-bezier(.4,0,.2,1), border-color 0.3s', boxShadow:'0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04)' },
+  cardInfo: { background:'linear-gradient(135deg, rgba(133,173,255,0.10) 0%, rgba(110,159,255,0.04) 100%)', backdropFilter:'blur(20px)', WebkitBackdropFilter:'blur(20px)', border:'0.5px solid rgba(133,173,255,0.18)', borderRadius:18, padding:'22px 26px', marginBottom:14 },
+  cardNested: { background:'var(--surface-high, var(--bg-tertiary))', borderRadius:14, padding:'16px 20px', marginBottom:10, border:'0.5px solid rgba(72,72,71,0.08)' },
 };
 
 function Badge({ text, bg, fg }) {
-  return <span style={{ display:'inline-block', padding:'2px 8px', borderRadius:8, background:bg, color:fg, fontSize:11, fontWeight:500 }}>{text}</span>;
+  return <span style={{ display:'inline-flex', alignItems:'center', padding:'3px 10px', borderRadius:20, background:bg, color:fg, fontSize:10.5, fontWeight:600, letterSpacing:'0.02em', lineHeight:1.4 }}>{text}</span>;
 }
 
-function Bar({ pct, color, width }) {
+function Bar({ pct, color, width, height }) {
   return (
-    <div style={{ height:6, background:'var(--border)', borderRadius:3, width:width||'100%', overflow:'hidden' }}>
-      <div style={{ height:'100%', width:`${Math.min(pct,100)}%`, background:color||'#1D9E75', borderRadius:3, transition:'width 0.8s ease' }} />
+    <div style={{ height:height||7, background:'rgba(128,128,128,0.12)', borderRadius:20, width:width||'100%', overflow:'hidden' }}>
+      <div style={{ height:'100%', width:`${Math.min(pct,100)}%`, background:color ? `linear-gradient(90deg, ${color}, ${color}dd)` : 'linear-gradient(90deg, #1D9E75, #2BC48A)', borderRadius:20, transition:'width 1s cubic-bezier(.4,0,.2,1)', boxShadow: pct > 0 ? `0 0 8px ${color||'#1D9E75'}40` : 'none' }} />
     </div>
   );
 }
 
 function SH({ title, sub, icon }) {
   return (
-    <div style={{ margin:'20px 0 12px', display:'flex', alignItems:'center', gap:8 }}>
-      {icon && <span style={{ color:'var(--text-info)' }}>{icon}</span>}
+    <div style={{ margin:'24px 0 14px', display:'flex', alignItems:'center', gap:10 }}>
+      {icon && <div style={{ width:28, height:28, borderRadius:8, display:'flex', alignItems:'center', justifyContent:'center', background:'rgba(133,173,255,0.10)', color:'var(--text-info)' }}>{icon}</div>}
       <div>
-        <p style={{ fontSize:15, fontWeight:600, margin:0, color:'var(--text-primary)' }}>{title}</p>
-        {sub && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'1px 0 0' }}>{sub}</p>}
+        <p style={{ fontSize:15, fontWeight:700, margin:0, color:'var(--text-primary)', letterSpacing:'-0.01em' }}>{title}</p>
+        {sub && <p style={{ fontSize:11.5, color:'var(--text-secondary)', margin:'2px 0 0', fontWeight:400 }}>{sub}</p>}
       </div>
     </div>
   );
@@ -130,16 +133,39 @@ export default function Dashboard() {
   const secondaryRole = data.input_user_data?.preferences?.secondary?.jobRole || data.preferences?.secondary?.jobRole || '';
   const tertiaryRole  = data.input_user_data?.preferences?.tertiary?.jobRole  || data.preferences?.tertiary?.jobRole  || '';
   const roadmap = data.combined_tab4?.learning_roadmap || [
-    { step:'Step 1 — Foundation Skills', description:'Master prerequisites and theoretical fundamentals.' },
-    { step:'Step 2 — Core Technical Skills', description:'Learn the primary tools and technologies for this role.' },
-    { step:'Step 3 — Advanced Applications', description:'Apply skills in complex real-world scenarios.' },
-    { step:'Step 4 — Projects & Portfolio', description:'Build market-ready portfolio demonstrating your skills.' },
+    { step:'Foundation Skills', description:'Master prerequisites and theoretical fundamentals for this career direction.', icon:'book', status:'completed', duration:'~1 month' },
+    { step:'Core Technical Skills', description:'Learn the primary tools, frameworks, and technologies used in this role.', icon:'code', status:'in-progress', duration:'~2 months' },
+    { step:'Advanced Applications', description:'Apply your skills in complex, real-world scenarios and case studies.', icon:'rocket', status:'upcoming', duration:'~2 months' },
+    { step:'Projects & Portfolio', description:'Build 3 production-ready projects demonstrating mastery for employers.', icon:'briefcase', status:'locked', duration:'~1 month' },
   ];
-  const certs    = data.combined_tab4?.certifications || [];
-  const courses  = data.combined_tab4?.free_courses   || [];
-  const projects = data.role_projects || data.projects || [];
+
+  // Smart fallback certificates based on role
+  const FALLBACK_CERTS = [
+    { name:'Google Data Analytics Professional Certificate', issuer:'Google / Coursera', hours:180, difficulty:'Beginner', url:'https://www.coursera.org/professional-certificates/google-data-analytics' },
+    { name:'AWS Cloud Practitioner', issuer:'Amazon Web Services', hours:30, difficulty:'Beginner', url:'https://aws.amazon.com/certification/certified-cloud-practitioner/' },
+    { name:'Meta Front-End Developer Professional Certificate', issuer:'Meta / Coursera', hours:210, difficulty:'Intermediate', url:'https://www.coursera.org/professional-certificates/meta-front-end-developer' },
+  ];
+  const certs = data.combined_tab4?.certifications?.length > 0 ? data.combined_tab4.certifications : FALLBACK_CERTS;
+
+  // Smart fallback free courses
+  const FALLBACK_COURSES = [
+    { title:'Python for Everybody', platform:'Coursera', provider:'University of Michigan', hours:60, url:'https://www.coursera.org/specializations/python' },
+    { title:'CS50: Introduction to Computer Science', platform:'edX', provider:'Harvard University', hours:100, url:'https://cs50.harvard.edu/' },
+    { title:'Full Stack Open', platform:'Open Course', provider:'University of Helsinki', hours:120, url:'https://fullstackopen.com/' },
+    { title:'NPTEL Programming in Java', platform:'NPTEL', provider:'IIT Kharagpur', hours:40, url:'https://nptel.ac.in/' },
+  ];
+  const courses = data.combined_tab4?.free_courses?.length > 0 ? data.combined_tab4.free_courses : FALLBACK_COURSES;
+
+  // Smart fallback projects
+  const FALLBACK_PROJECTS = [
+    { title:'Personal Portfolio Website', description:'Build a responsive portfolio showcasing your skills and projects.', difficulty:'Beginner', tech:['HTML','CSS','JavaScript'] },
+    { title:'REST API with Authentication', description:'Create a RESTful API with JWT auth, CRUD operations, and database.', difficulty:'Intermediate', tech:['Node.js','Express','MongoDB'] },
+    { title:'Data Dashboard with Visualizations', description:'Build an interactive dashboard with charts, filters, and live data.', difficulty:'Advanced', tech:['React','Chart.js','Python'] },
+  ];
+  const projects = data.combined_tab4?.projects?.length > 0 ? data.combined_tab4.projects : (data.role_projects?.length > 0 ? data.role_projects : FALLBACK_PROJECTS);
   const aiMust   = data.combined_tab3?.must_have || [];
   const aiNice   = data.combined_tab3?.nice_to_have || [];
+  const recommendedSkills = data.combined_tab4?.recommended_skills || [];
 
   const clusterRoles = [
     { n:primaryRole,   s: pm ? `${pm.salary_min_lpa}-${pm.salary_max_lpa}L` : '3-8L', ai: pm?.ai_automation_risk||'Moderate', d:matched.length, t:total, a:missing.length, zone: pv.primaryZone?.employer_zone||'Amber' },
@@ -198,24 +224,25 @@ export default function Dashboard() {
      RENDER
   ══════════════════════════════════════════════════════════════ */
   return (
-    <div style={{ maxWidth:680, margin:'0 auto', fontFamily:'var(--font-sans)' }}>
+    <div style={{ maxWidth:720, margin:'0 auto', fontFamily:'var(--font-sans)', padding:'0 4px' }}>
 
-      {/* ── Header ── */}
-      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:16, paddingBottom:12, borderBottom:'0.5px solid var(--border)' }}>
+      {/* ── Premium Header ── */}
+      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:20, paddingBottom:16, borderBottom:'0.5px solid rgba(72,72,71,0.12)' }}>
         <div>
-          <div style={{ display:'flex', alignItems:'center', gap:6, marginBottom:4 }}>
-            <span style={{ fontSize:10, fontWeight:700, textTransform:'uppercase', letterSpacing:'0.08em', padding:'2px 8px', borderRadius:10, background:'var(--bg-info)', color:'var(--text-info)' }}>
-              Career Intelligence Report
+          <div style={{ display:'flex', alignItems:'center', gap:6, marginBottom:6 }}>
+            <span style={{ fontSize:10, fontWeight:700, textTransform:'uppercase', letterSpacing:'0.1em', padding:'3px 10px', borderRadius:20, background:'linear-gradient(135deg, rgba(133,173,255,0.15), rgba(133,173,255,0.08))', color:'var(--text-info)', border:'0.5px solid rgba(133,173,255,0.2)' }}>
+              ✦ Career Intelligence
             </span>
-            <span style={{ display:'inline-flex', alignItems:'center', gap:4, fontSize:10, fontWeight:700, textTransform:'uppercase', padding:'2px 8px', borderRadius:10, background:'var(--bg-success)', color:'var(--text-success)' }}>
-              <span style={{ width:6, height:6, borderRadius:'50%', background:'currentColor', animation:'pulse 2s infinite' }} />
-              Active
+            <span style={{ display:'inline-flex', alignItems:'center', gap:4, fontSize:10, fontWeight:700, textTransform:'uppercase', padding:'3px 10px', borderRadius:20, background:'linear-gradient(135deg, rgba(29,158,117,0.15), rgba(29,158,117,0.08))', color:'var(--text-success)', border:'0.5px solid rgba(29,158,117,0.2)' }}>
+              <span style={{ width:5, height:5, borderRadius:'50%', background:'currentColor', animation:'pulse 2s infinite', boxShadow:'0 0 6px currentColor' }} />
+              Live
             </span>
           </div>
-          <p style={{ fontSize:18, fontWeight:600, margin:0, color:'var(--text-primary)' }}>Career Intelligence Dashboard</p>
+          <p style={{ fontSize:20, fontWeight:700, margin:0, color:'var(--text-primary)', letterSpacing:'-0.02em' }}>Career Intelligence Dashboard</p>
+          <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'3px 0 0', fontWeight:400 }}>AI-powered career analysis for {primaryRole || 'your target role'}</p>
         </div>
         <button onClick={regenerate} disabled={regen}
-          style={{ display:'flex', alignItems:'center', gap:6, padding:'7px 14px', border:'0.5px solid var(--border)', borderRadius:8, background:'var(--bg-secondary)', color:'var(--text-secondary)', cursor:regen?'wait':'pointer', fontSize:12, fontWeight:500 }}>
+          style={{ display:'flex', alignItems:'center', gap:6, padding:'9px 18px', border:'0.5px solid rgba(133,173,255,0.25)', borderRadius:12, background:'linear-gradient(135deg, rgba(133,173,255,0.08), rgba(133,173,255,0.03))', color:'var(--text-info)', cursor:regen?'wait':'pointer', fontSize:12, fontWeight:600, transition:'all 0.2s', backdropFilter:'blur(8px)' }}>
           <RefreshCw size={13} style={regen ? { animation:'spin 1s linear infinite' } : {}} />
           {regen ? 'Regenerating…' : 'Regenerate'}
         </button>
@@ -264,34 +291,41 @@ export default function Dashboard() {
         })}
       </div>
 
-      {/* ── Direction Banner ── */}
-      <div style={{ background:'#1B3A5C', borderRadius:12, padding:'20px 24px', marginBottom:16, color:'#fff' }}>
-        <p style={{ fontSize:12, opacity:0.7, margin:0 }}>Career direction</p>
-        <p style={{ fontSize:20, fontWeight:500, margin:'4px 0 2px' }}>{direction}</p>
-        <div style={{ display:'flex', gap:16, fontSize:12, opacity:0.7, marginBottom:12 }}>
-          <span>{clusterRoles.length} roles</span>
-          <span>{total} unique skills</span>
-          <span>{matched.length} skills developed</span>
-        </div>
-        <div style={{ display:'flex', alignItems:'center', gap:12 }}>
-          <div style={{ flex:1, height:8, background:'rgba(255,255,255,0.15)', borderRadius:4, overflow:'hidden' }}>
-            <div style={{ width:`${coveragePct}%`, height:'100%', background:'#1D9E75', transition:'width 1s ease' }} />
+      {/* ── Premium Direction Banner ── */}
+      <div style={{ background:'linear-gradient(135deg, #0F2B4A 0%, #1B3A5C 40%, #1A4D6E 100%)', borderRadius:18, padding:'24px 28px', marginBottom:20, color:'#fff', position:'relative', overflow:'hidden', boxShadow:'0 4px 24px rgba(15,43,74,0.3)' }}>
+        {/* Ambient glow */}
+        <div style={{ position:'absolute', top:-40, right:-40, width:160, height:160, background:'radial-gradient(circle, rgba(29,158,117,0.15) 0%, transparent 70%)', pointerEvents:'none' }} />
+        <div style={{ position:'absolute', bottom:-30, left:-30, width:120, height:120, background:'radial-gradient(circle, rgba(133,173,255,0.12) 0%, transparent 70%)', pointerEvents:'none' }} />
+        <div style={{ position:'relative', zIndex:1 }}>
+          <p style={{ fontSize:11, opacity:0.6, margin:0, fontWeight:500, textTransform:'uppercase', letterSpacing:'0.1em' }}>Career Direction</p>
+          <p style={{ fontSize:22, fontWeight:700, margin:'6px 0 4px', letterSpacing:'-0.02em' }}>{direction}</p>
+          <div style={{ display:'flex', gap:20, fontSize:12, opacity:0.6, marginBottom:16 }}>
+            <span style={{ display:'flex', alignItems:'center', gap:4 }}><Target size={12}/> {clusterRoles.length} roles</span>
+            <span style={{ display:'flex', alignItems:'center', gap:4 }}><Cpu size={12}/> {total} skills tracked</span>
+            <span style={{ display:'flex', alignItems:'center', gap:4 }}><CheckCircle2 size={12}/> {matched.length} developed</span>
           </div>
-          <span style={{ fontSize:14, fontWeight:500 }}>{matched.length} of {total} skills developed</span>
+          <div style={{ display:'flex', alignItems:'center', gap:14 }}>
+            <div style={{ flex:1, height:8, background:'rgba(255,255,255,0.10)', borderRadius:20, overflow:'hidden' }}>
+              <div style={{ width:`${coveragePct}%`, height:'100%', background:'linear-gradient(90deg, #1D9E75, #2BC48A)', transition:'width 1.2s cubic-bezier(.4,0,.2,1)', borderRadius:20, boxShadow:'0 0 12px rgba(29,158,117,0.4)' }} />
+            </div>
+            <span style={{ fontSize:14, fontWeight:700, whiteSpace:'nowrap' }}>{coveragePct}%</span>
+          </div>
         </div>
       </div>
 
-      {/* ── Tabs ── */}
-      <div style={{ display:'flex', gap:0, borderBottom:'0.5px solid var(--border)', marginBottom:20, overflowX:'auto' }}>
+      {/* ── Premium Pill Tabs ── */}
+      <div style={{ display:'flex', gap:6, marginBottom:22, overflowX:'auto', padding:'4px', background:'var(--bg-secondary)', borderRadius:14, border:'0.5px solid rgba(72,72,71,0.08)' }}>
         {TABS.map(t => (
           <button key={t.id} onClick={() => setActiveTab(t.id)}
             style={{
-              padding:'10px 16px', background:'none', border:'none',
-              borderBottom: activeTab === t.id ? '2px solid var(--text-info)' : '2px solid transparent',
-              cursor:'pointer', whiteSpace:'nowrap', fontSize:13,
+              padding:'10px 18px', border:'none', borderRadius:10,
+              background: activeTab === t.id ? 'var(--bg-primary)' : 'transparent',
+              boxShadow: activeTab === t.id ? '0 1px 4px rgba(0,0,0,0.08), 0 2px 12px rgba(0,0,0,0.04)' : 'none',
+              cursor:'pointer', whiteSpace:'nowrap', fontSize:12.5,
               fontWeight: activeTab === t.id ? 600 : 400,
-              color: activeTab === t.id ? 'var(--text-info)' : 'var(--text-secondary)',
-              display:'flex', alignItems:'center', gap:6, transition:'all 0.15s',
+              color: activeTab === t.id ? 'var(--text-primary)' : 'var(--text-secondary)',
+              display:'flex', alignItems:'center', gap:6, transition:'all 0.25s cubic-bezier(.4,0,.2,1)',
+              flex:1, justifyContent:'center',
             }}>
             {t.icon} {t.label}
           </button>
@@ -412,78 +446,346 @@ export default function Dashboard() {
             </div>
           )}
 
-          {/* TAB 3 — AI Tools */}
+          {/* TAB 3 — AI Tools (Enhanced) */}
           {activeTab === 'AI Tools' && (
             <div>
-              <SH title="AI Tools for this Role" icon={<Sparkles size={14}/>} />
-              <div style={C.card}>
-                <p style={{ fontSize:13, fontWeight:600, margin:'0 0 10px', color:'var(--text-primary)' }}>Must Have</p>
-                {aiMust.length > 0
-                  ? <div style={{ display:'flex', flexWrap:'wrap', gap:7, marginBottom:16 }}>{aiMust.map((t,i) => <Badge key={i} text={t} bg="var(--bg-info)" fg="var(--text-info)" />)}</div>
-                  : <p style={{ fontSize:12, color:'var(--text-secondary)', marginBottom:16 }}>No specific must-have tools listed yet.</p>
-                }
-                <p style={{ fontSize:13, fontWeight:600, margin:'0 0 10px', color:'var(--text-primary)', borderTop:'0.5px solid var(--border)', paddingTop:12 }}>Nice to Have</p>
-                {aiNice.length > 0
-                  ? <div style={{ display:'flex', flexWrap:'wrap', gap:7 }}>{aiNice.map((t,i) => <Badge key={i} text={t} bg="var(--bg-secondary)" fg="var(--text-secondary)" />)}</div>
-                  : <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0 }}>No nice-to-have tools listed yet.</p>
-                }
+              <SH title="AI Tools for this Role" icon={<Sparkles size={14}/>} sub="Tools recommended by industry for this career path" />
+
+              {/* AI Impact Banner */}
+              <div style={{ ...C.cardInfo, display:'flex', alignItems:'center', gap:12, marginBottom:16 }}>
+                <div style={{ width:36, height:36, borderRadius:10, background:'linear-gradient(135deg,#6e4ff6,#85adff)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, boxShadow:'0 2px 8px rgba(110,79,246,0.3)' }}>
+                  <Sparkles size={18} color="#fff" />
+                </div>
+                <div>
+                  <p style={{ fontSize:13, fontWeight:600, margin:'0 0 2px', color:'var(--text-primary)' }}>AI Tools are Career Differentiators in {new Date().getFullYear()}</p>
+                  <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0 }}>Employers increasingly ask: "What AI tools do you use?" — These are curated for your role.</p>
+                </div>
               </div>
-              <div style={{ padding:'12px 16px', background:'var(--bg-secondary)', borderRadius:8, marginTop:12 }}>
+
+              {/* Must Have Tools */}
+              <p style={{ fontSize:14, fontWeight:700, margin:'20px 0 10px', color:'var(--text-primary)', fontFamily:"'Manrope', sans-serif" }}>
+                🔴 Must Have <span style={{ fontSize:11, fontWeight:400, color:'var(--text-secondary)', marginLeft:4 }}>({aiMust.length} tools)</span>
+              </p>
+              {aiMust.length > 0
+                ? <div style={{ display:'flex', flexDirection:'column', gap:10, marginBottom:20 }}>
+                    {aiMust.map((t, i) => {
+                      const isObj = typeof t === 'object';
+                      const name = isObj ? t.tool_name : t;
+                      const usedFor = isObj ? t.used_for : null;
+                      const priority = isObj ? t.priority : 'CRITICAL';
+                      const learnUrl = isObj ? t.where_to_learn : null;
+                      return (
+                        <motion.div key={i} initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:i*0.08}}
+                          style={{ ...C.card, marginBottom:0, display:'flex', flexDirection:'column', gap:8, borderLeft:'3px solid #ff716c' }}>
+                          <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+                            <span style={{ fontSize:14, fontWeight:600, color:'var(--text-primary)' }}>{name}</span>
+                            <Badge text={priority} bg="var(--bg-danger)" fg="var(--text-danger)" />
+                          </div>
+                          {usedFor && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0, lineHeight:1.5 }}>💡 {usedFor}</p>}
+                          {learnUrl && (
+                            <a href={learnUrl.includes('http') ? learnUrl : `https://${learnUrl.match(/\(([^)]+)\)/)?.[1] || learnUrl}`}
+                              target="_blank" rel="noopener noreferrer"
+                              style={{ fontSize:11, color:'var(--text-info)', textDecoration:'none', display:'flex', alignItems:'center', gap:4 }}>
+                              <ExternalLink size={11} /> {learnUrl.replace(/\(.*?\)/g, '').trim()}
+                            </a>
+                          )}
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                : <div style={{ ...C.card, marginBottom:16 }}><p style={{ fontSize:12, color:'var(--text-secondary)', margin:0 }}>No must-have tools identified for this role yet.</p></div>
+              }
+
+              {/* Nice to Have Tools */}
+              <p style={{ fontSize:14, fontWeight:700, margin:'20px 0 10px', color:'var(--text-primary)', fontFamily:"'Manrope', sans-serif" }}>
+                🟡 Nice to Have <span style={{ fontSize:11, fontWeight:400, color:'var(--text-secondary)', marginLeft:4 }}>({aiNice.length} tools)</span>
+              </p>
+              {aiNice.length > 0
+                ? <div style={{ display:'flex', flexDirection:'column', gap:10, marginBottom:16 }}>
+                    {aiNice.map((t, i) => {
+                      const isObj = typeof t === 'object';
+                      const name = isObj ? t.tool_name : t;
+                      const usedFor = isObj ? t.used_for : null;
+                      const priority = isObj ? t.priority : 'LOW';
+                      const learnUrl = isObj ? t.where_to_learn : null;
+                      return (
+                        <motion.div key={i} initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:i*0.08}}
+                          style={{ ...C.card, marginBottom:0, display:'flex', flexDirection:'column', gap:8, borderLeft:'3px solid var(--text-warning)' }}>
+                          <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+                            <span style={{ fontSize:14, fontWeight:600, color:'var(--text-primary)' }}>{name}</span>
+                            <Badge text={priority} bg="var(--bg-warning)" fg="var(--text-warning)" />
+                          </div>
+                          {usedFor && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0, lineHeight:1.5 }}>💡 {usedFor}</p>}
+                          {learnUrl && (
+                            <a href={learnUrl.includes('http') ? learnUrl : `https://${learnUrl.match(/\(([^)]+)\)/)?.[1] || learnUrl}`}
+                              target="_blank" rel="noopener noreferrer"
+                              style={{ fontSize:11, color:'var(--text-info)', textDecoration:'none', display:'flex', alignItems:'center', gap:4 }}>
+                              <ExternalLink size={11} /> {learnUrl.replace(/\(.*?\)/g, '').trim()}
+                            </a>
+                          )}
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                : <div style={{ ...C.card, marginBottom:16 }}><p style={{ fontSize:12, color:'var(--text-secondary)', margin:0 }}>No nice-to-have tools identified yet.</p></div>
+              }
+
+              {/* Tip */}
+              <div style={{ ...C.card, backgroundImage:'linear-gradient(135deg, rgba(133,173,255,0.08) 0%, rgba(155,255,206,0.04) 100%)', padding:'14px 18px' }}>
                 <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0, lineHeight:1.6 }}>
-                  <strong style={{ color:'var(--text-primary)' }}>Tip:</strong> AI tools for this role are generated quarterly from real job postings. The data was last updated based on verified market signals.
+                  <strong style={{ color:'var(--text-primary)' }}>💼 Pro Tip:</strong> Mention these tools in your resume and interviews. Employers in {new Date().getFullYear()} value AI tool proficiency as a top hiring signal.
                 </p>
               </div>
             </div>
           )}
 
-          {/* TAB 4 — Learning Path */}
+          {/* TAB 4 — Learning Path (REDESIGNED) */}
           {activeTab === 'Learning Path' && (
             <div>
-              <SH title="Career Roadmap" icon={<Layers size={14}/>} />
-              <div style={C.card}>
-                {roadmap.map((s, i) => (
-                  <div key={i} style={{ display:'flex', gap:12, padding:'10px 0', borderBottom: i < roadmap.length-1 ? '0.5px solid var(--border)' : 'none' }}>
-                    <div style={{ width:26, height:26, borderRadius:'50%', flexShrink:0, background:'var(--bg-info)', color:'var(--text-info)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:12, fontWeight:600 }}>{i+1}</div>
-                    <div>
-                      <p style={{ fontSize:13, fontWeight:600, margin:'0 0 2px', color:'var(--text-primary)' }}>{s.step||s.title||`Step ${i+1}`}</p>
-                      <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0, lineHeight:1.5 }}>{s.description}</p>
-                    </div>
+              {/* AI Learning Estimate Banner */}
+              <div style={{ ...C.cardInfo, display:'flex', alignItems:'center', gap:12, marginTop:16 }}>
+                <div style={{ width:36, height:36, borderRadius:10, background:'linear-gradient(135deg,#185FA5,#1E88E5)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, boxShadow:'0 2px 8px #185FA540' }}>
+                  <Zap size={18} color="#fff" />
+                </div>
+                <div>
+                  <p style={{ fontSize:13, fontWeight:600, margin:'0 0 2px', color:'var(--text-info)' }}>AI Learning Estimate</p>
+                  <p style={{ fontSize:12, color:'var(--text-info)', margin:0, lineHeight:1.5, opacity:0.85 }}>
+                    Based on your skill coverage ({coveragePct}%), reaching <strong>Green Zone</strong> will take approximately <strong>{coveragePct >= 50 ? '1-2' : coveragePct >= 25 ? '3-4' : '5-6'} months</strong> of consistent learning.
+                  </p>
+                </div>
+              </div>
+
+              {/* ── Recommended Skills for This Role ── */}
+              {recommendedSkills.length > 0 && (
+                <>
+                  <SH title={`Recommended Skills for ${primaryRole}`} sub={`${recommendedSkills.filter(s=>s.is_matched).length}/${recommendedSkills.length} skills matched`} icon={<Layers size={14}/>} />
+                  {/* Skill Progress by Tier */}
+                  <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(150px, 1fr))', gap:8, marginBottom:12 }}>
+                    {[{tier:'CRITICAL',label:'Critical',color:'#E53935'},{tier:'HIGH',label:'High',color:'#F59E0B'},{tier:'MEDIUM',label:'Medium',color:'#1D9E75'},{tier:'LOW',label:'Low',color:'#6B7280'}].map(({tier,label,color}) => {
+                      const tierSkills = recommendedSkills.filter(s => s.priority?.toUpperCase() === tier);
+                      if (tierSkills.length === 0) return null;
+                      const tierMatched = tierSkills.filter(s => s.is_matched).length;
+                      const tierPct = Math.round((tierMatched / tierSkills.length) * 100);
+                      return (
+                        <div key={tier} style={{ padding:'10px 12px', borderRadius:10, background:'var(--card-bg)', border:'0.5px solid var(--border)' }}>
+                          <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:6 }}>
+                            <span style={{ fontSize:11, fontWeight:600, color, textTransform:'uppercase', letterSpacing:0.5 }}>{label}</span>
+                            <span style={{ fontSize:11, color:'var(--text-secondary)' }}>{tierMatched}/{tierSkills.length}</span>
+                          </div>
+                          <div style={{ height:4, borderRadius:2, background:'var(--bg-secondary)', overflow:'hidden' }}>
+                            <div style={{ height:'100%', borderRadius:2, background:color, width:`${tierPct}%`, transition:'width 0.5s ease' }} />
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
-                ))}
-              </div>
+                  {/* Individual Skill Cards */}
+                  <div style={C.card}>
+                    {recommendedSkills.map((sk, i) => {
+                      const priorityColors = { CRITICAL:'#E53935', HIGH:'#F59E0B', MEDIUM:'#1D9E75', LOW:'#6B7280' };
+                      const pColor = priorityColors[sk.priority?.toUpperCase()] || '#6B7280';
+                      return (
+                        <div key={i} style={{ display:'flex', alignItems:'flex-start', gap:10, padding:'10px 0', borderBottom: i < recommendedSkills.length-1 ? '0.5px solid var(--border)' : 'none' }}>
+                          <div style={{ width:24, height:24, borderRadius:'50%', background: sk.is_matched ? 'var(--bg-success)' : 'var(--bg-secondary)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, marginTop:2 }}>
+                            {sk.is_matched ? <CheckCircle2 size={13} color='var(--text-success)' /> : <XCircle size={13} color='var(--text-secondary)' />}
+                          </div>
+                          <div style={{ flex:1, minWidth:0 }}>
+                            <div style={{ display:'flex', alignItems:'center', gap:6, flexWrap:'wrap' }}>
+                              <span style={{ fontSize:13, fontWeight:600, color: sk.is_matched ? 'var(--text-success)' : 'var(--text-primary)' }}>{sk.skill_name}</span>
+                              <span style={{ fontSize:9, padding:'1px 6px', borderRadius:4, background:pColor+'20', color:pColor, fontWeight:700, letterSpacing:0.5, textTransform:'uppercase' }}>{sk.priority}</span>
+                              {sk.is_matched && <span style={{ fontSize:10, color:'var(--text-success)', fontWeight:500 }}>✓ Matched</span>}
+                            </div>
+                            {sk.where_to_learn && !sk.is_matched && (
+                              <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'3px 0 0', lineHeight:1.5 }}>
+                                <span style={{ fontWeight:500, color:'var(--text-info)' }}>Where to learn:</span> {sk.where_to_learn}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              )}
 
-              <SH title="Recommended Certificates" />
+              {/* Career Roadmap Timeline */}
+              <SH title="Career Roadmap" sub={`${roadmap.length} steps to industry readiness`} icon={<Rocket size={14}/>} />
               <div style={C.card}>
-                {certs.length > 0
-                  ? certs.map((c,i) => <div key={i} style={{ padding:'8px 0', borderBottom: i<certs.length-1 ? '0.5px solid var(--border)' : 'none' }}><p style={{ fontSize:13, fontWeight:500, margin:0, color:'var(--text-primary)' }}>{c.name||c}</p></div>)
-                  : <p style={{ fontSize:13, color:'var(--text-secondary)', margin:0 }}>No specific certifications listed yet.</p>
-                }
-              </div>
+                {roadmap.map((s, i) => {
+                  const statusMap = {
+                    completed: { bg:'var(--bg-success)', fg:'var(--text-success)', label:'Completed', dot:'#1D9E75' },
+                    'in-progress': { bg:'var(--bg-info)', fg:'var(--text-info)', label:'In Progress', dot:'#185FA5' },
+                    upcoming: { bg:'var(--bg-secondary)', fg:'var(--text-secondary)', label:'Upcoming', dot:'var(--border)' },
+                    locked: { bg:'var(--bg-secondary)', fg:'var(--text-secondary)', label:'Locked', dot:'var(--border)' },
+                  };
+                  const st = statusMap[s.status] || statusMap.upcoming;
+                  const iconMap = { book:<GraduationCap size={14}/>, code:<Code2 size={14}/>, rocket:<Rocket size={14}/>, briefcase:<Briefcase size={14}/> };
 
-              <SH title="Free Courses" />
-              <div style={C.card}>
-                {courses.length > 0
-                  ? courses.map((c,i) => (
-                    <div key={i} style={{ padding:'8px 0', borderBottom: i<courses.length-1 ? '0.5px solid var(--border)' : 'none' }}>
-                      <p style={{ fontSize:13, fontWeight:500, margin:'0 0 2px', color:'var(--text-primary)' }}>{c.title||c.name||c}</p>
-                      {(c.platform||c.provider) && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0 }}>Platform: {c.platform||c.provider}</p>}
+                  /* ── Course links per roadmap step ── */
+                  const STEP_COURSES = [
+                    [ // Step 1 - Foundation
+                      { title:'Python for Everybody', platform:'Coursera', url:'https://www.coursera.org/specializations/python' },
+                      { title:'CS50 — Intro to CS', platform:'Harvard/YouTube', url:'https://www.youtube.com/watch?v=8mAITcNt710' },
+                      { title:'NPTEL — Programming in C', platform:'NPTEL IIT', url:'https://nptel.ac.in/courses/106105171' },
+                    ],
+                    [ // Step 2 - Core Technical
+                      { title:'NPTEL — Data Structures & Algorithms', platform:'NPTEL IIT Madras', url:'https://nptel.ac.in/courses/106106127' },
+                      { title:'React Full Course 2024', platform:'YouTube', url:'https://www.youtube.com/watch?v=CgkZ7MvWUAA' },
+                      { title:'Machine Learning Specialization', platform:'Coursera/Stanford', url:'https://www.coursera.org/specializations/machine-learning-introduction' },
+                    ],
+                    [ // Step 3 - Advanced
+                      { title:'NPTEL — Deep Learning', platform:'NPTEL IIT Ropar', url:'https://nptel.ac.in/courses/106106184' },
+                      { title:'Full Stack Open (Helsinki)', platform:'Open Course', url:'https://fullstackopen.com/' },
+                      { title:'AWS Cloud Practitioner', platform:'AWS', url:'https://aws.amazon.com/training/learn-about/cloud-practitioner/' },
+                    ],
+                    [ // Step 4 - Projects
+                      { title:'Build 5 Projects (freeCodeCamp)', platform:'YouTube', url:'https://www.youtube.com/watch?v=pMFjJ4ENrCk' },
+                      { title:'GitHub Portfolio Guide', platform:'GitHub', url:'https://docs.github.com/en/get-started/start-your-journey/setting-up-your-profile' },
+                    ],
+                  ];
+                  const stepCourses = s.courses || s.resources || STEP_COURSES[Math.min(i, STEP_COURSES.length - 1)] || [];
+
+                  return (
+                    <div key={i} style={{ display:'flex', gap:0, position:'relative' }}>
+                      {/* Timeline line */}
+                      <div style={{ display:'flex', flexDirection:'column', alignItems:'center', width:32, flexShrink:0 }}>
+                        <div style={{
+                          width:28, height:28, borderRadius:'50%', background:st.bg, border:`2px solid ${st.dot}`,
+                          display:'flex', alignItems:'center', justifyContent:'center', color:st.fg, zIndex:1,
+                          animation: s.status === 'in-progress' ? 'pulse 2s infinite' : 'none',
+                        }}>
+                          {s.status === 'completed' ? <CheckCircle2 size={14}/> : (iconMap[s.icon] || <span style={{ fontSize:11, fontWeight:700 }}>{i+1}</span>)}
+                        </div>
+                        {i < roadmap.length - 1 && (
+                          <div style={{ width:2, flex:1, background: s.status === 'completed' ? '#1D9E75' : 'var(--border)', minHeight:20 }} />
+                        )}
+                      </div>
+                      {/* Content */}
+                      <div style={{ flex:1, paddingBottom: i < roadmap.length-1 ? 20 : 0, paddingLeft:12 }}>
+                        <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:3, flexWrap:'wrap' }}>
+                          <p style={{ fontSize:13, fontWeight:600, margin:0, color:s.status==='locked' ? 'var(--text-secondary)' : 'var(--text-primary)' }}>{s.step||s.title||`Step ${i+1}`}</p>
+                          <Badge text={st.label} bg={st.bg} fg={st.fg} />
+                          {s.duration && <span style={{ fontSize:11, color:'var(--text-secondary)', display:'flex', alignItems:'center', gap:3 }}><Clock size={10}/>{s.duration}</span>}
+                        </div>
+                        <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0, lineHeight:1.5 }}>{s.description}</p>
+                        {/* Expandable skill details with where-to-learn */}
+                        {s.skills && s.skills.length > 0 && (
+                          <div style={{ marginTop:8, display:'flex', flexWrap:'wrap', gap:6 }}>
+                            {s.skills.map((sk, j) => (
+                              <div key={j} style={{ padding:'4px 10px', borderRadius:8, background:'var(--bg-secondary)', border:'0.5px solid var(--border)', fontSize:11 }}>
+                                <span style={{ fontWeight:600, color:'var(--text-primary)' }}>{sk.name}</span>
+                                {sk.where && <span style={{ color:'var(--text-secondary)', display:'block', marginTop:2 }}>{sk.where}</span>}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        {/* ── Course redirect links ── */}
+                        {stepCourses.length > 0 && (
+                          <div style={{ marginTop:10, padding:'8px 10px', borderRadius:10, background:'var(--bg-secondary)', border:'0.5px solid var(--border)' }}>
+                            <p style={{ fontSize:11, fontWeight:600, color:'var(--text-secondary)', margin:'0 0 6px', textTransform:'uppercase', letterSpacing:'0.05em' }}>📚 Recommended Courses</p>
+                            {stepCourses.map((course, ci) => {
+                              const platformColors = { Coursera:'#0056D2', 'Coursera/Stanford':'#0056D2', edX:'#02262B', 'NPTEL IIT':'#E65100', 'NPTEL IIT Madras':'#E65100', 'NPTEL IIT Ropar':'#E65100', YouTube:'#FF0000', 'Harvard/YouTube':'#FF0000', 'Open Course':'#1D9E75', AWS:'#FF9900', GitHub:'#171515' };
+                              const pCol = platformColors[course.platform] || 'var(--text-info)';
+                              return (
+                                <a key={ci} href={course.url} target="_blank" rel="noreferrer"
+                                  style={{ display:'flex', alignItems:'center', gap:8, padding:'5px 0', textDecoration:'none', borderBottom: ci < stepCourses.length - 1 ? '0.5px solid var(--border)' : 'none' }}>
+                                  <span style={{ width:20, height:20, borderRadius:5, background:pCol+'18', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+                                    <BookOpen size={10} color={pCol} />
+                                  </span>
+                                  <span style={{ flex:1 }}>
+                                    <span style={{ fontSize:12, fontWeight:500, color:'var(--text-primary)' }}>{course.title}</span>
+                                    <span style={{ fontSize:10, color:pCol, marginLeft:6, fontWeight:600 }}>{course.platform}</span>
+                                  </span>
+                                  <ExternalLink size={12} color="var(--text-info)" />
+                                </a>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  ))
-                  : <p style={{ fontSize:13, color:'var(--text-secondary)', margin:0 }}>No free courses listed yet.</p>
-                }
+                  );
+                })}
               </div>
 
-              <SH title="Recommended Projects" />
-              <div style={C.card}>
-                {projects.length > 0
-                  ? projects.map((p,i) => (
-                    <div key={i} style={{ padding:'10px 0', borderBottom: i<projects.length-1 ? '0.5px solid var(--border)' : 'none' }}>
-                      <p style={{ fontSize:13, fontWeight:500, margin:'0 0 3px', color:'var(--text-primary)' }}>{p.title||p.name||p}</p>
-                      {p.description && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0 }}>{p.description}</p>}
+              {/* Recommended Certificates */}
+              <SH title="Recommended Certificates" sub={`${certs.length} industry-recognized certifications`} icon={<Award size={14}/>} />
+              <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap:10 }}>
+                {certs.map((c, i) => {
+                  const name = c.name || c;
+                  const diff = c.difficulty || 'Beginner';
+                  const diffStyle = diff === 'Beginner' ? { bg:'var(--bg-success)', fg:'var(--text-success)' } : diff === 'Intermediate' ? { bg:'var(--bg-warning)', fg:'var(--text-warning)' } : { bg:'var(--bg-danger)', fg:'var(--text-danger)' };
+                  return (
+                    <div key={i} style={{ ...C.card, display:'flex', flexDirection:'column', gap:8, marginBottom:0 }}>
+                      <div style={{ display:'flex', alignItems:'flex-start', justifyContent:'space-between' }}>
+                        <div style={{ width:32, height:32, borderRadius:8, background:'var(--bg-info)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+                          <Award size={16} color='var(--text-info)' />
+                        </div>
+                        <Badge text={diff} bg={diffStyle.bg} fg={diffStyle.fg} />
+                      </div>
+                      <p style={{ fontSize:13, fontWeight:600, margin:0, color:'var(--text-primary)', lineHeight:1.4 }}>{name}</p>
+                      {c.issuer && <p style={{ fontSize:11, color:'var(--text-secondary)', margin:0 }}>{c.issuer}</p>}
+                      <div style={{ display:'flex', alignItems:'center', gap:12, marginTop:'auto' }}>
+                        {c.hours && <span style={{ fontSize:11, color:'var(--text-secondary)', display:'flex', alignItems:'center', gap:3 }}><Clock size={10}/> ~{c.hours}hrs</span>}
+                        {c.url && <a href={c.url} target='_blank' rel='noreferrer' style={{ fontSize:11, color:'var(--text-info)', textDecoration:'none', display:'flex', alignItems:'center', gap:3, marginLeft:'auto' }}>Learn More <ExternalLink size={10}/></a>}
+                      </div>
                     </div>
-                  ))
-                  : <p style={{ fontSize:13, color:'var(--text-secondary)', margin:0 }}>No projects listed yet.</p>
-                }
+                  );
+                })}
+              </div>
+
+              {/* Free Courses */}
+              <SH title="Free Courses" sub={`${courses.length} curated from top platforms`} icon={<BookOpen size={14}/>} />
+              <div style={C.card}>
+                {courses.map((c, i) => {
+                  const platformColors = { Coursera:'#0056D2', edX:'#02262B', NPTEL:'#E65100', YouTube:'#FF0000', 'Open Course':'#1D9E75' };
+                  const pColor = platformColors[c.platform] || 'var(--text-info)';
+                  return (
+                    <div key={i} style={{ display:'flex', alignItems:'center', gap:12, padding:'10px 0', borderBottom: i<courses.length-1 ? '0.5px solid var(--border)' : 'none' }}>
+                      <div style={{ width:28, height:28, borderRadius:6, background: pColor+'18', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+                        <BookOpen size={14} color={pColor} />
+                      </div>
+                      <div style={{ flex:1 }}>
+                        <p style={{ fontSize:13, fontWeight:500, margin:'0 0 2px', color:'var(--text-primary)' }}>{c.title||c.name||c}</p>
+                        <div style={{ display:'flex', alignItems:'center', gap:8, flexWrap:'wrap' }}>
+                          {c.platform && <Badge text={c.platform} bg={pColor+'18'} fg={pColor} />}
+                          {c.provider && <span style={{ fontSize:11, color:'var(--text-secondary)' }}>{c.provider}</span>}
+                          {c.hours && <span style={{ fontSize:11, color:'var(--text-secondary)', display:'flex', alignItems:'center', gap:3 }}><Clock size={10}/> ~{c.hours}hrs</span>}
+                        </div>
+                      </div>
+                      {c.url && <a href={c.url} target='_blank' rel='noreferrer' style={{ color:'var(--text-info)', display:'flex' }}><ExternalLink size={14}/></a>}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Recommended Projects */}
+              <SH title="Recommended Projects" sub={`${projects.length} hands-on projects to build your portfolio`} icon={<Briefcase size={14}/>} />
+              <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap:10 }}>
+                {projects.map((p, i) => {
+                  const diff = p.difficulty || 'Beginner';
+                  const diffStyle = diff === 'Beginner' ? { bg:'var(--bg-success)', fg:'var(--text-success)' } : diff === 'Intermediate' ? { bg:'var(--bg-warning)', fg:'var(--text-warning)' } : { bg:'var(--bg-danger)', fg:'var(--text-danger)' };
+                  const tech = p.tech || p.technologies || p.tech_stack || [];
+                  return (
+                    <div key={i} style={{ ...C.card, display:'flex', flexDirection:'column', gap:6, marginBottom:0 }}>
+                      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+                        <div style={{ width:28, height:28, borderRadius:8, background:'var(--bg-secondary)', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                          <Code2 size={14} color='var(--text-secondary)' />
+                        </div>
+                        <Badge text={diff} bg={diffStyle.bg} fg={diffStyle.fg} />
+                      </div>
+                      <p style={{ fontSize:13, fontWeight:600, margin:0, color:'var(--text-primary)' }}>{p.title||p.name||p}</p>
+                      {p.description && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0, lineHeight:1.5 }}>{p.description}</p>}
+                      {tech.length > 0 && (
+                        <div style={{ display:'flex', flexWrap:'wrap', gap:4, marginTop:4 }}>
+                          {(Array.isArray(tech) ? tech : [tech]).map((t,j) => (
+                            <span key={j} style={{ fontSize:10, padding:'2px 7px', borderRadius:6, background:'var(--bg-info)', color:'var(--text-info)', fontWeight:500 }}>{t}</span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
