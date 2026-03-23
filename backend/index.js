@@ -15,6 +15,7 @@ if (!fs.existsSync(RECORDS_DIR)) fs.mkdirSync(RECORDS_DIR, { recursive: true });
 const { roles } = require('./data/mockRoles');
 const { generateCareerIntelligence } = require('./services/aiService');
 const { processCareerIntelligence } = require('./engine');
+const dataLoader = require('./dataLoader');
 const { initializeDB, executeQuery } = require('./db');
 const { connectMongoDB, CareerAnalysisModel } = require('./mongoDb');
 
@@ -446,6 +447,69 @@ app.get('/api/roles', async (req, res) => {
 
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
 app.get('/', (req, res) => res.json({ message: 'SMAART Engine Active', status: 'running' }));
+
+// ── Expanded Dataset API Endpoints (merged company + imported data) ──
+// All data from databases — no AI calls
+
+app.get('/api/expanded-roles', async (req, res) => {
+  try {
+    const cached = await getCached('expanded_roles');
+    if (cached) return res.json(JSON.parse(cached));
+    const data = dataLoader.getRoleSkillsDB();
+    await setCached('expanded_roles', JSON.stringify(data), 7200);
+    res.json(data);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.get('/api/expanded-market', async (req, res) => {
+  try {
+    const cached = await getCached('expanded_market');
+    if (cached) return res.json(JSON.parse(cached));
+    const data = dataLoader.getMarketData();
+    await setCached('expanded_market', JSON.stringify(data), 7200);
+    res.json(data);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.get('/api/expanded-titles', async (req, res) => {
+  try {
+    const cached = await getCached('expanded_titles');
+    if (cached) return res.json(JSON.parse(cached));
+    const data = dataLoader.getJobTitles();
+    await setCached('expanded_titles', JSON.stringify(data), 7200);
+    res.json(data);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.get('/api/courses', async (req, res) => {
+  try {
+    const cached = await getCached('all_courses');
+    if (cached) return res.json(JSON.parse(cached));
+    const data = dataLoader.getCourses();
+    await setCached('all_courses', JSON.stringify(data), 7200);
+    res.json(data);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+app.get('/api/data-stats', (req, res) => {
+  try {
+    const roleSkills = dataLoader.getRoleSkillsDB();
+    const market = dataLoader.getMarketData();
+    const titles = dataLoader.getJobTitles();
+    const courses = dataLoader.getCourses();
+    const { zoneMatrix } = dataLoader.getZoneMatrix();
+    
+    res.json({
+      totalRolesWithSkills: Object.keys(roleSkills).length,
+      totalMarketEntries: Object.keys(market).length,
+      totalJobTitles: titles.roles.length,
+      totalCourses: Object.keys(courses).length,
+      totalDegrees: Object.keys(zoneMatrix).length,
+      dataSource: 'Internal databases (company + imported datasets)',
+      lastUpdated: new Date().toISOString()
+    });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
 
 app.listen(PORT, () => {
   console.log(`🚀 SMAART Backend running on http://localhost:${PORT}`);

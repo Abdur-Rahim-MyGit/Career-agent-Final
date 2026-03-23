@@ -68,3 +68,8 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+
+# Raw dataset files (too large for git)
+backend/datasets/raw/
+*.xlsx
+*.zip
