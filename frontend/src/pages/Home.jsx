@@ -18,10 +18,18 @@ const Home = () => {
   const navigate = useNavigate();
   const [showHistory, setShowHistory] = useState(false);
   const [historyEntries, setHistoryEntries] = useState([]);
+  const [stats, setStats] = useState({ totalRolesWithSkills: 254, totalJobTitles: 1667, totalDegrees: 20 });
 
   useEffect(() => {
     setHistoryEntries(JSON.parse(localStorage.getItem('careerHistory') || '[]'));
   }, [showHistory]);
+
+  useEffect(() => {
+    fetch('/api/data-stats')
+      .then(r => r.ok ? r.json() : null)
+      .then(data => { if (data) setStats(data); })
+      .catch(() => {});
+  }, []);
 
   const loadEntry = (entry) => {
     if (entry.data) {
@@ -80,9 +88,9 @@ const Home = () => {
             {/* Quick Stats — under the CTA */}
             <div style={{ display: 'flex', gap: 32, marginTop: 36 }}>
               {[
-                { n: 254, l: 'Career Roles', icon: <Briefcase size={13} /> },
-                { n: 1667, l: 'Job Titles', icon: <Globe size={13} /> },
-                { n: 20, l: 'Degree Paths', icon: <BookOpen size={13} /> },
+                { n: stats.totalRolesWithSkills || 254, l: 'Career Roles', icon: <Briefcase size={13} /> },
+                { n: stats.totalJobTitles || 1667, l: 'Job Titles', icon: <Globe size={13} /> },
+                { n: stats.totalDegrees || 20, l: 'Degree Paths', icon: <BookOpen size={13} /> },
               ].map((s, i) => (
                 <div key={i}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 4, color: 'var(--text-info)', marginBottom: 2 }}>{s.icon}</div>
