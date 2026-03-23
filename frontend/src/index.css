@@ -1,116 +1,173 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-@theme {
-    --color-primary: var(--primary);
-    --color-primary-dark: var(--primary-dark);
-    --color-secondary: var(--secondary);
-    --color-accent: var(--accent);
-    --color-background: var(--background);
-    --color-surface: var(--surface);
-    --color-surface-hover: var(--surface-hover);
-    --color-surface-border: var(--surface-border);
-    --color-text-primary: var(--text-primary);
-    --color-text-secondary: var(--text-secondary);
-    --color-text-inverse: var(--text-inverse);
-
-    --font-inter: "Inter", sans-serif;
-    --font-outfit: "Outfit", sans-serif;
+/* ─── Force light colour-scheme so OS dark mode never overrides ───────── */
+html {
+  color-scheme: light;
 }
 
-@layer base {
-    :root {
-        --primary: #9333ea;
-        /* Purple 600 */
-        --primary-dark: #7e22ce;
-        /* Purple 700 */
-        --secondary: #3b82f6;
-        --accent: #10b981;
-        --background: #f8fafc;
-        /* Light Slate */
-        --surface: #ffffff;
-        /* White */
-        --surface-hover: #f1f5f9;
-        --surface-border: #e2e8f0;
-        --text-primary: #0f172a;
-        --text-secondary: #64748b;
-        --text-inverse: #ffffff;
-    }
+/* ─── Company Design System ─────────────────────────────── */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
 
-    .dark {
-        --primary: #9333ea;
-        /* Bright Purple for Dark Mode */
-        --primary-dark: #a855f7;
-        --secondary: #60a5fa;
-        --accent: #34d399;
-        --background: #0B0F19;
-        /* Deep indigo/black matching screenshot */
-        --surface: #151A29;
-        /* Deep blue/purple surface matching cards */
-        --surface-hover: #1E293B;
-        --surface-border: #1E293B;
-        /* Subtle border */
-        --text-primary: #f8fafc;
-        --text-secondary: #94a3b8;
-        --text-inverse: #ffffff;
-    }
+  /* Backgrounds */
+  --bg-primary:   #ffffff;
+  --bg-secondary: #f5f5f4;
+  --bg-tertiary:  #eeeeec;
+  --bg-info:      #E6F1FB;
+  --bg-success:   #EAF3DE;
+  --bg-warning:   #FAEEDA;
+  --bg-danger:    #FCEBEB;
 
-    body {
-        @apply bg-background text-text-primary min-h-screen overflow-x-hidden text-sm transition-colors duration-300 selection:bg-primary/20;
-        font-family: var(--font-inter);
-    }
+  /* Text */
+  --text-primary:   #2C2C2A;
+  --text-secondary: #5F5E5A;
+  --text-info:      #185FA5;
+  --text-success:   #3B6D11;
+  --text-warning:   #854F0B;
+  --text-danger:    #A32D2D;
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    .outfit {
-        @apply font-outfit tracking-tight text-text-primary;
-    }
+  /* Borders */
+  --border:      rgba(0,0,0,0.12);
+  --border-info: #85B7EB;
+
+  /* Radius */
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Accent */
+  --primary:    #185FA5;
+  --primary-bg: #E6F1FB;
+
+  /* Legacy aliases — used by Layout.jsx and old components */
+  --color-background-primary:   #ffffff;
+  --color-background-secondary: #f5f5f4;
+  --color-background-tertiary:  #eeeeec;
+  --color-background-info:      #E6F1FB;
+  --color-background-success:   #EAF3DE;
+  --color-background-warning:   #FAEEDA;
+  --color-background-danger:    #FCEBEB;
+  --color-text-primary:   #2C2C2A;
+  --color-text-secondary: #5F5E5A;
+  --color-text-info:      #185FA5;
+  --color-text-success:   #3B6D11;
+  --color-text-warning:   #854F0B;
+  --color-text-danger:    #A32D2D;
+  --color-border-tertiary: rgba(0,0,0,0.12);
+  --color-border-info:    #85B7EB;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
 }
 
-@layer components {
-    .glass-card {
-        @apply bg-surface border border-surface-border rounded-xl p-6 transition-colors duration-200 shadow-sm hover:border-text-secondary/30;
-    }
+/* ─── Dark mode — ONLY via explicit .dark class (JS-controlled) ─── */
+/* NOTE: @media (prefers-color-scheme: dark) is intentionally removed.
+   OS dark mode must NOT override the app. Theme is controlled by
+   Layout.jsx which adds/removes .dark class and saves to localStorage. */
 
-    .btn {
-        @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center justify-center gap-2 active:scale-95 text-sm outline-none;
-    }
+.dark {
+  color-scheme: dark;
 
-    .btn-primary {
-        @apply bg-primary text-white hover:bg-primary-dark shadow-md;
-    }
+  --bg-primary:   #1a1a1a;
+  --bg-secondary: #2a2a2a;
+  --bg-tertiary:  #333333;
+  --bg-info:      #042C53;
+  --bg-success:   #173404;
+  --bg-warning:   #412402;
+  --bg-danger:    #501313;
+  --text-primary:   #e8e8e6;
+  --text-secondary: #B4B2A9;
+  --text-info:      #85B7EB;
+  --text-success:   #97C459;
+  --text-warning:   #FAC775;
+  --text-danger:    #F09595;
+  --border:      rgba(255,255,255,0.12);
+  --border-info: #378ADD;
 
-    .btn-outline {
-        @apply bg-transparent border border-surface-border text-text-primary hover:bg-surface-hover;
-    }
-
-    .input-field {
-        @apply w-full px-4 py-3 bg-surface-hover/30 border border-surface-border rounded-xl text-text-primary outline-none transition-all placeholder:text-text-secondary/40 placeholder:text-[11px] focus:border-primary focus:ring-1 focus:ring-primary text-sm shadow-sm hover:border-text-secondary/20;
-    }
-
-    select.input-field {
-        @apply appearance-none transition-colors cursor-pointer;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'%3E%3C/path%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 1rem center;
-        background-size: 1rem;
-    }
-
-    /* Style for the select "placeholder" (first empty option) */
-    select.input-field:has(option[value=""]:checked) {
-        @apply text-text-secondary/40 text-[11px];
-    }
-
-    select.input-field option {
-        @apply text-text-primary text-sm;
-    }
-
-    select.input-field option[value=""] {
-        @apply text-text-secondary/40;
-    }
+  --color-background-primary:   #1a1a1a;
+  --color-background-secondary: #2a2a2a;
+  --color-background-tertiary:  #333333;
+  --color-background-info:      #042C53;
+  --color-background-success:   #173404;
+  --color-background-warning:   #412402;
+  --color-background-danger:    #501313;
+  --color-text-primary:   #e8e8e6;
+  --color-text-secondary: #B4B2A9;
+  --color-text-info:      #85B7EB;
+  --color-text-success:   #97C459;
+  --color-text-warning:   #FAC775;
+  --color-text-danger:    #F09595;
+  --color-border-tertiary: rgba(255,255,255,0.12);
+  --color-border-info:    #378ADD;
 }
+
+/* ─── Base ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  margin: 0;
+  line-height: 1.5;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+input, select, textarea, button { font-family: var(--font-sans); }
+
+/* ─── Cards ─────────────────────────────────────────────── */
+.s-card {
+  background: var(--bg-primary);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+.s-card-info {
+  background: var(--bg-info);
+  border: 0.5px solid var(--border-info);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+.s-card-success { background: var(--bg-primary); border: 0.5px solid var(--border); border-left: 3px solid #1D9E75; border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; }
+.s-card-warning { background: var(--bg-primary); border: 0.5px solid var(--border); border-left: 3px solid #BA7517; border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; }
+.s-card-muted   { background: var(--bg-primary); border: 0.5px solid var(--border); border-left: 3px solid #888780; border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; }
+
+/* Legacy aliases */
+.glass-card  { background: var(--bg-primary); border: 0.5px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; }
+.smaart-card { background: var(--bg-primary); border: 0.5px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 12px; }
+
+/* ─── Form ───────────────────────────────────────────────── */
+.s-field  { margin-bottom: 12px; }
+.s-label  { display: block; font-size: 13px; color: var(--text-secondary); margin-bottom: 4px; }
+.s-input  { width: 100%; padding: 8px 10px; border: 0.5px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--bg-primary); color: var(--text-primary); outline: none; }
+.s-input:focus { border-color: var(--border-info); }
+.input-field { width: 100%; padding: 8px 10px; border: 0.5px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--bg-primary); color: var(--text-primary); outline: none; }
+
+/* ─── Buttons ────────────────────────────────────────────── */
+.s-btn         { padding: 8px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; transition: opacity 0.15s; }
+.s-btn:hover   { opacity: 0.88; }
+.s-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.s-btn-info    { padding: 8px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; background: var(--bg-info); color: var(--text-info); transition: opacity 0.15s; }
+.s-btn-info:hover { opacity: 0.88; }
+.s-btn-success { padding: 8px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; background: var(--bg-success); color: var(--text-success); transition: opacity 0.15s; }
+.s-btn-nav     { padding: 6px 12px; font-size: 12px; border: 0.5px solid var(--border); border-radius: 8px; background: var(--bg-secondary); color: var(--text-secondary); cursor: pointer; }
+.s-btn-nav.active { border-color: var(--border-info); background: var(--bg-info); color: var(--text-info); font-weight: 500; }
+.btn           { padding: 8px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; }
+.btn-primary   { padding: 8px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; border: none; background: var(--bg-info); color: var(--text-info); }
+
+/* ─── Badges ─────────────────────────────────────────────── */
+.s-badge         { display: inline-block; padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 500; }
+.s-badge-info    { display: inline-block; padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 500; background: var(--bg-info);    color: var(--text-info); }
+.s-badge-success { display: inline-block; padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 500; background: var(--bg-success); color: var(--text-success); }
+.s-badge-warning { display: inline-block; padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 500; background: var(--bg-warning); color: var(--text-warning); }
+.s-badge-danger  { display: inline-block; padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 500; background: var(--bg-danger);  color: var(--text-danger); }
+.s-badge-muted   { display: inline-block; padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 500; background: var(--bg-secondary); color: var(--text-secondary); }
+
+/* ─── Progress ───────────────────────────────────────────── */
+.s-progress-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.s-progress-fill  { height: 100%; border-radius: 3px; background: #1D9E75; }
+
+/* ─── Nav active ─────────────────────────────────────────── */
+.nav-active { color: var(--text-info) !important; border-bottom: 2px solid var(--text-info); padding-bottom: 2px; }

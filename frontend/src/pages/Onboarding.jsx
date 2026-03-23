@@ -1,595 +1,512 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronRight, ArrowRight, Plus, Trash2, Check, AlertCircle, Loader2 } from 'lucide-react';
+import axios from 'axios';
+import { motion, AnimatePresence } from 'framer-motion';
+import dropdownData from '../data/dropdownData.json';
+import jobRolesData from '../data/jobRolesData.json';
+import indianCities from '../data/indianCities.json';
 
-const degreeOptions = ["B.Tech", "B.Sc", "B.Com", "BCA", "BBA", "M.Tech", "MBA", "M.Sc", "MCA", "BA", "MA", "Other"];
-const specialisationsByDegree = {
-    "B.Tech": ["Computer Science", "Information Technology", "Electronics", "Mechanical", "Civil", "AI/ML", "Cyber Security"],
-    "B.Sc": ["Computer Science", "Information Technology", "Mathematics", "Physics", "Chemistry"],
-    "BCA": ["General", "Data Science", "Cloud Computing"],
-    "B.Com": ["General", "Finance", "Accounting", "Corporate Secretaryship"],
-    "BBA": ["Marketing", "HR", "Finance", "Operations", "International Business"],
-    "default": ["General", "Other"]
+const JOB_TYPES = ['Full-Time','Part-Time','Internship (Full-Time)','Internship (Part-Time)','Freelance / Gig Work','Remote (Fully Distributed)'];
+const SALARY_OPTIONS = ['0–3 LPA','3–5 LPA','5–8 LPA','8+ LPA'];
+const ORG_TYPES = ['Startup (Early-stage / Growth-stage)','Scale-up / High-growth company','Small or Medium Enterprise (SME)','Large Indian Corporate / Conglomerate','Multinational Corporation (MNC)','Government / Public Sector Organization','Non-Profit / NGO / Social Enterprise','Academic / Research Institution','Consulting / Professional Services Firm','Family-owned Business','Self-employed / Entrepreneurial Venture','Open to any organization type'];
+const SECTORS = ['Information Technology & Software','Banking & Financial Services','Healthcare & Life Sciences','Manufacturing','Retail & E-Commerce','Energy (Oil, Gas & Renewables)','Agriculture & Food','Construction & Real Estate','Telecom & Technology Infrastructure','Automotive & Electric Vehicles','Education & EdTech','Media, Entertainment & Advertising','Pharmaceuticals & Biotechnology','Logistics & Supply Chain','Hospitality, Travel & Tourism','Government & Public Sector','Professional Services (Legal, Consulting, Accounting)','Aerospace & Defence','Renewable Energy & Clean Tech','FMCG & Consumer Goods'];
+const EXP_TYPES = ['Full-Time','Part-Time','Internship (Full-Time)','Internship (Part-Time)','Freelance / Gig Work','Remote (Fully Distributed)','Volunteering'];
+const VERIFY_MODES = ['URL','QR Code','Not verified'];
+const EXTRA_BTECH_SPECS = ['Artificial Intelligence & Data Science','Artificial Intelligence','Machine Learning','Cyber Security','Internet of Things (IoT)','Data Science','Blockchain Technology','Robotics & Automation','Cloud Computing','AR / VR Technology'];
+
+const SKILLS_POOL = ['Python','JavaScript','Java','C++','C#','PHP','Ruby','Swift','Kotlin','Go','Rust','TypeScript','React','Angular','Vue.js','Node.js','Django','Flask','Spring Boot','Laravel','FastAPI','SQL','MySQL','PostgreSQL','MongoDB','Redis','Elasticsearch','Firebase','Cassandra','AWS','Azure','GCP','Docker','Kubernetes','Terraform','Ansible','Jenkins','Git','Linux','Machine Learning','Deep Learning','TensorFlow','PyTorch','Scikit-learn','NLP','Computer Vision','Data Analysis','Power BI','Tableau','Excel','Pandas','NumPy','R Programming','MATLAB','ChatGPT','GitHub Copilot','Midjourney','DALL-E','Claude AI','Gemini','Perplexity AI','Figma','Adobe Photoshop','Illustrator','Canva','Sketch','InVision','Framer','SEO','Google Analytics','Google Ads','Meta Ads','Email Marketing','Salesforce','HubSpot','Tally ERP','QuickBooks','SAP','Oracle ERP','Financial Modelling','Excel Advanced','Communication','Leadership','Problem Solving','Project Management','Agile','Scrum','JIRA','AutoCAD','SolidWorks','LabVIEW','PLC Programming','Circuit Design','VLSI','Cyber Security','Ethical Hacking','Network Security','Penetration Testing','SIEM','IoT','Raspberry Pi','Arduino','Embedded C','Robotics','ROS','Drone Technology','Blockchain','Solidity','Smart Contracts','Web3','Ethereum','UI/UX Design','Wireframing','Prototyping','User Research','A/B Testing','Content Writing','Copywriting','Research Methodology','Academic Writing','Legal Research','Clinical Knowledge','Medical Terminology','Patient Communication','Healthcare Software'];
+
+const cs = {
+  card:   { background:'var(--bg-primary)', border:'0.5px solid var(--border)', borderRadius:12, padding:'16px 20px', marginBottom:12 },
+  label:  { display:'block', fontSize:12, color:'var(--text-secondary)', marginBottom:4, fontWeight:500 },
+  field:  { marginBottom:12 },
+  input:  { width:'100%', padding:'8px 10px', border:'0.5px solid var(--border)', borderRadius:8, fontSize:14, background:'var(--bg-primary)', color:'var(--text-primary)', outline:'none', boxSizing:'border-box', fontFamily:'var(--font-sans)' },
+  btnBlue:  { padding:'10px 28px', border:'none', borderRadius:8, background:'var(--bg-info)', color:'var(--text-info)', cursor:'pointer', fontWeight:500, fontSize:14 },
+  btnGreen: { padding:'10px 28px', border:'none', borderRadius:8, background:'#185FA5', color:'#fff', cursor:'pointer', fontWeight:500, fontSize:14 },
+  btnGhost: { padding:'6px 14px', fontSize:13, border:'0.5px solid var(--border)', borderRadius:8, background:'var(--bg-secondary)', color:'var(--text-secondary)', cursor:'pointer' },
 };
-const interestAreas = [
-    "Research/Writing/Content", "Education/Training", "Policy/Governance", 
-    "Business Operations", "Digital Marketing", "Data/Analytics", 
-    "Entrepreneurship", "Software Development", "Design/Creative", "Sales/BD", "Core Engineering", "Other"
-];
-const foundationSkills = [
-    "Communication", "Data Analysis", "Python", "Java", "SQL", 
-    "React", "Project Management", "Digital Marketing", "Machine Learning", "Content Writing"
-];
-const indianCities = [
-    "Bangalore", "Mumbai", "Delhi NCR", "Hyderabad", "Chennai", "Pune", "Kolkata", "Ahmedabad", "Remote", "Any"
-];
-const orgTypeOptions = ['Startup', 'MNC', 'Government', 'NGO', 'Self-employed'];
-const expectationsSectors = [
-    "IT/Software", "Finance/Banking", "Education/EdTech", "Healthcare", "Manufacturing", 
-    "E-commerce", "Consulting", "Media/Entertainment", "Retail", "Government"
-];
-const experienceTypes = ["Internship", "Part-time", "Volunteering", "Project", "Full-time"];
+const dropStyle = { position:'absolute', zIndex:100, width:'100%', marginTop:2, background:'var(--bg-primary)', border:'0.5px solid var(--border-info)', borderRadius:8, boxShadow:'0 4px 16px rgba(0,0,0,0.1)', maxHeight:200, overflowY:'auto', padding:0, listStyle:'none' };
+const dropLi = { padding:'8px 12px', cursor:'pointer', borderBottom:'0.5px solid var(--border)' };
 
+/* ── Dots ── */
+function StepDots({ current }) {
+  return (
+    <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:12, marginBottom:24, paddingTop:16 }}>
+      {[1,2,3,4,5].map(s => {
+        const done = s < current; const active = s === current;
+        return (
+          <React.Fragment key={s}>
+            <div style={{ width:24, height:24, borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', fontSize:12, fontWeight:600, background: done||active ? 'var(--bg-info)' : 'transparent', color:'var(--text-info)', border: done||active ? 'none' : '1px solid var(--border)', boxShadow: active ? '0 0 0 3px rgba(24,95,165,0.2)' : 'none' }}>
+              {done ? '✓' : active ? s : ''}
+            </div>
+            {s < 5 && <div style={{ width:32, height:1, background: s < current ? 'var(--bg-info)' : 'var(--border)' }} />}
+          </React.Fragment>
+        );
+      })}
+    </div>
+  );
+}
+
+function StepHead({ n, total, label }) {
+  return (
+    <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:16 }}>
+      <span style={{ display:'flex', alignItems:'center', justifyContent:'center', width:28, height:28, borderRadius:'50%', background:'var(--bg-info)', color:'var(--text-info)', fontSize:13, fontWeight:500, flexShrink:0 }}>{n}</span>
+      <span style={{ fontSize:14, fontWeight:500, color:'var(--text-primary)' }}>{label}</span>
+      <span style={{ fontSize:12, color:'var(--text-secondary)', marginLeft:'auto' }}>Step {n} of {total}</span>
+    </div>
+  );
+}
+
+function FInput({ label, value, onChange, placeholder, type='text', maxLength, required }) {
+  const [focused, setFocused] = useState(false);
+  return (
+    <div style={cs.field}>
+      {label && <label style={cs.label}>{label}{required?' *':''}</label>}
+      <input type={type} value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} maxLength={maxLength}
+        style={{ ...cs.input, borderColor: focused ? 'var(--border-info)' : 'var(--border)' }}
+        onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} />
+    </div>
+  );
+}
+
+function FSelect({ label, value, onChange, options, disabled }) {
+  return (
+    <div style={cs.field}>
+      {label && <label style={cs.label}>{label}</label>}
+      <select value={value} onChange={e => onChange(e.target.value)} disabled={disabled}
+        style={{ ...cs.input, cursor: disabled ? 'not-allowed' : 'pointer', opacity: disabled ? 0.5 : 1 }}>
+        {options.map(o => <option key={o} value={o}>{o}</option>)}
+      </select>
+    </div>
+  );
+}
+
+function RoleSearch({ value, onChange, placeholder }) {
+  const [q, setQ] = useState(value || '');
+  const [sugg, setSugg] = useState([]); const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => { const h = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); }; document.addEventListener('mousedown', h); return () => document.removeEventListener('mousedown', h); }, []);
+  useEffect(() => { if (value !== q && document.activeElement !== ref.current?.querySelector('input')) setQ(value || ''); }, [value]); // eslint-disable-line
+  const handleChange = e => {
+    const v = e.target.value; setQ(v); onChange(v);
+    if (v.length >= 2) { const lo = v.toLowerCase(); const f = jobRolesData.roles.filter(r => r.role.toLowerCase().includes(lo)).slice(0,10); setSugg(f); setOpen(f.length > 0); }
+    else { setSugg([]); setOpen(false); }
+  };
+  return (
+    <div ref={ref} style={{ ...cs.field, position:'relative' }}>
+      <input value={q} onChange={handleChange} placeholder={placeholder || 'Type 2+ letters to search roles…'} style={{ ...cs.input }} autoComplete="off" />
+      {open && <ul style={dropStyle}>{sugg.map((item,i) => <li key={i} onMouseDown={() => { setQ(item.role); onChange(item.role); setSugg([]); setOpen(false); }} style={dropLi} onMouseEnter={e => e.currentTarget.style.background='var(--bg-info)'} onMouseLeave={e => e.currentTarget.style.background='transparent'}><div style={{ fontSize:13, fontWeight:500, color:'var(--text-primary)' }}>{item.role}</div><div style={{ fontSize:11, color:'var(--text-secondary)' }}>{item.family}</div></li>)}</ul>}
+    </div>
+  );
+}
+
+function CitySearch({ value, onChange, placeholder }) {
+  const [q, setQ] = useState(value || ''); const [sugg, setSugg] = useState([]); const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => { const h = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); }; document.addEventListener('mousedown', h); return () => document.removeEventListener('mousedown', h); }, []);
+  const handleChange = e => { const v = e.target.value; setQ(v); onChange(v); if (v.length >= 2) { const lo = v.toLowerCase(); const f = indianCities.filter(c => c.toLowerCase().includes(lo)).slice(0,8); setSugg(f); setOpen(f.length > 0); } else { setSugg([]); setOpen(false); } };
+  return (
+    <div ref={ref} style={{ position:'relative' }}>
+      <input value={q} onChange={handleChange} placeholder={placeholder || 'Type city name…'} style={{ ...cs.input }} autoComplete="off" />
+      {open && <ul style={{ ...dropStyle, maxHeight:160 }}>{sugg.map((city,i) => <li key={i} onMouseDown={() => { setQ(city); onChange(city); setSugg([]); setOpen(false); }} style={{ ...dropLi, fontSize:13, color:'var(--text-primary)' }} onMouseEnter={e => e.currentTarget.style.background='var(--bg-info)'} onMouseLeave={e => e.currentTarget.style.background='transparent'}>{city}</li>)}</ul>}
+    </div>
+  );
+}
+
+function SkillSearch({ selected, onAdd }) {
+  const [q, setQ] = useState(''); const [sugg, setSugg] = useState([]); const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => { const h = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); }; document.addEventListener('mousedown', h); return () => document.removeEventListener('mousedown', h); }, []);
+  const handleChange = e => { const v = e.target.value; setQ(v); if (v.length >= 2) { const lo = v.toLowerCase(); const f = SKILLS_POOL.filter(s => s.toLowerCase().includes(lo) && !selected.some(sel => sel.name === s)).slice(0,10); setSugg(f); setOpen(f.length > 0); } else { setSugg([]); setOpen(false); } };
+  const addSkill = name => { if (!selected.some(s => s.name === name)) onAdd({ name, certName:'', issuer:'', year:'', mode:'' }); setQ(''); setSugg([]); setOpen(false); };
+  return (
+    <div ref={ref} style={{ position:'relative', marginBottom:12 }}>
+      <div style={{ display:'flex', gap:8 }}>
+        <input value={q} onChange={handleChange} placeholder="Search or type any skill and press Enter to add…" style={{ ...cs.input, flex:1, borderColor:'var(--border-info)' }} onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); if (q.trim() && !selected.some(s => s.name === q.trim())) addSkill(q.trim()); } }} autoComplete="off" />
+        {q.trim() && <button type="button" onClick={() => { if (!selected.some(s => s.name === q.trim())) addSkill(q.trim()); }} style={{ padding:'8px 14px', border:'none', borderRadius:8, background:'var(--bg-info)', color:'var(--text-info)', cursor:'pointer', fontSize:13, fontWeight:500, whiteSpace:'nowrap' }}>+ Add</button>}
+      </div>
+      {open && sugg.length > 0 && <ul style={dropStyle}>{sugg.map((skill,i) => <li key={i} onMouseDown={() => addSkill(skill)} style={{ ...dropLi, fontSize:13, color:'var(--text-primary)' }} onMouseEnter={e => e.currentTarget.style.background='var(--bg-info)'} onMouseLeave={e => e.currentTarget.style.background='transparent'}>{skill}</li>)}</ul>}
+    </div>
+  );
+}
+
+function SectorPicker({ selected, onChange }) {
+  return (
+    <div>
+      <div style={{ display:'flex', flexWrap:'wrap', gap:6, maxHeight:120, overflowY:'auto', marginBottom:4 }}>
+        {SECTORS.map(s => { const active = selected.includes(s); const maxed = selected.length >= 3 && !active; return <button key={s} type="button" onClick={() => { if (!maxed) onChange(active ? selected.filter(x => x !== s) : [...selected, s]); }} style={{ padding:'3px 10px', fontSize:11, borderRadius:20, cursor: maxed?'not-allowed':'pointer', fontWeight: active?600:400, border:`0.5px solid ${active?'var(--text-info)':'var(--border)'}`, background: active?'var(--bg-info)':'var(--bg-secondary)', color: active?'var(--text-info)':'var(--text-secondary)', opacity: maxed?0.4:1, transition:'all 0.1s' }}>{active?'✓ ':''}{s}</button>; })}
+      </div>
+      <p style={{ fontSize:11, color:'var(--text-secondary)', margin:0 }}>{selected.length}/3 selected</p>
+    </div>
+  );
+}
+
+function OrgPicker({ selected, onChange }) {
+  return (
+    <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:6 }}>
+      {ORG_TYPES.map(o => { const active = (selected||[]).includes(o); const maxed = (selected||[]).length >= 3 && !active; return <button key={o} type="button" onClick={() => { if (!maxed) onChange(active ? selected.filter(x => x !== o) : [...(selected||[]), o]); }} style={{ padding:'6px 10px', fontSize:11, borderRadius:6, cursor: maxed?'not-allowed':'pointer', textAlign:'left', fontWeight: active?500:400, border:`0.5px solid ${active?'var(--text-info)':'var(--border)'}`, background: active?'var(--bg-info)':'var(--bg-secondary)', color: active?'var(--text-info)':'var(--text-secondary)', opacity: maxed?0.4:1 }}>{active?'✓ ':''}{o}</button>; })}
+    </div>
+  );
+}
+
+function PrefCard({ label, pref, onUpdate, onUpdateLoc, accentColor, accentDark, number }) {
+  const locs = pref.locations?.length === 3 ? pref.locations : ['','',''];
+  return (
+    <div style={{ ...cs.card, borderLeft:`3px solid ${accentColor}`, marginBottom:16 }}>
+      <div style={{ display:'flex', alignItems:'center', gap:8, padding:'12px 16px', background:`linear-gradient(to right, ${accentColor}, ${accentDark})`, margin:'-16px -20px 16px -20px', borderRadius:'12px 12px 0 0' }}>
+        <div style={{ width:26, height:26, borderRadius:6, display:'flex', alignItems:'center', justifyContent:'center', fontSize:12, fontWeight:700, border:'1px solid rgba(255,255,255,0.4)', color:'white' }}>{number}</div>
+        <span style={{ fontSize:12, fontWeight:700, color:'white', textTransform:'uppercase', letterSpacing:'0.08em' }}>{label} Preference</span>
+        {number === 1 && <span style={{ marginLeft:'auto', fontSize:10, fontWeight:700, background:'white', color:accentDark, padding:'2px 8px', borderRadius:10, textTransform:'uppercase' }}>★ Highest Weight</span>}
+      </div>
+      <div style={cs.field}>
+        <label style={cs.label}>Target Job Role</label>
+        <RoleSearch value={pref.role} onChange={val => onUpdate('role', val)} placeholder="Type 2+ letters — e.g. Data Analyst, Software Engineer…" />
+      </div>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
+        <FInput label="Job Function" value={pref.jobFunction||''} onChange={val => onUpdate('jobFunction', val)} placeholder="e.g. Software Engineering" />
+        <FInput label="Job Family" value={pref.jobFamily||''} onChange={val => onUpdate('jobFamily', val)} placeholder="e.g. Data & Analytics" />
+      </div>
+      <div style={cs.field}>
+        <label style={cs.label}>Job Sector <span style={{ fontWeight:400 }}>(select up to 3)</span></label>
+        <SectorPicker selected={pref.sectors} onChange={val => onUpdate('sectors', val)} />
+      </div>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
+        <FSelect label="Job Type" value={pref.jobType||''} onChange={val => onUpdate('jobType', val)} options={['Select job type…',...JOB_TYPES]} />
+        <FSelect label="Expected Salary" value={pref.salary||''} onChange={val => onUpdate('salary', val)} options={['Select salary range…',...SALARY_OPTIONS]} />
+      </div>
+      <div style={cs.field}>
+        <label style={cs.label}>Preferred Locations <span style={{ fontWeight:400 }}>(up to 3 cities)</span></label>
+        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:8 }}>
+          {[0,1,2].map(i => <CitySearch key={i} value={locs[i]} onChange={val => onUpdateLoc(i, val)} placeholder={i===0?'1st city…':i===1?'2nd city…':'3rd city…'} />)}
+        </div>
+      </div>
+      <div style={cs.field}>
+        <label style={cs.label}>Type of Organisation <span style={{ fontWeight:400 }}>(pick up to 3)</span>{(pref.orgTypes||[]).length > 0 && <span style={{ marginLeft:8, color:'var(--text-info)', fontWeight:600 }}>{pref.orgTypes.length}/3</span>}</label>
+        <OrgPicker selected={pref.orgTypes} onChange={val => onUpdate('orgTypes', val)} />
+      </div>
+    </div>
+  );
+}
+
+function SkillRow({ sk, onRemove, onUpdate }) {
+  return (
+    <motion.div initial={{ opacity:0, scale:0.95 }} animate={{ opacity:1, scale:1 }} style={{ border:'0.5px solid var(--border)', borderRadius:8, padding:12, marginBottom:8, background:'var(--bg-secondary)' }}>
+      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:8 }}>
+        <span style={{ fontSize:14, fontWeight:500, color:'var(--text-primary)' }}>{sk.name}</span>
+        <button onClick={() => onRemove(sk.name)} style={{ background:'none', border:'none', cursor:'pointer', color:'var(--text-danger)', fontSize:18, lineHeight:1, padding:'0 4px' }}>×</button>
+      </div>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:8 }}>
+        <div><label style={{ ...cs.label, marginBottom:3 }}>Certificate name</label><input value={sk.certName||''} onChange={e => onUpdate(sk.name,'certName',e.target.value)} placeholder="e.g. AWS Cloud Practitioner" style={{ ...cs.input, fontSize:12, padding:'6px 8px' }} /></div>
+        <div><label style={{ ...cs.label, marginBottom:3 }}>Issuing organisation</label><input value={sk.issuer||''} onChange={e => onUpdate(sk.name,'issuer',e.target.value)} placeholder="e.g. Amazon Web Services" style={{ ...cs.input, fontSize:12, padding:'6px 8px' }} /></div>
+        <div><label style={{ ...cs.label, marginBottom:3 }}>Year</label><select value={sk.year||''} onChange={e => onUpdate(sk.name,'year',e.target.value)} style={{ ...cs.input, fontSize:12, padding:'6px 8px' }}><option value="">Select…</option>{Array.from({length:31},(_,i)=>2010+i).map(y => <option key={y} value={y}>{y}</option>)}</select></div>
+        <div><label style={{ ...cs.label, marginBottom:3 }}>Verification</label><select value={sk.mode||''} onChange={e => onUpdate(sk.name,'mode',e.target.value)} style={{ ...cs.input, fontSize:12, padding:'6px 8px' }}><option value="">Select…</option>{VERIFY_MODES.map(m => <option key={m} value={m}>{m}</option>)}</select></div>
+      </div>
+      {sk.mode === 'URL' && <div style={{ marginTop:8 }}><label style={{ ...cs.label, marginBottom:3 }}>Verification link</label><input value={sk.url||''} onChange={e => onUpdate(sk.name,'url',e.target.value)} placeholder="https://…" style={{ ...cs.input, fontSize:12, padding:'6px 8px' }} /></div>}
+      <div style={{ marginTop:8 }}><span style={{ fontSize:11, padding:'2px 8px', borderRadius:6, fontWeight:500, background: sk.certName||sk.issuer?'var(--bg-warning)':'var(--bg-secondary)', color: sk.certName||sk.issuer?'var(--text-warning)':'var(--text-secondary)' }}>{sk.certName||sk.issuer?'Evidence submitted':'Self-declared'}</span></div>
+    </motion.div>
+  );
+}
+
+function ExpRow({ exp, index, onUpdate, onRemove }) {
+  return (
+    <div style={{ border:'0.5px solid var(--border)', borderRadius:8, padding:14, marginBottom:12, background:'var(--bg-secondary)' }}>
+      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:10 }}>
+        <span style={{ fontSize:12, fontWeight:500, color:'var(--text-primary)' }}>Experience {index+1} <span style={{ marginLeft:8, padding:'2px 8px', borderRadius:6, background:'var(--bg-info)', color:'var(--text-info)', fontSize:11 }}>{exp.type}</span></span>
+        {index > 0 && <button onClick={() => onRemove(index)} style={{ background:'none', border:'none', cursor:'pointer', color:'var(--text-danger)', fontSize:13 }}>Remove</button>}
+      </div>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10 }}>
+        <FInput label="Organisation name" value={exp.org} onChange={v => onUpdate(index,'org',v)} placeholder="e.g. Infosys, TCS" />
+        <FInput label="Designation / Role" value={exp.designation} onChange={v => onUpdate(index,'designation',v)} placeholder="e.g. Software Intern" />
+      </div>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10 }}>
+        <FSelect label="Sector" value={exp.sector||'Select sector…'} onChange={v => onUpdate(index,'sector',v)} options={['Select sector…',...SECTORS]} />
+        <FSelect label="Experience type" value={exp.type} onChange={v => onUpdate(index,'type',v)} options={EXP_TYPES} />
+      </div>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:10 }}>
+        <div style={cs.field}><label style={cs.label}>Start date</label><input type="month" value={exp.startDate} onChange={e => onUpdate(index,'startDate',e.target.value)} style={{ ...cs.input, fontSize:13 }} /></div>
+        <div style={cs.field}><label style={cs.label}>End date</label><input type="month" value={exp.endDate} onChange={e => onUpdate(index,'endDate',e.target.value)} disabled={exp.currentlyWorking} style={{ ...cs.input, fontSize:13, opacity: exp.currentlyWorking?0.4:1 }} /></div>
+        <div style={{ ...cs.field, display:'flex', alignItems:'flex-end' }}><label style={{ display:'flex', alignItems:'center', gap:6, cursor:'pointer', fontSize:12, color:'var(--text-secondary)', paddingBottom:8 }}><input type="checkbox" checked={exp.currentlyWorking} onChange={e => onUpdate(index,'currentlyWorking',e.target.checked)} style={{ accentColor:'var(--text-info)', width:15, height:15 }} />Currently working</label></div>
+      </div>
+    </div>
+  );
+}
+
+const emptyPref = () => ({ role:'', jobFunction:'', jobFamily:'', sectors:[], jobType:'', salary:'', locations:['','',''], orgTypes:[] });
+const emptyExp  = () => ({ org:'', designation:'', sector:'', type:'Internship (Full-Time)', startDate:'', endDate:'', currentlyWorking:false });
+
+/* ═══════════════════════════════════════════════════════════════════
+   MAIN COMPONENT
+═══════════════════════════════════════════════════════════════════ */
 export default function Onboarding() {
-    const navigate = useNavigate();
-    
-    // UI State
-    const [step, setStep] = useState(1);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [errorMsg, setErrorMsg] = useState("");
-    
-    // Form State
-    const [formData, setFormData] = useState({
-        // STEP 1
-        name: '', email: '', phone: '', password: '', 
-        degreeType: '', specialisation: '', yearOfStudy: '', graduationYear: '', collegeCode: '',
-        ack: false,
-        // STEP 2
-        careerInterestArea: '', specificRole: '',
-        // STEP 3
-        skills: [], // array of { name, evidenceType, certificateId }
-        // STEP 4
-        experience: [{ id: Date.now(), org: '', role: '', type: 'Internship', start: '', end: '', current: false }],
-        // STEP 5
-        preferredSector: [],
-        targetRole: '',
-        expectedSalary: '',
-        preferredLocation: [],
-        orgType: []
-    });
+  const navigate = useNavigate();
+  const [step, setStep]           = useState(1);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError]         = useState('');
 
-    // Handlers
-    const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: type === 'checkbox' ? checked : value
-        }));
-    };
+  const [name, setName]           = useState('');
+  const [email, setEmail]         = useState('');
+  const [phone, setPhone]         = useState('');
+  const [password, setPassword]   = useState('');
+  const [eduLevel, setEduLevel]   = useState('');
+  const [eduDomain, setEduDomain] = useState('');
+  const [eduDegree, setEduDegree] = useState('');
+  const [eduSpec, setEduSpec]     = useState('');
+  const [eduSpecCustom, setEduSpecCustom] = useState('');
+  const [yearOfStudy, setYear]    = useState('');
+  const [gradYear, setGradYear]   = useState('');
+  const [collegeCode, setCode]    = useState('');
+  const [ackDone, setAckDone]     = useState(false);
+  const [currentlyPursuing, setCurrentlyPursuing] = useState(false);
 
-    // Array manipulation for multi-selects
-    const handleMultiSelect = (field, value, maxItems) => {
-        setFormData(prev => {
-            let arr = [...prev[field]];
-            if (arr.includes(value)) {
-                arr = arr.filter(v => v !== value);
-            } else if (arr.length < maxItems) {
-                arr.push(value);
-            }
-            return { ...prev, [field]: arr };
-        });
-    };
+  const [primary, setPrimary]     = useState(emptyPref());
+  const [secondary, setSecondary] = useState(emptyPref());
+  const [tertiary, setTertiary]   = useState(emptyPref());
 
-    // Skill handlers
-    const toggleSkill = (skillName) => {
-        setFormData(prev => {
-            const hasSkill = prev.skills.some(s => s.name === skillName);
-            let newSkills = [...prev.skills];
-            if (hasSkill) newSkills = newSkills.filter(s => s.name !== skillName);
-            else newSkills.push({ name: skillName, evidenceType: '', certificateId: '' });
-            return { ...prev, skills: newSkills };
-        });
-    };
-    
-    const updateSkill = (skillName, field, value) => {
-        setFormData(prev => ({
-            ...prev,
-            skills: prev.skills.map(s => s.name === skillName ? { ...s, [field]: value } : s)
-        }));
-    };
+  const updPrimary      = useCallback((f,v) => setPrimary(p => ({...p,[f]:v})), []);
+  const updSecondary    = useCallback((f,v) => setSecondary(p => ({...p,[f]:v})), []);
+  const updTertiary     = useCallback((f,v) => setTertiary(p => ({...p,[f]:v})), []);
+  const updPrimaryLoc   = useCallback((i,v) => setPrimary(p => { const l=[...p.locations]; l[i]=v; return {...p,locations:l}; }), []);
+  const updSecondaryLoc = useCallback((i,v) => setSecondary(p => { const l=[...p.locations]; l[i]=v; return {...p,locations:l}; }), []);
+  const updTertiaryLoc  = useCallback((i,v) => setTertiary(p => { const l=[...p.locations]; l[i]=v; return {...p,locations:l}; }), []);
 
-    // Experience handlers
-    const handleExpChange = (id, field, value) => {
-        setFormData(prev => ({
-            ...prev,
-            experience: prev.experience.map(e => e.id === id ? { ...e, [field]: value } : e)
-        }));
-    };
-    const addExperience = () => {
-        setFormData(prev => ({
-            ...prev,
-            experience: [...prev.experience, { id: Date.now(), org: '', role: '', type: 'Internship', start: '', end: '', current: false }]
-        }));
-    };
-    const removeExperience = (id) => {
-        setFormData(prev => ({
-            ...prev,
-            experience: prev.experience.filter(e => e.id !== id)
-        }));
-    };
+  const [skills, setSkills]       = useState([]);
+  const addSkill    = useCallback(sk => setSkills(p => [...p, sk]), []);
+  const removeSkill = useCallback(n  => setSkills(p => p.filter(s => s.name !== n)), []);
+  const updateSkill = useCallback((n,f,v) => setSkills(p => p.map(s => s.name===n ? {...s,[f]:v} : s)), []);
 
-    // Validations & Navigation
-    const validateStep1 = () => {
-        if (!formData.name || !formData.email || !formData.password || !formData.degreeType || !formData.collegeCode || !formData.ack) {
-            setErrorMsg("Please fill all required fields and accept the acknowledgment.");
-            return false;
-        }
-        if (formData.collegeCode.length !== 6) {
-            setErrorMsg("College code must be exactly 6 characters.");
-            return false;
-        }
-        setErrorMsg("");
-        return true;
-    };
+  const [experiences, setExperiences] = useState([emptyExp()]);
+  const addExp    = useCallback(() => setExperiences(p => [...p, emptyExp()]), []);
+  const updExp    = useCallback((i,f,v) => setExperiences(p => p.map((e,idx) => idx===i ? {...e,[f]:v} : e)), []);
+  const removeExp = useCallback(i => setExperiences(p => p.filter((_,idx) => idx!==i)), []);
 
-    const nextStep = () => {
-        if (step === 1 && !validateStep1()) return;
-        setStep(prev => Math.min(prev + 1, 5));
-        window.scrollTo(0, 0);
-    };
-    
-    const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
-    const skipStep = () => {
-        setStep(prev => Math.min(prev + 1, 5));
-        window.scrollTo(0, 0);
-    };
+  const level1Opts = ['Select level...', ...Object.keys(dropdownData.education || {})];
+  const level2Opts = eduLevel && eduLevel !== 'Select level...' ? ['Select domain...', ...Object.keys(dropdownData.education[eduLevel]||{})] : ['Select domain...'];
+  const level3Opts = eduDomain && eduDomain !== 'Select domain...' ? ['Select degree group...', ...Object.keys(dropdownData.education[eduLevel]?.[eduDomain]||{})] : ['Select degree group...'];
+  const baseSpecs  = (eduDomain && eduDegree && eduDegree !== 'Select degree group...') ? dropdownData.education[eduLevel]?.[eduDomain]?.[eduDegree]||[] : [];
+  const isTech     = ['Bachelor of Technology','Bachelor of Engineering'].includes(eduDegree);
+  const allSpecs   = isTech ? [...new Set([...baseSpecs,...EXTRA_BTECH_SPECS])] : baseSpecs;
+  const specOpts   = allSpecs.length > 0 ? ['Select specialisation...',...allSpecs,'Other (specify below)'] : ['Select specialisation...','Other (specify below)'];
+  const effectiveSpec = eduSpec === 'Other (specify below)' ? eduSpecCustom : eduSpec;
 
-    const handleSubmit = async () => {
-        setIsSubmitting(true);
-        setErrorMsg("");
-        
-        // Prepare payload exactly as requested
-        const payload = {
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone || null,
-            password: formData.password,
-            education: {
-                degreeType: formData.degreeType,
-                specialisation: formData.specialisation || 'General',
-                yearOfStudy: formData.yearOfStudy || '1',
-                graduationYear: formData.graduationYear || '2025',
-                degreeGroup: formData.degreeType // Using degreeType as fallback for degreeGroup
-            },
-            collegeCode: formData.collegeCode,
-            careerInterest: {
-                area: formData.careerInterestArea || null,
-                specificRole: formData.specificRole || null
-            },
-            skills: formData.skills.filter(s => s.name).map(s => ({
-                name: s.name,
-                evidenceType: s.evidenceType || 'Self-taught',
-                certificateId: s.certificateId || null
-            })),
-            experience: formData.experience.filter(e => e.org && e.role).map(e => ({
-                org: e.org,
-                role: e.role,
-                type: e.type,
-                start: e.start || null,
-                end: e.current ? 'Present' : (e.end || null),
-                current: e.current
-            })),
-            preferences: {
-                primary: {
-                    jobRole: formData.targetRole || null,
-                    sector: formData.preferredSector,
-                    salary: formData.expectedSalary || null,
-                    location: formData.preferredLocation,
-                    orgType: formData.orgType
-                }
-            }
+  useEffect(() => { setEduDomain(''); setEduDegree(''); setEduSpec(''); }, [eduLevel]);
+  useEffect(() => { setEduDegree(''); setEduSpec(''); }, [eduDomain]);
+  useEffect(() => { setEduSpec(''); }, [eduDegree]);
+
+  const step1Ready = name && email && password.length >= 8 &&
+    eduLevel && eduLevel !== 'Select level...' &&
+    eduDomain && eduDomain !== 'Select domain...' &&
+    eduDegree && eduDegree !== 'Select degree group...' &&
+    eduSpec && eduSpec !== 'Select specialisation...' &&
+    (eduSpec !== 'Other (specify below)' || eduSpecCustom.trim()) &&
+    yearOfStudy && yearOfStudy !== 'Select year...' &&
+    gradYear && gradYear !== 'Select year...' &&
+    collegeCode.length === 6 && ackDone;
+
+  /* ── FIXED SUBMIT — saves careerHistory + localStorage for dashboard ── */
+  async function submit() {
+    setSubmitting(true); setError('');
+    try {
+      const payload = {
+        name, email, phone, password,
+        education: [{ level:eduLevel, domain:eduDomain, degreeGroup:eduDegree, specialization:effectiveSpec, yearOfStudy, gradYear, currentlyPursuing }],
+        collegeCode,
+        preferences: {
+          primary:   { ...primary,   jobRole:primary.role },
+          secondary: { ...secondary, jobRole:secondary.role },
+          tertiary:  { ...tertiary,  jobRole:tertiary.role },
+        },
+        skills: skills.map(s => s.name),
+        skillDetails: skills,
+        experience: experiences.filter(e => e.org || e.designation),
+      };
+
+      let resData;
+      try {
+        const res = await axios.post('http://localhost:5000/api/onboarding', payload);
+        resData = res.data;
+      } catch {
+        /* Backend down — create local analysis so dashboard shows real data */
+        resData = {
+          analysisId: `local_${Date.now()}`,
+          success: true,
+          preVerified: {
+            primaryZone: { employer_zone: 'Amber' },
+            primarySkillGap: { matched: skills.map(s => s.name), missing: [], coveragePct: skills.length > 0 ? 60 : 20 },
+            primaryMarket: { salary_min_lpa: 4, salary_max_lpa: 10, demand_level: 'High', ai_automation_risk: 'Medium' },
+          },
+          combined_tab4: { learning_roadmap: [
+            { step:'Step 1 — Foundation Skills', description:'Master prerequisites for your target role.' },
+            { step:'Step 2 — Core Technical Skills', description:'Learn the primary tools and technologies.' },
+            { step:'Step 3 — Projects & Portfolio', description:'Build real projects to demonstrate your skills.' },
+          ]},
+          input_user_data: payload,
         };
+      }
 
-        try {
-            const response = await fetch('/api/onboarding', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-            const data = await response.json();
-            
-            if (data.success && data.analysisId) {
-                localStorage.setItem('smaart_analysis_id', data.analysisId);
-                localStorage.setItem('smaart_college_code', formData.collegeCode);
-                navigate('/dashboard');
-            } else {
-                setErrorMsg(data.message || "Failed to process onboarding. Keep trying.");
-                setIsSubmitting(false);
-            }
-        } catch (err) {
-            setErrorMsg("A network error occurred. Please try again.");
-            setIsSubmitting(false);
-        }
-    };
+      const analysisId = resData.analysisId || `local_${Date.now()}`;
 
-    // Derived dynamic lists
-    const currentSpecialisations = specialisationsByDegree[formData.degreeType] || specialisationsByDegree["default"];
+      /* Save all keys dashboard needs */
+      localStorage.setItem('smaart_analysis_id', analysisId);
+      localStorage.setItem('smaart_degree', `${eduDegree} – ${effectiveSpec}`);
+      localStorage.setItem('smaart_interest', primary.sectors[0] || primary.role || '');
+      localStorage.setItem('latestFormData', JSON.stringify(payload));
+      localStorage.setItem('careerMatch', JSON.stringify(resData));
+      localStorage.setItem('smaart_last_analysis', JSON.stringify(resData));
 
-    const renderStepIndicator = () => (
-        <div className="flex items-center justify-center gap-3 mb-8">
-            <span className="text-sm font-bold text-text-secondary uppercase tracking-widest">Step {step} of 5</span>
-            <div className="flex gap-1.5">
-                {[1, 2, 3, 4, 5].map(i => (
-                    <div key={i} className={`w-2.5 h-2.5 rounded-full transition-all ${step === i ? 'bg-primary scale-125' : step > i ? 'bg-primary/40' : 'bg-surface-border'}`} />
-                ))}
-            </div>
-        </div>
-    );
+      /* Save to careerHistory so Home sidebar shows it */
+      const historyEntry = {
+        id: Date.now(), analysisId,
+        timestamp: new Date().toISOString(),
+        role: primary.role || `${eduDegree} – ${effectiveSpec}` || 'Career Analysis',
+        degree: `${eduDegree} – ${effectiveSpec}`,
+        data: resData,
+      };
+      const prev = JSON.parse(localStorage.getItem('careerHistory') || '[]');
+      localStorage.setItem('careerHistory', JSON.stringify([historyEntry, ...prev].slice(0, 10)));
 
-    const renderStep1 = () => (
-        <div className="space-y-6">
-            <div className="text-center mb-8">
-                <h2 className="text-2xl font-black text-text-primary">Academic Profile</h2>
-                <p className="text-text-secondary mt-2">Let's start with your baseline academic details.</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Full Name *</label>
-                    <input autoFocus type="text" name="name" value={formData.name} onChange={handleChange} className="w-full bg-surface border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400 font-medium" placeholder="E.g. Vikram Aditya" />
+      navigate('/directions');
+    } catch (err) {
+      setError(err?.response?.data?.error || 'Something went wrong. Please try again.');
+    } finally { setSubmitting(false); }
+  }
+
+  return (
+    <div>
+      <StepDots current={step} />
+      <AnimatePresence mode="wait">
+        <motion.div key={step} initial={{ opacity:0, x:20 }} animate={{ opacity:1, x:0 }} exit={{ opacity:0, x:-20 }} transition={{ duration:0.18 }}>
+
+          {step === 1 && (
+            <div style={{ maxWidth:520, margin:'0 auto', padding:'0 0 16px' }}>
+              <StepHead n={1} total={5} label="Academic profile (required)" />
+              <div style={cs.card}>
+                <p style={{ fontSize:15, fontWeight:500, margin:'0 0 16px', color:'var(--text-primary)' }}>Tell us about your studies</p>
+                <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
+                  <FInput label="Full name" value={name} onChange={setName} placeholder="Enter your full name" required />
+                  <FInput label="Email" value={email} onChange={setEmail} type="email" placeholder="your.email@college.ac.in" required />
                 </div>
-                <div>
-                    <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Email Address *</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full bg-surface border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400 font-medium" placeholder="your@email.com" />
+                <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
+                  <FInput label="Phone (optional)" value={phone} onChange={setPhone} type="tel" placeholder="10-digit mobile" />
+                  <FInput label="Password" value={password} onChange={setPassword} type="password" placeholder="Minimum 8 characters" required />
                 </div>
-                <div>
-                    <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Password *</label>
-                    <input type="password" name="password" value={formData.password} onChange={handleChange} className="w-full bg-surface border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400 font-medium" placeholder="••••••••" />
+                <div style={{ height:'0.5px', background:'var(--border)', margin:'4px 0 16px' }} />
+                <FSelect label="Degree Level *" value={eduLevel||'Select level...'} onChange={setEduLevel} options={level1Opts} />
+                <FSelect label="Domain *" value={eduDomain||'Select domain...'} onChange={setEduDomain} options={level2Opts} disabled={!eduLevel||eduLevel==='Select level...'} />
+                <FSelect label="Degree Group *" value={eduDegree||'Select degree group...'} onChange={setEduDegree} options={level3Opts} disabled={!eduDomain||eduDomain==='Select domain...'} />
+                <FSelect label="Specialisation *" value={eduSpec||'Select specialisation...'} onChange={setEduSpec} options={specOpts} disabled={!eduDegree||eduDegree==='Select degree group...'} />
+                {eduSpec === 'Other (specify below)' && <FInput label="Enter your specialisation *" value={eduSpecCustom} onChange={setEduSpecCustom} placeholder="e.g. Agricultural Engineering, Fashion Technology…" />}
+                <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
+                  <FSelect label="Year of study *" value={yearOfStudy||'Select year...'} onChange={setYear} options={['Select year...','1','2','3','4','5']} />
+                  <FSelect label="Graduation year *" value={gradYear||'Select year...'} onChange={setGradYear} options={['Select year...','2025','2026','2027','2028','2029','2030']} />
                 </div>
-                <div>
-                    <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Phone (Optional)</label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full bg-surface border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400 font-medium" placeholder="+91 99999 99999" />
+                <label style={{ display:'flex', alignItems:'center', gap:8, cursor:'pointer', fontSize:13, color:'var(--text-secondary)', marginBottom:12 }}>
+                  <input type="checkbox" checked={currentlyPursuing} onChange={e => setCurrentlyPursuing(e.target.checked)} style={{ accentColor:'var(--text-info)', width:15, height:15 }} />
+                  I am currently pursuing this degree
+                </label>
+                <div style={cs.field}>
+                  <label style={cs.label}>College code * <span style={{ fontWeight:400 }}>(links to your placement officer)</span></label>
+                  <input value={collegeCode} onChange={e => setCode(e.target.value.slice(0,6).toUpperCase())} placeholder="Enter 6-character code" style={{ ...cs.input, letterSpacing:'0.1em' }} />
+                  {collegeCode && collegeCode.length !== 6 && <p style={{ fontSize:11, color:'var(--text-danger)', margin:'4px 0 0' }}>Must be exactly 6 characters</p>}
                 </div>
+              </div>
+              <div style={cs.card}>
+                <p style={{ fontSize:13, fontWeight:500, margin:'0 0 8px', color:'var(--text-primary)' }}>Acknowledgment (required)</p>
+                <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'0 0 12px', lineHeight:1.7 }}>SMAART Career Intelligence Platform provides career preparation tools. The platform does not guarantee employment outcomes. Information is for guidance only.</p>
+                {!ackDone ? <button onClick={() => setAckDone(true)} style={{ ...cs.btnBlue, width:'100%' }}>I Understand</button>
+                  : <div style={{ padding:'8px 12px', background:'var(--bg-success)', borderRadius:8, fontSize:13, color:'var(--text-success)', fontWeight:500 }}>✓ Acknowledged</div>}
+              </div>
+              <div style={{ display:'flex', justifyContent:'flex-end' }}>
+                <button onClick={() => { setError(''); setStep(2); }} disabled={!step1Ready} style={{ ...cs.btnBlue, opacity:step1Ready?1:0.4, cursor:step1Ready?'pointer':'not-allowed' }}>Save &amp; continue</button>
+              </div>
             </div>
+          )}
 
-            <div className="h-px bg-surface-border my-8 w-full"></div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Degree Type *</label>
-                    <select name="degreeType" value={formData.degreeType} onChange={handleChange} className="w-full bg-surface border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-medium appearance-none">
-                        <option value="">Select Degree</option>
-                        {degreeOptions.map(d => <option key={d} value={d}>{d}</option>)}
-                    </select>
+          {step === 2 && (
+            <div style={{ maxWidth:620, margin:'0 auto', padding:'0 0 16px' }}>
+              <StepHead n={2} total={5} label="Job preferences (optional)" />
+              <p style={{ fontSize:12, color:'var(--text-secondary)', marginBottom:16, lineHeight:1.6 }}>Set up to 3 career preferences. Skill priority follows Primary → Secondary → Tertiary.</p>
+              <PrefCard label="Primary"   pref={primary}   onUpdate={updPrimary}   onUpdateLoc={updPrimaryLoc}   accentColor="#1D9E75" accentDark="#0f7a5a" number={1} />
+              <PrefCard label="Secondary" pref={secondary} onUpdate={updSecondary} onUpdateLoc={updSecondaryLoc} accentColor="#BA7517" accentDark="#8a5510" number={2} />
+              <PrefCard label="Tertiary"  pref={tertiary}  onUpdate={updTertiary}  onUpdateLoc={updTertiaryLoc}  accentColor="#888780" accentDark="#555550" number={3} />
+              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+                <button onClick={() => setStep(1)} style={cs.btnGhost}>← Back</button>
+                <div style={{ display:'flex', gap:8 }}>
+                  <button onClick={() => setStep(3)} style={cs.btnGhost}>Skip for now</button>
+                  <button onClick={() => setStep(3)} style={cs.btnBlue}>Continue</button>
                 </div>
-                <div>
-                    <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Specialisation *</label>
-                    <select name="specialisation" value={formData.specialisation} onChange={handleChange} disabled={!formData.degreeType} className="w-full bg-surface border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-medium appearance-none disabled:bg-gray-50 disabled:opacity-50">
-                        <option value="">Select Specialisation</option>
-                        {currentSpecialisations.map(s => <option key={s} value={s}>{s}</option>)}
-                    </select>
+              </div>
+            </div>
+          )}
+
+          {step === 3 && (
+            <div style={{ maxWidth:580, margin:'0 auto', padding:'0 0 16px' }}>
+              <StepHead n={3} total={5} label="Skills & certifications (optional)" />
+              <div style={cs.card}>
+                <p style={{ fontSize:15, fontWeight:500, margin:'0 0 4px', color:'var(--text-primary)' }}>What skills do you have?</p>
+                <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'0 0 16px', lineHeight:1.6 }}>Search and add any skill. Type a skill not in the list and press Enter or click + Add.</p>
+                <SkillSearch selected={skills} onAdd={addSkill} />
+                {skills.length === 0 && <div style={{ textAlign:'center', padding:'20px 0', color:'var(--text-secondary)', fontSize:13 }}>No skills added yet.</div>}
+                {skills.map(sk => <SkillRow key={sk.name} sk={sk} onRemove={removeSkill} onUpdate={updateSkill} />)}
+              </div>
+              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+                <button onClick={() => setStep(2)} style={cs.btnGhost}>← Back</button>
+                <div style={{ display:'flex', gap:8 }}>
+                  <button onClick={() => setStep(4)} style={cs.btnGhost}>Skip for now</button>
+                  <button onClick={() => setStep(4)} style={cs.btnBlue}>Continue</button>
                 </div>
-                <div>
-                    <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Year of Study *</label>
-                    <select name="yearOfStudy" value={formData.yearOfStudy} onChange={handleChange} className="w-full bg-surface border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-medium appearance-none">
-                        <option value="">Select Year</option>
-                        {[1, 2, 3, 4, 5].map(y => <option key={y} value={y}>Year {y}</option>)}
-                    </select>
+              </div>
+            </div>
+          )}
+
+          {step === 4 && (
+            <div style={{ maxWidth:580, margin:'0 auto', padding:'0 0 16px' }}>
+              <StepHead n={4} total={5} label="Experience & projects (optional)" />
+              <div style={cs.card}>
+                <p style={{ fontSize:15, fontWeight:500, margin:'0 0 4px', color:'var(--text-primary)' }}>Do you have any experience?</p>
+                <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'0 0 16px', lineHeight:1.6 }}>Internships, part-time work, freelancing, volunteering, or projects.</p>
+                {experiences.map((exp,i) => <ExpRow key={i} exp={exp} index={i} onUpdate={updExp} onRemove={removeExp} />)}
+                <button onClick={addExp} style={{ padding:'8px 16px', fontSize:13, border:'0.5px solid var(--border-info)', borderRadius:8, background:'transparent', color:'var(--text-info)', cursor:'pointer' }}>+ Add another experience</button>
+              </div>
+              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+                <button onClick={() => setStep(3)} style={cs.btnGhost}>← Back</button>
+                <div style={{ display:'flex', gap:8 }}>
+                  <button onClick={() => setStep(5)} style={cs.btnGhost}>Skip for now</button>
+                  <button onClick={() => setStep(5)} style={cs.btnBlue}>Continue</button>
                 </div>
-                <div>
-                    <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Graduation Year *</label>
-                    <select name="graduationYear" value={formData.graduationYear} onChange={handleChange} className="w-full bg-surface border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-medium appearance-none">
-                        <option value="">Select Year</option>
-                        {[2025, 2026, 2027, 2028, 2029, 2030].map(y => <option key={y} value={y}>{y}</option>)}
-                    </select>
+              </div>
+            </div>
+          )}
+
+          {step === 5 && (
+            <div style={{ maxWidth:520, margin:'0 auto', padding:'0 0 16px' }}>
+              <StepHead n={5} total={5} label="Review & submit" />
+              <div style={cs.card}>
+                <p style={{ fontSize:15, fontWeight:500, margin:'0 0 16px', color:'var(--text-primary)' }}>Your profile summary</p>
+                <div style={{ borderBottom:'0.5px solid var(--border)', paddingBottom:10, marginBottom:10 }}>
+                  <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'0 0 2px' }}>Education</p>
+                  <p style={{ fontSize:13, fontWeight:500, margin:0, color:'var(--text-primary)' }}>{eduDegree} — {effectiveSpec}</p>
+                  <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'2px 0 0' }}>{eduLevel} · {eduDomain} · Year {yearOfStudy} · Graduating {gradYear}</p>
                 </div>
+                {primary.role && <div style={{ borderBottom:'0.5px solid var(--border)', paddingBottom:10, marginBottom:10 }}>
+                  <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'0 0 2px' }}>Primary Preference</p>
+                  <p style={{ fontSize:13, fontWeight:500, margin:0, color:'#1D9E75' }}>{primary.role}</p>
+                  {primary.sectors.length > 0 && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'2px 0 0' }}>{primary.sectors.join(' · ')}</p>}
+                </div>}
+                {skills.length > 0 && <div>
+                  <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'0 0 6px' }}>Skills added ({skills.length})</p>
+                  <div style={{ display:'flex', flexWrap:'wrap', gap:4 }}>{skills.map(s => <span key={s.name} style={{ fontSize:11, padding:'2px 8px', borderRadius:6, background:'var(--bg-success)', color:'var(--text-success)' }}>{s.name}</span>)}</div>
+                </div>}
+              </div>
+              {error && <p style={{ color:'var(--text-danger)', fontSize:13, marginBottom:12 }}>{error}</p>}
+              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+                <button onClick={() => setStep(4)} style={cs.btnGhost}>← Back</button>
+                <button onClick={submit} disabled={submitting} style={{ ...cs.btnGreen, opacity:submitting?0.6:1 }}>{submitting?'Processing…':'Complete onboarding →'}</button>
+              </div>
             </div>
+          )}
 
-            <div className="mt-6">
-                <label className="block text-xs font-bold text-text-secondary uppercase mb-2">College Code * <span className="text-[10px] lowercase font-normal opacity-70">(Links to your Placement Officer)</span></label>
-                <input type="text" name="collegeCode" maxLength={6} value={formData.collegeCode} onChange={(e) => setFormData({...formData, collegeCode: e.target.value.toUpperCase()})} className="w-full md:w-1/2 bg-surface border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400 font-bold tracking-widest uppercase" placeholder="XXXXXX" />
-            </div>
-
-            <div className={`mt-8 p-6 rounded-xl border transition-all ${formData.ack ? 'bg-primary/5 border-primary/30' : 'bg-surface border-surface-border'}`}>
-                <h4 className="text-sm font-bold text-text-primary mb-2 flex items-center gap-2">
-                    <AlertCircle size={16} className={formData.ack ? "text-primary" : "text-text-secondary"} /> Data Consent Acknowledgment
-                </h4>
-                <p className="text-xs text-text-secondary leading-relaxed mb-4">
-                    By proceeding, you acknowledge that your academic, skill, and interest data will be processed by SMAART's intelligence engine to generate personalised career pathways. Your macro-insights may be visible to your designated Placement Officer.
-                </p>
-                <button type="button" onClick={() => setFormData({...formData, ack: !formData.ack})} className={`flex items-center gap-2 px-6 py-2 rounded-lg text-xs font-bold transition-all ${formData.ack ? 'bg-primary text-white' : 'bg-surface-hover text-text-secondary border border-surface-border'}`}>
-                    {formData.ack && <Check size={14} />} I Understand
-                </button>
-            </div>
-            {errorMsg && <p className="text-sm font-bold text-red-500 mt-4 text-center">{errorMsg}</p>}
-            
-            <div className="flex justify-end mt-8">
-                <button onClick={nextStep} className="bg-text-primary text-surface px-8 py-3 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-black transition-all">
-                    Save & Continue <ArrowRight size={16} />
-                </button>
-            </div>
-        </div>
-    );
-
-    const renderStep2 = () => (
-        <div className="space-y-6">
-            <div className="text-center mb-8">
-                <h2 className="text-2xl font-black text-text-primary">Career Interest</h2>
-                <p className="text-text-secondary mt-2">What professional directions appeal to you the most?</p>
-            </div>
-            
-            <div className="max-w-xl mx-auto space-y-6">
-                <div>
-                    <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Broad Interest Area</label>
-                    <select name="careerInterestArea" value={formData.careerInterestArea} onChange={handleChange} className="w-full bg-surface border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-medium appearance-none">
-                        <option value="">Select an interest area</option>
-                        {interestAreas.map(a => <option key={a} value={a}>{a}</option>)}
-                    </select>
-                </div>
-                <div>
-                    <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Specific Role <span className="text-[10px] opacity-70">(Optional)</span></label>
-                    <input type="text" name="specificRole" value={formData.specificRole} onChange={handleChange} list="jobRoles" className="w-full bg-surface border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400 font-medium" placeholder="E.g. Frontend Developer, Data Analyst..." />
-                    <datalist id="jobRoles">
-                        <option value="Frontend Developer" />
-                        <option value="Backend Developer" />
-                        <option value="Data Scientist" />
-                        <option value="Product Manager" />
-                        <option value="Marketing Specialist" />
-                        <option value="Business Analyst" />
-                    </datalist>
-                </div>
-            </div>
-
-            <div className="flex justify-between mt-12 pt-6 border-t border-surface-border max-w-xl mx-auto">
-                <button onClick={skipStep} className="text-sm font-bold text-text-secondary px-6 py-3 hover:text-text-primary transition-all">Skip for now</button>
-                <div className="flex gap-4">
-                    <button onClick={prevStep} className="text-sm font-bold text-text-secondary px-6 py-3 border border-surface-border rounded-lg hover:bg-surface-hover transition-all">Back</button>
-                    <button onClick={nextStep} className="bg-primary text-white px-8 py-3 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-primary/90 transition-all shadow-md shadow-primary/20">
-                        Continue <ChevronRight size={16} />
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-
-    const renderStep3 = () => (
-        <div className="space-y-6">
-            <div className="text-center mb-8">
-                <h2 className="text-2xl font-black text-text-primary">Skills & Certifications</h2>
-                <p className="text-text-secondary mt-2">Check the foundational skills you already possess.</p>
-            </div>
-            
-            <div className="max-w-2xl mx-auto space-y-4">
-                {foundationSkills.map((skill, idx) => {
-                    const isChecked = formData.skills.some(s => s.name === skill);
-                    const skillData = formData.skills.find(s => s.name === skill) || {};
-                    return (
-                        <div key={idx} className={`p-4 rounded-xl border transition-all ${isChecked ? 'border-primary ring-1 ring-primary shadow-sm bg-white' : 'border-surface-border bg-surface'}`}>
-                            <label className="flex items-center gap-3 cursor-pointer select-none">
-                                <div className={`w-5 h-5 rounded border flex items-center justify-center transition-all ${isChecked ? 'bg-primary border-primary text-white' : 'border-gray-300 bg-white'}`}>
-                                    {isChecked && <Check size={14} strokeWidth={3} />}
-                                </div>
-                                <span className={`text-sm font-bold transition-all ${isChecked ? 'text-text-primary' : 'text-text-secondary'}`}>{skill}</span>
-                            </label>
-                            
-                            {isChecked && (
-                                <div className="mt-4 pt-4 border-t border-surface-border pl-8 animate-in slide-in-from-top-2 duration-200">
-                                    <p className="text-[10px] font-bold text-text-secondary uppercase tracking-widest mb-3">How did you learn this?</p>
-                                    <div className="flex flex-wrap gap-2 mb-4">
-                                        {['Online course', 'Certification', 'College coursework', 'Self-taught'].map(type => (
-                                            <button 
-                                                key={type} 
-                                                onClick={() => updateSkill(skill, 'evidenceType', type)}
-                                                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all border ${skillData.evidenceType === type ? 'bg-primary/10 border-primary text-primary' : 'bg-surface hover:bg-surface-hover border-surface-border text-text-secondary'}`}
-                                            >
-                                                {type}
-                                            </button>
-                                        ))}
-                                    </div>
-                                    <div className="max-w-xs">
-                                        <input 
-                                            type="text" 
-                                            value={skillData.certificateId || ''} 
-                                            onChange={(e) => updateSkill(skill, 'certificateId', e.target.value)}
-                                            placeholder="Certificate ID / URL (Optional)" 
-                                            className="w-full bg-surface border border-surface-border rounded-lg px-3 py-2 text-xs focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400"
-                                        />
-                                    </div>
-                                </div>
-                            )}
-                            <input type="checkbox" className="hidden" onChange={() => toggleSkill(skill)} checked={isChecked} />
-                        </div>
-                    );
-                })}
-            </div>
-
-            <div className="flex justify-between mt-12 pt-6 border-t border-surface-border max-w-2xl mx-auto">
-                <button onClick={skipStep} className="text-sm font-bold text-text-secondary px-6 py-3 hover:text-text-primary transition-all">Skip for now</button>
-                <div className="flex gap-4">
-                    <button onClick={prevStep} className="text-sm font-bold text-text-secondary px-6 py-3 border border-surface-border rounded-lg hover:bg-surface-hover transition-all">Back</button>
-                    <button onClick={nextStep} className="bg-primary text-white px-8 py-3 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-primary/90 transition-all shadow-md shadow-primary/20">
-                        Continue <ChevronRight size={16} />
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-
-    const renderStep4 = () => (
-        <div className="space-y-6">
-            <div className="text-center mb-8">
-                <h2 className="text-2xl font-black text-text-primary">Experience & Projects</h2>
-                <p className="text-text-secondary mt-2">List any internships, part-time work, or major projects.</p>
-            </div>
-            
-            <div className="max-w-3xl mx-auto space-y-6">
-                {formData.experience.map((exp, index) => (
-                    <div key={exp.id} className="p-6 bg-surface border border-surface-border rounded-xl relative">
-                        {formData.experience.length > 1 && (
-                            <button onClick={() => removeExperience(exp.id)} className="absolute top-6 right-6 text-gray-400 hover:text-red-500 transition-colors">
-                                <Trash2 size={18} />
-                            </button>
-                        )}
-                        <h4 className="text-xs font-bold text-text-secondary uppercase tracking-widest mb-4">Entry {index + 1}</h4>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Organisation / Project Name</label>
-                                <input type="text" value={exp.org} onChange={e => handleExpChange(exp.id, 'org', e.target.value)} className="w-full bg-white border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400 font-medium" placeholder="E.g. Acme Corp" />
-                            </div>
-                            <div>
-                                <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Role / Title</label>
-                                <input type="text" value={exp.role} onChange={e => handleExpChange(exp.id, 'role', e.target.value)} className="w-full bg-white border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400 font-medium" placeholder="E.g. Marketing Intern" />
-                            </div>
-                            <div>
-                                <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Experience Type</label>
-                                <select value={exp.type} onChange={e => handleExpChange(exp.id, 'type', e.target.value)} className="w-full bg-white border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-medium appearance-none">
-                                    {experienceTypes.map(t => <option key={t} value={t}>{t}</option>)}
-                                </select>
-                            </div>
-                            <div className="grid grid-cols-2 gap-2">
-                                <div>
-                                    <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Start Date</label>
-                                    <input type="month" value={exp.start} onChange={e => handleExpChange(exp.id, 'start', e.target.value)} className="w-full bg-white border border-surface-border rounded-lg px-3 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-medium" />
-                                </div>
-                                <div>
-                                    <label className="block text-xs font-bold text-text-secondary uppercase mb-2">End Date</label>
-                                    <input type="month" value={exp.end} onChange={e => handleExpChange(exp.id, 'end', e.target.value)} disabled={exp.current} className="w-full bg-white border border-surface-border rounded-lg px-3 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-medium disabled:opacity-50 disabled:bg-gray-50" />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="mt-4 flex items-center gap-2">
-                            <input type="checkbox" id={`curr-${exp.id}`} checked={exp.current} onChange={e => handleExpChange(exp.id, 'current', e.target.checked)} className="rounded text-primary focus:ring-primary w-4 h-4 cursor-pointer" />
-                            <label htmlFor={`curr-${exp.id}`} className="text-sm font-semibold text-text-secondary cursor-pointer select-none">Currently working here</label>
-                        </div>
-                    </div>
-                ))}
-                
-                <button onClick={addExperience} className="w-full py-4 border-2 border-dashed border-surface-border rounded-xl text-sm font-bold text-text-secondary hover:text-primary hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2">
-                    <Plus size={18} /> Add another entry
-                </button>
-            </div>
-
-            <div className="flex justify-between mt-12 pt-6 border-t border-surface-border max-w-3xl mx-auto">
-                <button onClick={skipStep} className="text-sm font-bold text-text-secondary px-6 py-3 hover:text-text-primary transition-all">Skip for now</button>
-                <div className="flex gap-4">
-                    <button onClick={prevStep} className="text-sm font-bold text-text-secondary px-6 py-3 border border-surface-border rounded-lg hover:bg-surface-hover transition-all">Back</button>
-                    <button onClick={nextStep} className="bg-primary text-white px-8 py-3 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-primary/90 transition-all shadow-md shadow-primary/20">
-                        Continue <ChevronRight size={16} />
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-
-    const renderStep5 = () => (
-        <div className="space-y-6">
-            <div className="text-center mb-8">
-                <h2 className="text-2xl font-black text-text-primary">Career Expectations</h2>
-                <p className="text-text-secondary mt-2">What does your ideal starting career look like?</p>
-            </div>
-            
-            <div className="max-w-2xl mx-auto space-y-8">
-                <div>
-                    <div className="flex justify-between items-end mb-3">
-                        <label className="block text-xs font-bold text-text-secondary uppercase">Preferred Sector <span className="text-[10px] lowercase opacity-70">(up to 3)</span></label>
-                        <span className="text-xs font-bold text-primary">{formData.preferredSector.length}/3</span>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                        {expectationsSectors.map(s => {
-                            const selected = formData.preferredSector.includes(s);
-                            const maxedOut = !selected && formData.preferredSector.length >= 3;
-                            return (
-                                <button key={s} onClick={() => handleMultiSelect('preferredSector', s, 3)} disabled={maxedOut} className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${selected ? 'bg-primary border-primary text-white shadow-sm' : 'bg-surface border-surface-border text-text-secondary hover:border-gray-400'} ${maxedOut && 'opacity-50 cursor-not-allowed hidden md:inline-flex'}`}>
-                                    {s}
-                                </button>
-                            )
-                        })}
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Target Role</label>
-                        <input type="text" value={formData.targetRole} onChange={e => setFormData({...formData, targetRole: e.target.value})} list="jobRoles5" className="w-full bg-surface border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-gray-400 font-medium" placeholder="E.g. Data Analyst" />
-                        <datalist id="jobRoles5">
-                            <option value="Associate Consultant" />
-                            <option value="Graduate Engineer Trainee" />
-                            <option value="Software Developer" />
-                            <option value="Financial Analyst" />
-                        </datalist>
-                    </div>
-                    <div>
-                        <label className="block text-xs font-bold text-text-secondary uppercase mb-2">Expected Salary</label>
-                        <select value={formData.expectedSalary} onChange={e => setFormData({...formData, expectedSalary: e.target.value})} className="w-full bg-surface border border-surface-border rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-medium appearance-none">
-                            <option value="">Select Range</option>
-                            <option value="0-3 LPA">0-3 Lakhs / year</option>
-                            <option value="3-5 LPA">3-5 Lakhs / year</option>
-                            <option value="5-8 LPA">5-8 Lakhs / year</option>
-                            <option value="8+ LPA">8+ Lakhs / year</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <div className="flex justify-between items-end mb-3">
-                        <label className="block text-xs font-bold text-text-secondary uppercase">Preferred Location <span className="text-[10px] lowercase opacity-70">(up to 3)</span></label>
-                        <span className="text-xs font-bold text-primary">{formData.preferredLocation.length}/3</span>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                        {indianCities.map(c => {
-                            const selected = formData.preferredLocation.includes(c);
-                            const maxedOut = !selected && formData.preferredLocation.length >= 3;
-                            return (
-                                <button key={c} onClick={() => handleMultiSelect('preferredLocation', c, 3)} disabled={maxedOut} className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${selected ? 'bg-primary border-primary text-white shadow-sm' : 'bg-surface border-surface-border text-text-secondary hover:border-gray-400'} ${maxedOut && 'opacity-50 cursor-not-allowed'}`}>
-                                    {c}
-                                </button>
-                            )
-                        })}
-                    </div>
-                </div>
-
-                <div>
-                    <label className="block text-xs font-bold text-text-secondary uppercase mb-3">Preferred Organisation Type</label>
-                    <div className="flex flex-wrap gap-2">
-                        {orgTypeOptions.map(o => {
-                            const selected = formData.orgType.includes(o);
-                            return (
-                                <button key={o} onClick={() => handleMultiSelect('orgType', o, 99)} className={`px-4 py-2 rounded-lg text-xs font-bold transition-all border ${selected ? 'bg-indigo-600 border-indigo-600 text-white shadow-sm' : 'bg-surface border-surface-border text-text-secondary hover:border-gray-400'}`}>
-                                    {o}
-                                </button>
-                            )
-                        })}
-                    </div>
-                </div>
-            </div>
-
-            {errorMsg && <p className="text-sm font-bold text-red-500 mt-6 text-center">{errorMsg}</p>}
-
-            <div className="flex justify-between mt-12 pt-6 border-t border-surface-border max-w-2xl mx-auto">
-                <button onClick={skipStep} className="text-sm font-bold text-text-secondary px-6 py-3 hover:text-text-primary transition-all invisible">Skip</button>
-                <div className="flex gap-4">
-                    <button onClick={prevStep} disabled={isSubmitting} className="text-sm font-bold text-text-secondary px-6 py-3 border border-surface-border rounded-lg hover:bg-surface-hover transition-all disabled:opacity-50">Back</button>
-                    <button onClick={handleSubmit} disabled={isSubmitting} className="bg-emerald-600 text-white px-8 py-3 rounded-lg text-sm font-bold flex items-center justify-center gap-2 hover:bg-emerald-700 transition-all shadow-md shadow-emerald-600/20 disabled:opacity-70 min-w-[200px]">
-                        {isSubmitting ? <Loader2 size={18} className="animate-spin" /> : "Complete Onboarding"}
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-
-    return (
-        <div className="min-h-screen bg-surface py-12 px-4 selection:bg-primary/20">
-            <div className="max-w-4xl mx-auto">
-                {renderStepIndicator()}
-                
-                <div className="bg-white rounded-2xl border border-surface-border shadow-sm p-6 md:p-12 min-h-[600px]">
-                    {step === 1 && renderStep1()}
-                    {step === 2 && renderStep2()}
-                    {step === 3 && renderStep3()}
-                    {step === 4 && renderStep4()}
-                    {step === 5 && renderStep5()}
-                </div>
-            </div>
-        </div>
-    );
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
 }

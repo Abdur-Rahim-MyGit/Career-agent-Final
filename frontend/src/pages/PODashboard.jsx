@@ -1,246 +1,277 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Loader2, Users, AlertTriangle, Target, CheckCircle2, AlertCircle, Clock } from 'lucide-react';
+import axios from 'axios';
 
-const PODashboard = () => {
-    const { collegeCode: urlCollegeCode } = useParams();
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [data, setData] = useState(null);
+const font = { fontFamily: 'var(--font-sans)' };
 
-    useEffect(() => {
-        const fetchDashboard = async () => {
-            try {
-                const code = urlCollegeCode || localStorage.getItem('smaart_college_code') || 'DEFAULT_CODE';
-                const res = await fetch(`/api/po/${code}/dashboard`);
-                const result = await res.json();
-                if (result.success) {
-                    setData(result.data);
-                } else {
-                    setError(result.message || 'Failed to load dashboard data');
-                }
-            } catch (err) {
-                setError('An error occurred while fetching data');
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchDashboard();
-    }, [urlCollegeCode]);
+function Metric({ label, value, sub }) {
+  return (
+    <div style={{ background: 'var(--bg-secondary)', borderRadius: 8, padding: '12px 16px' }}>
+      <p style={{ fontSize: 12, color: 'var(--text-secondary)', margin: '0 0 2px' }}>{label}</p>
+      <p style={{ fontSize: 22, fontWeight: 500, margin: 0, color: 'var(--text-primary)' }}>{value}</p>
+      {sub && <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: '2px 0 0' }}>{sub}</p>}
+    </div>
+  );
+}
 
-    if (loading) {
-        return (
-            <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4">
-                <Loader2 className="animate-spin text-primary" size={24} />
-                <p className="text-sm font-bold text-text-secondary tracking-widest uppercase">Loading PO Dashboard...</p>
+function ProgressBar({ pct, color }) {
+  return (
+    <div style={{ height: 6, background: 'var(--border)', borderRadius: 3, flex: 1, overflow: 'hidden' }}>
+      <div style={{ height: '100%', width: `${Math.min(pct * 3, 100)}%`, background: color || '#378ADD', borderRadius: 3 }} />
+    </div>
+  );
+}
+
+function Card({ children }) {
+  return (
+    <div style={{ background: 'var(--bg-primary)', border: '0.5px solid var(--border)', borderRadius: 12, padding: '16px 20px', marginBottom: 12 }}>
+      {children}
+    </div>
+  );
+}
+
+function SecHead({ title, sub }) {
+  return (
+    <div style={{ margin: '20px 0 12px' }}>
+      <p style={{ fontSize: 16, fontWeight: 500, margin: 0, color: 'var(--text-primary)' }}>{title}</p>
+      {sub && <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: '2px 0 0' }}>{sub}</p>}
+    </div>
+  );
+}
+
+export default function PODashboard() {
+  const { collegeCode } = useParams();
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const code = collegeCode || 'DEMO01';
+        const res = await axios.get(`/api/po/${code}/dashboard`);
+        setData(res.data);
+      } catch { /* use mock */ }
+      setLoading(false);
+    })();
+  }, [collegeCode]);
+
+  if (loading) return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '40vh', ...font }}>
+      <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Loading placement officer dashboard…</p>
+    </div>
+  );
+
+  /* mock data from company mockup */
+  const college = data?.collegeName || `College ${collegeCode || 'Demo'}`;
+  const batch = data?.batch || 'B.Com, BA, BBA — 2027 and 2028 batches';
+  const totalStudents = data?.totalStudents || 290;
+  const activeStudents = data?.activeStudents || 234;
+  const activePct = Math.round((activeStudents / totalStudents) * 100);
+  const avgCoverage = data?.avgFoundationCoverage || 47;
+  const fiveSkills = data?.fiveOrMoreSkills || 89;
+  const fiveSkillsPct = Math.round((fiveSkills / totalStudents) * 100);
+
+  const engagement = data?.engagement || [
+    { n: 142, label: '✓ Green (49%)', type: 'success' },
+    { n: 103, label: '⚠ Amber (35%)', type: 'warning' },
+    { n: 45,  label: '✗ Red (16%)',   type: 'danger' },
+  ];
+
+  const directions = data?.topDirections || [
+    { n: 'Software Development',   c: 67, p: 23 },
+    { n: 'Corporate Finance',      c: 52, p: 18 },
+    { n: 'Digital Marketing',      c: 41, p: 14 },
+    { n: 'Business Operations',    c: 38, p: 13 },
+    { n: 'Education and Training', c: 29, p: 10 },
+  ];
+
+  const locations = data?.locationBreakdown || [
+    { p: 'Home City Only',      c: 78, w: 27, type: 'danger' },
+    { p: 'Home State',          c: 45, w: 16, type: 'warning' },
+    { p: 'Open to Metros',      c: 89, w: 31, type: 'info' },
+    { p: 'Anywhere in India',   c: 67, w: 23, type: 'success' },
+    { p: 'Not specified',       c: 11, w:  4, type: 'secondary' },
+  ];
+
+  const salaryGaps = data?.salaryExpectationVsMarket || [
+    { d: 'Software Dev',     ex: '6-8L', mk: '4-7L',   g: 'slight' },
+    { d: 'Corporate Finance',ex: '6-8L', mk: '2.5-6L', g: 'high' },
+    { d: 'Digital Marketing',ex: '4-6L', mk: '2.5-5L', g: 'moderate' },
+  ];
+
+  const certReady = data?.certificationReadiness || [
+    { c: 'NCFM',                      r: 15, d: 'Finance' },
+    { c: 'Google Analytics',           r: 23, d: 'Marketing' },
+    { c: 'AWS Cloud Practitioner',     r: 12, d: 'Software' },
+    { c: 'HubSpot Content Marketing',  r: 18, d: 'Marketing' },
+  ];
+
+  const redStudents = data?.redStudents || [
+    { n: 'Rahul Patil',       d: 'Corporate Finance', f: '1 of 8', l: '42 days ago' },
+    { n: 'Sneha Deshpande',   d: 'Software Dev',      f: '0 of 9', l: '38 days ago' },
+    { n: 'Aditya Kumar',      d: 'Business Ops',      f: '2 of 7', l: '35 days ago' },
+    { n: 'Meera Joshi',       d: 'Education',         f: '1 of 8', l: '29 days ago' },
+    { n: 'Vikram Singh',      d: 'Digital Marketing', f: '0 of 8', l: '27 days ago' },
+  ];
+
+  const typeColors = {
+    success:   { bg: 'var(--bg-success)',   fg: 'var(--text-success)' },
+    warning:   { bg: 'var(--bg-warning)',   fg: 'var(--text-warning)' },
+    danger:    { bg: 'var(--bg-danger)',    fg: 'var(--text-danger)' },
+    info:      { bg: 'var(--bg-info)',      fg: 'var(--text-info)' },
+    secondary: { bg: 'var(--bg-secondary)', fg: 'var(--text-secondary)' },
+  };
+
+  const gapColor = { high: 'danger', moderate: 'warning', slight: 'success' };
+
+  return (
+    <div style={{ maxWidth: 680, ...font }}>
+      {/* Header */}
+      <div style={{ marginBottom: 16 }}>
+        <p style={{ fontSize: 12, color: 'var(--text-secondary)', margin: 0 }}>Placement Officer dashboard</p>
+        <p style={{ fontSize: 18, fontWeight: 500, margin: '4px 0 2px', color: 'var(--text-primary)' }}>{college}</p>
+        <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: 0 }}>{batch}</p>
+      </div>
+
+      {/* Metrics */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0,1fr))', gap: 10, marginBottom: 16 }}>
+        <Metric label="Total students" value={totalStudents} />
+        <Metric label="Active (30 days)" value={activeStudents} sub={`${activePct}%`} />
+        <Metric label="Avg foundation coverage" value={`${avgCoverage}%`} sub="across all students" />
+        <Metric label="5+ Foundation Skills" value={fiveSkills} sub={`${fiveSkillsPct}%`} />
+      </div>
+
+      {/* Engagement distribution */}
+      <SecHead title="Engagement distribution" />
+      <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
+        {engagement.map((e, i) => {
+          const { bg, fg } = typeColors[e.type] || typeColors.secondary;
+          return (
+            <div key={i} style={{ flex: 1, background: bg, borderRadius: 8, padding: 12, textAlign: 'center' }}>
+              <p style={{ fontSize: 22, fontWeight: 500, margin: 0, color: fg }}>{e.n}</p>
+              <p style={{ fontSize: 12, margin: '2px 0 0', color: fg }}>{e.label}</p>
             </div>
-        );
-    }
+          );
+        })}
+      </div>
 
-    if (error || !data) {
-        return (
-            <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4">
-                <AlertCircle className="text-red-500" size={32} />
-                <p className="text-sm font-medium text-text-primary text-center">
-                    {error || "Could not load dashboard data."}
-                </p>
+      {/* Direction distribution */}
+      <SecHead title="Direction distribution" sub="Top 5 directions" />
+      <Card>
+        {directions.map((d, i) => (
+          <div key={i} style={{ marginBottom: 10 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 2 }}>
+              <span style={{ fontSize: 13, color: 'var(--text-primary)' }}>{d.n}</span>
+              <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-primary)' }}>{d.c}</span>
             </div>
-        );
-    }
+            <ProgressBar pct={d.p} color="#378ADD" />
+          </div>
+        ))}
+      </Card>
 
-    const { totalStudents = 0, zones = { Green: 0, Amber: 0, Red: 0 }, roles = [], students = [] } = data;
-    const { Green = 0, Amber = 0, Red = 0 } = zones;
-    const totalZones = Green + Amber + Red || 1; // avoid div by 0
-
-    const greenPct = ((Green / totalZones) * 100).toFixed(1);
-    const amberPct = ((Amber / totalZones) * 100).toFixed(1);
-    const redPct = ((Red / totalZones) * 100).toFixed(1);
-
-    // Get top 5 roles
-    // Assume roles is either an object { roleName: count } or array [{role, count}]
-    let topRoles = [];
-    if (Array.isArray(roles)) {
-        topRoles = [...roles].sort((a,b) => (b.count || b.value || 0) - (a.count || a.value || 0)).slice(0, 5);
-    } else {
-        topRoles = Object.entries(roles).map(([role, count]) => ({ role, count })).sort((a,b) => b.count - a.count).slice(0, 5);
-    }
-    const maxRoleCount = topRoles.length > 0 ? (topRoles[0].count || topRoles[0].value) : 1;
-
-    // Red zone students
-    const redStudents = students.filter(s => s.zone === 'Red' || s.employer_zone === 'Red' || s.primaryZone?.employer_zone === 'Red' || s.zones === 'Red');
-    // Sort by most recently active LAST (longest inactive FIRST)
-    // assuming lastActive is ISO string or timestamp
-    redStudents.sort((a, b) => {
-        const timeA = new Date(a.lastActive || 0).getTime();
-        const timeB = new Date(b.lastActive || 0).getTime();
-        return timeA - timeB; // ascending gives oldest dates first
-    });
-
-    const displayStudents = redStudents.slice(0, 10);
-    const remainingStudents = redStudents.length - displayStudents.length;
-
-    return (
-        <div className="max-w-6xl mx-auto py-10 px-4 min-h-screen">
-            {/* Header */}
-            <div className="mb-10 border-b border-surface-border pb-6">
-                <div className="flex items-center gap-2 mb-2">
-                    <Target className="text-primary" size={24} />
-                    <h1 className="text-xl font-black text-text-primary tracking-tight uppercase">Placement Officer Dashboard</h1>
-                </div>
-                <h2 className="text-3xl font-black text-text-primary mb-2">
-                    {data.collegeName || "Sri Ramakrishna College of Arts and Science"}
-                </h2>
-                <div className="text-sm font-medium text-text-secondary flex gap-4">
-                    <span>Degrees: {data.degrees?.join(', ') || 'B.Sc CS, BCA, IT'}</span>
-                    <span>•</span>
-                    <span>Batches: {data.batches?.join(', ') || '2023-2026'}</span>
-                </div>
+      {/* Location preference */}
+      <SecHead title="Location preference" />
+      <Card>
+        {locations.map((l, i) => {
+          const { fg } = typeColors[l.type] || typeColors.secondary;
+          return (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+              <span style={{ fontSize: 13, width: 150, color: 'var(--text-primary)' }}>{l.p}</span>
+              <ProgressBar pct={l.w} color={fg} />
+              <span style={{ fontSize: 13, fontWeight: 500, width: 36, textAlign: 'right', color: 'var(--text-primary)' }}>{l.c}</span>
             </div>
+          );
+        })}
+        <p style={{ fontSize: 12, color: 'var(--text-warning)', margin: '8px 0 0', fontWeight: 500 }}>
+          78 students (27%) prefer Home City Only — consider a session on remote opportunities.
+        </p>
+      </Card>
 
-            {/* Metrics Row */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
-                <div className="bg-surface border border-surface-border p-6 rounded-xl shadow-sm flex flex-col justify-center">
-                    <p className="text-xs font-bold text-text-secondary uppercase tracking-widest mb-1">Total Students</p>
-                    <h3 className="text-3xl font-black text-text-primary flex items-center gap-2">
-                        <Users size={24} className="text-primary" /> {totalStudents}
-                    </h3>
+      {/* Salary expectation vs market reality */}
+      <SecHead title="Salary expectation vs market reality" />
+      <Card>
+        {salaryGaps.map((s, i) => {
+          const gType = gapColor[s.g] || 'secondary';
+          const { bg, fg } = typeColors[gType];
+          return (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10, paddingBottom: 10, borderBottom: i < salaryGaps.length - 1 ? '0.5px solid var(--border)' : 'none' }}>
+              <span style={{ fontSize: 13, width: 140, color: 'var(--text-primary)' }}>{s.d}</span>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--text-secondary)', marginBottom: 2 }}>
+                  <span>Expect: {s.ex}</span>
+                  <span>Market: {s.mk}</span>
                 </div>
-                <div className="bg-green-50 border border-green-200 p-6 rounded-xl shadow-sm flex flex-col justify-center">
-                    <p className="text-xs font-bold text-green-700 uppercase tracking-widest mb-1">Green Zone</p>
-                    <h3 className="text-3xl font-black text-green-700">{Green}</h3>
+                <div style={{ display: 'flex', height: 6, borderRadius: 3, overflow: 'hidden' }}>
+                  <div style={{ width: '50%', background: 'var(--text-info)' }} />
+                  <div style={{ width: s.g === 'high' ? '50%' : s.g === 'moderate' ? '35%' : '20%', background: fg }} />
                 </div>
-                <div className="bg-amber-50 border border-amber-200 p-6 rounded-xl shadow-sm flex flex-col justify-center">
-                    <p className="text-xs font-bold text-amber-700 uppercase tracking-widest mb-1">Amber Zone</p>
-                    <h3 className="text-3xl font-black text-amber-700">{Amber}</h3>
-                </div>
-                <div className="bg-red-50 border border-red-200 p-6 rounded-xl shadow-sm flex flex-col justify-center relative overflow-hidden">
-                    <div className="absolute top-0 right-0 bg-red-600 text-white text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-bl-lg">
-                        Need Attention
-                    </div>
-                    <p className="text-xs font-bold text-red-700 uppercase tracking-widest mb-1">Red Zone</p>
-                    <h3 className="text-3xl font-black text-red-700">{Red}</h3>
-                </div>
+              </div>
+              <span style={{ display: 'inline-block', padding: '2px 8px', borderRadius: 8, background: bg, color: fg, fontSize: 11, fontWeight: 500 }}>
+                {s.g} gap
+              </span>
             </div>
+          );
+        })}
+        <p style={{ fontSize: 12, color: 'var(--text-danger)', margin: '4px 0 0', fontWeight: 500 }}>
+          Corporate Finance shows largest gap — organise a salary expectations session.
+        </p>
+      </Card>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-                {/* Engagement Distribution */}
-                <div className="bg-surface border border-surface-border p-6 rounded-xl shadow-sm flex flex-col justify-center">
-                    <h4 className="text-sm font-bold text-text-primary mb-6 flex items-center gap-2">
-                        <CheckCircle2 size={16} className="text-primary" /> Engagement Distribution
-                    </h4>
-                    
-                    <div className="flex h-12 w-full rounded-lg overflow-hidden mb-4 shadow-inner border border-black/5">
-                        <div className="bg-green-500 h-full flex items-center justify-center text-white font-bold text-xs" style={{ width: `${greenPct}%` }}>
-                            {greenPct > 10 && `${greenPct}%`}
-                        </div>
-                        <div className="bg-amber-500 h-full flex items-center justify-center text-white font-bold text-xs" style={{ width: `${amberPct}%` }}>
-                            {amberPct > 10 && `${amberPct}%`}
-                        </div>
-                        <div className="bg-red-500 h-full flex items-center justify-center text-white font-bold text-xs" style={{ width: `${redPct}%` }}>
-                            {redPct > 10 && `${redPct}%`}
-                        </div>
-                    </div>
-                    
-                    <div className="flex justify-between items-center text-xs font-semibold text-text-secondary">
-                        <div className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-green-500"></span> Green ({Green})</div>
-                        <div className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-amber-500"></span> Amber ({Amber})</div>
-                        <div className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-red-500"></span> Red ({Red})</div>
-                    </div>
-                </div>
+      {/* Experience tracking */}
+      <SecHead title="Experience tracking" />
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0,1fr))', gap: 10, marginBottom: 16 }}>
+        <Metric label="Internship experience" value={data?.internshipCount || 87} sub="30%" />
+        <Metric label="Completed projects" value={data?.projectCount || 124} sub="43%" />
+        <Metric label="No experience" value={data?.noExpCount || 112} sub="39% — need support" />
+      </div>
 
-                {/* Direction Distribution */}
-                <div className="bg-surface border border-surface-border p-6 rounded-xl shadow-sm">
-                    <h4 className="text-sm font-bold text-text-primary mb-6 flex items-center gap-2">
-                        <Target size={16} className="text-primary" /> Top 5 Job Directions
-                    </h4>
-                    <div className="space-y-4">
-                        {topRoles.length === 0 ? (
-                            <p className="text-sm text-text-secondary italic">No direction data available</p>
-                        ) : (
-                            topRoles.map((r, i) => {
-                                const wPct = (((r.count || r.value) / maxRoleCount) * 100).toFixed(1);
-                                return (
-                                    <div key={i} className="flex flex-col gap-1">
-                                        <div className="flex justify-between text-xs font-bold">
-                                            <span className="text-text-primary">{r.role}</span>
-                                            <span className="text-text-secondary">{r.count || r.value}</span>
-                                        </div>
-                                        <div className="h-2 w-full bg-surface-hover rounded-full overflow-hidden">
-                                            <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${wPct}%` }}></div>
-                                        </div>
-                                    </div>
-                                );
-                            })
-                        )}
-                    </div>
-                </div>
+      {/* Certification readiness */}
+      <SecHead title="Certification readiness" sub="Students with 5+ Foundation Skills" />
+      <Card>
+        {certReady.map((c, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '6px 0', borderBottom: '0.5px solid var(--border)' }}>
+            <div>
+              <span style={{ fontSize: 13, color: 'var(--text-primary)' }}>{c.c}</span>
+              <span style={{ fontSize: 11, color: 'var(--text-secondary)', marginLeft: 6 }}>({c.d})</span>
             </div>
+            <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-primary)' }}>{c.r} ready</span>
+          </div>
+        ))}
+        <p style={{ fontSize: 12, color: 'var(--text-info)', margin: '8px 0 0' }}>
+          Consider group study circles or campus certification sessions.
+        </p>
+      </Card>
 
-            {/* Students Needing Attention */}
-            <div className="mb-10">
-                <h4 className="text-base font-bold text-text-primary mb-4 flex items-center gap-2">
-                    <AlertTriangle size={18} className="text-red-500" /> Students Needing Attention
-                </h4>
-                <div className="bg-surface border border-surface-border rounded-xl shadow-sm overflow-hidden">
-                    {displayStudents.length === 0 ? (
-                        <div className="p-8 text-center text-sm text-text-secondary font-medium">
-                            No students currently in the Red zone. Great job!
-                        </div>
-                    ) : (
-                        <div className="overflow-x-auto">
-                            <table className="w-full text-left border-collapse">
-                                <thead>
-                                    <tr className="bg-surface-hover border-b border-surface-border">
-                                        <th className="p-4 text-xs font-bold text-text-secondary uppercase tracking-widest whitespace-nowrap">Name</th>
-                                        <th className="p-4 text-xs font-bold text-text-secondary uppercase tracking-widest whitespace-nowrap">Direction</th>
-                                        <th className="p-4 text-xs font-bold text-text-secondary uppercase tracking-widest whitespace-nowrap">Last Active</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {displayStudents.map((s, i) => (
-                                        <tr key={i} className="border-b border-surface-border last:border-0 hover:bg-red-50/30 transition-colors group">
-                                            <td className="p-4">
-                                                <button 
-                                                    onClick={() => console.log('View student:', s)}
-                                                    className="text-sm font-bold text-text-primary group-hover:text-primary transition-colors text-left"
-                                                >
-                                                    {s.name || s.personalDetails?.name || 'Unknown Student'}
-                                                </button>
-                                            </td>
-                                            <td className="p-4 text-sm font-medium text-text-secondary">
-                                                {s.direction || s.preferences?.primary?.jobRole || 'Undeclared'}
-                                            </td>
-                                            <td className="p-4 text-sm font-medium text-text-secondary flex items-center gap-1.5 whitespace-nowrap">
-                                                <Clock size={14} className="opacity-50" />
-                                                {s.lastActive ? new Date(s.lastActive).toLocaleDateString() : 'Never'}
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                            {remainingStudents > 0 && (
-                                <div className="p-4 border-t border-surface-border bg-surface-hover/50 text-center">
-                                    <button className="text-xs font-bold text-text-secondary uppercase tracking-widest hover:text-text-primary">
-                                        + {remainingStudents} more students
-                                    </button>
-                                </div>
-                            )}
-                        </div>
-                    )}
-                </div>
-            </div>
+      {/* Students needing attention */}
+      <SecHead title="Students needing attention" sub="Red engagement" />
+      <Card>
+        <table style={{ width: '100%', fontSize: 12, borderCollapse: 'collapse' }}>
+          <thead>
+            <tr style={{ borderBottom: '0.5px solid var(--border)' }}>
+              {['Name', 'Direction', 'Foundation', 'Last active'].map(h => (
+                <th key={h} style={{ textAlign: 'left', padding: '6px 8px', color: 'var(--text-secondary)', fontWeight: 500 }}>{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {redStudents.map((s, i) => (
+              <tr key={i} style={{ borderBottom: '0.5px solid var(--border)' }}>
+                <td style={{ padding: 8, color: 'var(--text-info)', cursor: 'pointer' }}>{s.n}</td>
+                <td style={{ padding: 8, color: 'var(--text-primary)' }}>{s.d}</td>
+                <td style={{ padding: 8, color: 'var(--text-primary)' }}>{s.f}</td>
+                <td style={{ padding: 8, color: 'var(--text-danger)' }}>{s.l}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: '8px 0 0' }}>
+          5 of 45 Red students shown. Engagement indicators identify students needing support.
+        </p>
+      </Card>
 
-            {/* Footer Note */}
-            <div className="mt-16 pt-8 border-t border-surface-border text-center flex flex-col gap-2 pb-10">
-                <p className="text-xs font-bold text-text-secondary uppercase tracking-widest">
-                    All data filtered to your college only. Individual student details are private.
-                </p>
-                <p className="text-xs font-semibold text-text-secondary opacity-70">
-                    Engagement indicators are internal tools to identify students needing support.
-                </p>
-            </div>
-        </div>
-    );
-};
-
-export default PODashboard;
+      <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: '8px 0', fontStyle: 'italic' }}>
+        All data filtered to {college} only. PO cannot see other colleges.
+      </p>
+    </div>
+  );
+}
