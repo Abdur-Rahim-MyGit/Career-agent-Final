@@ -497,14 +497,14 @@ app.get('/api/data-stats', (req, res) => {
     const market = dataLoader.getMarketData();
     const titles = dataLoader.getJobTitles();
     const courses = dataLoader.getCourses();
-    const { zoneMatrix } = dataLoader.getZoneMatrix();
+    const degreeCount = dataLoader.getDegreeCount();
     
     res.json({
       totalRolesWithSkills: Object.keys(roleSkills).length,
       totalMarketEntries: Object.keys(market).length,
       totalJobTitles: titles.roles.length,
       totalCourses: Object.keys(courses).length,
-      totalDegrees: Object.keys(zoneMatrix).length,
+      totalDegrees: degreeCount,
       dataSource: 'Internal databases (company + imported datasets)',
       lastUpdated: new Date().toISOString()
     });

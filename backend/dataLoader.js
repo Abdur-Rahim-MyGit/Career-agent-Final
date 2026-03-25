@@ -112,6 +112,23 @@ function getProjects() {
   return existing;
 }
 
+/**
+ * Get total degree programs count from dropdownData.json (the actual education taxonomy)
+ * This counts all degree programs across UG, PG, PhD, Professional levels
+ */
+function getDegreeCount() {
+  const dropdown = loadJSON(path.join(__dirname, '..', 'frontend', 'src', 'data', 'dropdownData.json'));
+  if (!dropdown || !dropdown.education) return 20; // fallback
+  let count = 0;
+  for (const level of Object.values(dropdown.education)) {
+    for (const domain of Object.values(level)) {
+      count += Object.keys(domain).length;
+    }
+  }
+  console.log(`[DataLoader] degrees: ${count} degree programs from dropdownData.json`);
+  return count;
+}
+
 module.exports = {
   getRoleSkillsDB,
   getMarketData,
@@ -119,4 +136,5 @@ module.exports = {
   getZoneMatrix,
   getCourses,
   getProjects,
+  getDegreeCount,
 };
