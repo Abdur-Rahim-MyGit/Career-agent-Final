@@ -1,0 +1,83 @@
+# SMAART Platform — Full Demo Recording Session
+
+## Overview
+A comprehensive, end-to-end recorded demo of the SMAART Career Intelligence Platform covering every major page and feature. This session is split into 3 recording segments for your company review.
+
+---
+
+## 📹 Recording Segments
+
+### Segment 1: Landing Page Tour
+Covers the full landing page scroll, theme toggle (dark ↔ light), sign-out flow, and navigation to the Register page.
+
+![Segment 1 — Landing Page Tour](C:/Users/Vickram/.gemini/antigravity/brain/14e3ef71-d7b1-419c-92ef-182f1e283fbc/landing_page_tour_1774535674231.webp)
+
+---
+
+### Segment 2: Login + Onboarding Step 1
+Covers login with credentials, redirect to Dashboard, navigation to Onboarding, and a detailed tour of Step 1 (Academic Profile) including form fields, dark mode toggle, and form validation demo.
+
+![Segment 2 — Login and Onboarding](C:/Users/Vickram/.gemini/antigravity/brain/14e3ef71-d7b1-419c-92ef-182f1e283fbc/login_and_onboarding_1774535823918.webp)
+
+---
+
+### Segment 3: Full Platform Tour (Dashboard → All Onboarding Steps → Home)
+Covers Dashboard, Skills Passport, Market Insights, and a complete walkthrough of all 5 onboarding steps (Academic Profile → Career Goals → Skills & Certs → Experience → Review & Submit), plus a light/dark theme toggle demo on the Review page.
+
+![Segment 3 — Dashboard and All Pages Tour](C:/Users/Vickram/.gemini/antigravity/brain/14e3ef71-d7b1-419c-92ef-182f1e283fbc/dashboard_and_pages_1774536682518.webp)
+
+---
+
+## 📸 Key Screenshots
+
+````carousel
+![Login Page](C:/Users/Vickram/.gemini/antigravity/brain/14e3ef71-d7b1-419c-92ef-182f1e283fbc/login_page_demo_1774535846280.png)
+<!-- slide -->
+![Register Page](C:/Users/Vickram/.gemini/antigravity/brain/14e3ef71-d7b1-419c-92ef-182f1e283fbc/register_page_initial_1774535776392.png)
+<!-- slide -->
+![Onboarding Step 1 — Academic Profile](C:/Users/Vickram/.gemini/antigravity/brain/14e3ef71-d7b1-419c-92ef-182f1e283fbc/onboarding_step1_mid_1774535955763.png)
+<!-- slide -->
+![Step 3 — Skills & Certs](C:/Users/Vickram/.gemini/antigravity/brain/14e3ef71-d7b1-419c-92ef-182f1e283fbc/step3_skills_verified.png)
+<!-- slide -->
+![Step 4 — Experience](C:/Users/Vickram/.gemini/antigravity/brain/14e3ef71-d7b1-419c-92ef-182f1e283fbc/step4_experience_verified.png)
+<!-- slide -->
+![Step 5 — Review & Submit](C:/Users/Vickram/.gemini/antigravity/brain/14e3ef71-d7b1-419c-92ef-182f1e283fbc/onboarding_step_5_review_submit_1774533727808.png)
+````
+
+---
+
+## Pages Covered
+
+| # | Page | Key Features Demonstrated |
+|---|------|--------------------------|
+| 1 | **Landing Page** | Hero section, stats, feature cards, scroll animations, footer |
+| 2 | **Register** | 5-step onboarding preview, glassmorphism card |
+| 3 | **Login** | Premium sign-in card, credential entry |
+| 4 | **Dashboard** | User status, onboarding prompt |
+| 5 | **Skills Passport** | Competency tracking layout |
+| 6 | **Market Insights** | Data-driven career trends interface |
+| 7 | **Onboarding Step 1** | Academic Profile with gradient hero, completion ring, glassmorphism form |
+| 8 | **Onboarding Step 2** | Career Goals with gradient PrefCards, sector chips, org type grid |
+| 9 | **Onboarding Step 3** | Skills search, recommended skills sidebar |
+| 10 | **Onboarding Step 4** | Experience form with Briefcase header, gradient badges |
+| 11 | **Onboarding Step 5** | Review summary with icon-labeled sections, gradient submit button |
+
+## Design Features Verified
+- ✅ **Glassmorphism** — Frosted glass cards across all pages
+- ✅ **Dark/Light Theme** — Seamless toggle demonstrated on multiple pages
+- ✅ **Gradient Accents** — Premium gradients on hero banners, buttons, and active chips
+- ✅ **Progress Ring** — SVG completion ring showing % across onboarding steps
+- ✅ **Icon System** — Lucide icons (GraduationCap, Target, Cpu, Briefcase, Award, Sparkles)
+- ✅ **Responsive Navigation** — All nav links functional across pages
+
+## Recording Files Location
+All `.webp` recording files are located at:
+```
+C:\Users\Vickram\.gemini\antigravity\brain\14e3ef71-d7b1-419c-92ef-182f1e283fbc\
+```
+
+| File | Content |
+|------|---------|
+| `landing_page_tour_1774535674231.webp` | Landing page full scroll + theme toggle + register |
+| `login_and_onboarding_1774535823918.webp` | Login → Dashboard → Onboarding Step 1 deep tour |
+| `dashboard_and_pages_1774536682518.webp` | Complete platform tour: Dashboard, Skills Passport, Market Insights, all 5 steps |
