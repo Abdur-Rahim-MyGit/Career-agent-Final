@@ -209,8 +209,8 @@ function SkillSearch({ selected, onAdd }) {
 function SectorPicker({ selected, onChange }) {
   return (
     <div>
-      <div style={{ display:'flex', flexWrap:'wrap', gap:6, maxHeight:120, overflowY:'auto', marginBottom:4 }}>
-        {SECTORS.map(s => { const active = selected.includes(s); const maxed = selected.length >= 3 && !active; return <button key={s} type="button" onClick={() => { if (!maxed) onChange(active ? selected.filter(x => x !== s) : [...selected, s]); }} style={{ padding:'3px 10px', fontSize:11, borderRadius:20, cursor: maxed?'not-allowed':'pointer', fontWeight: active?600:400, border:`0.5px solid ${active?'var(--text-info)':'var(--border)'}`, background: active?'var(--bg-info)':'var(--bg-secondary)', color: active?'var(--text-info)':'var(--text-secondary)', opacity: maxed?0.4:1, transition:'all 0.1s' }}>{active?'✓ ':''}{s}</button>; })}
+      <div style={{ display:'flex', flexWrap:'wrap', gap:6, maxHeight:120, overflowY:'auto', marginBottom:6 }}>
+        {SECTORS.map(s => { const active = selected.includes(s); const maxed = selected.length >= 3 && !active; return <button key={s} type="button" onClick={() => { if (!maxed) onChange(active ? selected.filter(x => x !== s) : [...selected, s]); }} style={{ padding:'4px 12px', fontSize:11, borderRadius:20, cursor: maxed?'not-allowed':'pointer', fontWeight: active?600:400, border: active ? 'none' : '0.5px solid var(--border)', background: active?'linear-gradient(135deg, var(--bg-info), rgba(133,173,255,0.2))':'var(--bg-secondary)', color: active?'var(--text-info)':'var(--text-secondary)', opacity: maxed?0.4:1, transition:'all 0.2s ease', boxShadow: active ? '0 1px 6px rgba(24,95,165,0.12)' : 'none' }}>{active?'✓ ':''}{s}</button>; })}
       </div>
       <p style={{ fontSize:11, color:'var(--text-secondary)', margin:0 }}>{selected.length}/3 selected</p>
     </div>
@@ -219,8 +219,8 @@ function SectorPicker({ selected, onChange }) {
 
 function OrgPicker({ selected, onChange }) {
   return (
-    <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:6 }}>
-      {ORG_TYPES.map(o => { const active = (selected||[]).includes(o); const maxed = (selected||[]).length >= 3 && !active; return <button key={o} type="button" onClick={() => { if (!maxed) onChange(active ? selected.filter(x => x !== o) : [...(selected||[]), o]); }} style={{ padding:'6px 10px', fontSize:11, borderRadius:6, cursor: maxed?'not-allowed':'pointer', textAlign:'left', fontWeight: active?500:400, border:`0.5px solid ${active?'var(--text-info)':'var(--border)'}`, background: active?'var(--bg-info)':'var(--bg-secondary)', color: active?'var(--text-info)':'var(--text-secondary)', opacity: maxed?0.4:1 }}>{active?'✓ ':''}{o}</button>; })}
+    <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:8 }}>
+      {ORG_TYPES.map(o => { const active = (selected||[]).includes(o); const maxed = (selected||[]).length >= 3 && !active; return <button key={o} type="button" onClick={() => { if (!maxed) onChange(active ? selected.filter(x => x !== o) : [...(selected||[]), o]); }} style={{ padding:'8px 12px', fontSize:11, borderRadius:10, cursor: maxed?'not-allowed':'pointer', textAlign:'left', fontWeight: active?600:400, border: active ? 'none' : '0.5px solid var(--border)', background: active?'linear-gradient(135deg, var(--bg-info), rgba(133,173,255,0.2))':'var(--bg-secondary)', color: active?'var(--text-info)':'var(--text-secondary)', opacity: maxed?0.4:1, transition:'all 0.2s ease', boxShadow: active ? '0 1px 6px rgba(24,95,165,0.12)' : 'none' }}>{active?'✓ ':''}{o}</button>; })}
     </div>
   );
 }
@@ -239,11 +239,11 @@ function InfoTooltip({ text }) {
 function PrefCard({ label, pref, onUpdate, onUpdateLoc, accentColor, accentDark, number }) {
   const locs = pref.locations?.length === 3 ? pref.locations : ['','',''];
   return (
-    <div style={{ ...cs.card, borderLeft:`3px solid ${accentColor}`, marginBottom:16 }}>
-      <div style={{ display:'flex', alignItems:'center', gap:8, padding:'12px 16px', background:`linear-gradient(to right, ${accentColor}, ${accentDark})`, margin:'-16px -20px 16px -20px', borderRadius:'12px 12px 0 0' }}>
-        <div style={{ width:26, height:26, borderRadius:6, display:'flex', alignItems:'center', justifyContent:'center', fontSize:12, fontWeight:700, border:'1px solid rgba(255,255,255,0.4)', color:'white' }}>{number}</div>
-        <span style={{ fontSize:12, fontWeight:700, color:'white', textTransform:'uppercase', letterSpacing:'0.08em' }}>{label} Preference</span>
-        {number === 1 && <span style={{ marginLeft:'auto', fontSize:10, fontWeight:700, background:'white', color:accentDark, padding:'2px 8px', borderRadius:10, textTransform:'uppercase' }}>★ Highest Weight</span>}
+    <div style={{ ...cs.card, borderLeft:`3px solid ${accentColor}`, marginBottom:16, boxShadow:'0 2px 16px rgba(0,0,0,0.04)' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:10, padding:'14px 18px', background:`linear-gradient(135deg, ${accentColor}, ${accentDark})`, margin:'-20px -24px 18px -24px', borderRadius:'16px 16px 0 0' }}>
+        <div style={{ width:28, height:28, borderRadius:8, display:'flex', alignItems:'center', justifyContent:'center', fontSize:13, fontWeight:700, border:'1.5px solid rgba(255,255,255,0.35)', color:'white', background:'rgba(255,255,255,0.1)' }}>{number}</div>
+        <span style={{ fontSize:13, fontWeight:700, color:'white', textTransform:'uppercase', letterSpacing:'0.08em' }}>{label} Preference</span>
+        {number === 1 && <span style={{ marginLeft:'auto', fontSize:10, fontWeight:700, background:'rgba(255,255,255,0.95)', color:accentDark, padding:'3px 10px', borderRadius:12, textTransform:'uppercase', letterSpacing:'0.05em' }}>★ Highest Weight</span>}
       </div>
       <div style={cs.field}>
         <label style={cs.label}>Target Job Role</label>
@@ -283,42 +283,52 @@ function PrefCard({ label, pref, onUpdate, onUpdateLoc, accentColor, accentDark,
 
 function SkillRow({ sk, onRemove, onUpdate }) {
   return (
-    <motion.div initial={{ opacity:0, scale:0.95 }} animate={{ opacity:1, scale:1 }} style={{ border:'0.5px solid var(--border)', borderRadius:8, padding:12, marginBottom:8, background:'var(--bg-secondary)' }}>
-      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:8 }}>
-        <span style={{ fontSize:14, fontWeight:500, color:'var(--text-primary)' }}>{sk.name}</span>
-        <button onClick={() => onRemove(sk.name)} style={{ background:'none', border:'none', cursor:'pointer', color:'var(--text-danger)', fontSize:18, lineHeight:1, padding:'0 4px' }}>×</button>
+    <motion.div initial={{ opacity:0, scale:0.95 }} animate={{ opacity:1, scale:1 }} style={{ border:'0.5px solid var(--border)', borderRadius:12, padding:14, marginBottom:10, background:'var(--bg-secondary)', transition:'box-shadow 0.2s ease' }}>
+      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:10 }}>
+        <div style={{ display:'flex', alignItems:'center', gap:8 }}>
+          <div style={{ width:24, height:24, borderRadius:6, background:'var(--bg-info)', display:'flex', alignItems:'center', justifyContent:'center' }}><Cpu size={12} color='var(--text-info)' /></div>
+          <span style={{ fontSize:14, fontWeight:600, color:'var(--text-primary)' }}>{sk.name}</span>
+        </div>
+        <button onClick={() => onRemove(sk.name)} style={{ background:'var(--bg-danger)', border:'none', cursor:'pointer', color:'var(--text-danger)', fontSize:12, fontWeight:600, padding:'4px 10px', borderRadius:8, transition:'all 0.15s' }}>Remove</button>
       </div>
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:8 }}>
-        <div><label style={{ ...cs.label, marginBottom:3 }}>Certificate name</label><input value={sk.certName||''} onChange={e => onUpdate(sk.name,'certName',e.target.value)} placeholder="e.g. AWS Cloud Practitioner" style={{ ...cs.input, fontSize:12, padding:'6px 8px' }} /></div>
-        <div><label style={{ ...cs.label, marginBottom:3 }}>Issuing organisation</label><input value={sk.issuer||''} onChange={e => onUpdate(sk.name,'issuer',e.target.value)} placeholder="e.g. Amazon Web Services" style={{ ...cs.input, fontSize:12, padding:'6px 8px' }} /></div>
-        <div><label style={{ ...cs.label, marginBottom:3 }}>Year</label><select value={sk.year||''} onChange={e => onUpdate(sk.name,'year',e.target.value)} style={{ ...cs.input, fontSize:12, padding:'6px 8px' }}><option value="">Select…</option>{Array.from({length:31},(_,i)=>2010+i).map(y => <option key={y} value={y}>{y}</option>)}</select></div>
-        <div><label style={{ ...cs.label, marginBottom:3 }}>Verification</label><select value={sk.mode||''} onChange={e => onUpdate(sk.name,'mode',e.target.value)} style={{ ...cs.input, fontSize:12, padding:'6px 8px' }}><option value="">Select…</option>{VERIFY_MODES.map(m => <option key={m} value={m}>{m}</option>)}</select></div>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10 }}>
+        <div><label style={{ ...cs.label, marginBottom:3 }}>Certificate name</label><input value={sk.certName||''} onChange={e => onUpdate(sk.name,'certName',e.target.value)} placeholder="e.g. AWS Cloud Practitioner" style={{ ...cs.input, fontSize:12, padding:'8px 10px' }} /></div>
+        <div><label style={{ ...cs.label, marginBottom:3 }}>Issuing organisation</label><input value={sk.issuer||''} onChange={e => onUpdate(sk.name,'issuer',e.target.value)} placeholder="e.g. Amazon Web Services" style={{ ...cs.input, fontSize:12, padding:'8px 10px' }} /></div>
+        <div><label style={{ ...cs.label, marginBottom:3 }}>Year</label><select value={sk.year||''} onChange={e => onUpdate(sk.name,'year',e.target.value)} style={{ ...cs.input, fontSize:12, padding:'8px 10px' }}><option value="">Select…</option>{Array.from({length:31},(_,i)=>2010+i).map(y => <option key={y} value={y}>{y}</option>)}</select></div>
+        <div><label style={{ ...cs.label, marginBottom:3 }}>Verification</label><select value={sk.mode||''} onChange={e => onUpdate(sk.name,'mode',e.target.value)} style={{ ...cs.input, fontSize:12, padding:'8px 10px' }}><option value="">Select…</option>{VERIFY_MODES.map(m => <option key={m} value={m}>{m}</option>)}</select></div>
       </div>
-      {sk.mode === 'URL' && <div style={{ marginTop:8 }}><label style={{ ...cs.label, marginBottom:3 }}>Verification link</label><input value={sk.url||''} onChange={e => onUpdate(sk.name,'url',e.target.value)} placeholder="https://…" style={{ ...cs.input, fontSize:12, padding:'6px 8px' }} /></div>}
-      <div style={{ marginTop:8 }}><span style={{ fontSize:11, padding:'2px 8px', borderRadius:6, fontWeight:500, background: sk.certName||sk.issuer?'var(--bg-warning)':'var(--bg-secondary)', color: sk.certName||sk.issuer?'var(--text-warning)':'var(--text-secondary)' }}>{sk.certName||sk.issuer?'Evidence submitted':'Self-declared'}</span></div>
+      {sk.mode === 'URL' && <div style={{ marginTop:10 }}><label style={{ ...cs.label, marginBottom:3 }}>Verification link</label><input value={sk.url||''} onChange={e => onUpdate(sk.name,'url',e.target.value)} placeholder="https://…" style={{ ...cs.input, fontSize:12, padding:'8px 10px' }} /></div>}
+      <div style={{ marginTop:10, display:'flex', alignItems:'center', gap:6 }}>
+        <Shield size={12} color={sk.certName||sk.issuer ? 'var(--text-warning)' : 'var(--text-secondary)'} />
+        <span style={{ fontSize:11, padding:'3px 10px', borderRadius:8, fontWeight:500, background: sk.certName||sk.issuer?'var(--bg-warning)':'var(--bg-secondary)', color: sk.certName||sk.issuer?'var(--text-warning)':'var(--text-secondary)' }}>{sk.certName||sk.issuer?'Evidence submitted':'Self-declared'}</span>
+      </div>
     </motion.div>
   );
 }
 
 function ExpRow({ exp, index, onUpdate, onRemove }) {
   return (
-    <div style={{ border:'0.5px solid var(--border)', borderRadius:8, padding:14, marginBottom:12, background:'var(--bg-secondary)' }}>
-      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:10 }}>
-        <span style={{ fontSize:12, fontWeight:500, color:'var(--text-primary)' }}>Experience {index+1} <span style={{ marginLeft:8, padding:'2px 8px', borderRadius:6, background:'var(--bg-info)', color:'var(--text-info)', fontSize:11 }}>{exp.type}</span></span>
-        {index > 0 && <button onClick={() => onRemove(index)} style={{ background:'none', border:'none', cursor:'pointer', color:'var(--text-danger)', fontSize:13 }}>Remove</button>}
+    <div style={{ border:'0.5px solid var(--border)', borderRadius:14, padding:16, marginBottom:14, background:'var(--bg-secondary)', transition:'box-shadow 0.2s ease' }}>
+      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:12 }}>
+        <div style={{ display:'flex', alignItems:'center', gap:8 }}>
+          <div style={{ width:28, height:28, borderRadius:8, background:'var(--bg-info)', display:'flex', alignItems:'center', justifyContent:'center' }}><Briefcase size={13} color='var(--text-info)' /></div>
+          <span style={{ fontSize:13, fontWeight:600, color:'var(--text-primary)' }}>Experience {index+1}</span>
+          <span style={{ padding:'3px 10px', borderRadius:8, background:'linear-gradient(135deg, var(--bg-info), rgba(133,173,255,0.15))', color:'var(--text-info)', fontSize:11, fontWeight:600 }}>{exp.type}</span>
+        </div>
+        {index > 0 && <button onClick={() => onRemove(index)} style={{ background:'var(--bg-danger)', border:'none', cursor:'pointer', color:'var(--text-danger)', fontSize:12, fontWeight:600, padding:'4px 10px', borderRadius:8, transition:'all 0.15s' }}>Remove</button>}
       </div>
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10 }}>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
         <FInput label="Organisation name" value={exp.org} onChange={v => onUpdate(index,'org',v)} placeholder="e.g. Infosys, TCS" />
         <FInput label="Designation / Role" value={exp.designation} onChange={v => onUpdate(index,'designation',v)} placeholder="e.g. Software Intern" />
       </div>
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10 }}>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
         <FSelect label="Sector" value={exp.sector||'Select sector…'} onChange={v => onUpdate(index,'sector',v)} options={['Select sector…',...SECTORS]} />
         <FSelect label="Experience type" value={exp.type} onChange={v => onUpdate(index,'type',v)} options={EXP_TYPES} />
       </div>
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:10 }}>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:12 }}>
         <div style={cs.field}><label style={cs.label}>Start date</label><input type="month" value={exp.startDate} onChange={e => onUpdate(index,'startDate',e.target.value)} style={{ ...cs.input, fontSize:13 }} /></div>
         <div style={cs.field}><label style={cs.label}>End date</label><input type="month" value={exp.endDate} onChange={e => onUpdate(index,'endDate',e.target.value)} disabled={exp.currentlyWorking} style={{ ...cs.input, fontSize:13, opacity: exp.currentlyWorking?0.4:1 }} /></div>
-        <div style={{ ...cs.field, display:'flex', alignItems:'flex-end' }}><label style={{ display:'flex', alignItems:'center', gap:6, cursor:'pointer', fontSize:12, color:'var(--text-secondary)', paddingBottom:8 }}><input type="checkbox" checked={exp.currentlyWorking} onChange={e => onUpdate(index,'currentlyWorking',e.target.checked)} style={{ accentColor:'var(--text-info)', width:15, height:15 }} />Currently working</label></div>
+        <div style={{ ...cs.field, display:'flex', alignItems:'flex-end' }}><label style={{ display:'flex', alignItems:'center', gap:6, cursor:'pointer', fontSize:12, color:'var(--text-secondary)', paddingBottom:8 }}><input type="checkbox" checked={exp.currentlyWorking} onChange={e => onUpdate(index,'currentlyWorking',e.target.checked)} style={{ accentColor:'var(--text-info)', width:16, height:16 }} />Currently working</label></div>
       </div>
     </div>
   );
@@ -529,7 +539,12 @@ export default function Onboarding() {
           {step === 2 && (
             <div style={{ maxWidth:620, margin:'0 auto', padding:'0 0 16px' }}>
               <StepHero n={2} completionPct={completionPct} />
-              <p style={{ fontSize:12, color:'var(--text-secondary)', marginBottom:16, lineHeight:1.6 }}>Set up to 3 career preferences. Skill priority follows Primary → Secondary → Tertiary.</p>
+              <div style={{ ...cs.card, background:'linear-gradient(135deg, var(--bg-info), rgba(133,173,255,0.08))', border:'0.5px solid var(--border-info)', marginBottom:18 }}>
+                <div style={{ display:'flex', alignItems:'center', gap:8 }}>
+                  <Sparkles size={14} color='var(--text-info)' />
+                  <p style={{ fontSize:12, color:'var(--text-info)', margin:0, lineHeight:1.6, fontWeight:500 }}>Set up to 3 career preferences. Skill priority follows Primary → Secondary → Tertiary.</p>
+                </div>
+              </div>
               <PrefCard label="Primary"   pref={primary}   onUpdate={updPrimary}   onUpdateLoc={updPrimaryLoc}   accentColor="#1D9E75" accentDark="#0f7a5a" number={1} />
               <PrefCard label="Secondary" pref={secondary} onUpdate={updSecondary} onUpdateLoc={updSecondaryLoc} accentColor="#BA7517" accentDark="#8a5510" number={2} />
               <PrefCard label="Tertiary"  pref={tertiary}  onUpdate={updTertiary}  onUpdateLoc={updTertiaryLoc}  accentColor="#888780" accentDark="#555550" number={3} />
@@ -583,10 +598,10 @@ export default function Onboarding() {
                   {skills.map(sk => <SkillRow key={sk.name} sk={sk} onRemove={removeSkill} onUpdate={updateSkill} />)}
                 </div>
                 {/* Recommended skills sidebar */}
-                <div style={{ ...cs.card, background:'var(--bg-secondary)', position:'sticky', top:80 }}>
-                  <div style={{ display:'flex', alignItems:'center', gap:6, marginBottom:12 }}>
-                    <span style={{ fontSize:16 }}>🎯</span>
-                    <span style={{ fontSize:13, fontWeight:600, color:'var(--text-primary)' }}>Recommended Skills</span>
+                <div style={{ ...cs.card, background:'var(--bg-secondary)', position:'sticky', top:80, borderRadius:16, boxShadow:'0 2px 16px rgba(0,0,0,0.04)' }}>
+                  <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:12 }}>
+                    <div style={{ width:26, height:26, borderRadius:8, background:'linear-gradient(135deg, var(--bg-info), rgba(133,173,255,0.2))', display:'flex', alignItems:'center', justifyContent:'center' }}><Target size={13} color='var(--text-info)' /></div>
+                    <span style={{ fontSize:13, fontWeight:700, color:'var(--text-primary)' }}>Recommended Skills</span>
                   </div>
                   <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'0 0 12px', lineHeight:1.5 }}>
                     {primary.role ? `Based on your target: ${primary.role}` : 'Top in-demand skills for 2026'}
@@ -625,10 +640,13 @@ export default function Onboarding() {
             <div style={{ maxWidth:580, margin:'0 auto', padding:'0 0 16px' }}>
               <StepHero n={4} completionPct={completionPct} />
               <div style={cs.card}>
-                <p style={{ fontSize:15, fontWeight:500, margin:'0 0 4px', color:'var(--text-primary)' }}>Do you have any experience?</p>
-                <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'0 0 16px', lineHeight:1.6 }}>Internships, part-time work, freelancing, volunteering, or projects.</p>
+                <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:6 }}>
+                  <div style={{ width:28, height:28, borderRadius:8, background:'var(--bg-info)', display:'flex', alignItems:'center', justifyContent:'center' }}><Briefcase size={14} color='var(--text-info)' /></div>
+                  <p style={{ fontSize:15, fontWeight:600, margin:0, color:'var(--text-primary)' }}>Do you have any experience?</p>
+                </div>
+                <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'0 0 16px', lineHeight:1.6, paddingLeft:36 }}>Internships, part-time work, freelancing, volunteering, or projects.</p>
                 {experiences.map((exp,i) => <ExpRow key={i} exp={exp} index={i} onUpdate={updExp} onRemove={removeExp} />)}
-                <button onClick={addExp} style={{ padding:'8px 16px', fontSize:13, border:'0.5px solid var(--border-info)', borderRadius:8, background:'transparent', color:'var(--text-info)', cursor:'pointer' }}>+ Add another experience</button>
+                <button onClick={addExp} style={{ padding:'9px 18px', fontSize:13, border:'none', borderRadius:10, background:'linear-gradient(135deg, var(--bg-info), rgba(133,173,255,0.15))', color:'var(--text-info)', cursor:'pointer', fontWeight:600, transition:'all 0.2s ease', boxShadow:'0 1px 6px rgba(24,95,165,0.1)' }}>+ Add another experience</button>
               </div>
               <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
                 <button onClick={() => setStep(3)} style={cs.btnGhost}>← Back</button>
@@ -641,39 +659,62 @@ export default function Onboarding() {
           )}
 
           {step === 5 && (
-            <div style={{ maxWidth:520, margin:'0 auto', padding:'0 0 16px' }}>
+            <div style={{ maxWidth:560, margin:'0 auto', padding:'0 0 16px' }}>
               <StepHero n={5} completionPct={completionPct} />
               <div style={cs.card}>
-                <p style={{ fontSize:15, fontWeight:500, margin:'0 0 16px', color:'var(--text-primary)' }}>Your profile summary</p>
-                <div style={{ borderBottom:'0.5px solid var(--border)', paddingBottom:10, marginBottom:10 }}>
-                  <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'0 0 2px' }}>Education</p>
-                  <p style={{ fontSize:13, fontWeight:500, margin:0, color:'var(--text-primary)' }}>{eduDegree} — {effectiveSpec}</p>
-                  <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'2px 0 0' }}>{eduLevel} · {eduDomain} · Year {yearOfStudy} · Graduating {gradYear}</p>
+                <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:18 }}>
+                  <div style={{ width:28, height:28, borderRadius:8, background:'linear-gradient(135deg, #185FA5, #1D9E75)', display:'flex', alignItems:'center', justifyContent:'center' }}><Award size={14} color='#fff' /></div>
+                  <p style={{ fontSize:16, fontWeight:700, margin:0, color:'var(--text-primary)', letterSpacing:'-0.01em' }}>Your Profile Summary</p>
                 </div>
-                {primary.role && <div style={{ borderBottom:'0.5px solid var(--border)', paddingBottom:10, marginBottom:10 }}>
-                  <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'0 0 2px' }}>Primary Preference</p>
-                  <p style={{ fontSize:13, fontWeight:500, margin:0, color:'#1D9E75' }}>{primary.role}</p>
-                  {primary.sectors.length > 0 && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'2px 0 0' }}>{primary.sectors.join(' · ')}</p>}
+                {/* Education section */}
+                <div style={{ background:'var(--bg-secondary)', borderRadius:12, padding:'14px 16px', marginBottom:12 }}>
+                  <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:8 }}>
+                    <GraduationCap size={14} color='var(--text-info)' />
+                    <span style={{ fontSize:11, fontWeight:600, color:'var(--text-info)', textTransform:'uppercase', letterSpacing:'0.06em' }}>Education</span>
+                  </div>
+                  <p style={{ fontSize:14, fontWeight:600, margin:0, color:'var(--text-primary)' }}>{eduDegree} — {effectiveSpec}</p>
+                  <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'3px 0 0' }}>{eduLevel} · {eduDomain} · Year {yearOfStudy} · Graduating {gradYear}</p>
+                </div>
+                {/* Preferences section */}
+                {primary.role && <div style={{ background:'var(--bg-secondary)', borderRadius:12, padding:'14px 16px', marginBottom:12 }}>
+                  <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:8 }}>
+                    <Target size={14} color='#1D9E75' />
+                    <span style={{ fontSize:11, fontWeight:600, color:'#1D9E75', textTransform:'uppercase', letterSpacing:'0.06em' }}>Primary Preference</span>
+                  </div>
+                  <p style={{ fontSize:14, fontWeight:600, margin:0, color:'var(--text-primary)' }}>{primary.role}</p>
+                  {primary.sectors.length > 0 && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'3px 0 0' }}>{primary.sectors.join(' · ')}</p>}
                 </div>}
-                {secondary.role && <div style={{ borderBottom:'0.5px solid var(--border)', paddingBottom:10, marginBottom:10 }}>
-                  <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'0 0 2px' }}>Secondary Preference</p>
-                  <p style={{ fontSize:13, fontWeight:500, margin:0, color:'#BA7517' }}>{secondary.role}</p>
-                  {secondary.sectors.length > 0 && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'2px 0 0' }}>{secondary.sectors.join(' · ')}</p>}
+                {secondary.role && <div style={{ background:'var(--bg-secondary)', borderRadius:12, padding:'14px 16px', marginBottom:12 }}>
+                  <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:8 }}>
+                    <Target size={14} color='#BA7517' />
+                    <span style={{ fontSize:11, fontWeight:600, color:'#BA7517', textTransform:'uppercase', letterSpacing:'0.06em' }}>Secondary Preference</span>
+                  </div>
+                  <p style={{ fontSize:14, fontWeight:600, margin:0, color:'var(--text-primary)' }}>{secondary.role}</p>
+                  {secondary.sectors.length > 0 && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'3px 0 0' }}>{secondary.sectors.join(' · ')}</p>}
                 </div>}
-                {tertiary.role && <div style={{ borderBottom:'0.5px solid var(--border)', paddingBottom:10, marginBottom:10 }}>
-                  <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'0 0 2px' }}>Tertiary Preference</p>
-                  <p style={{ fontSize:13, fontWeight:500, margin:0, color:'#888780' }}>{tertiary.role}</p>
-                  {tertiary.sectors.length > 0 && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'2px 0 0' }}>{tertiary.sectors.join(' · ')}</p>}
+                {tertiary.role && <div style={{ background:'var(--bg-secondary)', borderRadius:12, padding:'14px 16px', marginBottom:12 }}>
+                  <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:8 }}>
+                    <Target size={14} color='#888780' />
+                    <span style={{ fontSize:11, fontWeight:600, color:'#888780', textTransform:'uppercase', letterSpacing:'0.06em' }}>Tertiary Preference</span>
+                  </div>
+                  <p style={{ fontSize:14, fontWeight:600, margin:0, color:'var(--text-primary)' }}>{tertiary.role}</p>
+                  {tertiary.sectors.length > 0 && <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'3px 0 0' }}>{tertiary.sectors.join(' · ')}</p>}
                 </div>}
-                {skills.length > 0 && <div>
-                  <p style={{ fontSize:11, color:'var(--text-secondary)', margin:'0 0 6px' }}>Skills added ({skills.length})</p>
-                  <div style={{ display:'flex', flexWrap:'wrap', gap:4 }}>{skills.map(s => <span key={s.name} style={{ fontSize:11, padding:'2px 8px', borderRadius:6, background:'var(--bg-success)', color:'var(--text-success)' }}>{s.name}</span>)}</div>
+                {/* Skills section */}
+                {skills.length > 0 && <div style={{ background:'var(--bg-secondary)', borderRadius:12, padding:'14px 16px', marginBottom:12 }}>
+                  <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:10 }}>
+                    <Cpu size={14} color='var(--text-info)' />
+                    <span style={{ fontSize:11, fontWeight:600, color:'var(--text-info)', textTransform:'uppercase', letterSpacing:'0.06em' }}>Skills ({skills.length})</span>
+                  </div>
+                  <div style={{ display:'flex', flexWrap:'wrap', gap:6 }}>{skills.map(s => <span key={s.name} style={{ fontSize:11, padding:'4px 10px', borderRadius:8, background:'linear-gradient(135deg, var(--bg-success), rgba(59,109,17,0.1))', color:'var(--text-success)', fontWeight:500 }}>✓ {s.name}</span>)}</div>
                 </div>}
               </div>
               {error && <p style={{ color:'var(--text-danger)', fontSize:13, marginBottom:12 }}>{error}</p>}
               <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
                 <button onClick={() => setStep(4)} style={cs.btnGhost}>← Back</button>
-                <button onClick={submit} disabled={submitting} style={{ ...cs.btnGreen, opacity:submitting?0.6:1 }}>{submitting?'Processing…':'Complete onboarding →'}</button>
+                <button onClick={submit} disabled={submitting} style={{ ...cs.btnGreen, padding:'13px 32px', fontSize:15, fontWeight:700, borderRadius:12, boxShadow:'0 4px 20px rgba(24,95,165,0.3)', opacity:submitting?0.6:1 }}>
+                  {submitting ? <span style={{ display:'flex', alignItems:'center', gap:8 }}><span style={{ width:16, height:16, border:'2px solid rgba(255,255,255,0.3)', borderTop:'2px solid white', borderRadius:'50%', animation:'spin 1s linear infinite' }} />Processing…</span> : <span style={{ display:'flex', alignItems:'center', gap:8 }}><Sparkles size={16} />Complete onboarding<ChevronRight size={16}/></span>}
+                </button>
               </div>
             </div>
           )}
