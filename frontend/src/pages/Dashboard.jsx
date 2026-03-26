@@ -43,9 +43,9 @@ function SH({ title, sub, icon }) {
 
 /* ── zone helpers ───────────────────────────────────────────────────── */
 const ZONE_STYLE = {
-  Green: { bg:'var(--bg-success)', fg:'var(--text-success)', dot:'🟢', border:'#1D9E75' },
-  Amber: { bg:'var(--bg-warning)', fg:'var(--text-warning)', dot:'🟡', border:'#BA7517' },
-  Red:   { bg:'var(--bg-danger)',  fg:'var(--text-danger)',  dot:'🔴', border:'#A32D2D' },
+  Green: { bg:'var(--bg-success)', fg:'var(--text-success)', border:'#1D9E75' },
+  Amber: { bg:'var(--bg-warning)', fg:'var(--text-warning)', border:'#BA7517' },
+  Red:   { bg:'var(--bg-danger)',  fg:'var(--text-danger)',  border:'#A32D2D' },
 };
 const zs = z => ZONE_STYLE[z] || ZONE_STYLE.Amber;
 
@@ -224,7 +224,7 @@ export default function Dashboard() {
      RENDER
   ══════════════════════════════════════════════════════════════ */
   return (
-    <div style={{ maxWidth:720, margin:'0 auto', fontFamily:'var(--font-sans)', padding:'0 4px' }}>
+    <div style={{ maxWidth:1100, margin:'0 auto', fontFamily:'var(--font-sans)', padding:'0 4px' }}>
 
       {/* ── Premium Header ── */}
       <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:20, paddingBottom:16, borderBottom:'0.5px solid rgba(72,72,71,0.12)' }}>
@@ -279,7 +279,7 @@ export default function Dashboard() {
           return (
             <div key={i} style={{ padding:'10px 0', borderBottom: i < 2 ? '0.5px solid var(--border)' : 'none' }}>
               <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:3 }}>
-                <span style={{ fontSize:12 }}>{zst.dot}</span>
+                <span style={{ display:'inline-block', width:10, height:10, borderRadius:'50%', background:zst.border, flexShrink:0 }} />
                 <span style={{ fontSize:13, fontWeight:600, color:'var(--text-primary)', flex:1 }}>{ind.label}</span>
                 <span style={{ padding:'1px 8px', borderRadius:6, background:zst.bg, color:zst.fg, fontSize:10, fontWeight:600 }}>{ind.zone}</span>
               </div>
@@ -650,7 +650,7 @@ export default function Dashboard() {
                       {/* Timeline line */}
                       <div style={{ display:'flex', flexDirection:'column', alignItems:'center', width:32, flexShrink:0 }}>
                         <div style={{
-                          width:28, height:28, borderRadius:'50%', background:st.bg, border:`2px solid ${st.dot}`,
+                          width:28, height:28, borderRadius:'50%', background:st.bg, border:`2px solid ${st.border}`,
                           display:'flex', alignItems:'center', justifyContent:'center', color:st.fg, zIndex:1,
                           animation: s.status === 'in-progress' ? 'pulse 2s infinite' : 'none',
                         }}>

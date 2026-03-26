@@ -1,16 +1,70 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Award, Download, Share2, ExternalLink, CheckCircle2, AlertTriangle, Clock, Target, Sparkles, ChevronDown, ChevronUp, Briefcase, BookOpen } from 'lucide-react';
+import { Award, Download, Share2, CheckCircle2, AlertTriangle, AlertCircle, Clock, Target, Sparkles, ChevronDown, ChevronUp, Briefcase, BookOpen } from 'lucide-react';
 
-const font = { fontFamily: "'Manrope', 'Inter', var(--font-sans)" };
+/* ── Passport Responsive CSS (injected once) ──────────────────────── */
+const PASSPORT_CSS = `
+  .passport-page { max-width: 1100px; margin: 0 auto; font-family: 'Manrope', 'Inter', var(--font-sans); }
+  .passport-actions { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 16px; }
+  .passport-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .passport-full { grid-column: 1 / -1; }
 
-/* ── Stitch MCP Design Tokens ──────────────────────── */
-const C = {
-  card: { background: 'var(--card-bg, var(--bg-primary))', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '0.5px solid rgba(72,72,71,0.20)', borderRadius: 16, padding: '20px 24px', marginBottom: 12, transition: 'box-shadow 0.3s ease' },
-};
+  @media (min-width: 768px) {
+    .passport-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 1024px) {
+    .passport-grid { grid-template-columns: 3fr 2fr; }
+  }
+
+  .passport-card {
+    background: var(--card-bg, var(--bg-primary));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 0.5px solid rgba(72,72,71,0.20);
+    border-radius: 16px;
+    padding: 22px 26px;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .passport-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-color: rgba(133,173,255,0.25);
+  }
+  .passport-btn { cursor: pointer; transition: all 0.2s ease; }
+  .passport-btn:focus-visible { outline: 2px solid var(--text-info); outline-offset: 2px; }
+
+  .skill-tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 5px 12px; border-radius: 10px;
+    font-size: 12px; font-weight: 500;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .skill-tag:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+
+  .roadmap-btn {
+    display: flex; align-items: center; gap: 6px;
+    background: none; border: none; cursor: pointer;
+    padding: 4px 0; margin-bottom: 10px; width: 100%;
+  }
+  .roadmap-btn:focus-visible { outline: 2px solid var(--text-info); outline-offset: 2px; }
+  .roadmap-btn:hover span { color: var(--text-info) !important; }
+
+  @media print {
+    .passport-actions, .passport-cta-row { display: none !important; }
+    .passport-grid { grid-template-columns: 1fr 1fr !important; }
+    .passport-page { max-width: 100% !important; }
+  }
+`;
+
+/* ── Inject CSS once ──────────────────────── */
+if (typeof document !== 'undefined' && !document.getElementById('passport-responsive-css')) {
+  const style = document.createElement('style');
+  style.id = 'passport-responsive-css';
+  style.textContent = PASSPORT_CSS;
+  document.head.appendChild(style);
+}
 
 /* ── Animated Circular Progress ──────────────────────── */
-function ProgressRing({ percent, size = 100, stroke = 8, color = '#85adff' }) {
+function ProgressRing({ percent, size = 110, stroke = 9, color = '#85adff' }) {
   const radius = (size - stroke) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (percent / 100) * circumference;
@@ -32,7 +86,7 @@ function ProgressRing({ percent, size = 100, stroke = 8, color = '#85adff' }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          style={{ fontSize: 28, fontWeight: 700, color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif" }}
+          style={{ fontSize: 30, fontWeight: 700, color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif" }}
         >{percent}</motion.span>
         <span style={{ fontSize: 11, color: 'var(--text-secondary)', marginTop: -2 }}>%</span>
       </div>
@@ -42,7 +96,21 @@ function ProgressRing({ percent, size = 100, stroke = 8, color = '#85adff' }) {
 
 /* ── Badge Component ──────────────────────── */
 function Badge({ text, bg, fg }) {
-  return <span style={{ display: 'inline-block', padding: '3px 10px', borderRadius: 10, background: bg, color: fg, fontSize: 11, fontWeight: 600 }}>{text}</span>;
+  return <span style={{ display: 'inline-flex', alignItems: 'center', padding: '4px 12px', borderRadius: 20, background: bg, color: fg, fontSize: 11, fontWeight: 600 }}>{text}</span>;
+}
+
+/* ── Stat Mini Card ──────────────────────── */
+function StatCard({ label, value, sub, icon }) {
+  return (
+    <div style={{ textAlign: 'center', padding: '12px 0' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, color: 'var(--text-secondary)', marginBottom: 4 }}>
+        {icon}
+        <span style={{ fontSize: 11 }}>{label}</span>
+      </div>
+      <p style={{ fontSize: 20, fontWeight: 700, margin: '0 0 2px', color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif" }}>{value}</p>
+      {sub && <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: 0 }}>{sub}</p>}
+    </div>
+  );
 }
 
 export default function Passport() {
@@ -84,7 +152,7 @@ export default function Passport() {
   };
 
   if (loading) return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '40vh', ...font }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '40vh' }}>
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
@@ -122,19 +190,19 @@ export default function Passport() {
   const visibleSkills = showAllSkills ? matched : matched.slice(0, 8);
 
   return (
-    <div style={{ maxWidth: 680, ...font }}>
+    <div className="passport-page">
       {/* Action buttons */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="print:hidden"
-        style={{ display: 'flex', justifyContent: 'flex-end', gap: 8, marginBottom: 16 }}
+        className="passport-actions"
       >
         <motion.button
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           onClick={handleShare}
-          style={{ padding: '8px 16px', fontSize: 13, border: '0.5px solid var(--border)', borderRadius: 10, background: 'var(--bg-secondary)', color: 'var(--text-secondary)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, fontWeight: 500, fontFamily: "'Inter', sans-serif" }}
+          className="passport-btn"
+          style={{ padding: '8px 16px', fontSize: 13, border: '0.5px solid var(--border)', borderRadius: 10, background: 'var(--bg-secondary)', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: 6, fontWeight: 500, fontFamily: "'Inter', sans-serif" }}
         >
           <Share2 size={14} /> {copied ? '✓ Copied!' : 'Share'}
         </motion.button>
@@ -142,159 +210,174 @@ export default function Passport() {
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           onClick={handlePrint}
-          style={{ padding: '8px 18px', fontSize: 13, border: 'none', borderRadius: 10, background: 'linear-gradient(135deg, #85adff, #6e9eff)', color: '#fff', cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6, boxShadow: '0 2px 8px rgba(133,173,255,0.3)', fontFamily: "'Inter', sans-serif" }}
+          className="passport-btn"
+          style={{ padding: '8px 18px', fontSize: 13, border: 'none', borderRadius: 10, background: 'linear-gradient(135deg, #85adff, #6e9eff)', color: '#fff', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6, boxShadow: '0 2px 8px rgba(133,173,255,0.3)', fontFamily: "'Inter', sans-serif" }}
         >
           <Download size={14} /> Download as PDF
         </motion.button>
       </motion.div>
 
-      {/* Main Passport Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        style={C.card}
-      >
-        {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20, paddingBottom: 16, borderBottom: '0.5px solid var(--border)' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-              <div style={{ width: 28, height: 28, borderRadius: 8, background: 'linear-gradient(135deg, #85adff, #6e9eff)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700, color: '#fff', boxShadow: '0 2px 6px rgba(133,173,255,0.3)' }}>S</div>
-              <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-secondary)' }}>SMAART Career Passport</span>
-            </div>
-            <p style={{ fontSize: 22, fontWeight: 700, margin: '0 0 2px', color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif" }}>{name}</p>
-            <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: 0 }}>{degree}</p>
-          </div>
-          <div style={{ textAlign: 'right' }}>
-            <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: '0 0 4px' }}>Generated</p>
-            <p style={{ fontSize: 12, color: 'var(--text-primary)', fontWeight: 500, margin: 0 }}>{date}</p>
-          </div>
-        </div>
+      {/* ═══ GRID LAYOUT ═══ */}
+      <div className="passport-grid">
 
-        {/* Target Role + Zone */}
-        <div style={{ marginBottom: 20 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
-            <Target size={14} style={{ color: 'var(--text-info)' }} />
-            <span style={{ fontSize: 12, color: 'var(--text-secondary)' }}>Primary target role</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
-            <p style={{ fontSize: 17, fontWeight: 600, margin: 0, color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif" }}>{primaryRole}</p>
-            <motion.span
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: 'spring', delay: 0.3 }}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 4, padding: '4px 12px', borderRadius: 10, background: zc.bg, color: zc.fg, fontSize: 12, fontWeight: 600 }}
-            >
-              {zc.icon} {zone}
-            </motion.span>
-          </div>
-
-          {/* Skill Coverage Bar */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--text-secondary)', marginBottom: 6 }}>
-            <span>Skill coverage</span>
-            <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{coveragePct}%</span>
-          </div>
-          <div style={{ height: 8, background: 'var(--border)', borderRadius: 4, overflow: 'hidden' }}>
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: `${coveragePct}%` }}
-              transition={{ duration: 1.2, ease: 'easeOut' }}
-              style={{ height: '100%', background: `linear-gradient(90deg, ${zc.ringColor}, ${zc.ringColor}88)`, borderRadius: 4 }}
-            />
-          </div>
-        </div>
-
-        {/* Readiness Score — Circular Progress */}
+        {/* ── LEFT COLUMN: Identity Card ── */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 20, background: 'var(--bg-secondary)', borderRadius: 14, marginBottom: 20, backgroundImage: 'linear-gradient(135deg, rgba(133,173,255,0.06) 0%, rgba(155,255,206,0.03) 100%)' }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="passport-card"
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-            <ProgressRing percent={coveragePct} color={zc.ringColor} />
+          {/* Header */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20, paddingBottom: 16, borderBottom: '0.5px solid var(--border)' }}>
             <div>
-              <p style={{ fontSize: 12, color: 'var(--text-secondary)', margin: '0 0 2px' }}>Career Readiness</p>
-              <p style={{ fontSize: 18, fontWeight: 700, margin: '0 0 4px', color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif" }}>{zc.label}</p>
-              <Badge text={`${zone} Zone`} bg={zc.bg} fg={zc.fg} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                <div style={{ width: 30, height: 30, borderRadius: 8, background: 'linear-gradient(135deg, #85adff, #6e9eff)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 700, color: '#fff', boxShadow: '0 2px 6px rgba(133,173,255,0.3)' }}>S</div>
+                <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-secondary)' }}>SMAART Career Passport</span>
+              </div>
+              <p style={{ fontSize: 24, fontWeight: 700, margin: '0 0 2px', color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif" }}>{name}</p>
+              <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: 0 }}>{degree}</p>
+            </div>
+            <div style={{ textAlign: 'right' }}>
+              <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: '0 0 4px' }}>Generated</p>
+              <p style={{ fontSize: 12, color: 'var(--text-primary)', fontWeight: 500, margin: 0 }}>{date}</p>
             </div>
           </div>
-          <div style={{ textAlign: 'right' }}>
-            <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: '0 0 4px' }}>Est. preparation time</p>
-            <p style={{ fontSize: 16, fontWeight: 600, margin: 0, color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif" }}>{prepTime}</p>
+
+          {/* Target Role + Zone */}
+          <div style={{ marginBottom: 20 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
+              <Target size={14} style={{ color: 'var(--text-info)' }} />
+              <span style={{ fontSize: 12, color: 'var(--text-secondary)' }}>Primary target role</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
+              <p style={{ fontSize: 18, fontWeight: 600, margin: 0, color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif" }}>{primaryRole}</p>
+              <motion.span
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: 'spring', delay: 0.3 }}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 4, padding: '4px 12px', borderRadius: 10, background: zc.bg, color: zc.fg, fontSize: 12, fontWeight: 600 }}
+              >
+                {zc.icon} {zone}
+              </motion.span>
+            </div>
+
+            {/* Skill Coverage Bar */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--text-secondary)', marginBottom: 6 }}>
+              <span>Skill coverage</span>
+              <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{coveragePct}%</span>
+            </div>
+            <div style={{ height: 8, background: 'var(--border)', borderRadius: 4, overflow: 'hidden' }}>
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${coveragePct}%` }}
+                transition={{ duration: 1.2, ease: 'easeOut' }}
+                style={{ height: '100%', background: `linear-gradient(90deg, ${zc.ringColor}, ${zc.ringColor}88)`, borderRadius: 4 }}
+              />
+            </div>
           </div>
+
+          {/* Verified Skills */}
+          {matched.length > 0 && (
+            <div style={{ marginBottom: 20 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <CheckCircle2 size={14} style={{ color: 'var(--text-success)' }} />
+                  <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif" }}>
+                    Verified Skills
+                  </span>
+                  <span style={{ fontSize: 11, color: 'var(--text-secondary)' }}>
+                    {matched.length} of {totalSkills} required
+                  </span>
+                </div>
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                <AnimatePresence>
+                  {visibleSkills.map((sk, i) => (
+                    <motion.span
+                      key={sk}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: i * 0.05 }}
+                      className="skill-tag"
+                      style={{ background: 'var(--bg-success)', color: 'var(--text-success)', border: '0.5px solid rgba(155,255,206,0.15)' }}
+                    >
+                      <CheckCircle2 size={11} /> {sk}
+                    </motion.span>
+                  ))}
+                </AnimatePresence>
+              </div>
+              {matched.length > 8 && (
+                <button
+                  onClick={() => setShowAllSkills(!showAllSkills)}
+                  className="passport-btn"
+                  style={{ background: 'none', border: 'none', color: 'var(--text-info)', fontSize: 12, padding: '8px 0 0', display: 'flex', alignItems: 'center', gap: 4, fontWeight: 500 }}
+                >
+                  {showAllSkills ? <><ChevronUp size={14} /> Show less</> : <><ChevronDown size={14} /> Show all {matched.length} skills</>}
+                </button>
+              )}
+            </div>
+          )}
         </motion.div>
 
-        {/* Verified Skills */}
-        {matched.length > 0 && (
-          <div style={{ marginBottom: 20 }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <CheckCircle2 size={14} style={{ color: 'var(--text-success)' }} />
-                <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif" }}>
-                  Verified Skills
-                </span>
-                <span style={{ fontSize: 11, color: 'var(--text-secondary)' }}>
-                  {matched.length} of {totalSkills} required
-                </span>
+        {/* ── RIGHT COLUMN: Readiness Score ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="passport-card"
+          style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
+        >
+          {/* Readiness Ring */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px 0 12px', background: 'var(--bg-secondary)', borderRadius: 14, backgroundImage: 'linear-gradient(135deg, rgba(133,173,255,0.06) 0%, rgba(155,255,206,0.03) 100%)' }}>
+            <ProgressRing percent={coveragePct} color={zc.ringColor} />
+            <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: '12px 0 2px' }}>Career Readiness</p>
+            <p style={{ fontSize: 20, fontWeight: 700, margin: '0 0 6px', color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif" }}>{zc.label}</p>
+            <Badge text={`${zone} Zone`} bg={zc.bg} fg={zc.fg} />
+          </div>
+
+          {/* Key Metrics */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+            <StatCard label="Preparation" value={prepTime} icon={<Clock size={12} />} />
+            <StatCard label="Skills" value={`${matched.length}/${totalSkills}`} sub="matched" icon={<Target size={12} />} />
+          </div>
+
+          {/* Missing Skills */}
+          {missing.length > 0 && (
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
+                <AlertCircle size={14} style={{ color: 'var(--text-warning)' }} />
+                <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif" }}>Skills to Develop</span>
+                <span style={{ fontSize: 11, color: 'var(--text-secondary)' }}>{missing.length} skills</span>
               </div>
-            </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-              <AnimatePresence>
-                {visibleSkills.map((sk, i) => (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                {missing.slice(0, 10).map((sk, i) => (
                   <motion.span
                     key={sk}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: i * 0.05 }}
-                    style={{ display: 'inline-block', padding: '4px 12px', borderRadius: 10, background: 'var(--bg-success)', color: 'var(--text-success)', fontSize: 12, fontWeight: 500, border: '0.5px solid rgba(155,255,206,0.15)' }}
+                    className="skill-tag"
+                    style={{ background: 'var(--bg-warning)', color: 'var(--text-warning)', border: '0.5px solid rgba(248,160,16,0.15)' }}
                   >
-                    ✓ {sk}
+                    <AlertCircle size={11} /> {sk}
                   </motion.span>
                 ))}
-              </AnimatePresence>
+              </div>
             </div>
-            {matched.length > 8 && (
-              <button
-                onClick={() => setShowAllSkills(!showAllSkills)}
-                style={{ background: 'none', border: 'none', color: 'var(--text-info)', fontSize: 12, cursor: 'pointer', padding: '8px 0 0', display: 'flex', alignItems: 'center', gap: 4, fontWeight: 500 }}
-              >
-                {showAllSkills ? <><ChevronUp size={14} /> Show less</> : <><ChevronDown size={14} /> Show all {matched.length} skills</>}
-              </button>
-            )}
-          </div>
-        )}
+          )}
+        </motion.div>
 
-        {/* Missing Skills */}
-        {missing.length > 0 && (
-          <div style={{ marginBottom: 20 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
-              <AlertTriangle size={14} style={{ color: 'var(--text-warning)' }} />
-              <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif" }}>Skills to Develop</span>
-              <span style={{ fontSize: 11, color: 'var(--text-secondary)' }}>{missing.length} skills</span>
-            </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-              {missing.slice(0, 10).map((sk, i) => (
-                <motion.span
-                  key={sk}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.05 }}
-                  style={{ display: 'inline-block', padding: '4px 12px', borderRadius: 10, background: 'var(--bg-warning)', color: 'var(--text-warning)', fontSize: 12, fontWeight: 500, border: '0.5px solid rgba(248,160,16,0.15)' }}
-                >
-                  ○ {sk}
-                </motion.span>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Roadmap */}
+        {/* ── FULL-WIDTH: Learning Roadmap ── */}
         {roadmap.length > 0 && (
-          <div style={{ marginBottom: 20 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="passport-card passport-full"
+          >
             <button
               onClick={() => setShowRoadmap(!showRoadmap)}
-              style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'none', border: 'none', cursor: 'pointer', padding: 0, marginBottom: 10, width: '100%' }}
+              className="roadmap-btn"
             >
               <BookOpen size={14} style={{ color: 'var(--text-info)' }} />
               <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif", flex: 1, textAlign: 'left' }}>Learning Roadmap</span>
@@ -309,37 +392,37 @@ export default function Passport() {
                   transition={{ duration: 0.3 }}
                   style={{ overflow: 'hidden' }}
                 >
-                  {roadmap.map((step, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.08 }}
-                      style={{ display: 'flex', gap: 12, padding: '8px 0' }}
-                    >
-                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, width: 24 }}>
-                        <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'linear-gradient(135deg, #85adff, #6e9eff)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 600, flexShrink: 0, boxShadow: '0 2px 6px rgba(133,173,255,0.3)' }}>{i + 1}</div>
-                        {i < roadmap.length - 1 && <div style={{ width: 2, flex: 1, background: 'var(--border)', borderRadius: 1 }} />}
-                      </div>
-                      <div style={{ flex: 1, paddingBottom: 8 }}>
-                        <p style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-primary)', margin: '2px 0 0' }}>{step.step || step.title}</p>
-                        {step.duration && <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: '2px 0 0' }}>⏱ {step.duration}</p>}
-                      </div>
-                    </motion.div>
-                  ))}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 10 }}>
+                    {roadmap.map((step, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.06 }}
+                        style={{ display: 'flex', gap: 10, padding: 10, background: 'var(--bg-secondary)', borderRadius: 12, border: '0.5px solid rgba(72,72,71,0.08)' }}
+                      >
+                        <div style={{ width: 26, height: 26, borderRadius: '50%', background: 'linear-gradient(135deg, #85adff, #6e9eff)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 600, flexShrink: 0, boxShadow: '0 2px 6px rgba(133,173,255,0.3)' }}>{i + 1}</div>
+                        <div style={{ flex: 1 }}>
+                          <p style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-primary)', margin: '2px 0 0' }}>{step.step || step.title}</p>
+                          {step.duration && <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: '2px 0 0' }}>⏱ {step.duration}</p>}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </motion.div>
         )}
 
-        {/* Action Buttons */}
-        <div className="print:hidden" style={{ display: 'flex', gap: 8, marginBottom: 20 }}>
+        {/* ── FULL-WIDTH: Action Buttons ── */}
+        <div className="passport-full passport-cta-row" style={{ display: 'flex', gap: 10 }}>
           <motion.a
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             href="/dashboard"
-            style={{ flex: 1, padding: '10px 0', borderRadius: 10, background: 'linear-gradient(135deg, #85adff, #6e9eff)', color: '#fff', fontSize: 13, fontWeight: 600, cursor: 'pointer', textAlign: 'center', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, boxShadow: '0 2px 8px rgba(133,173,255,0.3)' }}
+            className="passport-btn"
+            style={{ flex: 1, padding: '12px 0', borderRadius: 12, background: 'linear-gradient(135deg, #85adff, #6e9eff)', color: '#fff', fontSize: 13, fontWeight: 600, textAlign: 'center', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, boxShadow: '0 2px 8px rgba(133,173,255,0.3)' }}
           >
             <Briefcase size={14} /> View Full Dashboard
           </motion.a>
@@ -347,23 +430,24 @@ export default function Passport() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             href="/onboarding"
-            style={{ flex: 1, padding: '10px 0', borderRadius: 10, border: '0.5px solid var(--border)', background: 'var(--bg-secondary)', color: 'var(--text-secondary)', fontSize: 13, fontWeight: 500, cursor: 'pointer', textAlign: 'center', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
+            className="passport-btn"
+            style={{ flex: 1, padding: '12px 0', borderRadius: 12, border: '0.5px solid var(--border)', background: 'var(--bg-secondary)', color: 'var(--text-secondary)', fontSize: 13, fontWeight: 500, textAlign: 'center', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
           >
             <Sparkles size={14} /> Update Profile
           </motion.a>
         </div>
+      </div>
 
-        {/* Footer */}
-        <div style={{ borderTop: '0.5px solid var(--border)', paddingTop: 14, marginTop: 8 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-            <Award size={12} style={{ color: 'var(--text-info)' }} />
-            <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: 0 }}>Generated by SMAART Career Intelligence Platform · smaart.careers</p>
-          </div>
-          <p style={{ fontSize: 10, color: 'var(--text-secondary)', margin: 0, fontStyle: 'italic', paddingLeft: 18 }}>
-            This is a self-reported competency profile. Results are guidance, not a guarantee of employment outcomes.
-          </p>
+      {/* Footer */}
+      <div style={{ borderTop: '0.5px solid var(--border)', paddingTop: 14, marginTop: 20 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+          <Award size={12} style={{ color: 'var(--text-info)' }} />
+          <p style={{ fontSize: 11, color: 'var(--text-secondary)', margin: 0 }}>Generated by SMAART Career Intelligence Platform · smaart.careers</p>
         </div>
-      </motion.div>
+        <p style={{ fontSize: 10, color: 'var(--text-secondary)', margin: 0, fontStyle: 'italic', paddingLeft: 18 }}>
+          This is a self-reported competency profile. Results are guidance, not a guarantee of employment outcomes.
+        </p>
+      </div>
     </div>
   );
 }
