@@ -163,15 +163,62 @@ export default function Dashboard() {
     { title:'Data Dashboard with Visualizations', description:'Build an interactive dashboard with charts, filters, and live data.', difficulty:'Advanced', tech:['React','Chart.js','Python'] },
   ];
   const projects = data.combined_tab4?.projects?.length > 0 ? data.combined_tab4.projects : (data.role_projects?.length > 0 ? data.role_projects : FALLBACK_PROJECTS);
-  const aiMust   = data.combined_tab3?.must_have || [];
-  const aiNice   = data.combined_tab3?.nice_to_have || [];
-  const recommendedSkills = data.combined_tab4?.recommended_skills || [];
 
-  const clusterRoles = [
-    { n:primaryRole,   s: pm ? `${pm.salary_min_lpa}-${pm.salary_max_lpa}L` : '3-8L', ai: pm?.ai_automation_risk||'Moderate', d:matched.length, t:total, a:missing.length, zone: pv.primaryZone?.employer_zone||'Amber' },
-    secondaryRole && { n:secondaryRole,  s:'3-7L', ai:'Low',      d:Math.max(0,matched.length-1), t:total, a:missing.length+1, zone: pv.secondaryZone?.employer_zone||'Amber' },
-    tertiaryRole  && { n:tertiaryRole,   s:'2-6L', ai:'Moderate', d:Math.max(0,matched.length-2), t:total, a:missing.length+2, zone: pv.tertiaryZone?.employer_zone||'Red'   },
+  // ── Rich AI Tools Fallback ──
+  const FALLBACK_AI_MUST = [
+    { tool_name:'GitHub Copilot', used_for:'AI-powered code completion, generation, and refactoring — 10× faster coding', priority:'CRITICAL', where_to_learn:'Free for students via GitHub Education (github.com/education)' },
+    { tool_name:'ChatGPT / Claude', used_for:'System design analysis, code review, debugging assistance, documentation generation', priority:'CRITICAL', where_to_learn:'Free tier at openai.com / claude.ai' },
+  ];
+  const FALLBACK_AI_NICE = [
+    { tool_name:'SonarQube Community', used_for:'Static code analysis, vulnerability detection, and code quality gates', priority:'HIGH', where_to_learn:'Free open-source edition at sonarqube.org' },
+    { tool_name:'Cursor IDE', used_for:'AI-native code editor with inline generation and full codebase context', priority:'HIGH', where_to_learn:'Free plan at cursor.sh' },
+    { tool_name:'v0 by Vercel', used_for:'AI-powered UI component generation from text prompts', priority:'MEDIUM', where_to_learn:'Free at v0.dev' },
+    { tool_name:'Perplexity AI', used_for:'AI-powered research assistant for technical documentation and API references', priority:'MEDIUM', where_to_learn:'Free at perplexity.ai' },
+    { tool_name:'Aider', used_for:'Open-source AI pair programming in terminal with full repo awareness', priority:'LOW', where_to_learn:'Free at aider.chat' },
+  ];
+  const aiMust = data.combined_tab3?.must_have?.length > 0 ? data.combined_tab3.must_have : FALLBACK_AI_MUST;
+  const aiNice = data.combined_tab3?.nice_to_have?.length > 0 ? data.combined_tab3.nice_to_have : FALLBACK_AI_NICE;
+
+  // ── Growth Skills (added when "all matched" but still need to develop more) ──
+  const GROWTH_SKILLS = [
+    'System Design & Architecture', 'Cloud Fundamentals (AWS/Azure/GCP)', 'CI/CD Pipelines (GitHub Actions)',
+    'Docker & Containerization', 'TypeScript', 'Testing & TDD (Jest/Vitest)', 'GraphQL',
+    'Kubernetes Basics', 'Microservices Architecture', 'Performance Optimization',
+    'Security Best Practices (OWASP)', 'Database Design (SQL + NoSQL)',
+  ];
+  const effectiveMissing = missing.length > 0 ? missing : GROWTH_SKILLS.filter(s => !matched.some(m => m.toLowerCase().includes(s.split(' ')[0].toLowerCase())));
+  const effectiveTotal = matched.length + effectiveMissing.length;
+  const effectiveCoverage = effectiveTotal > 0 ? Math.round((matched.length / effectiveTotal) * 100) : 0;
+
+  // ── Recommended Skills Fallback for Learning Path ──
+  const FALLBACK_RECOMMENDED = [
+    { skill_name:'Object-Oriented Programming', priority:'CRITICAL', is_matched: matched.some(s => /oop|object/i.test(s)), where_to_learn:'freeCodeCamp (free) / Coursera' },
+    { skill_name:'System Design', priority:'CRITICAL', is_matched: matched.some(s => /system.design/i.test(s)), where_to_learn:'System Design Primer (GitHub) / YouTube' },
+    { skill_name:'Cloud Fundamentals', priority:'HIGH', is_matched: matched.some(s => /cloud|aws|azure|gcp/i.test(s)), where_to_learn:'AWS Skill Builder free tier / Microsoft Learn' },
+    { skill_name:'CI/CD Basics', priority:'HIGH', is_matched: matched.some(s => /ci.cd|github.actions/i.test(s)), where_to_learn:'GitHub Actions free docs' },
+    { skill_name:'Database Design', priority:'HIGH', is_matched: matched.some(s => /database|sql|mongo/i.test(s)), where_to_learn:'SQLZoo (free) / MongoDB University' },
+    { skill_name:'Docker & Containers', priority:'MEDIUM', is_matched: matched.some(s => /docker|container/i.test(s)), where_to_learn:'Docker official free docs' },
+    { skill_name:'TypeScript', priority:'MEDIUM', is_matched: matched.some(s => /typescript/i.test(s)), where_to_learn:'TypeScript Handbook (typescriptlang.org)' },
+    { skill_name:'Testing & TDD', priority:'MEDIUM', is_matched: matched.some(s => /test|jest|vitest/i.test(s)), where_to_learn:'Testing JavaScript (free course)' },
+    { skill_name:'GraphQL', priority:'LOW', is_matched: matched.some(s => /graphql/i.test(s)), where_to_learn:'How To GraphQL (free)' },
+    { skill_name:'Kubernetes', priority:'LOW', is_matched: matched.some(s => /kubernetes|k8s/i.test(s)), where_to_learn:'Kubernetes.io interactive tutorials (free)' },
+  ];
+  const recommendedSkills = data.combined_tab4?.recommended_skills?.length > 0 ? data.combined_tab4.recommended_skills : FALLBACK_RECOMMENDED;
+
+  // ── Enriched Cluster Roles for Hiring Pattern ──
+  const EXTRA_CLUSTER_ROLES = [
+    { n:'Full Stack Developer',  s:'₹5-12L', ai:'Medium', d:Math.max(0,matched.length-1), t:effectiveTotal, a:effectiveMissing.length+1, zone:'Green' },
+    { n:'DevOps Engineer',       s:'₹6-15L', ai:'Low',    d:Math.max(0,matched.length-2), t:effectiveTotal, a:effectiveMissing.length+2, zone:'Amber' },
+    { n:'Backend Developer',     s:'₹5-10L', ai:'Medium', d:Math.max(0,matched.length),   t:effectiveTotal, a:effectiveMissing.length,   zone:'Green' },
+    { n:'Cloud Engineer',        s:'₹8-18L', ai:'Low',    d:Math.max(0,matched.length-3), t:effectiveTotal, a:effectiveMissing.length+3, zone:'Amber' },
+    { n:'Data Engineer',         s:'₹6-14L', ai:'Low',    d:Math.max(0,matched.length-2), t:effectiveTotal, a:effectiveMissing.length+2, zone:'Red' },
+  ];
+  const baseCluster = [
+    { n:primaryRole, s: pm ? `₹${pm.salary_min_lpa}-${pm.salary_max_lpa}L` : '₹4-10L', ai: pm?.ai_automation_risk||'Medium', d:matched.length, t:effectiveTotal, a:effectiveMissing.length, zone: pv.primaryZone?.employer_zone||'Amber' },
+    secondaryRole && { n:secondaryRole, s:'₹3-7L', ai:'Low', d:Math.max(0,matched.length-1), t:effectiveTotal, a:effectiveMissing.length+1, zone: pv.secondaryZone?.employer_zone||'Amber' },
+    tertiaryRole  && { n:tertiaryRole,  s:'₹2-6L', ai:'Moderate', d:Math.max(0,matched.length-2), t:effectiveTotal, a:effectiveMissing.length+2, zone: pv.tertiaryZone?.employer_zone||'Red' },
   ].filter(Boolean);
+  const clusterRoles = baseCluster.length < 3 ? [...baseCluster, ...EXTRA_CLUSTER_ROLES.slice(0, 5 - baseCluster.length)] : baseCluster;
 
   const eduZone   = pv?.primaryZone?.employer_zone || 'Amber';
   const skillZone = coveragePct >= 50 ? 'Green' : coveragePct >= 25 ? 'Amber' : 'Red';
@@ -184,9 +231,9 @@ export default function Dashboard() {
     { label:'Work Experience – Role Match',  zone:expZone,   green:'Your experience is relevant and strengthens your profile.', amber:'Limited experience — internships will help.',          red:'No relevant experience yet. Projects will build your profile.' },
   ];
 
-  const tier1 = missing.slice(0, Math.ceil(missing.length/3));
-  const tier2 = missing.slice(Math.ceil(missing.length/3), Math.ceil(missing.length*2/3));
-  const tier3 = missing.slice(Math.ceil(missing.length*2/3));
+  const tier1 = effectiveMissing.slice(0, Math.ceil(effectiveMissing.length/3));
+  const tier2 = effectiveMissing.slice(Math.ceil(effectiveMissing.length/3), Math.ceil(effectiveMissing.length*2/3));
+  const tier3 = effectiveMissing.slice(Math.ceil(effectiveMissing.length*2/3));
 
   const salMin = pm?.salary_min_lpa || 2;
   const salMax = pm?.salary_max_lpa || 8;
@@ -350,7 +397,7 @@ export default function Dashboard() {
                         <span style={{ padding:'1px 7px', borderRadius:6, background:zst.bg, color:zst.fg, fontSize:10, fontWeight:600 }}>{r.zone}</span>
                       </div>
                       <div style={{ display:'flex', gap:6, marginBottom:8 }}>
-                        <Badge text={`₹${r.s}`} bg="var(--bg-secondary)" fg="var(--text-secondary)" />
+                        <Badge text={r.s} bg="var(--bg-secondary)" fg="var(--text-secondary)" />
                         <Badge text={`AI: ${r.ai}`} bg={r.ai==='Moderate'||r.ai==='Medium'?'var(--bg-warning)':'var(--bg-secondary)'} fg={r.ai==='Moderate'||r.ai==='Medium'?'var(--text-warning)':'var(--text-secondary)'} />
                       </div>
                       <Bar pct={r.t>0?Math.round((r.d/r.t)*100):0} color="#1D9E75" />
@@ -410,15 +457,18 @@ export default function Dashboard() {
           {/* TAB 2 — Technical Skills */}
           {activeTab === 'Technical Skills' && (
             <div>
-              {missing[0] && (
-                <div style={C.cardInfo}>
-                  <p style={{ fontSize:12, color:'var(--text-info)', margin:0 }}>Next best skill to develop</p>
-                  <p style={{ fontSize:15, fontWeight:600, margin:'4px 0', color:'var(--text-info)' }}>{missing[0]}</p>
-                  <p style={{ fontSize:12, color:'var(--text-info)', margin:0 }}>Search "{missing[0]} free course" on Coursera, NPTEL, or YouTube</p>
+              {/* Skill Coverage Summary */}
+              <div style={{ ...C.cardInfo, display:'flex', alignItems:'center', gap:12, marginBottom:16 }}>
+                <div style={{ width:36, height:36, borderRadius:10, background:'linear-gradient(135deg,#1D9E75,#2BC48A)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, boxShadow:'0 2px 8px #1D9E7540' }}>
+                  <Cpu size={18} color="#fff" />
                 </div>
-              )}
+                <div style={{ flex:1 }}>
+                  <p style={{ fontSize:13, fontWeight:600, margin:'0 0 2px', color:'var(--text-primary)' }}>Skill Coverage: {matched.length} matched · {effectiveMissing.length} to develop</p>
+                  <p style={{ fontSize:12, color:'var(--text-secondary)', margin:0 }}>Based on industry requirements for {primaryRole}. Your next focus: <strong style={{ color:'var(--text-info)' }}>{effectiveMissing[0] || 'Advanced topics'}</strong></p>
+                </div>
+              </div>
 
-              <SH title="Must Have Skills" sub="Skills you already have matched" icon={<CheckCircle2 size={14}/>} />
+              <SH title="Must Have Skills" sub={`${matched.length} skills you already have matched`} icon={<CheckCircle2 size={14}/>} />
               <div style={{ display:'flex', flexWrap:'wrap', gap:7, marginBottom:20 }}>
                 {matched.map((sk,i) => (
                   <div key={i} style={{ padding:'5px 12px', background:'var(--bg-success)', color:'var(--text-success)', borderRadius:16, fontSize:12, fontWeight:500, display:'flex', alignItems:'center', gap:5 }}>
@@ -428,12 +478,12 @@ export default function Dashboard() {
                 {matched.length === 0 && <p style={{ fontSize:13, color:'var(--text-secondary)' }}>No matched skills yet.</p>}
               </div>
 
-              <SH title="Skills to Develop" sub="Prioritised by tier" icon={<XCircle size={14}/>} />
+              <SH title="Skills to Develop" sub={`${effectiveMissing.length} skills prioritised by industry demand`} icon={<XCircle size={14}/>} />
               <div style={C.card}>
                 {[
                   { tier:'CRITICAL', label:'Foundation', color:'danger', skills:tier1 },
                   { tier:'HIGH',     label:'Specialisation', color:'warning', skills:tier2 },
-                  { tier:'MEDIUM',   label:'Edge', color:'secondary', skills:tier3 },
+                  { tier:'MEDIUM',   label:'Growth', color:'secondary', skills:tier3 },
                 ].map(({ tier, label, color, skills }) => skills.map((sk,i) => (
                   <div key={`${tier}-${i}`} style={{ display:'flex', alignItems:'center', gap:10, padding:'9px 0', borderBottom:'0.5px solid var(--border)' }}>
                     <Badge text={tier} bg={`var(--bg-${color})`} fg={`var(--text-${color})`} />
@@ -441,7 +491,7 @@ export default function Dashboard() {
                     <span style={{ fontSize:11, color:'var(--text-secondary)' }}>{label}</span>
                   </div>
                 )))}
-                {missing.length === 0 && <p style={{ fontSize:13, color:'var(--text-success)', margin:0 }}>✓ You have all the required skills!</p>}
+                {effectiveMissing.length === 0 && <p style={{ fontSize:13, color:'var(--text-success)', margin:0 }}>✓ You have all the required skills!</p>}
               </div>
             </div>
           )}
