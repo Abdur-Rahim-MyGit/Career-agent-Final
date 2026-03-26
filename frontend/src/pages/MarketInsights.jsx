@@ -152,7 +152,7 @@ export default function MarketInsights() {
       })
       .catch(() => {
         setData({
-          totalRoles: 254,
+          totalRoles: 1177,
           topDemand: [
             { role: 'Full Stack Engineer', salary_min_lpa: 6, salary_max_lpa: 15, demand_level: 'High' },
             { role: 'Data Scientist', salary_min_lpa: 8, salary_max_lpa: 18, demand_level: 'High' },

@@ -18,7 +18,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [showHistory, setShowHistory] = useState(false);
   const [historyEntries, setHistoryEntries] = useState([]);
-  const [stats, setStats] = useState({ totalRolesWithSkills: 254, totalJobTitles: 1667, totalDegrees: 20 });
+  const [stats, setStats] = useState({ totalRolesWithSkills: 1177, totalJobTitles: 53561, totalDegrees: 104 });
 
   useEffect(() => {
     setHistoryEntries(JSON.parse(localStorage.getItem('careerHistory') || '[]'));
@@ -88,9 +88,9 @@ const Home = () => {
             {/* Quick Stats — under the CTA */}
             <div style={{ display: 'flex', gap: 32, marginTop: 36 }}>
               {[
-                { n: stats.totalRolesWithSkills || 254, l: 'Career Roles', icon: <Briefcase size={13} /> },
-                { n: stats.totalJobTitles || 1667, l: 'Job Titles', icon: <Globe size={13} /> },
-                { n: stats.totalDegrees || 20, l: 'Degree Paths', icon: <BookOpen size={13} /> },
+                { n: stats.totalRolesWithSkills || 1177, l: 'Career Roles', icon: <Briefcase size={13} /> },
+                { n: stats.totalJobTitles || 53561, l: 'Job Titles', icon: <Globe size={13} /> },
+                { n: stats.totalDegrees || 104, l: 'Degree Paths', icon: <BookOpen size={13} /> },
               ].map((s, i) => (
                 <div key={i}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 4, color: 'var(--text-info)', marginBottom: 2 }}>{s.icon}</div>
