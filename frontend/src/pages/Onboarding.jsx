@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle2, User, GraduationCap, Briefcase, Target, Cpu, BookOpen, Award, ChevronRight, Sparkles, Shield, MapPin, Building2, Layers } from 'lucide-react';
 import dropdownData from '../data/dropdownData.json';
 import jobRolesData from '../data/jobRolesData.json';
 import indianCities from '../data/indianCities.json';
@@ -16,43 +17,90 @@ const EXTRA_BTECH_SPECS = ['Artificial Intelligence & Data Science','Artificial 
 
 const SKILLS_POOL = ['Python','JavaScript','Java','C++','C#','PHP','Ruby','Swift','Kotlin','Go','Rust','TypeScript','React','Angular','Vue.js','Node.js','Django','Flask','Spring Boot','Laravel','FastAPI','SQL','MySQL','PostgreSQL','MongoDB','Redis','Elasticsearch','Firebase','Cassandra','AWS','Azure','GCP','Docker','Kubernetes','Terraform','Ansible','Jenkins','Git','Linux','Machine Learning','Deep Learning','TensorFlow','PyTorch','Scikit-learn','NLP','Computer Vision','Data Analysis','Power BI','Tableau','Excel','Pandas','NumPy','R Programming','MATLAB','ChatGPT','GitHub Copilot','Midjourney','DALL-E','Claude AI','Gemini','Perplexity AI','Figma','Adobe Photoshop','Illustrator','Canva','Sketch','InVision','Framer','SEO','Google Analytics','Google Ads','Meta Ads','Email Marketing','Salesforce','HubSpot','Tally ERP','QuickBooks','SAP','Oracle ERP','Financial Modelling','Excel Advanced','Communication','Leadership','Problem Solving','Project Management','Agile','Scrum','JIRA','AutoCAD','SolidWorks','LabVIEW','PLC Programming','Circuit Design','VLSI','Cyber Security','Ethical Hacking','Network Security','Penetration Testing','SIEM','IoT','Raspberry Pi','Arduino','Embedded C','Robotics','ROS','Drone Technology','Blockchain','Solidity','Smart Contracts','Web3','Ethereum','UI/UX Design','Wireframing','Prototyping','User Research','A/B Testing','Content Writing','Copywriting','Research Methodology','Academic Writing','Legal Research','Clinical Knowledge','Medical Terminology','Patient Communication','Healthcare Software'];
 
+const STEP_META = [
+  { icon: <GraduationCap size={16}/>, label:'Academic Profile', sub:'Education & credentials' },
+  { icon: <Target size={16}/>,        label:'Career Goals',     sub:'Job preferences & targets' },
+  { icon: <Cpu size={16}/>,            label:'Skills & Certs',   sub:'Technical competencies' },
+  { icon: <Briefcase size={16}/>,      label:'Experience',       sub:'Work & project history' },
+  { icon: <CheckCircle2 size={16}/>,   label:'Review & Submit',  sub:'Finalize your profile' },
+];
+
 const cs = {
-  card:   { background:'var(--bg-primary)', border:'0.5px solid var(--border)', borderRadius:12, padding:'16px 20px', marginBottom:12 },
-  label:  { display:'block', fontSize:12, color:'var(--text-secondary)', marginBottom:4, fontWeight:500 },
-  field:  { marginBottom:12 },
-  input:  { width:'100%', padding:'8px 10px', border:'0.5px solid var(--border)', borderRadius:8, fontSize:14, background:'var(--bg-primary)', color:'var(--text-primary)', outline:'none', boxSizing:'border-box', fontFamily:'var(--font-sans)' },
-  btnBlue:  { padding:'10px 28px', border:'none', borderRadius:8, background:'var(--bg-info)', color:'var(--text-info)', cursor:'pointer', fontWeight:500, fontSize:14 },
-  btnGreen: { padding:'10px 28px', border:'none', borderRadius:8, background:'#185FA5', color:'#fff', cursor:'pointer', fontWeight:500, fontSize:14 },
-  btnGhost: { padding:'6px 14px', fontSize:13, border:'0.5px solid var(--border)', borderRadius:8, background:'var(--bg-secondary)', color:'var(--text-secondary)', cursor:'pointer' },
+  card:   { background:'var(--card-bg, var(--bg-primary))', backdropFilter:'blur(20px)', WebkitBackdropFilter:'blur(20px)', border:'0.5px solid rgba(72,72,71,0.15)', borderRadius:16, padding:'20px 24px', marginBottom:14, transition:'box-shadow 0.3s ease, transform 0.2s ease' },
+  label:  { display:'block', fontSize:12, color:'var(--text-secondary)', marginBottom:5, fontWeight:500, letterSpacing:'0.01em' },
+  field:  { marginBottom:14 },
+  input:  { width:'100%', padding:'10px 12px', border:'0.5px solid var(--border)', borderRadius:10, fontSize:14, background:'var(--bg-primary)', color:'var(--text-primary)', outline:'none', boxSizing:'border-box', fontFamily:'var(--font-sans)', transition:'border-color 0.2s ease, box-shadow 0.2s ease' },
+  btnPrimary: { padding:'11px 28px', border:'none', borderRadius:10, background:'linear-gradient(135deg, #185FA5, #1D9E75)', color:'#fff', cursor:'pointer', fontWeight:600, fontSize:14, letterSpacing:'0.01em', boxShadow:'0 2px 12px rgba(24,95,165,0.25)', transition:'all 0.2s ease' },
+  btnBlue:  { padding:'11px 28px', border:'none', borderRadius:10, background:'var(--bg-info)', color:'var(--text-info)', cursor:'pointer', fontWeight:600, fontSize:14, transition:'all 0.2s ease' },
+  btnGreen: { padding:'11px 28px', border:'none', borderRadius:10, background:'linear-gradient(135deg, #185FA5, #1D9E75)', color:'#fff', cursor:'pointer', fontWeight:600, fontSize:14, boxShadow:'0 2px 12px rgba(24,95,165,0.25)', transition:'all 0.2s ease' },
+  btnGhost: { padding:'8px 16px', fontSize:13, border:'0.5px solid var(--border)', borderRadius:10, background:'var(--bg-secondary)', color:'var(--text-secondary)', cursor:'pointer', transition:'all 0.2s ease' },
 };
-const dropStyle = { position:'absolute', zIndex:100, width:'100%', marginTop:2, background:'var(--bg-primary)', border:'0.5px solid var(--border-info)', borderRadius:8, boxShadow:'0 4px 16px rgba(0,0,0,0.1)', maxHeight:200, overflowY:'auto', padding:0, listStyle:'none' };
-const dropLi = { padding:'8px 12px', cursor:'pointer', borderBottom:'0.5px solid var(--border)' };
+const dropStyle = { position:'absolute', zIndex:100, width:'100%', marginTop:4, background:'var(--bg-primary)', border:'0.5px solid var(--border-info)', borderRadius:12, boxShadow:'0 8px 32px rgba(0,0,0,0.12)', maxHeight:200, overflowY:'auto', padding:0, listStyle:'none' };
+const dropLi = { padding:'10px 14px', cursor:'pointer', borderBottom:'0.5px solid var(--border)', transition:'background 0.15s ease' };
 
 /* ── Dots ── */
-function StepDots({ current }) {
+/* ── Premium Step Progress Bar ── */
+function StepProgress({ current }) {
+  const pct = ((current - 1) / 4) * 100;
   return (
-    <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:12, marginBottom:24, paddingTop:16 }}>
-      {[1,2,3,4,5].map(s => {
-        const done = s < current; const active = s === current;
-        return (
-          <React.Fragment key={s}>
-            <div style={{ width:24, height:24, borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', fontSize:12, fontWeight:600, background: done||active ? 'var(--bg-info)' : 'transparent', color:'var(--text-info)', border: done||active ? 'none' : '1px solid var(--border)', boxShadow: active ? '0 0 0 3px rgba(24,95,165,0.2)' : 'none' }}>
-              {done ? '✓' : active ? s : ''}
-            </div>
-            {s < 5 && <div style={{ width:32, height:1, background: s < current ? 'var(--bg-info)' : 'var(--border)' }} />}
-          </React.Fragment>
-        );
-      })}
+    <div style={{ padding:'20px 0 28px' }}>
+      {/* Progress track */}
+      <div style={{ position:'relative', maxWidth:600, margin:'0 auto' }}>
+        <div style={{ position:'absolute', top:16, left:20, right:20, height:3, background:'var(--bg-tertiary)', borderRadius:4, zIndex:0 }} />
+        <motion.div initial={{ width:0 }} animate={{ width:`calc(${pct}% - ${pct < 100 ? 0 : 0}px)` }} transition={{ duration:0.5, ease:'easeInOut' }}
+          style={{ position:'absolute', top:16, left:20, height:3, background:'linear-gradient(90deg, #185FA5, #1D9E75)', borderRadius:4, zIndex:1 }} />
+        {/* Step circles */}
+        <div style={{ display:'flex', justifyContent:'space-between', position:'relative', zIndex:2 }}>
+          {STEP_META.map((m, i) => {
+            const s = i + 1; const done = s < current; const active = s === current;
+            return (
+              <div key={s} style={{ display:'flex', flexDirection:'column', alignItems:'center', width:80 }}>
+                <div style={{
+                  width:34, height:34, borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center',
+                  background: done ? 'linear-gradient(135deg, #1D9E75, #2BC48A)' : active ? 'linear-gradient(135deg, #185FA5, #1D9E75)' : 'var(--bg-secondary)',
+                  color: done || active ? '#fff' : 'var(--text-secondary)',
+                  border: !done && !active ? '1.5px solid var(--border)' : 'none',
+                  boxShadow: active ? '0 0 0 4px rgba(24,95,165,0.15), 0 2px 8px rgba(24,95,165,0.25)' : done ? '0 2px 8px rgba(29,158,117,0.2)' : 'none',
+                  transition:'all 0.3s ease', fontSize:12, fontWeight:600,
+                }}>
+                  {done ? <CheckCircle2 size={16}/> : m.icon}
+                </div>
+                <span style={{ fontSize:10, fontWeight: active ? 700 : 500, color: active ? 'var(--text-info)' : done ? 'var(--text-success)' : 'var(--text-secondary)', marginTop:6, textAlign:'center', lineHeight:1.2, letterSpacing:'0.01em' }}>{m.label}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }
 
-function StepHead({ n, total, label }) {
+/* ── Step Hero Banner ── */
+function StepHero({ n, completionPct }) {
+  const m = STEP_META[n - 1];
   return (
-    <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:16 }}>
-      <span style={{ display:'flex', alignItems:'center', justifyContent:'center', width:28, height:28, borderRadius:'50%', background:'var(--bg-info)', color:'var(--text-info)', fontSize:13, fontWeight:500, flexShrink:0 }}>{n}</span>
-      <span style={{ fontSize:14, fontWeight:500, color:'var(--text-primary)' }}>{label}</span>
-      <span style={{ fontSize:12, color:'var(--text-secondary)', marginLeft:'auto' }}>Step {n} of {total}</span>
+    <div style={{ background:'linear-gradient(135deg, #0F2B4A 0%, #1B3A5C 40%, #1A4D6E 100%)', borderRadius:18, padding:'22px 28px', marginBottom:20, color:'#fff', position:'relative', overflow:'hidden', boxShadow:'0 4px 24px rgba(15,43,74,0.3)' }}>
+      <div style={{ position:'absolute', top:-30, right:-30, width:140, height:140, background:'radial-gradient(circle, rgba(29,158,117,0.15) 0%, transparent 70%)', pointerEvents:'none' }} />
+      <div style={{ position:'absolute', bottom:-20, left:-20, width:100, height:100, background:'radial-gradient(circle, rgba(133,173,255,0.12) 0%, transparent 70%)', pointerEvents:'none' }} />
+      <div style={{ position:'relative', zIndex:1, display:'flex', alignItems:'center', justifyContent:'space-between' }}>
+        <div>
+          <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:4 }}>
+            <div style={{ width:30, height:30, borderRadius:8, background:'rgba(255,255,255,0.12)', display:'flex', alignItems:'center', justifyContent:'center', border:'1px solid rgba(255,255,255,0.15)' }}>{m.icon}</div>
+            <span style={{ fontSize:11, fontWeight:600, textTransform:'uppercase', letterSpacing:'0.1em', opacity:0.7 }}>Step {n} of 5</span>
+          </div>
+          <p style={{ fontSize:20, fontWeight:700, margin:'6px 0 2px', letterSpacing:'-0.02em' }}>{m.label}</p>
+          <p style={{ fontSize:12, opacity:0.6, margin:0 }}>{m.sub}</p>
+        </div>
+        <div style={{ textAlign:'center' }}>
+          <div style={{ width:52, height:52, borderRadius:'50%', border:'3px solid rgba(255,255,255,0.15)', display:'flex', alignItems:'center', justifyContent:'center', position:'relative' }}>
+            <svg width={52} height={52} style={{ position:'absolute', top:-1.5, left:-1.5, transform:'rotate(-90deg)' }}>
+              <circle cx={26} cy={26} r={23} fill="none" stroke="rgba(29,158,117,0.8)" strokeWidth={3} strokeDasharray={`${(completionPct / 100) * 144.5} 144.5`} strokeLinecap="round" />
+            </svg>
+            <span style={{ fontSize:14, fontWeight:700 }}>{completionPct}%</span>
+          </div>
+          <span style={{ fontSize:9, opacity:0.5, marginTop:2, display:'block' }}>Complete</span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -415,17 +463,29 @@ export default function Onboarding() {
     } finally { setSubmitting(false); }
   }
 
+  /* ── Completion percentage ── */
+  const completionPct = Math.round(((step - 1) / 5) * 100 + (step === 1 && step1Ready ? 20 : 0));
+
   return (
-    <div>
-      <StepDots current={step} />
-      <AnimatePresence mode="wait">
-        <motion.div key={step} initial={{ opacity:0, x:20 }} animate={{ opacity:1, x:0 }} exit={{ opacity:0, x:-20 }} transition={{ duration:0.18 }}>
+    <div style={{ position:'relative', minHeight:'100vh', overflow:'hidden' }}>
+      {/* Ambient gradient orbs — matching landing page */}
+      <div style={{ position:'fixed', top:-120, left:'10%', width:500, height:500, background:'radial-gradient(circle, rgba(24,95,165,0.06) 0%, transparent 70%)', pointerEvents:'none', filter:'blur(60px)' }} />
+      <div style={{ position:'fixed', top:200, right:'5%', width:400, height:400, background:'radial-gradient(circle, rgba(29,158,117,0.05) 0%, transparent 70%)', pointerEvents:'none', filter:'blur(50px)' }} />
+      <div style={{ position:'fixed', bottom:-80, left:'40%', width:600, height:300, background:'radial-gradient(circle, rgba(133,173,255,0.04) 0%, transparent 70%)', pointerEvents:'none', filter:'blur(50px)' }} />
+
+      <div style={{ position:'relative', zIndex:1, maxWidth:1100, margin:'0 auto', padding:'0 24px' }}>
+        <StepProgress current={step} />
+        <AnimatePresence mode="wait">
+          <motion.div key={step} initial={{ opacity:0, y:16 }} animate={{ opacity:1, y:0 }} exit={{ opacity:0, y:-12 }} transition={{ duration:0.22, ease:'easeOut' }}>
 
           {step === 1 && (
             <div style={{ maxWidth:520, margin:'0 auto', padding:'0 0 16px' }}>
-              <StepHead n={1} total={5} label="Academic profile (required)" />
+              <StepHero n={1} completionPct={completionPct} />
               <div style={cs.card}>
-                <p style={{ fontSize:15, fontWeight:500, margin:'0 0 16px', color:'var(--text-primary)' }}>Tell us about your studies</p>
+                <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:16 }}>
+                  <div style={{ width:28, height:28, borderRadius:8, background:'var(--bg-info)', display:'flex', alignItems:'center', justifyContent:'center' }}><User size={14} color='var(--text-info)' /></div>
+                  <p style={{ fontSize:15, fontWeight:600, margin:0, color:'var(--text-primary)' }}>Tell us about your studies</p>
+                </div>
                 <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
                   <FInput label="Full name" value={name} onChange={setName} placeholder="Enter your full name" required />
                   <FInput label="Email" value={email} onChange={setEmail} type="email" placeholder="your.email@college.ac.in" required />
@@ -468,7 +528,7 @@ export default function Onboarding() {
 
           {step === 2 && (
             <div style={{ maxWidth:620, margin:'0 auto', padding:'0 0 16px' }}>
-              <StepHead n={2} total={5} label="Job preferences (optional)" />
+              <StepHero n={2} completionPct={completionPct} />
               <p style={{ fontSize:12, color:'var(--text-secondary)', marginBottom:16, lineHeight:1.6 }}>Set up to 3 career preferences. Skill priority follows Primary → Secondary → Tertiary.</p>
               <PrefCard label="Primary"   pref={primary}   onUpdate={updPrimary}   onUpdateLoc={updPrimaryLoc}   accentColor="#1D9E75" accentDark="#0f7a5a" number={1} />
               <PrefCard label="Secondary" pref={secondary} onUpdate={updSecondary} onUpdateLoc={updSecondaryLoc} accentColor="#BA7517" accentDark="#8a5510" number={2} />
@@ -512,7 +572,7 @@ export default function Onboarding() {
 
             return (
             <div style={{ maxWidth:780, margin:'0 auto', padding:'0 0 16px' }}>
-              <StepHead n={3} total={5} label="Skills & certifications (optional)" />
+              <StepHero n={3} completionPct={completionPct} />
               <div style={{ display:'grid', gridTemplateColumns:'1fr 280px', gap:16, alignItems:'start' }}>
                 {/* Main skills panel */}
                 <div style={cs.card}>
@@ -563,7 +623,7 @@ export default function Onboarding() {
 
           {step === 4 && (
             <div style={{ maxWidth:580, margin:'0 auto', padding:'0 0 16px' }}>
-              <StepHead n={4} total={5} label="Experience & projects (optional)" />
+              <StepHero n={4} completionPct={completionPct} />
               <div style={cs.card}>
                 <p style={{ fontSize:15, fontWeight:500, margin:'0 0 4px', color:'var(--text-primary)' }}>Do you have any experience?</p>
                 <p style={{ fontSize:12, color:'var(--text-secondary)', margin:'0 0 16px', lineHeight:1.6 }}>Internships, part-time work, freelancing, volunteering, or projects.</p>
@@ -582,7 +642,7 @@ export default function Onboarding() {
 
           {step === 5 && (
             <div style={{ maxWidth:520, margin:'0 auto', padding:'0 0 16px' }}>
-              <StepHead n={5} total={5} label="Review & submit" />
+              <StepHero n={5} completionPct={completionPct} />
               <div style={cs.card}>
                 <p style={{ fontSize:15, fontWeight:500, margin:'0 0 16px', color:'var(--text-primary)' }}>Your profile summary</p>
                 <div style={{ borderBottom:'0.5px solid var(--border)', paddingBottom:10, marginBottom:10 }}>
@@ -620,6 +680,7 @@ export default function Onboarding() {
 
         </motion.div>
       </AnimatePresence>
+      </div>
     </div>
   );
 }
