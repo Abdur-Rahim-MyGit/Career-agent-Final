@@ -4,9 +4,12 @@ import { Award, Download, Share2, CheckCircle2, AlertTriangle, AlertCircle, Cloc
 
 /* ── Passport Responsive CSS (injected once) ──────────────────────── */
 const PASSPORT_CSS = `
-  .passport-page { max-width: 1100px; margin: 0 auto; font-family: 'Manrope', 'Inter', var(--font-sans); }
-  .passport-actions { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 16px; }
-  .passport-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .passport-page {
+    max-width: 1100px; margin: 0 auto; padding: 0 16px;
+    font-family: 'Manrope', 'Inter', var(--font-sans);
+  }
+  .passport-actions { display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 20px; }
+  .passport-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
   .passport-full { grid-column: 1 / -1; }
 
   @media (min-width: 768px) {
@@ -18,19 +21,36 @@ const PASSPORT_CSS = `
 
   .passport-card {
     background: var(--card-bg, var(--bg-primary));
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 0.5px solid rgba(72,72,71,0.20);
-    border-radius: 16px;
-    padding: 22px 26px;
-    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 0.5px solid rgba(72,72,71,0.15);
+    border-radius: 18px;
+    padding: 24px 28px;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .passport-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #85adff 0%, #6e9eff 40%, #9bffce 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
   .passport-card:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border-color: rgba(133,173,255,0.25);
+    box-shadow: 0 8px 32px rgba(133,173,255,0.12), 0 2px 8px rgba(0,0,0,0.04);
+    border-color: rgba(133,173,255,0.3);
+    transform: translateY(-1px);
   }
-  .passport-btn { cursor: pointer; transition: all 0.2s ease; }
+  .passport-card:hover::before { opacity: 1; }
+
+  .passport-btn {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Inter', sans-serif;
+  }
   .passport-btn:focus-visible { outline: 2px solid var(--text-info); outline-offset: 2px; }
+  .passport-btn:hover { transform: translateY(-0.5px); }
 
   .skill-tag {
     display: inline-flex; align-items: center; gap: 4px;
@@ -38,20 +58,42 @@ const PASSPORT_CSS = `
     font-size: 12px; font-weight: 500;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  .skill-tag:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .skill-tag:hover { transform: translateY(-1px); box-shadow: 0 3px 12px rgba(0,0,0,0.06); }
 
   .roadmap-btn {
     display: flex; align-items: center; gap: 6px;
     background: none; border: none; cursor: pointer;
-    padding: 4px 0; margin-bottom: 10px; width: 100%;
+    padding: 6px 0; margin-bottom: 10px; width: 100%;
+    font-family: 'Manrope', sans-serif;
   }
   .roadmap-btn:focus-visible { outline: 2px solid var(--text-info); outline-offset: 2px; }
   .roadmap-btn:hover span { color: var(--text-info) !important; }
+
+  .readiness-section {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 24px 12px 16px;
+    border-radius: 14px;
+    background: linear-gradient(160deg,
+      rgba(133,173,255,0.08) 0%,
+      rgba(110,158,255,0.04) 50%,
+      rgba(155,255,206,0.06) 100%
+    );
+    position: relative;
+    overflow: hidden;
+  }
+  .readiness-section::after {
+    content: '';
+    position: absolute; top: -50%; right: -50%;
+    width: 120%; height: 120%;
+    background: radial-gradient(circle, rgba(133,173,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
 
   @media print {
     .passport-actions, .passport-cta-row { display: none !important; }
     .passport-grid { grid-template-columns: 1fr 1fr !important; }
     .passport-page { max-width: 100% !important; }
+    .passport-card::before { display: none; }
   }
 `;
 
@@ -328,7 +370,7 @@ export default function Passport() {
           style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
         >
           {/* Readiness Ring */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px 0 12px', background: 'var(--bg-secondary)', borderRadius: 14, backgroundImage: 'linear-gradient(135deg, rgba(133,173,255,0.06) 0%, rgba(155,255,206,0.03) 100%)' }}>
+          <div className="readiness-section">
             <ProgressRing percent={coveragePct} color={zc.ringColor} />
             <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: '12px 0 2px' }}>Career Readiness</p>
             <p style={{ fontSize: 20, fontWeight: 700, margin: '0 0 6px', color: 'var(--text-primary)', fontFamily: "'Manrope', sans-serif" }}>{zc.label}</p>
