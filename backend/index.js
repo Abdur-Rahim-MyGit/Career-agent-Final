@@ -56,6 +56,29 @@ const apiLimiter = rateLimit({
 });
 app.use('/api/', apiLimiter);
 
+// ── Strict rate-limiter for auth endpoints (5 req / 60s per IP) ──
+const authLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 5,
+  message: { error: 'Too many authentication attempts. Please wait 60 seconds.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// ── Input validation helpers ──
+function sanitize(str) {
+  if (typeof str !== 'string') return '';
+  return str.trim().replace(/[<>"'`;(){}]/g, '');
+}
+function isValidEmail(e) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e) && e.length <= 254;
+}
+function validatePassword(p) {
+  if (typeof p !== 'string' || p.length < 8) return 'Password must be at least 8 characters';
+  if (p.length > 128) return 'Password must be under 128 characters';
+  return null;
+}
+
 initializeDB();
 connectMongoDB();
 
@@ -70,50 +93,105 @@ function authMiddleware(req, res, next) {
   }
 }
 
-app.post('/api/auth/register', async (req, res) => {
+app.post('/api/auth/register', authLimiter, async (req, res) => {
   try {
-    const { name, email, password, role } = req.body;
+    const name = sanitize(req.body.name || '');
+    const email = sanitize(req.body.email || '').toLowerCase();
+    const password = req.body.password || '';
+    const role = sanitize(req.body.role || 'STUDENT');
+
+    // ── Validation ──
+    if (!name || name.length < 2) return res.status(400).json({ error: 'Name must be at least 2 characters' });
+    if (!isValidEmail(email)) return res.status(400).json({ error: 'Invalid email format' });
+    const pwdErr = validatePassword(password);
+    if (pwdErr) return res.status(400).json({ error: pwdErr });
+    if (!['STUDENT', 'ADMIN', 'PO'].includes(role)) return res.status(400).json({ error: 'Invalid role' });
+
     const existingUser = await prisma.user.findUnique({ where: { email } });
-    if (existingUser) return res.status(400).json({ error: 'User already exists' });
-    const salt = await bcrypt.genSalt(10);
+    if (existingUser) return res.status(409).json({ error: 'An account with this email already exists' });
+
+    const salt = await bcrypt.genSalt(12);
     const passwordHash = await bcrypt.hash(password, salt);
-    const newUser = await prisma.user.create({ data: { name, email, passwordHash, role: role || 'STUDENT' } });
-    res.status(201).json({ message: 'User registered successfully', userId: newUser.id });
+    const newUser = await prisma.user.create({ data: { name, email, passwordHash, role } });
+
+    // ── Auto-login: return JWT so frontend can sign in immediately ──
+    const token = jwt.sign(
+      { id: newUser.id, role: newUser.role },
+      process.env.JWT_SECRET || 'fallback_secret',
+      { expiresIn: '24h' },
+    );
+    res.status(201).json({
+      message: 'Registered successfully',
+      token,
+      user: { id: newUser.id, name: newUser.name, email: newUser.email, role: newUser.role },
+    });
   } catch (err) {
-    res.status(500).json({ error: 'Registration failed', details: err.message });
+    console.error('Registration error:', err.message);
+    res.status(500).json({ error: 'Registration failed. Please try again later.' });
   }
 });
 
-app.post('/api/auth/login', async (req, res) => {
+app.post('/api/auth/login', authLimiter, async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const email = sanitize(req.body.email || '').toLowerCase();
+    const password = req.body.password || '';
+
+    // ── Validation ──
+    if (!isValidEmail(email)) return res.status(400).json({ error: 'Invalid email format' });
+    if (!password || password.length < 8) return res.status(400).json({ error: 'Password must be at least 8 characters' });
+
     const user = await prisma.user.findUnique({ where: { email } });
-    if (!user) return res.status(400).json({ error: 'Invalid credentials' });
+    if (!user) return res.status(401).json({ error: 'Invalid email or password' });
+
     const validPassword = await bcrypt.compare(password, user.passwordHash);
-    if (!validPassword) return res.status(400).json({ error: 'Invalid credentials' });
-    const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET || 'fallback_secret', { expiresIn: '24h' });
-    res.json({ message: 'Logged in successfully', token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
+    if (!validPassword) return res.status(401).json({ error: 'Invalid email or password' });
+
+    const token = jwt.sign(
+      { id: user.id, role: user.role },
+      process.env.JWT_SECRET || 'fallback_secret',
+      { expiresIn: '24h' },
+    );
+    res.json({
+      message: 'Logged in successfully',
+      token,
+      user: { id: user.id, name: user.name, email: user.email, role: user.role },
+    });
   } catch (err) {
-    // Prisma/PostgreSQL unavailable — provide demo mode access
-    const { email, password } = req.body;
-    if (email && password && password.length >= 6) {
-      const demoUser = { id: 'demo_' + Date.now(), name: email.split('@')[0], email, role: 'STUDENT' };
+    // ── DB unavailable — fall back to demo mode ──
+    console.error('Login DB error (falling back to demo):', err.message);
+    const email = sanitize(req.body.email || '').toLowerCase();
+    const password = req.body.password || '';
+    if (isValidEmail(email) && password.length >= 8) {
+      // Smart role detection for demo mode
+      const demoRole = email.includes('admin') || email.includes('po') || email.includes('placement') ? 'ADMIN' : 'STUDENT';
+      const demoUser = { id: 'demo_' + Date.now(), name: email.split('@')[0], email, role: demoRole };
       const token = jwt.sign({ id: demoUser.id, role: demoUser.role }, process.env.JWT_SECRET || 'fallback_secret', { expiresIn: '24h' });
       console.log('⚠️  DB unavailable — demo login for', email);
       return res.json({ message: 'Logged in (demo mode)', token, user: demoUser, demo: true });
     }
-    res.status(500).json({ error: 'Login failed', details: err.message });
+    res.status(500).json({ error: 'Login failed. Please try again later.' });
   }
 });
 
 // ── Session validation (used by AuthContext on page refresh) ──
 app.get('/api/me', authMiddleware, async (req, res) => {
   try {
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ message: 'Invalid token payload' });
+    }
+    // Demo-mode users have IDs starting with 'demo_' — return JWT data directly
+    if (String(req.user.id).startsWith('demo_')) {
+      return res.json({ user: { id: req.user.id, name: req.user.id.replace('demo_','user_'), email: '', role: req.user.role || 'STUDENT' } });
+    }
     const user = await prisma.user.findUnique({ where: { id: req.user.id } });
     if (!user) return res.status(404).json({ message: 'User not found' });
     res.json({ user: { id: user.id, name: user.name, email: user.email, role: user.role } });
   } catch (err) {
-    res.status(500).json({ message: 'Failed to fetch user', details: err.message });
+    // DB error — if JWT has role, return it anyway
+    if (req.user && req.user.id) {
+      return res.json({ user: { id: req.user.id, name: 'User', email: '', role: req.user.role || 'STUDENT' } });
+    }
+    res.status(500).json({ message: 'Failed to fetch user' });
   }
 });
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { motion } from 'framer-motion';
@@ -27,8 +27,13 @@ export default function Login() {
 
   const returnTo = location.state?.from || '/dashboard';
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate(returnTo, { replace: true });
+    }
+  }, [isAuthenticated, navigate, returnTo]);
+
   if (isAuthenticated) {
-    navigate(returnTo, { replace: true });
     return null;
   }
 
@@ -49,13 +54,13 @@ export default function Login() {
         setError(data.error || data.message || 'Invalid email or password.');
       }
     } catch {
-      if (email && password.length >= 6) {
+      if (email && password.length >= 8) {
         setInfo('Backend not running — entering demo mode…');
         const demoUser = { name: email.split('@')[0], email, role: 'STUDENT' };
         authLogin('demo_token', demoUser);
         setTimeout(() => navigate(returnTo, { replace: true }), 800);
       } else {
-        setError('Enter any email and a password of 6+ chars to continue in demo mode.');
+        setError('Enter any email and a password of 8+ chars to continue in demo mode.');
       }
     } finally {
       setLoading(false);

@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
       return;
     }
     // Validate token with backend
-    fetch('http://localhost:5000/api/me', {
+    fetch('/api/me', {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(res => res.ok ? res.json() : Promise.reject())
@@ -56,7 +56,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   const isAuthenticated = !!user;
-  const isAdmin = user?.role === 'ADMIN';
+  const isAdmin = user?.role === 'ADMIN' || user?.role === 'PO';
   const isStudent = user?.role === 'STUDENT' || !user?.role;
 
   return (
