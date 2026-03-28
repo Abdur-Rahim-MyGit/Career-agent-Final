@@ -67,30 +67,40 @@ Student submits profile → AI generates analysis → Saved to training_log.json
 
 ## 🚀 Getting Started (For Collaborators)
 
-If you have just pulled or cloned this repository, follow these simple steps to get everything running locally on Windows:
+If you have just pulled or cloned this repository, follow these simple steps to get everything running locally on Windows.
+
+> We provide **two batch scripts** so you can get up and running with a single double-click:
+>
+> | Script | Purpose |
+> |--------|---------|
+> | [`setup_windows.bat`](setup_windows.bat) | **One-time setup** — installs Python venv, pip packages, Node modules, and runs Prisma generate |
+> | [`start_windows.bat`](start_windows.bat) | **Daily launcher** — opens 3 terminal windows for ML Service, Backend, and Frontend |
 
 ### 1. Install Dependencies & Virtual Environment
 
-We have provided a one-click setup script. Simply double-click `setup_windows.bat` or run the following commands manually:
+Double-click **`setup_windows.bat`** or run the following commands manually:
 
 ```bash
-# ML Service Setup
+# ML Service Setup (Python)
 cd ml-service
 python -m venv .venv
 .venv\Scripts\activate
-pip install -r requirements.txt
+pip install -r requirements.txt      # see ml-service/requirements.txt
 cd ..
 
-# Backend Setup
+# Backend Setup (Node.js)
 cd backend
 npm install
+npx prisma generate
 cd ..
 
-# Frontend Setup
+# Frontend Setup (React / Vite)
 cd frontend
 npm install
 cd ..
 ```
+
+> **Tip:** A consolidated [`requirements.txt`](requirements.txt) at the project root lists every dependency across all three services for quick reference.
 
 ### 2. Environment Variables
 
@@ -105,13 +115,15 @@ OPENROUTER_API_KEY=your_openrouter_key
 JWT_SECRET=your_jwt_secret
 ```
 
+> `setup_windows.bat` will auto-copy `.env.example → .env` if the file is missing.
+
 ### 3. Launch the Platform
 
-Once setup is complete, you can start all servers at once by double-clicking `setup_windows.bat`.
+Once setup is complete, double-click **`start_windows.bat`** to start all 3 servers simultaneously in separate terminal windows.
 
 Alternatively, manually run these commands in 3 separate terminals:
 
-**Terminal 1 (ML Service):**
+**Terminal 1 (ML Service — Port 5001):**
 
 ```bash
 cd ml-service
@@ -119,26 +131,28 @@ cd ml-service
 python app.py
 ```
 
-**Terminal 2 (Backend):**
+**Terminal 2 (Backend — Port 5000):**
 
 ```bash
 cd backend
 npm run dev
 ```
 
-**Terminal 3 (Frontend):**
+**Terminal 3 (Frontend — Port 5173):**
 
 ```bash
 cd frontend
 npm run dev
 ```
 
-This will run the ML Service on port 5001, Backend on port 5000, and Frontend on port 5173.
-
 ## 📁 Key Documentation Files
 
 | File | Purpose |
 |------|---------|
+| [`requirements.txt`](requirements.txt) | Consolidated platform dependency list (Python + Node.js) |
+| [`ml-service/requirements.txt`](ml-service/requirements.txt) | Python/ML pip dependencies (Flask, PyTorch, HuggingFace, XGBoost) |
+| [`setup_windows.bat`](setup_windows.bat) | One-click dependency installer for Windows |
+| [`start_windows.bat`](start_windows.bat) | One-click platform launcher for Windows |
 | [`SMAART_Database_Guide.md`](SMAART_Database_Guide.md) | Complete database schemas and architecture |
 | [`SMAART_Data_Import_Format_Guide.md`](SMAART_Data_Import_Format_Guide.md) | Exact JSON formats for data import |
 | [`SMAART_Dataset_Download_Guide.md`](SMAART_Dataset_Download_Guide.md) | Where to download additional datasets |

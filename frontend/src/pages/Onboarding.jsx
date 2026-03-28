@@ -129,6 +129,119 @@ function FSelect({ label, value, onChange, options, disabled }) {
   );
 }
 
+/* ── SearchableSelect — type-to-filter autocomplete ── */
+function SearchableSelect({ label, value, onChange, options, disabled, placeholder }) {
+  const [query, setQuery] = useState('');
+  const [open, setOpen] = useState(false);
+  const [highlightIdx, setHighlightIdx] = useState(-1);
+  const ref = useRef(null);
+  const listRef = useRef(null);
+
+  // Close on outside click
+  useEffect(() => {
+    const h = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    document.addEventListener('mousedown', h);
+    return () => document.removeEventListener('mousedown', h);
+  }, []);
+
+  // Filter options — exclude placeholder items
+  const realOptions = options.filter(o => !o.startsWith('Select '));
+  const filtered = query.trim()
+    ? realOptions.filter(o => o.toLowerCase().includes(query.toLowerCase()))
+    : realOptions;
+
+  // Scroll active item into view
+  useEffect(() => {
+    if (highlightIdx >= 0 && listRef.current) {
+      const item = listRef.current.children[highlightIdx];
+      if (item) item.scrollIntoView({ block: 'nearest' });
+    }
+  }, [highlightIdx]);
+
+  const selectItem = (item) => {
+    onChange(item);
+    setQuery('');
+    setOpen(false);
+    setHighlightIdx(-1);
+  };
+
+  const handleKeyDown = (e) => {
+    if (!open) { if (e.key === 'ArrowDown' || e.key === 'Enter') { setOpen(true); e.preventDefault(); } return; }
+    if (e.key === 'ArrowDown') { setHighlightIdx(i => Math.min(i + 1, filtered.length - 1)); e.preventDefault(); }
+    else if (e.key === 'ArrowUp') { setHighlightIdx(i => Math.max(i - 1, 0)); e.preventDefault(); }
+    else if (e.key === 'Enter' && highlightIdx >= 0 && filtered[highlightIdx]) { selectItem(filtered[highlightIdx]); e.preventDefault(); }
+    else if (e.key === 'Escape') { setOpen(false); setHighlightIdx(-1); }
+  };
+
+  const displayValue = value && !value.startsWith('Select ') ? value : '';
+  const isPlaceholder = !displayValue;
+
+  return (
+    <div ref={ref} style={{ ...cs.field, position: 'relative' }}>
+      {label && <label style={cs.label}>{label}</label>}
+      <div style={{
+        ...cs.input, display: 'flex', alignItems: 'center', gap: 8, padding: 0,
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        opacity: disabled ? 0.5 : 1,
+        borderColor: open ? 'var(--border-info)' : 'var(--border)',
+        boxShadow: open ? '0 0 0 3px rgba(24,95,165,0.1)' : 'none',
+      }}>
+        <input
+          value={open ? query : displayValue}
+          onChange={e => { setQuery(e.target.value); setHighlightIdx(0); if (!open) setOpen(true); }}
+          onFocus={() => { if (!disabled) { setOpen(true); setQuery(''); } }}
+          onKeyDown={handleKeyDown}
+          disabled={disabled}
+          placeholder={isPlaceholder ? (placeholder || 'Type to search…') : displayValue}
+          autoComplete="off"
+          style={{
+            flex: 1, padding: '10px 12px', border: 'none', background: 'transparent',
+            color: 'var(--text-primary)', fontSize: 14, outline: 'none',
+            fontFamily: 'var(--font-sans)', cursor: disabled ? 'not-allowed' : 'text',
+          }}
+        />
+        {displayValue && !disabled && (
+          <button type="button" onClick={(e) => { e.stopPropagation(); onChange(options[0] || ''); setQuery(''); }}
+            style={{ padding: '4px 10px', border: 'none', background: 'transparent', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: 16, lineHeight: 1 }}
+            title="Clear">×</button>
+        )}
+        <div style={{ padding: '4px 10px', color: 'var(--text-secondary)', fontSize: 11, flexShrink: 0, transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▼</div>
+      </div>
+
+      {open && !disabled && (
+        <ul ref={listRef} style={{
+          ...dropStyle,
+          maxHeight: 240,
+          border: '0.5px solid var(--border-info)',
+          boxShadow: '0 12px 40px rgba(0,0,0,0.15)',
+        }}>
+          {/* Match count */}
+          <li style={{ padding: '6px 14px', fontSize: 11, color: 'var(--text-secondary)', borderBottom: '0.5px solid var(--border)', fontWeight: 500, position: 'sticky', top: 0, background: 'var(--bg-primary)', zIndex: 1 }}>
+            {query ? `${filtered.length} of ${realOptions.length} match` : `${realOptions.length} options`}
+          </li>
+          {filtered.length === 0 && (
+            <li style={{ padding: '14px', fontSize: 13, color: 'var(--text-secondary)', textAlign: 'center' }}>No matches found</li>
+          )}
+          {filtered.map((item, i) => (
+            <li key={item}
+              onMouseDown={() => selectItem(item)}
+              onMouseEnter={() => setHighlightIdx(i)}
+              style={{
+                ...dropLi,
+                fontSize: 13, color: 'var(--text-primary)',
+                fontWeight: item === displayValue ? 600 : 400,
+                background: i === highlightIdx ? 'var(--bg-info)' : item === displayValue ? 'rgba(24,95,165,0.06)' : 'transparent',
+              }}>
+              {item === displayValue && <span style={{ marginRight: 6, color: 'var(--text-info)' }}>✓</span>}
+              {item}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 function RoleSearch({ value, onChange, placeholder }) {
   const [q, setQ] = useState(value || '');
   const [sugg, setSugg] = useState([]); const [open, setOpen] = useState(false);
@@ -505,10 +618,10 @@ export default function Onboarding() {
                   <FInput label="Password" value={password} onChange={setPassword} type="password" placeholder="Minimum 8 characters" required />
                 </div>
                 <div style={{ height:'0.5px', background:'var(--border)', margin:'4px 0 16px' }} />
-                <FSelect label="Degree Level *" value={eduLevel||'Select level...'} onChange={setEduLevel} options={level1Opts} />
-                <FSelect label="Domain *" value={eduDomain||'Select domain...'} onChange={setEduDomain} options={level2Opts} disabled={!eduLevel||eduLevel==='Select level...'} />
-                <FSelect label="Degree Group *" value={eduDegree||'Select degree group...'} onChange={setEduDegree} options={level3Opts} disabled={!eduDomain||eduDomain==='Select domain...'} />
-                <FSelect label="Specialisation *" value={eduSpec||'Select specialisation...'} onChange={setEduSpec} options={specOpts} disabled={!eduDegree||eduDegree==='Select degree group...'} />
+                <SearchableSelect label="Degree Level *" value={eduLevel||'Select level...'} onChange={setEduLevel} options={level1Opts} placeholder="Type to search degree level…" />
+                <SearchableSelect label="Domain *" value={eduDomain||'Select domain...'} onChange={setEduDomain} options={level2Opts} disabled={!eduLevel||eduLevel==='Select level...'} placeholder="Type to search domain…" />
+                <SearchableSelect label="Degree Group *" value={eduDegree||'Select degree group...'} onChange={setEduDegree} options={level3Opts} disabled={!eduDomain||eduDomain==='Select domain...'} placeholder="Type to search degree…" />
+                <SearchableSelect label="Specialisation *" value={eduSpec||'Select specialisation...'} onChange={setEduSpec} options={specOpts} disabled={!eduDegree||eduDegree==='Select degree group...'} placeholder="Type to search specialisation…" />
                 {eduSpec === 'Other (specify below)' && <FInput label="Enter your specialisation *" value={eduSpecCustom} onChange={setEduSpecCustom} placeholder="e.g. Agricultural Engineering, Fashion Technology…" />}
                 <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:12 }}>
                   <FSelect label="Year of study *" value={yearOfStudy||'Select year...'} onChange={setYear} options={['Select year...','1','2','3','4','5']} />
