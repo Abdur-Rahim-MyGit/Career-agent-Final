@@ -143,16 +143,6 @@ export default function PODashboard() {
     })();
   }, [collegeCode]);
 
-  /* ── Loading state ── */
-  if (loading) return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '50vh', gap: 10 }}>
-      <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1.2, ease: 'linear' }}>
-        <RefreshCw size={18} color="var(--text-info)" />
-      </motion.div>
-      <p style={{ fontSize: 14, color: 'var(--text-secondary)', margin: 0 }}>Loading placement officer dashboard…</p>
-    </div>
-  );
-
   /* ── Mock / Live data ── */
   const college = data?.collegeName || `College ${collegeCode || 'Demo'}`;
   const batch = data?.batch || 'B.Com, BA, BBA — 2027 and 2028 batches';
@@ -213,6 +203,16 @@ export default function PODashboard() {
     return redStudents.filter(s =>
       s.n.toLowerCase().includes(q) || s.d.toLowerCase().includes(q));
   }, [searchQuery, redStudents]);
+
+  /* ── Loading state ── */
+  if (loading) return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '50vh', gap: 10 }}>
+      <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1.2, ease: 'linear' }}>
+        <RefreshCw size={18} color="var(--text-info)" />
+      </motion.div>
+      <p style={{ fontSize: 14, color: 'var(--text-secondary)', margin: 0 }}>Loading placement officer dashboard…</p>
+    </div>
+  );
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
